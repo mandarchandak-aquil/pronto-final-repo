@@ -14,7 +14,6 @@ export class Dashboard02PolicyDetailsPaymentManageComponent implements OnInit {
   @ViewChild("slickModal") slickModal: SlickCarouselComponent;
   loading : boolean = true;
   source;
-  payRefId;
   payrefid;
   cardlist : any =[];
   constructor(public dash : DashboardService,public api_sub : SubjectCallService,private formBuilder: FormBuilder,public routers :Router) { }
@@ -102,21 +101,16 @@ export class Dashboard02PolicyDetailsPaymentManageComponent implements OnInit {
     });
    }
    payaccountremove(payRefId){
-     this.payRefId = payRefId;
-    document.getElementById("openModalButtondriverhistory").click();
-    
-}
-remove(){
-let data = {
-  "payRefId": this.payRefId 
-}
-console.log(data);
-
-this.dash.payaccountremove(data).subscribe((data: {}) => {
-console.log('data',data);
-if(data['message'] == 'SUCCESS'){
-  location.reload();
-}
-});
+    let data = {
+      "payRefId": payRefId 
+    }
+    console.log(data);
+    console.log(payRefId);
+  this.dash.payaccountremove(data).subscribe((data: {}) => {
+    console.log('data',data);
+    if(data['message'] == 'SUCCESS'){
+      location.reload();
+    }
+    });
 }
 }

@@ -33,14 +33,12 @@ import { AgmCoreModule } from '@agm/core';
 import { PageLoaderComponent } from './page-loader/page-loader.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
-
-
 import { SocialLoginModule, AuthServiceConfig, AuthService } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 import { AuthServicess } from '../commons/services/auth/auth.service';
 
- 
- 
+
+
 let config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
@@ -63,13 +61,13 @@ export function provideConfig() {
     SlickCarouselModule,
     MalihuScrollbarModule.forRoot(),
     HttpClientModule,
-      FormsModule,
-        ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule,
     // CountoModule 
-     AgmCoreModule.forRoot({
-          apiKey: 'AIzaSyBLRlv4LRU1MCTkVHNkmVA1CLQndp4PPcg',
-          libraries: ["places"]
-        }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBLRlv4LRU1MCTkVHNkmVA1CLQndp4PPcg',
+      libraries: ["places"]
+    }),
   ],
   exports: [
     HeaderComponent,
@@ -126,6 +124,7 @@ export function provideConfig() {
       provide: AuthServiceConfig,
       useFactory: provideConfig
     },
+   
     AuthService
   ],
 })

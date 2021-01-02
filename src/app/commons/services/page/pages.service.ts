@@ -42,14 +42,6 @@ Contact(req) : Observable<Page> {
       catchError(this.handleError)
     )
   }
-
-  getaquote(req) : Observable<Page> {
-    return this.http.post<Page>(this.apiurl+'cmspages/getaquote', JSON.stringify(req), httpOptions)
-    .pipe(
-      retry(1),
-      catchError(this.handleError)
-    )
-  }
   Claimcms(req) : Observable<Page> {
     return this.http.post<Page>(this.apiurl+'cmspages/claimcms', JSON.stringify(req), httpOptions)
     .pipe(

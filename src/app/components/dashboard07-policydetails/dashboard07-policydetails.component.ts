@@ -46,7 +46,7 @@ export class Dashboard07PolicydetailsComponent implements OnInit {
       "value": "Liability/Comprehensive/Collision ($1000 deductible)"
     }
   ];
-
+  vehicleList
   policy;
   exist;
   vehicle_add: FormGroup;
@@ -158,6 +158,7 @@ export class Dashboard07PolicydetailsComponent implements OnInit {
     {id: 2, type: 'Leased'},
   ];
   avc
+  countInclude;
 
   constructor(private formBuilder: FormBuilder, public routers: Router, private dash: DashboardService, private beyondtec: BeyontecService, public router: Router, private readonly fb: FormBuilder, private activeroute: ActivatedRoute, public BeyontecFormService: BeyontecDashFormService,
     public api_common: CommonService, private Beyontec: BeyontecService) { 
@@ -199,7 +200,7 @@ export class Dashboard07PolicydetailsComponent implements OnInit {
       model: ['', [Validators.required]],
       symbol: [''],
       primary_use: ['', [Validators.required]],
-      type_of_coverage: [, [Validators.required]],
+      type_of_coverage: ['', [Validators.required]],
       equipment_amount_redio: ['No'],
       equipment_amount: [''],
       rental_reimbus: [''],
@@ -594,6 +595,21 @@ export class Dashboard07PolicydetailsComponent implements OnInit {
           return 0;
         }
 
+        this.countInclude = 0;
+        this.vehicleList = this.BeyontecFormService.vehicles_array$.value.vehicle;
+        this.vehicleList.forEach(element => {
+          // console.log(element)
+
+          if (element.include) {
+            this.countInclude++;
+          }
+        });
+
+        if(this.countInclude >=4){
+          document.getElementById("openModalMoreVehicle").click();
+          return 0;
+        }
+
         this.BeyontecFormService.generateVehicle();
         var len: any = ((<FormArray>this.BeyontecFormService.vehicles_array$.controls['vehicle']).length - 1);
         console.log(len, "len");
@@ -620,6 +636,19 @@ export class Dashboard07PolicydetailsComponent implements OnInit {
     }
   }
 
+
+
+  check_count_include(){
+    this.vehicleList = this.BeyontecFormService.vehicles_array$.value.vehicle;
+    this.vehicleList.forEach(element => {
+      // console.log(element)
+
+      if (element.include) {
+        this.countInclude++;
+      }
+    });
+
+  }
   check_vin_exist() {
 
     var exist: boolean = false;

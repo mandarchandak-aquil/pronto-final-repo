@@ -162,6 +162,12 @@ export class Dashboard07EditCoverageComponent implements OnInit {
 
   }
 
+
+  goToFaq()
+  {
+
+  }
+  
   focusOutRqEff(val){
     // console.log(val)
     if(val != ''){

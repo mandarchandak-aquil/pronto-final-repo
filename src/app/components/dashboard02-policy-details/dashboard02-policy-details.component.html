@@ -15,25 +15,21 @@
             </div>
             <div class="col-lg brdCol">
               <div class="dashboard_middle">
-                   <div class="dashB_mdl-pd">
+                <!-- <div class="dashB_mdl-pd">
                           <div class="dash_tp-btnsRow d-none d-lg-block" data-aos="fade-up" data-aos-duration="900">
                             <div class="row no-gutters">
-                              <div class="col"><a href="#" data-toggle="modal" data-target="#modal-Start-claim"
-                                class="btn cmnBtn btn-sz-md btnBg-1 text-uppercase">Report CLAIM</a></div>
+                              <div class="col"><a routerLink="/claims/claim-texas" class="btn cmnBtn btn-sz-md btnBg-1 text-uppercase">Report CLAIM</a></div>
                               <div class="col text-right">
-                                <!-- <div class="d-inline-block">
+                                <div class="d-inline-block">
                                   <div class="viewCard_wrap d-flex align-items-center">
                                     <div class="iconWrap"><img class="w-100" src="assets/assets/images//icon-view-card.png" alt="" /></div>
                                     <div class="btnCol flex-fill"> <a routerLink="/" class="btn cmnBtn btn-sz-md btnBg-4 text-uppercase">VIEW YOUR ID CARDS</a> </div>
                                   </div>
-                                </div> -->
-                                <div class="d-inline-block dash_btnSpc_back">
-                                  <a routerLink="/dashboard/my-policies" class="btn cmnBtn btn-sz-md btnBg-2 text-uppercase">Back</a>
-                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div> 
+                        </div> -->
                         <div class="dashboard-mdl_Scroll cstScroller cst_mCst_scroll_Desk" id="dark-card" data-aos="fade-up"
                         data-aos-delay="300" data-aos-duration="900">
 
@@ -65,14 +61,6 @@
                                 <div class="contCol-3 text-center text-md-left">
                                   <div class="lable-ttl f-W-B">Policy Effective:</div>
                                   <div class="f-W-M"> {{policy.effectiveDate}} - {{policy.expirationDate}} </div>
-                                </div>
-                              </div>
-                            
-                            </div>
-                            <div class="col-md d-flex align-items-center" *ngIf="policy.isRenewal == true">
-                              <div class="colCont_Wrp w-100">
-                                <div class="text-center mt-0 mt-sm-3 mt-md-0">
-                                  <a routerLink="/dashboard/renewal-summary" class="btn cmnBtn btnBg-2 text-uppercase">Renew Policy</a>
                                 </div>
                               </div>
                             </div>
@@ -191,19 +179,20 @@
 
 
                     <div class="row gutterPolicy_dtl">
+
+
                       <div class="col-md-4">
                         <div class="policy_detail_bx_wrap mb_resp_lg">
                           <div class="policyDetail_Card px-0 mb_bx" >
-                            <div class="mng_in height-sm-auto eq_polict" data-eq="eq_polictDtl_lgBx" *ngIf="vehicleList">
+                            <div class="mng_in eq_polict" *ngIf="vehicleList">
                               <!-- [style.height.px]="maxHeight" -->
-                              <div class="lgBx_minhgt">
+                              <!-- <div class="lgBx_minhgt"> -->
                                 <div class="bx_pd_LR">
                                   <div class="bx_head mb f-W-B">Vehicles</div>
                                 </div>
 
                                 <!-- {{vehicleList | json}} -->
-                                <div
-                                class="cstScroller mCustomScrollbar amend_Driver_Vehicle_hgt">
+                                <div class="cstScroller mCustomScrollbar1 amend_Driver_Vehicle_hgt">
                                 <div class="bx_pd_LR">
 
                                 <div class="mb-0 policy_bx_list" *ngFor="let veh of vehicleList; let i = index">
@@ -239,17 +228,19 @@
                                 </div>
 
 
-                              </div>
+                              <!-- </div> -->
                             </div>
                           </div>
 
-                          <div class="policyDetail_Card bx-bg-color mb_bx" *ngIf="amendedVehicle == 'yes'">
+                          <div class="policyDetail_Card bx-bg-color px-0 mb_bx" *ngIf="amendedVehicle == 'yes'">
                             <!--  -->
-                            <div class="mng_in height-sm-auto" data-eq="eq_amended_Bx">
-                                <div class="bx_head mb f-W-B text-color-3">Amended<br> Vehicle</div>
-
+                            <div class="mng_in">
+                              <div class="bx_pd_LR"><div class="bx_head mb f-W-B text-color-3">Amended<br> Vehicle</div></div>
                                 
-                                <div class="mb-0 policy_bx_list" *ngFor="let veh of vehicleList; let i = index">
+                              <div class="cstScroller mCustomScrollbar1 amend_Driver_Vehicle_hgt">
+                                <div class="bx_pd_LR">
+
+                                <div class="list-unstyled mb-0 policy_bx_list" *ngFor="let veh of vehicleList; let i = index">
                                   <div class="policy_list_item pt-2" *ngIf="veh.isAmended">
                                   <div class="rowBtn_edit">
                                     <div class="policy_ContRow min-H">
@@ -268,6 +259,10 @@
                                     </div>
                                   </div>
                                 </div>
+
+                                </div>
+                                </div>
+
                             </div>
                           </div>
 
@@ -282,15 +277,14 @@
                       <div class="col-md-4">
                         <div class="policy_detail_bx_wrap mb_resp_lg">
                           <div class="policyDetail_Card px-0 mb_bx" >
-                            <div class="mng_in height-sm-auto eq_polict"  *ngIf="driverList" data-eq="eq_polictDtl_lgBx">
-                              <div class="lgBx_minhgt">
+                            <div class="mng_in eq_polict" *ngIf="driverList" >
+                              
                                 <div class="bx_pd_LR">
                                     <div class="bx_head mb f-W-B">Included Drivers
                                     </div>
                                 </div>
 
-                                <div
-                                class="cstScroller mCustomScrollbar amend_Driver_Vehicle_hgt">
+                                <div class="cstScroller mCustomScrollbar1 amend_Driver_Vehicle_hgt">
                                 <div class="bx_pd_LR">
 
                                 <div class="list-unstyled mb-0 policy_bx_list" *ngIf="driverList">
@@ -315,6 +309,32 @@
                                     </div>
                                   </div>
 
+
+                                  <div *ngFor="let driver of driverList; let i = index">
+                                    <div class="policy_list_item" *ngIf="i > 0 && !driver.isExcluded && !driver.isAmended">
+                                      <div class="rowBtn_edit" >
+                                        <div class="policy_ContRow min-H">
+                                          <div class="cont-title text-color-3 f-W-M line-H-1_2">{{driver.firstName |
+                                            titlecase}} {{driver.middleName | titlecase}} {{driver.lastName |
+                                            titlecase}}</div>
+                                          <div class="txtCont f-size-16 line-H-1_4 break-word">
+                                            {{driver.dob}}
+                                          </div>
+                                        </div>
+                                        <div class="mngBtnEdt">
+                                          <div class="d-flex">
+                                            <button [disabled]="PolicyStatus == 'Renewal Confirmed'" (click)="editDriver(i)" class="btn btnEdit btn-transp"><img class="icon w-100"
+                                              src="assets/images/icon-edit.svg" alt=""></button>
+                                          <button [disabled]="PolicyStatus == 'Renewal Confirmed'" (click)="deleteDriver(i)" class="btn btnEdit btn-transp"><img class="icon w-100"
+                                                src="assets/images/icon-btn-trash.svg" alt=""></button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  
+<!-- 
                                  <div *ngFor="let driver of driverList; let i = index">
                                     <div  class="policy_list_item" *ngIf="i > 0 && !driver.isExcluded && !driver.isAmended">
 
@@ -337,21 +357,25 @@
                                         </div>
                                       </div>
                                     </div>
-                                 </div>
+                                 </div> -->
 
                                   </div>
 
                                   </div>
                                   
                                   </div>
-                              </div>
+                             
                             </div>
                           </div>
 
 
-                          <div class="policyDetail_Card bx-bg-color mb_bx" *ngIf="driverList && includeAmended == 'yes'">
-                            <div class="mng_in height-sm-auto eq_polict1" data-eq="eq_amended_Bx">
-                                <div class="bx_head mb f-W-B text-color-3">Amended<br> Included Drivers</div>
+                          <div class="policyDetail_Card px-0 bx-bg-color mb_bx" *ngIf="driverList && includeAmended == 'yes'">
+                            <div class="mng_in  eq_polict1">
+                              <div class="bx_pd_LR"><div class="bx_head mb f-W-B text-color-3">Amended<br> Included Drivers</div></div>
+
+                              <div class="cstScroller mCustomScrollbar1 amend_Driver_Vehicle_hgt">
+                                <div class="bx_pd_LR">
+
                                 <div class="list-unstyled mb-0 policy_bx_list last_li">
                                   <div *ngFor="let driver of driverList; let i = index">
                                     <div class="policy_list_item" *ngIf="driver.isAmended && !driver.isExcluded">
@@ -367,8 +391,15 @@
                                         </div>
                                         <div class="mngBtnEdt">
                                           <div class="d-flex">
+
+                                            
                                             <button [disabled]="PolicyStatus == 'Renewal Confirmed'" (click)="editDriverAmendedInclude(i)" class="btn btnEdit btn-transp"><img class="icon w-100"
                                                 src="assets/images/icon-edit.svg" alt=""></button>
+
+                                                <!-- <a href="#" class="btn cmnBtn btnOutline-2 sm-sz btnSz-min-sm min-wdt text-uppercase" data-toggle="modal" (click)="generateExcludeDriver()" data-target="#modal-Additional_driver_Exclude">EXCLUDE ADDITIONAL DRIVERs</a> -->
+
+
+
                                             <button [disabled]="PolicyStatus == 'Renewal Confirmed'" (click)="deleteDriverAmendedInclude(i)" class="btn btnEdit btn-transp"><img class="icon w-100"
                                                   src="assets/images/icon-btn-trash.svg" alt=""></button>
                                           </div>
@@ -378,6 +409,10 @@
                                     </div>
                                   </div>
                                 </div>
+
+                                </div>
+                                </div>
+
                             </div>
                           </div>
 
@@ -395,66 +430,12 @@
                       <div class="col-md-4">
                         <div class="policy_detail_bx_wrap mb_resp_lg">
 
-
-                          <!-- <div class="policyDetail_Card px-0 mb_bx" >
-                            <div class="mng_in height-sm-auto eq_polict"  *ngIf="driverList" data-eq="eq_polictDtl_lgBx">
-                              <div class="lgBx_minhgt">
-                                <div class="bx_pd_LR">
-                                  <div class="bx_head mb f-W-B">Excluded Drivers
-                                    </div>
-                                  </div>
-
-                                  <div  class="cstScroller mCustomScrollbar amend_Driver_Vehicle_hgt">
-
-                                     <div class="bx_pd_LR">
-
-                                        <div class="list-unstyled mb-0 policy_bx_list" *ngIf="driverList">
-                                          
-                                            <div *ngFor="let driver of driverList; let i = index">
-                                              
-                                              <div class="rowBtn_edit" *ngIf="!driver.isAmended && driver.isExcluded">
-                                                <div class="policy_ContRow min-H">
-                                                  <div class="cont-title text-color-3 f-W-M line-H-1_2">{{driver.firstName |
-                                                    titlecase}} {{driver.middleName | titlecase}} {{driver.lastName |
-                                                    titlecase}}</div>
-                                                  <div class="txtCont f-size-16 line-H-1_4 break-word">
-                                                    {{driver.dob}}
-                                                  </div>
-                                                </div>
-                                                <div class="mngBtnEdt">
-                                                  <div class="d-flex">
-                                                    <button [disabled]="PolicyStatus == 'Renewal Confirmed'" (click)="editDriverExcluded(i)" class="btn btnEdit"><img class="icon w-100"
-                                                        src="assets/images/icon-edit.svg" alt=""></button>
-
-                                                    
-                                                    <button [disabled]="PolicyStatus == 'Renewal Confirmed'" (click)="addDriverExcluded(i)" class="btn btnEdit btnTxt btn-transp text-color-3"><i class="icon_Txt fa fa-plus"></i></button>
-                                                    
-                                                    
-                                                  </div>
-                                                </div>
-                                              </div>
-
-                                              
-                                               </div>
-                                          
-                                        </div>
-
-                                        </div>
-                                  </div>
-
-                              </div>
-                            </div>
-                          </div> -->
-
                           <div class="policyDetail_Card px-0 mb_bx">
-                            <div class="mng_in height-sm-auto"
-                                data-eq="eq_polictDtl_lgBx">
-                                <div class="lgBx_minhgt">
-                                    <div class="bx_pd_LR">
-                                        <div class="bx_head mb f-W-B">Excluded Drivers
-                                        </div>
-                                    </div>
-                                    <div class="cstScroller mCustomScrollbar amend_Driver_Vehicle_hgt">
+                            <div class="mng_in">
+                                
+                              <div class="bx_pd_LR"><div class="bx_head mb f-W-B">Excluded Drivers</div></div>
+
+                                    <div class="cstScroller mCustomScrollbar1 amend_Driver_Vehicle_hgt">
                                         <div class="bx_pd_LR">
                                             <div class="list-unstyled mb-0 policy_bx_list" *ngIf="driverList">
 
@@ -473,8 +454,18 @@
                                                                 {{driver.dob}}
                                                             </div>
                                                         </div>
+
                                                         <div class="mngBtnEdt">
                                                             <div class="d-flex">
+
+
+                                                              <!-- <button id="openModalAddSpouse" [hidden]="true" data-toggle="modal" data-target="#modal-add-spouse">Open Modal</button> -->
+
+
+                                            <button id="openModaldriverExcludeEdit" [hidden]="true"  data-toggle="modal" data-target="#modal-driver_Exclude_edit">Open Modal</button>
+                                            
+
+
                                                               <button [disabled]="PolicyStatus == 'Renewal Confirmed'" (click)="editDriverExcluded(i)" class="btn btnEdit"><img class="icon w-100"
                                                                 src="assets/images/icon-edit.svg" alt=""></button>
         
@@ -489,22 +480,20 @@
                                               </div>
                                         </div>
                                     </div>
-                                </div>
+                                
                             </div>
                         </div>
 
 
 
 
+                          <div class="policyDetail_Card bx-bg-color px-0 mb_bx" *ngIf="driverList && excludeAmended =='yes'">
+                            <div class="mng_in eq_polict1" data-eq="eq_amended_Bx">
+                              <div class="bx_pd_LR"><div class="bx_head mb f-W-B text-color-3">Amended<br> Excluded Drivers</div></div>
 
+                              <div class="cstScroller mCustomScrollbar1 amend_Driver_Vehicle_hgt">
+                                <div class="bx_pd_LR">
 
-
-
-
-
-                          <div class="policyDetail_Card bx-bg-color mb_bx" *ngIf="driverList && excludeAmended =='yes'">
-                            <div class="mng_in height-sm-auto eq_polict1" data-eq="eq_amended_Bx">
-                                <div class="bx_head mb f-W-B text-color-3">Amended<br> Excluded Drivers</div>
                                 <div class="list-unstyled mb-0 policy_bx_list last_li">
                                   <div *ngFor="let driver of driverList; let i = index">
                                     <div class="policy_list_item" *ngIf="driver.isAmended && driver.isExcluded">
@@ -533,8 +522,14 @@
                                     </div>
                                   </div>
                                 </div>
+
+                                </div>
+
+                                </div>
+
                             </div>
                           </div>
+
                           <a href="#" class="btn cmnBtn btnOutline-2 sm-sz btnSz-min-sm min-wdt text-uppercase" data-toggle="modal" (click)="generateExcludeDriver()" data-target="#modal-Additional_driver_Exclude">EXCLUDE ADDITIONAL DRIVERs</a>
                         </div>
                       </div>
@@ -641,7 +636,7 @@
                         <div class="policyDetail_Card mb_bx policy_CoverageBx">
                           <div class="mng_in text-center height-sm-auto" data-eq="eq_polictDtl_smBx">
                             <div class="tp_mngBtnEdt">
-                              <button class="btn btnEdit"><img class="icon w-100" src="assets/images/icon-edit.svg"
+                              <button (click)="editCoverages()" class="btn btnEdit"><img class="icon w-100" src="assets/images/icon-edit.svg"
                                   alt=""></button>
                             </div>
                             <div class="bx_head f-W-B">Coverage</div>
@@ -887,7 +882,7 @@
                           <input class="form-control cmnField" formControlName="firstName"
                             [ngClass]="{'ffl-floated-force' : exclude_driver_form.get('firstName').value != ''}" (keypress)="ValidateAlpha($event)" >
                           <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
-                          <label type="text" class="primary-label">First Name</label>
+                          <label type="text" class="primary-label">First Name*</label>
                         </div>
                       </div>
                       <div class="form-group mb_form-group">
@@ -895,7 +890,7 @@
                           <input type="text" class="form-control cmnField" formControlName="lastName"
                             [ngClass]="{'ffl-floated-force' : exclude_driver_form.get('lastName').value != ''}" (keypress)="ValidateAlpha($event)" >
                           <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
-                          <label class="primary-label">Last Name</label>
+                          <label class="primary-label">Last Name*</label>
                         </div>
                       </div>
                       <div class="form-group mb_form-group">
@@ -911,7 +906,7 @@
                             [ngModelOptions]="{standalone: true}">
 
                           <!-- Toggle "has-error" this class for Error -->
-                          <label class="primary-label label-Tp">Date of Birth</label>
+                          <label class="primary-label label-Tp">Date of Birth*</label>
                           <div class="fldIcon"><img src="./assets/images/icon-calendar.png" alt="" (click)="dp1.toggle()" [attr.aria-expanded]="dp1.isOpen"></div>
                         </div>
                       </div>
@@ -925,7 +920,7 @@
                               bindValue="key" [multiple]="false" [searchable]="false"
                               formControlName="isMarried">
                             </ng-select>
-                            <label class="selectLabel">Marital Status</label>
+                            <label class="selectLabel">Marital Status*</label>
                             <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04"
                               viewBox="0 0 11.67 6.04">
                               <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
@@ -944,7 +939,7 @@
                               bindValue="key" [multiple]="false" [searchable]="false"
                               formControlName="relationship">
                             </ng-select>
-                            <label class="selectLabel">Relationship to Insured</label>
+                            <label class="selectLabel">Relationship to Insured*</label>
                             <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04"
                               viewBox="0 0 11.67 6.04">
                               <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
@@ -978,6 +973,131 @@
   </div>
 </div>
 <!--  exclude form popup close -->
+
+
+
+<!--  exclude form popup open -->
+<div class="modal fade modalCst" id="modal-driver_Exclude_edit" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+    <div class="modal-content">
+      <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+      <div class="modal-body pb-lg">
+        <div class="row no-gutters justify-content-center">
+          <form [formGroup]="exclude_driver_form" (ngSubmit)="exclude_driver_edit_submit(excludeEditIndex)">
+
+            <div class="col-lg-11">
+              <div class="section-page-questions">
+                <div class="section-page-question">
+
+                  <div class="question-wrap pb-0">
+                    <div class="question-header">
+                      <div>
+                        <h3 class="question-text">Add Excluded Driver Who Lives in My Household</h3>
+                        <p class="question-byline">Below is a person living in my house that should not be
+                          included in my Pronto policy</p>
+                      </div>
+                    </div>
+                    <div class="question-content">
+                      <div class="form-group mb_form-group">
+                        <div class="field_md">
+                          <input class="form-control cmnField" formControlName="firstName"
+                            [ngClass]="{'ffl-floated-force' : exclude_driver_form.get('firstName').value != ''}" (keypress)="ValidateAlpha($event)" [readonly]="exclude_driver_form.get('licenseNum').value">
+                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                          <label type="text" class="primary-label">First Name*</label>
+                        </div>
+                      </div>
+                      <div class="form-group mb_form-group">
+                        <div class="field_md">
+                          <input type="text" class="form-control cmnField" formControlName="lastName" [readonly]="exclude_driver_form.get('licenseNum').value"
+                            [ngClass]="{'ffl-floated-force' : exclude_driver_form.get('lastName').value != ''}" (keypress)="ValidateAlpha($event)" >
+                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                          <label class="primary-label">Last Name*</label>
+                        </div>
+                      </div>
+                      <div class="form-group mb_form-group">
+                        <div class="field_md fld-icon-Date field_labelTP datepickerParent datepop">
+                          <input class="form-control cmnField datepicker_fld" formControlName="dob"
+                            placeholder="MM/DD/YYYY" [readonly]="exclude_driver_form.get('licenseNum').value" 
+                            DobValidation type="text" maxlength="10"
+                            [ngClass]="{'ffl-floated-force' : exclude_driver_form.get('dob').value}">
+
+                            <input type="text" class="form-control datepickerModel" #dp1="bsDatepicker" bsDatepicker
+                            [bsConfig]="bsConfig" DobValidation maxlength="10" [maxDate]="maxDate" [readonly]="exclude_driver_form.get('licenseNum').value"
+                            [minDate]="minDate" [(ngModel)]="datepickerModel" (bsValueChange)="getdate($event, 'dob')"
+                            [ngModelOptions]="{standalone: true}">
+
+                          <!-- Toggle "has-error" this class for Error -->
+                          <label class="primary-label label-Tp">Date of Birth*</label>
+                          <div class="fldIcon"><img src="./assets/images/icon-calendar.png" alt="" (click)="dp1.toggle()" [attr.aria-expanded]="dp1.isOpen"></div>
+                        </div>
+                      </div>
+
+                      <div class="form-group mb_form-group">
+                        <div class="dropdown-select-wrap field_md">
+
+
+                          <div class="selectNG_dropdown">
+                            <ng-select class="custom_ngSelect" [items]="maritalStatus" bindLabel="value"
+                              bindValue="key" [multiple]="false" [searchable]="false"
+                              formControlName="isMarried">
+                            </ng-select>
+                            <label class="selectLabel">Marital Status*</label>
+                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04"
+                              viewBox="0 0 11.67 6.04">
+                              <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                fill="#fff"></polygon>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group mb_form-group">
+                        <div class="dropdown-select-wrap field_md">
+
+
+                          <div class="selectNG_dropdown">
+                            <ng-select class="custom_ngSelect" [items]="relationship_dropdown" bindLabel="value"
+                              bindValue="key" [multiple]="false" [searchable]="false"
+                              formControlName="relationship">
+                            </ng-select>
+                            <label class="selectLabel">Relationship to Insured*</label>
+                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04"
+                              viewBox="0 0 11.67 6.04">
+                              <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                fill="#fff"></polygon>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <div class="navigation-buttons">
+                <ul class="list-inline mb-0 text-right btnsList_form">
+                  <li class="list-inline-item"><a id="cancel_popup1" class="btn btnstl-1 btnBrd"
+                      data-dismiss="modal">Cancel</a></li>
+                  <li class="list-inline-item"> <button type="submit" [disabled]="!exclude_driver_form.valid"
+                      class="btn btnstl-1 btnBg-3">Save & Continue</button></li>
+                </ul>
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--  exclude form popup close -->
+
+
+
+
 
 <!-- Modal Add Spouse -->
 <div class="modal fade modalCst" id="modal-add-spouse">
@@ -1442,31 +1562,6 @@
   </div>
 </div>
 <!-- Error_vehicle_delete End Error -->
-
-<!-- Modal Start Claim -->
-<div class="modal fade modalCst" id="modal-Start-claim">
-  <div class="modal-dialog modal-dialog-centered modal-cst-sm">
-    <div class="modal-content">
-      <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
-      <div class="modal-body pb-lg">
-      <div class="row no-gutters justify-content-center">
-      <div class="col-lg-11">
-      <div class="claim_choose_wrap">
-      <div class="cont-Head f-W-B line-H-1_3 text-center">For Auto claims, Please select your state</div>
-      <ul class="list-unstyled mb-0 row gutter-8 btnsList">
-      <li class="col-sm-4"><a routerLink="/en/claims/claim-texas" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">Texas</a></li>
-      <li class="col-sm-4"><a routerLink="/en/claims/claim-california" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">California</a></li>
-      <li class="col-sm-4"><a routerLink="/en/claims/claim-florida" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">Florida</a></li>
-      </ul>
-      </div>
-      </div>
-       </div>
-      </div>
-      
-    </div>
-  </div>
-</div>
-<!-- End Modal Start Claim -->
 
 <!-- Error for Error_vehicle_delete -->
 <div class="modal fade modalCst" id="modal-Error_vehicle_delete_amended">

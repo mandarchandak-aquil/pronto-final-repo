@@ -78,6 +78,7 @@ export class Dashboard07AddriverComponent implements OnInit {
   lightScrollbarOptions = { axis: 'y', theme: 'light' };
   pageArr;
   isExcledeAmended
+  edriverIndex;
 
   @ViewChild("inputBoxlicenseNum") _el: ElementRef;
 
@@ -144,7 +145,7 @@ export class Dashboard07AddriverComponent implements OnInit {
     this.loading = false;
   
     this.index = this.activeroute.snapshot.paramMap.get('index');
-
+    this.edriverIndex = this.activeroute.snapshot.paramMap.get('add_Excluded');
     this.isExcledeAmended = this.activeroute.snapshot.paramMap.get('add_Excluded');
 
     console.log(this.index)

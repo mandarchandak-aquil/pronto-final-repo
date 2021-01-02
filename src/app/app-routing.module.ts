@@ -54,6 +54,10 @@ const routes: Routes = [
       },
       { path: 'dashboard', loadChildren: () => import('./components/dashboard-add-violations/dashboard-add-violations.module').then(m => m.DashboardAddViolationsModule),
       canActivate: [AuthGuard] },
+      { path: 'dashboard', loadChildren: () => import('./components/dashboard07-edit-coverage/dashboard07-edit-coverage.module').then(m => m.Dashboard07EditCoverageModule),
+      canActivate: [AuthGuard] },
+
+
       { path: 'dashboard', loadChildren: () => import('./components/dashboard08-renewal-summary/dashboard08-renewal-summary.module').then(m => m.Dashboard08RenewalSummaryModule),canActivate: [AuthGuard]  },
       { path: 'dashboard', loadChildren: () => import('./components/dashboard08-discount/dashboard08-discount.module').then(m => m.Dashboard08DiscountModule), canActivate: [AuthGuard]   },
       { path: 'dashboard', loadChildren: () => import('./components/dashboard08-vehicle-questionnaire/dashboard08-vehicle-questionnaire.module').then(m => m.Dashboard08VehicleQuestionnaireModule), canActivate: [AuthGuard] },

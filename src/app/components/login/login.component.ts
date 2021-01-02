@@ -41,9 +41,7 @@ duplicate:boolean = false;
    }
 
   ngOnInit(): void {
-    document.body.classList.remove('mngTp-alert-Spc');
-    localStorage.setItem('alertshow', 'no');
-    
+
   this.authService.authState.subscribe((user) => {
       this.user = user;
     console.log('this.user',this.user);

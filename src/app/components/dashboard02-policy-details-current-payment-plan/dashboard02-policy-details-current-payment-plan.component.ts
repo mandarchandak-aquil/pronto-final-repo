@@ -12,7 +12,6 @@ import { FormArray, FormControl, Validators, FormGroup, FormBuilder } from '@ang
 export class Dashboard02PolicyDetailsCurrentPaymentPlanComponent implements OnInit {
   loading : boolean = true;
   policy;
-  installmentInfoList : any =[];
   constructor(public router: ActivatedRoute,public routers :Router,public api_sub : SubjectCallService,public dash : DashboardService, public BeyontecFormService: BeyontecDashFormService,private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -24,16 +23,8 @@ export class Dashboard02PolicyDetailsCurrentPaymentPlanComponent implements OnIn
     {
       this.policy = JSON.parse(localStorage.getItem('policyDetailList'));
       console.log(this.policy);
-    
-      for(var i = 0 ; i  < this. policy.installmentInfoList.length;i++){
-        console.log(Math.abs(this.policy.installmentInfoList[i].installmentAmountDue));
-        this.installmentInfoList.push({ 
-          "installmentAmountDue"  :  Math.abs(this.policy.installmentInfoList[i].installmentAmountDue),
-          "installmentDue" :   this.policy.installmentInfoList[i].installmentDue,
-          "paymentStatus" : this.policy.installmentInfoList[i].paymentStatus
-      });
     }
     this.loading = false;
   }
-  }
+
 }

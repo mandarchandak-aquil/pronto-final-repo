@@ -50,25 +50,9 @@ loading : boolean = true;
       console.log('datanew',datanew);
       if(datanew['message'] == 'SUCCESS'){
         this.documentslist.push({
-          "policyNo": this.policyNo.policyNo
+          "policyNo": this.policyNo.policyNo,
+          "documents" : datanew['documents']
         });
-        console.log(datanew['documents'].length);
-        let doc = [];
-        for(let i = 0;i< datanew['documents'].length ; i++){
-          let docone = {
-            "documentId" :datanew['documents'][i].documentId ,
-            "documentDescription" : datanew['documents'][i].documentDescription.replace('- 0', ''),
-            "documentName" : datanew['documents'][i].documentName,
-            "documentExtension" :datanew['documents'][i].documentExtension ,
-            "lastUpdated":datanew['documents'][i].lastUpdated ,
-           }
-          doc.push(docone);
-          console.log(datanew['documents'][i].documentDescription,datanew['documents'][i].documentDescription.replace('- 0', ''));
-        }
-
-        this.documentslist.push({ "documents" : doc });
-        console.log('doc.length',doc.length,this.documentslist,this.documentslist.length)
-       // doc.push(this.documentslist);
         this.loading  = false;
       }else{
         this.loading  = false;

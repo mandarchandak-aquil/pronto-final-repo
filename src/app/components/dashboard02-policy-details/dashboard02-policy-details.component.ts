@@ -47,7 +47,7 @@ export class Dashboard02PolicyDetailsComponent implements OnInit {
       "value": "Other"
     }
   ]
-
+  excludeEditIndex
   maritalStatus = [
     {
       "key": "S",
@@ -129,6 +129,9 @@ export class Dashboard02PolicyDetailsComponent implements OnInit {
       theme: "dark"
     });
 
+    
+
+    
     // });
 
     this.includeForm();
@@ -354,6 +357,19 @@ export class Dashboard02PolicyDetailsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+
+    // $('.mCustomScrollbar1').on( 'mousewheel DOMMouseScroll', function (e) { 
+      
+
+    //   console.log(11111);
+    //   event.preventDefault();
+    //   // var e0 = e.originalEvent;
+    //   // var delta = e0.wheelDelta || -e0.detail;
+    
+    //   // this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+    //   // e.preventDefault();  
+    // });
+
 
     // $(".lgBx_minhgt").load(function() {
     //     alert('started');
@@ -891,6 +907,10 @@ export class Dashboard02PolicyDetailsComponent implements OnInit {
   }
 
 
+  // editCoverages(){
+  //   this.routers.navigate['dashboard/policy-details/edit-coverage']
+  // }
+
   getIncludeSpousePopup() {
     this.getDriverCount();
     document.getElementById('openModalAddSpouse').click();
@@ -937,7 +957,7 @@ export class Dashboard02PolicyDetailsComponent implements OnInit {
   }
 
   addVehicle() {
-
+    this.vehicleList = (<FormArray>this.BeyontecFormService.vehicles_array$.controls['vehicle']).value;
     let count = 0;
     // console.log(this.vehicleList)
     this.vehicleList.forEach(element => {
@@ -976,6 +996,7 @@ export class Dashboard02PolicyDetailsComponent implements OnInit {
 
     let count = 0;
     console.log(this.vehicleList)
+    this.vehicleList = (<FormArray>this.BeyontecFormService.vehicles_array$.controls['vehicle']).value;
     this.vehicleList.forEach(element => {
       console.log(element)
 
@@ -1062,6 +1083,8 @@ export class Dashboard02PolicyDetailsComponent implements OnInit {
   deleteVehicleAmendedConfirm(i) {
     console.log(i);
     (<FormArray>this.BeyontecFormService.vehicles_array$.controls['vehicle']).at(i).get('isAmended').setValue(false);
+    (<FormArray>this.BeyontecFormService.vehicles_array$.controls['vehicle']).at(i).get('include').setValue(true);
+
     this.BeyontecFormService.vehicles_array$.updateValueAndValidity();
     this.vehicleList = (<FormArray>this.BeyontecFormService.vehicles_array$.controls['vehicle']).value;
 
@@ -1091,6 +1114,74 @@ export class Dashboard02PolicyDetailsComponent implements OnInit {
   editDriver(i) {
     console.log(i);
     this.routers.navigate(['/dashboard/policy-details/add-driver', { index: i }]);
+  }
+
+  addDriverExcluded(i){
+    console.log(i);
+    this.routers.navigate(['/dashboard/policy-details/add-driver', { index: i, add_Excluded: 1}]);
+  }
+
+
+  editDriverExcluded(i)
+  {
+    this.excludeEditIndex = null;
+    console.log('editDriverExcluded')
+    this.excludeEditIndex = i
+
+    
+
+    console.log(this.excludeEditIndex, "excludeEditIndex")
+
+    this.exclude_driver_form.patchValue((<FormArray>this.BeyontecFormService.drivers_array$.controls['driver']).at(i).value);
+
+
+    // let control = this.exclude_driver_form;
+    // control.get('firstName').disabled ? control.enable() : control.disable();
+
+
+    console.log(this.exclude_driver_form.value)
+
+    document.getElementById('openModaldriverExcludeEdit').click()
+
+  }
+
+
+  exclude_driver_edit_submit(i){
+    console.log(i);
+
+    console.log(this.exclude_driver_form.value);
+
+    //  if(this.check_vin_exist())
+    //  {
+    //    alert('Vehicle already exist')
+    //    return 0;
+    //  }
+
+    // this.BeyontecFormService.generateDriver();
+    // // var len: any = ((<FormArray>this.BeyontecFormService.drivers_array$.controls['driver']).length - 1);
+    // // console.log(len, "len");
+    (<FormArray>this.BeyontecFormService.drivers_array$.controls['driver']).at(i).patchValue(this.exclude_driver_form.value);
+
+
+
+    (<FormArray>this.BeyontecFormService.drivers_array$.controls['driver']).at(i).get('isAmended').setValue(true);
+    this.excludeAmended = 'yes';
+    localStorage.setItem("excludeAmended", "yes");
+    // // (<FormArray>this.BeyontecFormService.drivers_array$.controls['driver']).at(i).get('isExcluded').setValue(true);
+    // // (<FormArray>this.BeyontecFormService.drivers_array$.controls['driver']).at(i).get('driver_include').setValue(false);
+
+    this.getDriverCount();
+    this.BeyontecFormService.drivers_array$.updateValueAndValidity();
+
+    this.driverList = (<FormArray>this.BeyontecFormService.drivers_array$.controls['driver']);
+
+    localStorage.setItem("beyontech_drivers", JSON.stringify(this.BeyontecFormService.drivers_array$.value.driver));
+
+    this.exclude_driver_form.reset();
+    // this.driver_array_popup.setValue('');
+    this.driverList = (<FormArray>this.BeyontecFormService.drivers_array$.controls['driver']).value;
+    document.getElementById('cancel_popup1').click()
+    console.log(this.BeyontecFormService.drivers_array$.value.driver, "driver main");
   }
 
   editDriverAmendedExcluded(i) {
@@ -1176,7 +1267,9 @@ export class Dashboard02PolicyDetailsComponent implements OnInit {
   }
 
   editCoverages() {
-    this.routers.navigate(['/dashboard/policy-details/edit-coverage']);
+
+    // console.log(11111)
+    this.routers.navigate(['dashboard/policy-details/edit-coverage']);
   }
 
 

@@ -599,6 +599,14 @@
                                         data-target="#modal-Error_PrimaryUse_Business">Open
                                         Modal</button>
 
+                                        <button id="openModalMoreVehicle" [hidden]="true"
+                                        data-toggle="modal"
+                                        data-target="#modal-Error_moreVehicle">Open
+                                        Modal</button>
+
+
+                                        
+
                                     <li class="list-inline-item"> <button (click)="cancelBack()"
                                             class="btn btnstl-1 btnBrd">Cancel</button> </li>
 
@@ -699,5 +707,34 @@
   </div>
 </div>
 <!-- End Error Primary Use of Vehicle "Business" -->
+
+<!-- modal-Error_vehicle_Error -->
+<div class="modal fade modalCst" id="modal-Error_moreVehicle">
+    <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+      <div class="modal-content modalGetQuote">
+        <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+        <div class="modal-body pb-lg">
+          <div class="row no-gutters justify-content-center">
+            <div class="col-lg-12">
+              <div class="infoModalWrap text-center">
+                <div class="txt-summary last-p line-H-1_3">
+                  <p class="text-color-3 txt-Md"><strong>Add Vehicle</strong></p>
+                  <p class="gray-color-2 f-size-18">Pronto will not allow to add more than 4 included Vehicle, remove vehicle(s) and rerate</p>
+                </div>
+                <div class="btnsWrapp mx-width">
+                  <ul class="list-unstyled  btnListing mb-0">
+                    <li><a href="#" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block"
+                        data-dismiss="modal">Ok</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <!--  End -->
 
 <!-- <div class="modal-backdrop fade show" *ngIf="exist"></div> -->

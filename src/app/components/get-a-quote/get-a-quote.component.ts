@@ -11,7 +11,7 @@ import { CommonService } from '../../commons/services/common/common.service';
 import { Router } from '@angular/router';
 import { HomepageService } from '../../commons/services/homepage/homepage.service';
 import { ActivatedRoute } from "@angular/router";
-import { PagesService } from '../../commons/services/page/pages.service';
+
 @Component({
   selector: 'app-get-a-quote',
   templateUrl: './get-a-quote.component.html',
@@ -30,9 +30,7 @@ selected_county;
 counties: any = '';
 zipError: boolean = false;
 loading1;
-pagearr : any = [];
-advantages: any = [];
-  constructor(public api_pages : PagesService,public api_common: CommonService, public api_page: HomepageService, public router: Router,public api_product : ProductService, private sanitizer: DomSanitizer, public api_sub : SubjectCallService, private vps: ViewportScroller,public route: ActivatedRoute) {
+  constructor(public api_common: CommonService, public api_page: HomepageService, public router: Router,public api_product : ProductService, private sanitizer: DomSanitizer, public api_sub : SubjectCallService, private vps: ViewportScroller,public route: ActivatedRoute) {
     this.route.url.subscribe(params => {
       localStorage.setItem("agent",params[0].path);
     })
@@ -42,28 +40,13 @@ advantages: any = [];
 
   ngOnInit(): void {
     localStorage.getItem("agent");
-   
-    this.Claimcms();
+    this.loading  = false;
   }
 
-  Claimcms(){
-    let dataReq = {
-            "language_id":  sessionStorage.getItem('lg')
-          }
-         this.api_pages.getaquote(dataReq).subscribe((data: {}) => {
-           if(data['status'] == 'success'){
-              this.pagearr = data['page'];
-
-           this.advantages = JSON.parse(this.pagearr.advantages);
-           this.loading  = false;
-           }
-         });
-        }
   onlanguageChange(newValue){
     // console.log(newValue, "new language");
    
     this.api_sub.sendMessage(1);
-    this.Claimcms();
   }
   getErrorZip() {
     if (this.zipcode.length < 5) {

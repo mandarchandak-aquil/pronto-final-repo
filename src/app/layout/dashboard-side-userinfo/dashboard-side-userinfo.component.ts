@@ -1,21 +1,14 @@
-import { Component, OnInit ,HostListener} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../../commons/services/dashboard/dashboard.service';
 import { AuthServicess } from '../../commons/services/auth/auth.service';
 import jwt_decode from "jwt-decode";
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Subject } from 'rxjs';
 @Component({
   selector: 'app-dashboard-side-userinfo',
   templateUrl: './dashboard-side-userinfo.component.html',
   styleUrls: ['./dashboard-side-userinfo.component.css']
 })
 export class DashboardSideUserinfoComponent implements OnInit {
-  userActivity;
-  @HostListener('window:mousemove') refreshUserState() {
-    clearTimeout(this.userActivity);
-    this.setTimeout();
-  }
-  userInactive: Subject<any> = new Subject();
   passwordchange: FormGroup;
 	input;
   user;
@@ -36,9 +29,6 @@ export class DashboardSideUserinfoComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,public dashservice :DashboardService,public auth :AuthServicess) { }
 
   ngOnInit(): void {
-    this.setTimeout();
-    this.userInactive.subscribe(() => this.logout());
-
     this.passwordchange = this.formBuilder.group({
       "password" : ['',[Validators.required]],
       "password1" : ['',[Validators.required]],
@@ -62,7 +52,6 @@ export class DashboardSideUserinfoComponent implements OnInit {
  // var data = sessionStorage.getItem('userdata');
 
 this.reciveNotifications();
-
   }
 
   passwordmatch(){
@@ -85,9 +74,6 @@ this.reciveNotifications();
     }else{
     this.showpass = false;
     }
-  }
-  setTimeout() {
-    this.userActivity = setTimeout(() => this.userInactive.next(undefined), 60000);
   }
   passchange1()
   {

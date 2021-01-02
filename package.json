@@ -36,6 +36,7 @@
     "ngx-bootstrap": "^5.6.1",
     "ngx-malihu-scrollbar": "^9.0.0",
     "ngx-moment": "^5.0.0",
+    "ngx-perfect-scrollbar": "^10.0.1",
     "ngx-slick-carousel": "^0.5.1",
     "ngx-toastr": "^13.1.0",
     "popper.js": "^1.16.1",
