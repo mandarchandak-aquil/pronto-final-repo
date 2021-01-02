@@ -1,0 +1,381 @@
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+      <div class="pgWrapFull spcTpHeader vrLinesWrap">
+  
+        <app-header></app-header>
+        
+        <app-beyontec-breadcrum ></app-beyontec-breadcrum>
+        
+          <div class="quotePG_wrap overflow-hidden position-relative">
+            <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate"> <img class="w-100"
+                src="assets/images/floating-img-1.png" alt=""> </div>
+            <div class="floatImg floatShape-5 quote1_imgFloat_5 floating-Animate"> <img class="w-100"
+                src="assets/images/floating-img-5.png" alt=""> </div>
+            <div class="containerPD-L">
+              <div class="row no-gutters">
+                <div class="col-md">
+                  <div class="formScreen_Hgt spcMng_mp">
+                    <div class="queCol_Outer pTB_quote lg-BT-scroll" data-aos="fade-up" data-aos-duration="700">
+                      <div class="section-page-header brdLine-BT">
+                        <h1 class="headingStl-1">Add Violations/Accidents</h1>
+                      </div>
+                   
+  
+                      <div class="section-page-questions">
+
+                        <div class="question-sectionWrap">
+                            <form [formGroup]="voilation_add">
+
+                                <div class="section-page-question">
+                                    <div class="question-wrap row no-gutters justify-content-between">
+                                    <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                            class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                            viewbox="0 0 15 14" fill="none">
+                                            <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                        </svg> </span>
+                                        <div>
+                                        <h3 class="question-text">Date of Occurrence</h3>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-lg-6 question-content">
+                                      <div class="queNbrSpace">
+                                      <div class="form-group mb_form-group">
+                                          <div class="field_md fld-icon-Date field_labelTP datepickerParent">
+                                            <input class="form-control cmnField datepicker_fld" formControlName="date" placeholder="MM/DD/YYYY" DobValidation type="text" maxlength="10" >
+                                            <input type="text"
+                                              class="form-control datepickerModel"
+                                              #dp="bsDatepicker"
+                                              bsDatepicker
+                                              [bsConfig]="bsConfig"
+                                              DobValidation 
+                                              maxlength="10"
+                                              [maxDate]="maxDate"
+                                              [minDate]="minDate"
+                                              [(ngModel)]="datepickerModel"
+                                              (bsValueChange)="getdate($event)"
+                                              [ngModelOptions]="{standalone: true}"
+                                              [ngClass]="{'ffl-floated-force1' : voilation_add.get('date').value}"
+                                            >
+                                      
+                                            <label class="primary-label label-Tp">Date of Occurrence</label>
+                                            <div class="invalid-fld-feedback">Please enter a valid date</div>
+        
+                                            <div class="fldIcon"><img src="assets/images/icon-calendar.png" alt="" alt=""   (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen"/></div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="col-lg-6 question-content">
+                                        <div class="queNbrSpace">
+                                        <div class="form-group mb_form-group">
+                                            <div class="field_md fld-icon-Date field_labelTP">
+                                            <input class="form-control cmnField datepicker_fld" formControlName="date" placeholder="MM/DD/YYYY" DobValidation type="text" maxlength="10" [hidden]="true">
+
+
+                                            
+
+
+                                            <input type="text"
+                                              placeholder="MM/DD/YYYY"
+                                              class="form-control cmnField datepicker_fld"
+                                              [bsConfig]="bsConfig"
+                                              bsDatepicker  
+                                              DobValidation 
+                                              maxlength="10"
+                                              [maxDate]="maxDate"
+                                              [minDate]="minDate"
+                                              id="vdate"
+                                              [(ngModel)]="datepickerModel"
+                                              (bsValueChange)="getdate($event)"
+                                              [ngModelOptions]="{standalone: true}"
+                                            >
+
+                                          
+                                            <label class="primary-label label-Tp">Date of Occurrence</label>
+                                            <div class="invalid-fld-feedback">Please enter a valid date</div>
+        
+                                            <div class="fldIcon"><img src="assets/images/icon-calendar.png" alt="" /></div>
+        
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div> -->
+                                    </div>
+        
+                                </div>
+                                <div class="section-page-question">
+                                    <div class="question-wrap row no-gutters justify-content-between">
+        
+                                    <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                            class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                            viewbox="0 0 15 14" fill="none">
+                                            <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                        </svg> </span>
+                                        <div>
+                                        <h3 class="question-text">Accident/Violation Type</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 question-content">
+                                        <div class="queNbrSpace">
+
+                                            <div class="form-group mb_form-group">
+                                                <div class="selectNG_dropdown"> 
+                                                        <ng-select class="custom_ngSelect" [items]="accidentOrViolation"
+                                                        bindLabel="value"
+                                                        placeholder="Accident/Violation Type"
+                                                        bindValue="value"
+                                                        [searchable]="false" 
+                                                        formControlName="name" (change)="getcode($event)">
+
+                                                        <!-- <ng-template ng-label-tmp let-item="item">
+                                                            {{item.name}}
+                                                        </ng-template> -->
+
+                                                    </ng-select>
+                                                    <label class="selectLabel">Accident/Violation Type</label>
+                                                    <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                </svg>
+                                                </div>
+                                            </div>
+
+                                      
+        
+                                        </div>
+                                    </div>
+        
+        
+                                    </div>
+        
+                                </div>
+                                <div class="navigation-buttons spcUp-mgn">
+                                  <button class="f-size-18" id="openModalButtonSomethingWrong" [hidden]="true" data-toggle="modal" data-target="#modal-Error_violation">Show Error Modal</button>
+                                  <!-- {{voilation_add.get('code').value}} -->
+                                    <ul class="list-inline mb-0 text-right btnsList_form">
+                                    <li class="list-inline-item" *ngIf="!isEdit"> 
+                                        <button type="button" class="btn btnstl-1 btnBg-3" (click)="onVoilationSubmit(voilation_add.value)" [disabled]="!voilation_add.valid || isClicked">Add Violations</button>
+                                    </li>
+
+                                    <li class="list-inline-item" *ngIf="isEdit"> 
+                                        <button type="button" class="btn btnstl-1 btnBg-3" (click)="onVoilationUpdate(voilation_add.value, editIndex)" [disabled]="!voilation_add.valid || isClicked">Update Violations</button>
+                                    </li>
+
+                                    </ul>
+                                </div>
+                            </form>
+                        </div>
+  
+                        <div class="section-page-question" *ngIf="violationSelectedList">
+                          <div class="question-wrap row no-gutters justify-content-end">
+                            <div class="col-lg-6 question-content">
+                              <div class="queNbrSpace">
+                                <div class="question-header-mbSpc">
+                                  <h3 class="question-text">Summary</h3>
+                                </div>
+
+                                <!--
+                                    <div formArrayName="violations"
+                                    *ngFor="let row of BeyontecFormService.violation_array$.get('violations').controls ; let index=index" >
+                                        <div [formGroupName]="index">
+                                            {{row.get('dateofViolation').value}} - {{row.get('violation').value}}
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                <!-- <div class="queNbrSpace" *ngIf="BeyontecFormService.violation_array$">
+                                    <div 
+                                    *ngFor="let row of BeyontecFormService.violation_array$.get('violations').controls ; let index=index"  class="queNbrSpace">
+                                       
+                                          <div class="form-group mb_form-group">
+                                              <div class="cstBlockwrap" *ngIf="row.get('dateofViolation').value">
+                                                <label class="custom-control custom-block custom-checkbox mb-0 control_cta">
+                                                  
+                                                  <span class="custom-control-label-wrap align-items-center"><span class="custom-control-indicator"></span> 
+                                                  <span class="indicator-label d-flex align-items-center">
+                                                  <span class="flex-fill">
+                                                    {{row.get('dateofViolation').value}} - {{row.get('violation').value}}
+                                                  </span>
+                                                  <span class="fld-Cta">
+                                                  <button (click)="edit_Vehicle(index)" class="btn btnCta_add_edit">Edit</button>
+                                                  </span>
+                                                  </span> 
+                                                  </span> 
+                                                </label>
+                                                  
+                                              </div>
+                                            </div>
+                                    </div>
+                                -->
+
+
+
+                                <div class="form-group mb_form-group" *ngFor="let row of violationSelectedList ; let index=index">
+                                  <div class="cstField_block">
+                                    <div class="wrapIn d-flex align-items-center">
+                                      <div class="inside w-100 d-flex align-items-center">
+                                        <div class="flex-fill">{{row['name']}} - {{row['date']}}</div>
+                                        <div class="fld-Cta">
+                                          <ul class="list-unstyled mb-0 d-flex cta_Listing">
+                                            <li>
+                                                <a class="btn ctaBtn-1" (click)="voilationEdit(index)">
+                                                    <span class="mngIn">
+                                                        <i class="fa fa-pencil-square-o"></i>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                              <button class="f-size-18" id="openModalButtonViolationDelete" [hidden]="true" data-toggle="modal" data-target="#modal-remove_Violation">Show Error Modal</button>
+
+                                                <a class="btn ctaBtn-1"  (click)="voilationDelete(index)">
+                                                    <span class="mngIn">
+                                                        <i class="fa fa-trash-o"></i>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+  
+                              </div>
+                            </div>
+                          </div>
+  
+                        </div>
+                      </div>
+                      <div class="navigation-buttons">
+                        <ul class="list-inline mb-0 text-right btnsList_form">
+                            <li class="list-inline-item"> <a class="btn btnstl-1" (click)="cancel()" >Cancel</a> </li>
+                            <li class="list-inline-item"> 
+                              <!-- <a class="btn btnstl-1 btnBg-3">Save & Continue</a>  -->
+                              <button type="button" class="btn btnstl-1 btnBg-3" (click)="onSubmit(driver_index)">Save & Continue</button>
+                            </li>
+                            <!-- [disabled]="!voilation_add.valid || isClicked" -->
+                        </ul>
+                      </div>
+
+                    
+  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-auto">
+                  <div class="modal drawerModal drawerSummary" id="drawerModal">
+                    <div class="drawerWrap">
+                      <button type="button" class="close text-uppercase text-center btnCls" data-dismiss="modal"> <span
+                          class="btntext">&times;</span> </button>
+                      <div class="mngInside">
+                        <div class="drawInside">
+                          <div class="formScreen_Hgt summaryScroll cstScroller mCustomScrollbar" data-mcs-theme="dark">
+                            <div class="right-summary-rail pTB_quote">
+                              <!--<div class="summary-rail-section">
+                              <div class="summaryHead text-color-3">Quote Summary</div>
+                            </div>
+                            <div class="summary-rail-section">
+                              <div class="summaryHead text-color-3 mng-btnEdit">Policy Holder
+                                <button class="btn btnEdit"><img class="icon w-100" src="assets/images/icon-edit.svg" alt=""></button>
+                              </div>
+                              <div class="summary-rail-item railIconWrap">
+                                <div class="summarysubHead">Mihir Busa</div>
+                                <div class="response-list gray-color-2">
+                                  <div class="response-item">2450 Flowering Brook Ln,</div>
+                                  <div class="response-item">Sugar Land, TX, 77479</div>
+                                  <div class="response-item">Male</div>
+                                  <div class="response-item">Married</div>
+                                  <div class="response-item">Valid License</div>
+                                  <div class="response-item">Mihir@gmail.com</div>
+                                </div>
+                              </div>
+                            </div>-->
+  
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Delete Violation Confirmation -->
+<div class="modal fade modalCst" id="modal-remove_Violation">
+  <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+    <div class="modal-content modalGetQuote">
+      <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+      <div class="modal-body pb-lg">
+      <div class="row no-gutters justify-content-center">
+      <div class="col-lg-12">
+      <div class="infoModalWrap text-center">
+      <div class="txt-summary last-p line-H-1_3">
+      <p class="text-color-3 txt-Md"><strong>Remove Violations/Accident</strong></p>
+      <p class="gray-color-2 f-size-18">Are you sure you want to remove this violation?</p>
+            </div>
+      <div class="btnsWrapp mx-width">
+      <ul class="list-inline mb-0 text-center btnsList_form">
+      <li class="list-inline-item">
+          <a class="btn cmnBtn min-W btnBg-2 sm-sz text-uppercase btn-block" (click)="finalDelete(selectedIndex)">
+            Yes
+          </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn cmnBtn min-W btnOutline-2 sm-sz text-uppercase btn-block" id="closeViolation" data-dismiss="modal">Cancel</a>
+      </li>
+      </ul>
+      </div>
+      </div>
+      </div>
+       </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- End Delete Violation Confirmation -->
+
+
+ <!-- Error for No selected Vehicle-->
+ <div class="modal fade modalCst" id="modal-Error_violation">
+  <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+    <div class="modal-content modalGetQuote">
+      <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+      <div class="modal-body pb-lg">
+        <div class="row no-gutters justify-content-center">
+          <div class="col-lg-12">
+            <div class="infoModalWrap text-center">
+              <div class="txt-summary last-p line-H-1_3">
+                <!-- <p class="text-color-3 txt-Md"><strong>Your Vehicles</strong></p> -->
+                <p class="text-color-3 txt-Md"><strong>Something went wrong</strong></p>
+                <!-- <p class="gray-color-2 f-size-18"> Something went wrong, please call 1-855-200-4567</p> -->
+                <p class="gray-color-2 f-size-18"> {{errormessage}}</p>
+              </div>
+              <div class="btnsWrapp mx-width">
+                <ul class="list-unstyled  btnListing mb-0">
+                  <li><a class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block"
+                      data-dismiss="modal">Ok</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- End Error for No selected Vehicle-->
+
+     
+        <app-footer-quote></app-footer-quote>
+  
+      </div>
+    </div> <!-- .perspScreen -->
+  </div> <!-- .fullPG_Wrap -->
+  

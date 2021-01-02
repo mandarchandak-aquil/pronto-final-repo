@@ -1,0 +1,121 @@
+<app-pre-loader *ngIf="loading"></app-pre-loader>
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+    <div class="pgWrapFull spcTpHeader vrLinesWrap">
+
+      <app-header ></app-header>
+      <div class="dashboard_pg_wrap minScreen-hgt bg-patternGrdnt">
+        <app-dashboard-responsive-top-header></app-dashboard-responsive-top-header>
+        <div class="dashScreen_wrap">
+          <div class="row no-gutters dashWrap_Row">
+            <div class="col-lg-auto brdRgt">
+              <div class="colWdth_side">
+                <app-dashboard-side-nav></app-dashboard-side-nav>
+              </div>
+            </div>
+            <div class="col-lg brdCol">
+              <div class="dashboard_middle">
+                 <div class="dashB_mdl-pd">
+                          <div class="dash_tp-btnsRow d-none d-lg-block" data-aos="fade-up" data-aos-duration="900">
+                            <div class="row no-gutters">
+                              <!-- <div class="col"><a routerLink="/claims/claim-texas" class="btn cmnBtn btn-sz-md btnBg-1 text-uppercase">Report CLAIM</a></div> -->
+                              <div class="col text-right">
+                                <div class="d-inline-block">
+                                  <!-- <div class="viewCard_wrap d-flex align-items-center">
+                                    <div class="iconWrap"><img class="w-100" src="assets/assets/images//icon-view-card.png" alt="" /></div>
+                                    <div class="btnCol flex-fill"> <a routerLink="/" class="btn cmnBtn btn-sz-md btnBg-4 text-uppercase">VIEW YOUR ID CARDS</a> </div>
+                                  </div> -->
+                                
+                                <div class="d-inline-block dash_btnSpc_back">
+                                  <a routerLink="/dashboard/policy-details-payment" class="btn cmnBtn btn-sz-md btnBg-2 text-uppercase">Back</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div> 
+                        <div class=" cstScroller cst_mCst_scroll_Desk" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900">
+                            <div class="dashB_mdl-pd">
+                              <h1 class="dashlg-Head font-F-1 f-W-B"><span class="wrapIn">Confirm Payment</span></h1>
+                              
+                              <div class="row justify-content-center gutter-15vw">
+                                <div class="col-md-6">
+                                  <div class="payment_card_wrap">
+                                    <div class="payment_heading line-H-1_2 f-W-B mb__10">Please confirm the information</div>
+                                    <div class="cardDash_cmn bg_trans">
+                                      <ul class="list-unstyled mb-0 payment_listing">
+                                        <li>
+                                          <div class="payInfoRow payInfo-h-spc d-flex align-items-center"> 
+                                          <div class="flex-fill"> <div class="headTxt d-block f-W-B f-size-18 line-H-1_2 f-size-20">Date</div> </div> 
+                                          <div class="rgtCol_info"> <div class="text-color-3 f-W-M line-H-1_2 f-size-20">{{form.currentDate }}</div> </div> </div>
+                                        </li>
+                                        <li>
+                                          <div class="payInfoRow payInfo-h-spc d-flex align-items-center"> 
+                                          <div class="flex-fill"> <div class="headTxt d-block f-W-B f-size-18 line-H-1_2">Payment Amount</div> </div> 
+                                          <div class="rgtCol_info"> <span class="pay_Amnt text-color-3 f-W-M"><span class="txt_currency">$</span>{{form.purchase.amount }}</span> </div> </div>
+                                        </li>
+                                        <li>
+                                          <div class="payInfoRow payInfo-h-spc d-flex align-items-center"> 
+                                          <div class="flex-fill"> <div class="headTxt d-block f-W-B f-size-18 line-H-1_2">Payment Source</div> </div> 
+                                          <div class="rgtCol_info"> <div class="text-color-3 f-W-M line-H-1_2 f-size-20">Credit Card</div> </div> </div>
+                                        </li>
+                                        
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  <ul class="list-inline mb-0 text-center btnsList_form">
+                                <li class="list-inline-item"> <a (click)="onSubmit()" class="btn cmnBtn sm-sz btnBg-2 text-uppercase" data-toggle="modal" data-target="#modal-Confirm_Payment">Pay Now</a> </li>
+                              </ul>
+                                </div>
+                                
+                              </div>
+                              
+                            </div>
+                          </div>
+              </div>
+            </div>
+            <div class="col-lg-auto brdLft">
+              <div class="colWdth_side">
+                <app-dashboard-side-userinfo></app-dashboard-side-userinfo>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <footer class="footerWrap overflow-hidden">
+        <app-footer></app-footer>
+      </footer>
+    </div>
+  </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->
+<div class="modal fade modalCst show"  style="display: block;" id="modal-already_exists" *ngIf="continue">
+  <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+    <div class="modal-content modalGetQuote">
+      <button type="button" (click)="close()" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+      <div class="modal-body pb-lg">
+      <div class="row no-gutters justify-content-center">
+      <div class="col-lg-10">
+      <div class="infoModalWrap text-center">
+      <div class="txt-summary last-p line-H-1_3">
+      <p class="text-color-3 txt-Md"><strong>Confirm Payment</strong></p>
+      <p class="gray-color-2 f-size-18">Pay now?</p>
+            </div>
+      <div class="btnsWrapp mx-width">
+      <ul class="list-inline btnListing mb-0">
+      <li class="list-inline-item"><a (click)="close()" class="btn cmnBtn min-W btnOutline-2 sm-sz text-uppercase" data-dismiss="modal">Cancel</a></li>
+      <li class="list-inline-item"><a (click)="pay()" class="btn cmnBtn min-W btnBg-2 sm-sz text-uppercase">Ok</a></li>
+      </ul>
+      </div>
+      </div>
+      </div>
+       </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade show" *ngIf="continue"></div>
+

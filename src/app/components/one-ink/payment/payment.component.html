@@ -1,0 +1,318 @@
+<div class="fullPG_Wrap">
+        <div class="perspScreen">
+          <div class="pgWrapFull spcTpHeader vrLinesWrap">
+            <app-header></app-header>
+            <oneink-stepper></oneink-stepper>
+              <div class="quotePG_wrap overflow-hidden position-relative">
+                <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate"> <img class="w-100"
+                    src="assets/images/floating-img-1.png" alt=""> </div>
+                <div class="floatImg floatShape-5 quote1_imgFloat_5 floating-Animate"> <img class="w-100"
+                    src="assets/images/floating-img-5.png" alt=""> </div>
+                    <div class="container-fluid lg-container">
+                            <div class="row no-gutters">
+                              <div class="col-lg-10">
+                  
+                                  <div class="queCol_Outer pTB_quote lg-BT-scroll aos-init aos-animate" data-aos="fade-up" data-aos-duration="700">
+                                    <div class="secPg_head_row">
+                                    <div class="row gutter-10vw align-items-end">
+                                    <div class="col-md">
+                                    <div class="section-page-header brdLine-BT mb-0">
+                                            <div class="ttl-tpLine gray-color-2" *ngIf="oneInkDriverForm.drivers_array$!=undefined">{{oneInkDriverForm.drivers_array$['controls']['driver']['controls'][0].get('firstName').value}} {{oneInkDriverForm.drivers_array$['controls']['driver']['controls'][0].get('lastName').value}}</div>
+                                      <h1 class="headingStl-1">Let's make it official!</h1>
+                                      </div>
+                                      </div>
+                                      <div class="col-md-auto"><div class="cont-Rgt"><div class="quoteNbr f-size-18 f-W-M"><span class="text-color-3">Quote Number: </span>{{qouteId}}</div></div></div>
+                                      </div>
+                                      </div>
+                                      <form  [formGroup]="paymentFormGroup" (ngSubmit)="submit()">
+                                    
+                                    <div class="section-page-questions">
+                                      <div class="section-page-question">
+                                        <div class="question-wrap pb-0">
+                                          <div class="question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewBox="0 0 15 14" fill="none">
+                                            <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                            </svg> </span>
+                                            <div>
+                                              <h3 class="question-text">Payment</h3>
+                                              <p class="question-byline f-W-M text-color-black">Please enter info for down payment</p>
+                                            </div>
+                                          </div>
+                                          </div>
+                                          
+                                          <div class="section-page-questions-response">
+                                        <div class="question-wrap row no-gutters justify-content-between">
+                                          <div class="col-lg-5 question-header respLess-spc d-flex"> <span class="question-counter invisible"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewBox="0 0 15 14" fill="none">
+                                            <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                            </svg> </span>
+                                            <div>
+                                              <p class="question-byline f-W-B text-color-black">Payment Amount</p>
+                                            </div>
+                                          </div>
+                                          <div class="col-lg-6 question-content">
+                                            <div class="queNbrSpace">
+                                              <div class="form-group mb_form-group">
+                                              <div class="field_md field_labelTP">
+                                                <input class="form-control cmnField" formControlName="amount" placeholder="$00.00">
+                                                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                <label class="primary-label label-Tp">Amount</label>
+                                              </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                          
+                                        
+                                        
+                                        
+                                      
+                                      </div>
+                                     <div class="section-page-question">
+                                        <div class="question-wrap pb-0">
+                                          <div class="question-header respLess-spc d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewBox="0 0 15 14" fill="none">
+                                            <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                            </svg> </span>
+                                            <div>
+                                              <h3 class="question-text">Payment</h3>
+                                            </div>
+                                          </div>
+                                          <div class="question-content">
+                                          <div class="queInside-space">
+                                          <div class="form-group mb_form-group">
+                                                    <label class="check-control_Circle mb-0">
+                                                <input type="radio" class="inputCheck" value="creditCard" formControlName="method">
+                                                <span class="wrapRow d-flex align-items-center"> <span class="checkIndicate"></span> <span class="labelText f-size-18 flex-fill">Credit Card</span> </span> </label>
+                                                  </div>
+                                          </div>
+                                          </div>
+                                          </div>
+                                          
+                                          
+                                          
+                                        
+                                        
+                                        
+                                      
+                                      </div>
+                                     
+                                    </div>
+                                    
+                                    <div class="navigation-buttons">
+                                      <ul class="list-inline mb-0 text-right btnsList_form">
+                                      <!-- <a href="#" data-toggle="modal" data-target="#modal-Credit_Info">Modal for Credit Info</a> -->
+                                        <li class="list-inline-item"> <a href="#" class="btn btnstl-1 btnBrd">Go Back</a> </li>
+                                        <li class="list-inline-item"> <button  type="submit"  class="btn btnstl-1 btnBg-3 ">Save & Continue</button> </li>
+                                      </ul>
+                                    </div>
+                                </form>
+                  
+                                  
+                                  </div>
+                             
+                              </div>
+                            </div>
+                          </div>
+              </div>
+            <app-footer-quote></app-footer-quote>
+          </div>
+        </div> <!-- .perspScreen -->
+      </div> <!-- .fullPG_Wrap -->
+      
+
+      <a style="display: none" data-toggle="modal" data-target="#modal-Credit_Info" #payment_dialog></a>
+
+
+      <div class="modal fade modalCst" id="modal-Credit_Info" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+              <div class="modal-content">
+               <!-- <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button> -->
+                <div class="modal-body pb-lg">
+                <div class="row no-gutters justify-content-center">
+                <div class="col-lg-11">
+                <div class="section-page-questions">
+                <div class="section-page-question">
+                                <div class="question-wrap pb-0">
+                                  <div class="question-header">
+                                    <div>
+                                      <h3 class="question-text">Credit Card Information</h3>
+                                    </div>
+                                  </div>
+                                  <div class="question-content">
+                                     <div class="form-group mb_form-group">
+                                       
+                                            <div class="field_md">
+                                              <input class="form-control cmnField" required="" value="">
+                                              <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                              <label class="primary-label">Name On Card</label>
+                                            </div>
+                                            
+                                           
+                                          </div>
+                                          <div class="form-group mb_form-group">
+                                       
+                                           <div class="card_typeWrap d-flex align-items-center">
+                                           <div class="col_Label"><div class="labelHead f-size-18 gray-color-2 line-H-1_2">Card Types Accepted</div></div>
+                                           <div class="col_icons flex-fill">
+                                           <ul class="list-unstyled mb-0 d-flex list_card_Type">
+                                           <li><div class="cardType_icon"><img class="w-100" src="images/card-icon_Visa.jpg" alt=""></div></li>
+                                           <li><div class="cardType_icon"><img class="w-100" src="images/card-icon_Mastercard.jpg" alt=""></div></li>
+                                           <li><div class="cardType_icon"><img class="w-100" src="images/card-icon_Amex.jpg" alt=""></div></li>
+                                           <li><div class="cardType_icon"><img class="w-100" src="images/card-icon_Discover.jpg" alt=""></div></li>
+                                           
+                                           </ul>
+                                           </div>
+                                           </div>
+                                            
+                                           
+                                          </div>
+                                      
+                                      <div class="form-group mb_form-group">
+                                      <label class="f-size-18 gray-color-1 mb__5">Card Number</label>
+                                      <div class="wrap-FullGroupError"> <!-- Toggle "has-error" thisclass for Error -->
+                                      
+                                      <div class="row gutterField-8">
+                                      <div class="col-3">
+                                      <div class="form-group mb_form-group mb-0">
+                                        <div>
+                                          <input class="form-control cmnField" required="" value="" placeholder="XXXX" maxlength="4">   
+                                          <!-- Toggle "has-error" this class for Error -->                           
+                                        </div>
+                                      </div>
+                                      </div>
+                                      <div class="col-3">
+                                      <div class="form-group mb_form-group mb-0">
+                                        <div>
+                                          <input class="form-control cmnField" required="" value="" placeholder="XXXX" maxlength="4">
+                                          <!-- Toggle "has-error" this class for Error -->    
+                                        </div>
+                                      </div>
+                                      </div>
+                                      <div class="col-3">
+                                      <div class="form-group mb_form-group mb-0">
+                                        <div>
+                                          <input class="form-control cmnField" required="" value="" placeholder="XXXX" maxlength="4">
+                                          <!-- Toggle "has-error" this class for Error -->    
+                                        </div>
+                                      </div>
+                                      </div>
+                                      <div class="col-3">
+                                      <div class="form-group mb_form-group mb-0">
+                                        <div>
+                                          <input class="form-control cmnField" required="" value="" placeholder="XXXX" maxlength="4">
+                                          <!-- Toggle "has-error" this class for Error -->    
+                                        </div>
+                                      </div>
+                                      </div>
+                                      </div>
+                                      </div>
+                                      <div class="invalid-fld-feedback">Please enter a valid Card Number</div>
+                                      </div>
+          
+                                      
+                                      <div class="row gutterField-8">
+                                      <div class="col-6">
+                                      <div class="form-group mb_form-group">
+                                            <div class="dropdown-select-wrap field_md">
+                                          <div class="dropdown-select dropdown"> <span class="dropdown-select-header labelTP" data-toggle="dropdown" data-flip="false"> <!--  has-success completed -->
+                                            <label class="dropdown-label">Month</label>
+                                            <input type="text" class="form-control" placeholder="Select">
+                                            <svg class="" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                            <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                            </svg></span>
+                                            <div class="dropdown-menu">
+                                              <ul class="list-unstyled dopDownMenu-List mb-0">
+                                                <li><a class="item" href="#">01</a></li>
+                                                <li><a class="item" href="#">02</a></li>
+                                                <li><a class="item" href="#">03</a></li>
+                                                <li><a class="item" href="#">04</a></li>
+                                                <li><a class="item" href="#">05</a></li>
+                                                <li><a class="item" href="#">06</a></li>
+                                                <li><a class="item" href="#">07</a></li>
+                                                <li><a class="item" href="#">08</a></li>
+                                                <li><a class="item" href="#">09</a></li>
+                                                <li><a class="item" href="#">10</a></li>
+                                                <li><a class="item" href="#">11</a></li>
+                                                <li><a class="item" href="#">12</a></li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-6">
+                                      <div class="form-group mb_form-group">
+                                            <div class="dropdown-select-wrap field_md">
+                                          <div class="dropdown-select dropdown"> <span class="dropdown-select-header labelTP" data-toggle="dropdown" data-flip="false"> <!--  has-success completed -->
+                                            <label class="dropdown-label">Year</label>
+                                            <input type="text" class="form-control" placeholder="Select">
+                                            <svg class="" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                            <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                            </svg></span>
+                                            <div class="dropdown-menu">
+                                              <ul class="list-unstyled dopDownMenu-List mb-0">
+                                                <li><a class="item" href="#">2020</a></li>
+                                                <li><a class="item" href="#">2021</a></li>
+                                                <li><a class="item" href="#">2022</a></li>
+                                                <li><a class="item" href="#">2023</a></li>
+                                                <li><a class="item" href="#">2024</a></li>
+                                                <li><a class="item" href="#">2025</a></li>
+                                                <li><a class="item" href="#">2026</a></li>
+                                                <li><a class="item" href="#">2027</a></li>
+                                                <li><a class="item" href="#">2028</a></li>
+                                                <li><a class="item" href="#">2029</a></li>
+                                                <li><a class="item" href="#">2030</a></li>
+                                                <li><a class="item" href="#">2031</a></li>
+                                                <li><a class="item" href="#">2032</a></li>
+                                                <li><a class="item" href="#">2033</a></li>
+                                                <li><a class="item" href="#">2034</a></li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                          </div>
+                                      </div>
+                                      </div>
+                                      
+                                      <div class="form-group mb_form-group">
+                                            <div class="field_md">
+                                              <input class="form-control cmnField" required="" value="">
+                                              <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                              <label class="primary-label">Billing Zip Code</label>
+                                            </div>
+                                            
+                                            
+                                          </div>
+                                      
+                                      
+                                  </div>
+                                </div>
+                              </div>
+                </div>
+                <div class="navigation-buttons mb__15">
+                              <ul class="list-inline mb-0 text-center btnsList_form">
+                              <li class="list-inline-item"><a href="#" class="btn btnstl-1 btnBrd" data-dismiss="modal">Cancel</a></li>
+                              <li class="list-inline-item"><a href="#" class="btn btnstl-1 btnBg-3" data-dismiss="modal">Save &amp; Continue</a></li>
+                              </ul>
+                            </div>
+                            
+                            <div class="text-center">
+                            <a class="link-color-2 f-size-16" href="#" target="_blank">Privacy Policy and Disclaimer</a>
+                            </div>
+                </div>
+                </div>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+
+          <div id="portalOneContainer"></div>
+
+          <iframe  frameborder="0" class="digital-payment-modal"
+          allowTransparency="true"
+           *ngIf="!!sanitizedUrl"
+        
+        [src]="sanitizedUrl"
+        >
+</iframe>

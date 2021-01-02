@@ -1,0 +1,256 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+
+
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+    <div class="pgWrapFull spcTpHeader">
+        <app-header (languageChange)="onlanguageChange($event)"></app-header>
+   
+      <div class="quotePG_wrap overflow-hidden position-relative">
+        <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate"> <img class="w-100" src="assets/images/floating-img-1.png" alt=""> </div>
+        <div class="floatImg floatShape-5 quote1_imgFloat_5 floating-Animate"> <img class="w-100" src="assets/images/floating-img-5.png" alt=""> </div>
+        <div class="container-fluid lg-container">
+          <div class="helpCenter_spc">
+            <div class="helpCenter_Sec">
+              <div class="section-page-header brdLine-BT mb-less mngLeft-cont" *ngIf="page">
+                <h1 class="headingStl-1">{{page['title']}}</h1>
+              </div>
+              <div class="help_accordion" id="accord_FAQ" *ngIf="page">
+                <div class="cst_accord cst_accord116">
+                  <div class="accord_head"> 
+                    <a href="#" class="accordn_title collapsed" data-toggle="collapse" (click)="getScroll(116)" data-target="#faq_accord_1">{{page['qsn1']}}</a> </div>
+                  <div id="faq_accord_1" class="collapse" data-parent="#accord_FAQ">
+                    <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p" *ngIf="ans1">
+                      <p [innerHTML]="ans1[0]"></p>
+                    <p [innerHTML]="ans1[1]"></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cst_accord cst_accord115">
+                  <div class="accord_head"> <a href="#" (click)="getScroll(115)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_2">{{page['qsn2']}}</a> </div>
+                  <div id="faq_accord_2" class="collapse" data-parent="#accord_FAQ">
+                    <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p" [innerHTML]="page['ans2']">
+                      <!-- <p>Pronto currently offers the following discounts, mulit-car and renewal. In order to see if you are eligible for these discounts please login and refer to your policy. Take advantage of our multi-car discount by adding on a vehicle today.</p> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="cst_accord cst_accord114">
+                  <div class="accord_head"> <a href="#" (click)="getScroll(114)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_3">{{page['qsn3']}}</a> </div>
+                  <div id="faq_accord_3" class="collapse" data-parent="#accord_FAQ">
+                    <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p" [innerHTML]="page['ans3']">
+                     <!--  <p>Your policy cancellations date is 30 days after the day you you begin your policy. A due date of is given 14 days prior to your cancelation date giving you enough time to make a payment before your policy coverage will expire. Please login and refer to your policy contract for additional conditions that may apply.</p> -->
+                    </div>
+                  </div>
+                </div>
+                <div class="cst_accord cst_accord113">
+                  <div class="accord_head"> <a href="#" (click)="getScroll(113)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_4">{{page['qsn4']}}</a> </div>
+                  <div id="faq_accord_4" class="collapse" data-parent="#accord_FAQ">
+                    <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                      <ul *ngIf="ans4">
+                        <li *ngFor="let an4 of ans4" [innerHTML]="an4"><!-- Protects drivers from financial loss in accidents while operating vehicles that are not theirs. --></li>
+                       <!--  <li>Used to insure individuals who do not own a vehicle, but who frequently drive or rent vehicles.</li>
+                        <li>Only the named insured is covered under a Non–Owner policy.</li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="cst_accord cst_accord112">
+                  <div class="accord_head"> <a href="#" (click)="getScroll(112)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_5">{{page['qsn5']}}</a> </div>
+                  <div id="faq_accord_5" class="collapse" data-parent="#accord_FAQ">
+                    <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                      <p [innerHTML]="page['ans5_1']"><!-- Effective January 1, 2011, the mandatory minimum coverage is 30k/60k/25k which apply as follows: --></p>
+                      <ul *ngIf="ans5_2">
+                        <li *ngFor="let an5 of ans5_2" [innerHTML]="an5"><!-- $30,000 protection on bodily injury for one person per accident. --></li>
+                       <!--  <li>$60,000 protection for all bodily injury claims per accident.</li>
+                        <li>$25,000 protection of property damage per accident.</li> -->
+                      </ul>
+                      <p [innerHTML]="page['ans5_3']"><!-- This coverage is commonly referred to as "30/60/25" which is an abbreviation. Keep in mind that this coverage only covers the third party involved in the accident and not the insured. --></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cst_accord cst_accord111">
+                  <div class="accord_head"> <a href="#" (click)="getScroll(111)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_6">{{page['qsn6']}}</a> </div>
+                  <div id="faq_accord_6" class="collapse" data-parent="#accord_FAQ">
+                    <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                      <p [innerHTML]="page['ans6_1']"><!-- Changes to your auto insurance rates can be due to factors that may be beyond your control or changes that you've made to your policy. --></p>
+                      <h6 [innerHTML]="page['ans6_2']"><!-- Factors --></h6>
+                      <p [innerHTML]="page['ans6_2_1']"><!-- Even if you have no recent policy changes or new violations or accidents, your premium change may be due to a general rate increase in the state of Texas. We know that premium changes have a real impact on our customers, and we want you to know that we&#39;re doing everything we can to offer you the best rate possible. Unfortunately, there are many different factors unrelated to your individual policy that can cause rates to increase. These may include the following: --></p>
+                      <p [innerHTML]="page['ans6_2_2']"><!-- Increase in costs associated with rising accident frequency. The auto industry has seen a dramatic increase in the number of claims over the last year. This increase is driven by factors such as: --></p>
+                      <ul *ngIf="ans6_2_3">
+                        <li *ngFor="let np3 of ans6_2_3" [innerHTML]="np3"><!-- Population growth --></li>
+                        <!-- <li>Lower gas prices</li>
+                        <li>Distracted driving (driving while engaged in other activities such as texting, talking on the phone or to a passenger, watching videos, eating, or reading)</li>
+                        <li>Increase in the number of registered vehicles</li> -->
+                      </ul>
+                      <p [innerHTML]="page['ans6_2_4']"><!-- More cars on the road often result in more accidents, and Pronto would need to rate all affected policies for this shared risk. --></p>
+                      <p [innerHTML]="page['ans6_2_5']"><!-- Growing costs of injury payments and auto repairs. Auto insurance claims costs include vehicle repair costs, medical costs, and at times, legal fees. Since insurance can cover services from other industries, as costs fluctuate over time in other industries, auto insurance rates are adjusted to reflect those costs. Pronto needs to account for the costs of inflation over time. --></p>
+                      <h6 [innerHTML]="page['ans6_3']"><!-- Changes to your policy --></h6>
+                      <p [innerHTML]="page['ans6_3_1']"><!-- Your auto insurance premium is determined by factors including your driving experience, driving record, vehicle's safety features, and location. All of this information gives Pronto an idea of your personal risk, and your risk level can change with life changes. --></p>
+                      <p [innerHTML]="page['ans6_3_2']"><!-- The following changes to your policy may have increased or decreased your rate: --></p>
+                      <ul *ngIf="ans6_3_3">
+                        <li *ngFor="let n4 of ans6_3_3" [innerHTML]="n4"><!-- Adding or removing a car --></li>
+                    <!--     <li>Changing your address</li>
+                        <li>Adding or removing a driver</li>
+                        <li>Changing your coverages</li> -->
+                      </ul>
+                      <p [innerHTML]="page['ans6_3_4']"><!-- Please review your Account History for recent policy changes. --></p>
+                      <p [innerHTML]="page['ans6_3_5']"><!-- If your policy recently renewed, your price may have increased due to a new ticket(s) or a new accident(s). --></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cst_accord cst_accord1">
+                  <div class="accord_head"> <a href="#"  (click)="getScroll(1)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_7" [innerHTML]="page['qsn7']"><!-- How do I get an SR-22? --></a> </div>
+                  <div id="faq_accord_7" class="collapse" data-parent="#accord_FAQ">
+                    <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                      <p [innerHTML]="page['ans7_1']"><!-- (Available for 6 Month Policies) --></p>
+                      <ul *ngIf="ans7_2">
+                        <li *ngFor="let np7 of ans7_2" [innerHTML]="np7"><!-- SR22s are sold when a driver’s license needs to be reinstated --></li>
+                       <!--  <li>Texas requires a driver to maintain SR–22 insurance for two years from the date of filing in order to keep a valid driver’s license status</li>
+                        <li>If the policy is canceled or expires before the two–year period has elapsed, the license will be suspended</li>
+                        <li>SR22s must be issued for the named insured</li>
+                        <li>If insured is not a registered owner of a vehicle, he/she may apply for a non–owner’s policy (See Section IIIA)</li> -->
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="cst_accord cst_accord2" >
+                  <div class="accord_head"> <a href="#" (click)="getScroll(2)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_8" [innerHTML]="page['qsn8']"><!-- What is covered under Roadside Assistance? --></a> </div>
+                  <div id="faq_accord_8" class="collapse" data-parent="#accord_FAQ">
+                    <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                      <p [innerHTML]="page['ans8_1']"><!-- Pronto Emergency Roadside Assistance is available on a "Sign & Drive" basis throughout the United States, Mexico, and Canada, 24 hours a day, 365 days a year. "Sign & Drive provided benefits" means you incur no out-of-pocket expense - up to a maximum benefit of $100 per incident. Pronto will provide prompt service to assist you with any of these benefits: --></p>
+                      <ul *ngIf="ans8_2">
+                        <li *ngFor="let np8 of ans8_2" [innerHTML]="np8"><!-- Towing --></li>
+                  <!--       <li>Jump Starts</li>
+                        <li>Tire Changes (with your inflated spare)</li>
+                        <li>Vehicle Fluid Delivery (cost of fluids extra)</li>
+                        <li>Lockout Assistance (cost of key cutting / replacement extra)</li>
+                        <li>Concierge Service (emergency phone call support & assistance)</li> -->
+                      </ul>
+                      <p [innerHTML]="page['ans8_3']"><!-- Service fees exceeding the maximum benefits are the responsibility of the member --></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="cst_accord cst_accord3">
+                  <div class="accord_head"> <a href="#" (click)="getScroll(3)"  class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_9" [innerHTML]="page['qsn9']"><!-- How long should I wait to report a claim? --></a> </div>
+                  <div id="faq_accord_9" class="collapse" data-parent="#accord_FAQ">
+                    <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                      <p [innerHTML]="page['ans9']"><!-- Report a claim immediately. Reporting a claim will initiate an investigation including coverage and liability determination. In addition, the events of the accident will be clear in both drivers' minds and could lead to an accurate investigation. --></p>
+                    </div>
+                  </div>
+                </div>
+              
+            
+            <div class="helpCenter_Sec">
+              <div class="section-page-header brdLine-BT mb-less mngLeft-cont">
+                <h1 class="headingStl-1" [innerHTML]="page['cov_qsn_title']"><!-- Coverage Questions --></h1>
+              </div>
+              <div class="cst_accord cst_accord4">
+                <div class="accord_head"> <a href="#" (click)="getScroll(4)"  class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_10" [innerHTML]="page['cov_qsn_1']"><!-- Rental and Towing Reimbursement --></a> </div>
+                <div id="faq_accord_10" class="collapse" data-parent="#accord_FAQ">
+                  <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                    <ul *ngIf="cov_ans_1">
+                      <li *ngFor="let cov3 of cov_ans_1" [innerHTML]="cov3"><!-- When there is a covered loss, we will reimburse the incurred expense for a substitute vehicle from a licensed rental car agency for up to $25 a day, with a limit of $750 (equivalent of 30 days). --></li>
+                    <!--   <li>Our rental coverage does not restrict you to an “approved rental company” or a rental company with limited days/hours of operation; you are free to choose the rental company.</li>
+                      <li>When the covered vehicle is disabled, we will pay towing and labor costs incurred, with a limit of $70 per occurrence.</li>
+                      <li>For towing coverage to be provided, the customer must initiate the tow.</li> -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="cst_accord cst_accord5">
+                <div class="accord_head"> <a href="#" (click)="getScroll(5)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_11" [innerHTML]="page['cov_qsn_2']"><!-- Uninsured / Under-insured Motorist (UM/UIM) Coverage --></a> </div>
+                <div id="faq_accord_11" class="collapse" data-parent="#accord_FAQ">
+                  <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                    <ul *ngIf="cov_ans_2">
+                      <li *ngFor="let cov6 of cov_ans_2" [innerHTML]="cov6"><!-- Provides coverage in cases where the other driver does not have insurance or has too little insurance or in cases of a hit and run accident. --></li>
+                      <!-- <li>Offers the same limits as liability coverage.</li>
+                      <li>Property damage has a deductible of $250.</li>
+                      <li>BI and PD portion can be purchased together or separately.</li>
+                      <li>If the insured elects to reject UM or UIM coverage, a rejection for both the BI and PD portion must be signed or the coverage will be added to the policy and the applicable premium will be retroactively charged.</li> -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="cst_accord cst_accord6">
+                <div class="accord_head"> <a href="#" (click)="getScroll(6)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_12" [innerHTML]="page['cov_qsn_3']"><!--  Roadside Assistance --></a> </div>
+                <div id="faq_accord_12" class="collapse" data-parent="#accord_FAQ">
+                  <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                  <p [innerHTML]="page['cov_ans_3_1']"><!-- (Available for 6 Month Policies) --></p>
+                    <ul *ngIf="cov_ans_3_2">
+                      <li *ngFor="let np56 of cov_ans_3_2" [innerHTML]="np56"><!-- (1) Towing Assistance, (2) Battery Service, (3) Flat Tire Assistance (4) Lock-Out Assistance, (5) Emergency Fluid Delivery Service by calling this toll free number 1-888- 983-3583 --></li>
+                     <!--  <li>Discounts in nationwide branded hotels and AVIS car rentals</li>
+                      <li>Benefits are available to all named insureds for the covered vehicles listed on the policy</li>
+                      <li>Bilingual Call center 24/7 to serve you 24 hours a day, 365 days a year.</li>
+                      <li>High value services at a low cost of $30 dollars for 6 months ($5 per month) for the principal vehicle and $12 dollars ($2 dollars per month) for any additional vehicle</li> -->
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            
+            <div class="helpCenter_Sec">
+              <div class="section-page-header brdLine-BT mb-less mngLeft-cont">
+                <h1 class="headingStl-1" [innerHTML]="page['billing_title']"><!-- Billing Questions --></h1>
+              </div>
+              <div class="cst_accord cst_accord7">
+                <div class="accord_head"> <a href="#" (click)="getScroll(7)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_13" [innerHTML]="page['billing_qsn1']"><!-- My payment is late? --></a> </div>
+                <div id="faq_accord_13" class="collapse" data-parent="#accord_FAQ">
+                  <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                    <p [innerHTML]="page['billing_ans1']"><!-- In order to avoid cancellation of your policy and driving without coverage please log into your account to avoid falling into a lapse as soon as possible. --></p>
+                  </div>
+                </div>
+              </div>
+              <div class="cst_accord cst_accord8">
+                <div class="accord_head"> <a href="#"  (click)="getScroll(8)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_14" [innerHTML]="page['billing_qsn2']"><!-- Can I pay less than what I owe? --></a> </div>
+                <div id="faq_accord_14" class="collapse" data-parent="#accord_FAQ">
+                  <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                    <p [innerHTML]="page['billing_ans2']"><!-- In order for coverage to continue a full payment needs to be made by the cancellation date on your policy. Please refer to your policy details in order to find policy cancellation date to avoid a lapse in coverage. --></p>
+                  </div>
+                </div>
+              </div>
+              
+              
+              
+            </div>
+            
+            <div class="helpCenter_Sec">
+              <div class="section-page-header brdLine-BT mb-less mngLeft-cont">
+                <h1 class="headingStl-1" [innerHTML]="page['policy_title']"><!-- Policy Questions --></h1>
+              </div>
+              <div class="cst_accord cst_accord9">
+                <div class="accord_head"> <a href="#"  (click)="getScroll(9)" class="accordn_title collapsed" data-toggle="collapse" data-target="#faq_accord_15" [innerHTML]="page['policy_qsn1']"><!-- How can I get a copy of my ID cards? --></a> </div>
+                <div id="faq_accord_15" class="collapse" data-parent="#accord_FAQ">
+                  <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                    <p [innerHTML]="page['policy_ans1']">I<!-- f you need a copy of your ID cards please click on the “ID cards” tab for your most recent copy that are available. You can also log into your account for more detailed policy information. --></p>
+                  </div>
+                </div>
+              </div>
+              <div class="cst_accord cst_accord10">
+                <div class="accord_head"> 
+                  <a href="#" class="accordn_title collapsed" data-toggle="collapse"  (click)="getScroll( 10)"data-target="#faq_accord_16" [innerHTML]="page['policy_qsn2']"><!-- I need proof of coverage for my lien-holder. --></a> </div>
+                <div id="faq_accord_16" class="collapse" data-parent="#accord_FAQ">
+                  <div class="accord_body f-size-18 text-gray-70 pgEditorCont editorCont last-p">
+                    <p [innerHTML]="page['policy_ans2']"><!-- In most cases ID cards or your declarations page should be sufficient. However, if more information is being requested please contact customer service at 1-855- 200-4567 to request a letter of experience for more detailed information regarding your policy. --></p>
+                  </div>
+                </div>
+              </div>
+              
+              
+              
+            </div>
+            
+            </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <footer  *ngIf="page" class="footerWrap overflow-hidden">
+          <app-footer></app-footer>
+        </footer>
+    </div>
+  </div>
+  <!-- .perspScreen --> 
+</div>
+<!-- .fullPG_Wrap -->

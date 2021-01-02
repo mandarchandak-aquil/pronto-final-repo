@@ -1,0 +1,221 @@
+<app-pre-loader *ngIf="loading"></app-pre-loader>
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+    <div class="pgWrapFull spcTpHeader vrLinesWrap">
+
+      <app-header ></app-header>
+      <div class="dashboard_pg_wrap minScreen-hgt bg-patternGrdnt">
+        <app-dashboard-responsive-top-header></app-dashboard-responsive-top-header>
+        <div class="dashScreen_wrap">
+          <div class="row no-gutters dashWrap_Row">
+            <div class="col-lg-auto brdRgt">
+              <div class="colWdth_side">
+                <app-dashboard-side-nav></app-dashboard-side-nav>
+              </div>
+            </div>
+            <div class="col-lg brdCol">
+              <div class="dashboard_middle">
+                <div class="dashB_mdl-pd">
+                          <div class="dash_tp-btnsRow d-none d-lg-block" data-aos="fade-up" data-aos-duration="900">
+                            <div class="row no-gutters">
+                              <!-- <div class="col"><a routerLink="/claims/claim-texas" class="btn cmnBtn btn-sz-md btnBg-1 text-uppercase">Report CLAIM</a></div> -->
+                              <div class="col text-right">
+                                <div class="d-inline-block dash_btnSpc_back">
+                                  <a routerLink="/dashboard/policy-details" class="btn cmnBtn btn-sz-md btnBg-2 text-uppercase">Back</a>
+                                  </div>
+                                <!-- <div class="d-inline-block">
+                                  <div class="viewCard_wrap d-flex align-items-center">
+                                    <div class="iconWrap"><img class="w-100" src="assets/assets/assets/images//icon-view-card.png" alt="" /></div>
+                                    <div class="btnCol flex-fill"> <a routerLink="/" class="btn cmnBtn btn-sz-md btnBg-4 text-uppercase">VIEW YOUR ID CARDS</a> </div>
+                                  </div>
+                                </div> -->
+                              </div>
+                            </div>
+                          </div>
+                        </div> 
+                        <form [formGroup]="payform" (ngSubmit)="onSubmit()">
+                        <div class="dashboard-mdl_Scroll cstScroller cst_mCst_scroll_Desk" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900">
+                            <div class="dashB_mdl-pd">
+                              <h1 class="dashlg-Head font-F-1 f-W-B"><span class="wrapIn">Make Payment</span></h1>
+                              <div class="cardDash_cmn dash_cardRow extrPD-lbl f-size-20 line-H-1_3">
+                                <div class="statusLabel f-W-M">Active</div>
+                                <div class="row no-gutters">
+                                  <div class="col-md-auto text-center text-sm-left">
+                                    <div class="h-100 d-flex align-items-center">
+                                      <div class="w-100">
+                                        <div class="iconWrap"><img class="w-100" src="assets/images/dash-policy-icon-2.png" alt="" /></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md overflow-hidden" *ngIf="policy">
+                                    <div class="row h-100 rowGutter_spc insRowBrd">
+                                      <div class="col-sm-auto d-flex align-items-center">
+                                        <div class="colCont_Wrp w-100">
+                                          <div class="contCol-1 text-center text-md-left">
+                                            <div class="lable-ttl">Policy Number:</div>
+                                            <div class="f-W-M text-color-3">{{policy.policyNumber}}</div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-sm d-flex align-items-center">
+                                        <div class="colCont_Wrp w-100">
+                                          <div class="contCol-3 text-center text-md-left">
+                                            <div class="lable-ttl f-W-B">Policy Effective:</div>
+                                            <div class="f-W-M"> {{policy.effectiveDate}} - {{policy.expirationDate}} </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row gutter-15vw">
+                               
+                                <div class="col-md-6" >
+                               
+                                  <div class="payment_card_wrap">
+                                    <div class="payment_heading line-H-1_2 f-W-B mb__10">Choose Payment Amount</div>
+                                    <div class="cardDash_cmn bg_trans" formGroupName="purchase">
+                                      <fieldset formGroupName="ccDetails"> <input type="hidden" name="payRefId" formControlName="payRefId" value="{{payrefid}}"></fieldset>
+                                      <ul class="list-unstyled mb-0 payment_listing">
+                                        <li>
+                                          <label for="choose_payment-Amount-Due" class="checkLabel_circle f-W-N d-block mb-0">
+                                           <input id="choose_payment-Amount-Due" type="radio" class="check-input" name="amount" formControlName="amount"  value="{{policy.financialInfo.amountDue}}" checked [attr.disabled]="policy.financialInfo.amountDue == 0">                                                                                                                                                                                                                                                                                                                     
+                                            <span class="checkCircle"></span> <span class="payment_check_cont p-tb d-flex align-items-center"> <span class="txtCont d-block line-H-1_2 flex-fill"> <span class="headTxt d-block f-W-B f-size-18">Amount Due</span> <span class="subTxt d-block f-size-16">Amount Due</span> </span> <span class="amnt_col"> <span class="pay_Amnt text-color-3 f-W-M"><span class="txt_currency">$</span>{{policy.financialInfo.amountDue}}</span> </span> </span> </label>
+                                        </li>
+                                        <li>
+                                          <label for="choose_payment-Remaining-Balance" class="checkLabel_circle f-W-N d-block mb-0">
+                                          <input id="choose_payment-Remaining-Balance" type="radio" class="check-input" name="amount"  formControlName="amount" value="{{policy.financialInfo.toPayInFull}}" [attr.disabled]="policy.financialInfo.toPayInFull == 0"> 
+                                            <span class="checkCircle"></span> <span class="payment_check_cont p-tb d-flex align-items-center"> <span class="txtCont d-block line-H-1_2 flex-fill"> <span class="headTxt d-block f-W-B f-size-18">Remaining Balance</span> </span> <span class="amnt_col"> <span class="pay_Amnt text-color-3 f-W-M"><span class="txt_currency">$</span>{{policy.financialInfo.toPayInFull}}</span> </span> </span> </label>
+                                        </li>
+                                        <li>
+                                          <div class="payment_check_cont p-tb pb-0 d-flex align-items-center">
+                                            <label for="choose_payment-Other-Amount" class="checkLabel_circle f-W-N d-block mb-0 flex-fill">
+                                              <input id="choose_payment-Other-Amount" type="radio" class="check-input" name="amount" formControlName="amount" >
+                                              
+                                              <span class="checkCircle"></span> <span class="payment_check_cont d-block"> <span class="txtCont d-block line-H-1_2"> <span class="headTxt d-block f-W-B f-size-18">Other Amount</span> <span class="subTxt smTxt d-block f-size-16">Minimum amount allowed: $0.00</span> </span> </span> </label>
+                                            <span class="amnt_col"> <span class="amnt_wrap_fld">
+                                              <input type="text" class="form-control fld_payment_amnt f-W-M text-right" placeholder="$0.00" (keyup)="numberOnly($event)">
+                                            </span> </span> </div>
+                                        </li>
+                                      </ul>
+                                    </div>
+                                    <div class="form-group mb-0">
+                                      <div class="field_md fld-icon-Date field_labelTP">
+                                        <input class="form-control cmnField datepicker_fld" required="" disabled name="currentDate" formControlName="currentDate" placeholder="MM/DD/YYYY">
+                                        <label class="primary-label label-Tp">Payment Date</label>
+                                        <div class="invalid-fld-feedback">Please enter a valid birthdate</div>
+                                        <div class="fldIcon"><img src="assets/images/icon-calendar.png" alt=""></div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            
+
+                                <div class="col-md-6">
+                                  <div class="payment_card_wrap" >
+                                    <div class="payment_heading line-H-1_2 f-W-B mb__10">Payment Source</div>
+                                    <div class="pay_source_instr f-size-16 line-H-1_3 text-color-3">Manual payments can only be processed with credit/debit card.</div>
+                                    <ul class="list-unstyled paymentSource_list d-flex justify-content-between">
+                                      <li>
+                                        <div class="d-inline-block">
+                                          <label class="paySource_label d-flex align-items-center mb-0 f-size-18 f-W-B" for="payment_source-Auto-Renewal"> <span class="switch-toggle-lg">
+                                            <input type="radio" name="auto_renew" id="payment_source-Auto-Renewal" >
+                                            <span class="slider round"></span> </span> <span class="textWrap d-block flex-fill">Auto Renewal</span> </label>
+                                        </div>
+                                      </li>
+                                      <li>
+                                        <div class="d-inline-block">
+                                          <label class="paySource_label d-flex align-items-center mb-0 f-size-18 f-W-B" for="payment_source-Auto-Pay"> <span class="switch-toggle-lg">
+                                           <input type="radio" name="auto_pay" id="payment_source-Auto-Pay" [disabled]="!Autopay">
+                                            <span class="slider round"></span> </span> <span class="textWrap d-block flex-fill">Auto Pay</span> </label>
+                                        </div>
+                                      </li>
+                                    </ul>
+                                    <fieldset *ngFor="let card of cardlist">
+                                    <div class="cardDash_cmn bg_trans" *ngIf="card.defaultPayMode == true ">
+                                    <div class="cr_Card_mx_width">
+                                      <div class="cr_Card_bx">
+                                        <div class="ttl">Credit Card</div>
+                                        <ul class="list-unstyled d-flex align-items-center justify-content-between card_Number">
+                                          <li>
+                                            <div class="number_wrap">{{card.cardNo}}</div>
+                                          </li>
+                                          <li>
+                                            <div class="number_wrap">{{card.cardNo1}}</div>
+                                          </li>
+                                          <li>
+                                            <div class="number_wrap">{{card.cardNo2}}</div>
+                                          </li>
+                                          <li>
+                                            <div class="number_wrap">{{card.cardNo3}}</div>
+                                          </li>
+                                        </ul>
+                                        <div class="infoRow d-flex justify-content-between align-items-center">
+                                          <div class="txtBt">{{card.name}}</div>
+                                          <div class="cardDate d-flex align-items-center">
+                                            <div class="smTxt">GOOD<br>
+                                              THRU</div>
+                                            <div class="dateTxt">{{card.expiry}}</div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      </div>
+                                    </div>
+                                  </fieldset>
+                                  </div>
+                                </div>
+                              </div>
+                           
+                              <ul class="list-inline mb-0 text-right btnsList_form">
+                                <li class="list-inline-item"> <a routerLink="/dashboard/policy-details-payment-add" class="btn cmnBtn sm-sz btnOutline-2 text-uppercase">ADD PAYMENT SOURCE</a> </li>
+                                 <li class="list-inline-item"  >  <button  type="submit"[disabled]="payform.invalid || policy.financialInfo.amountDue == 0 && policy.financialInfo.toPayInFull == 0" class="btn cmnBtn sm-sz btnBg-2 text-uppercase">CONFIRM PAYMENT</button> </li>
+                              </ul>
+
+                            </div>
+                          </div>
+                        </form>
+              </div>
+            </div>
+            <div class="col-lg-auto brdLft">
+              <div class="colWdth_side">
+                <app-dashboard-side-userinfo></app-dashboard-side-userinfo>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <footer class="footerWrap overflow-hidden">
+        <app-footer></app-footer>
+      </footer>
+    </div>
+  </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->
+<!-- Modal User already exists -->
+<div class="modal fade modalCst show"  style="display: block;" id="modal-already_exists" *ngIf="continue">
+  <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+    <div class="modal-content modalGetQuote">
+      <button type="button" class="close btnClose" (click)="hidemodal()" data-dismiss="modal"><span>×</span></button>
+      <div class="modal-body pb-lg">
+      <div class="row no-gutters justify-content-center">
+      <div class="col-lg-12">
+      <div class="infoModalWrap text-center">
+      <div class="txt-summary last-p line-H-1_3">
+      <p class="text-color-3 msg_user_exist"><strong>User already exists</strong></p>
+	 </div>
+     <!-- <div class="btnsWrapp mx-width">
+      <ul class="list-unstyled  btnListing mb-0">
+      <li><a href="#" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block" data-dismiss="modal">Close</a></li>
+      </ul>
+      </div>-->
+      </div>
+      </div>
+       </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- End Modal User already exists -->

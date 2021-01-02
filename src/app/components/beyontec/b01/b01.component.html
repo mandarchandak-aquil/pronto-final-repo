@@ -1,0 +1,685 @@
+<app-pre-loader *ngIf="loading"></app-pre-loader>
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+        <div class="pgWrapFull spcTpHeader vrLinesWrap">
+
+            <app-header></app-header>
+
+            <app-beyontec-breadcrum></app-beyontec-breadcrum>
+            <!-- <div class="secondNav_Wrapp fixSecondNav">
+                <div class="mngIns-tp">
+                    <div class="container-fluid lg-container">
+                        <div class="row no-gutters">
+                            <div class="col-md">
+                                <div class="d-none d-md-block">
+                                    <ul class="navbar justify-content-center list-unstyled mb-0 secondaryNav">
+                                        <li class="nav-item active"> <a class="nav-link"> <span
+                                                    class="navTtl">Start</span> <span class="dot"></span> </a> </li>
+                                        <li class="nav-item"> <a class="nav-link"> <span class="navTtl">Quote</span>
+                                                <span class="dot"></span> </a> </li>
+                                        <li class="nav-item"> <a class="nav-link"> <span
+                                                    class="navTtl">UNDERWRITING</span> <span class="dot"></span> </a>
+                                        </li>
+                                        <li class="nav-item"> <a class="nav-link"> <span class="navTtl">PURCHASE</span>
+                                                <span class="dot"></span> </a> </li>
+                                        <li class="nav-item"> <a class="nav-link"> <span class="navTtl">DOCUMENTS</span>
+                                                <span class="dot"></span> </a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-auto d-lg-none text-right">
+                                <button class="btn btnBg-1 summary-Btn" type="button" data-toggle="modal"
+                                    data-target="#drawerModal"><span class="d-flex flex-row"><img class="icon"
+                                            src="./assets/images/summary-btn-icon.svg" alt="" />Summary</span></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+            <div class="quotePG_wrap overflow-hidden position-relative">
+                <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate"> <img class="w-100"
+                        src="./assets/images/floating-img-1.png" alt=""> </div>
+                <div class="floatImg floatShape-5 quote1_imgFloat_5 floating-Animate"> <img class="w-100"
+                        src="./assets/images/floating-img-5.png" alt=""> </div>
+                <div class="containerPD-L">
+                    <div class="row no-gutters">
+                        <div class="col-md">
+                            <div class="formScreen_Hgt spcMng_mp">
+                                <div class="queCol_Outer pTB_quote lg-BT-scroll" data-aos="fade-up"
+                                    data-aos-duration="700">
+
+                                    <form [formGroup]="form">
+
+                                        <div class="section-page-header brdLine-BT">
+                                            <div class="ttl-tpLine gray-color-2">Let’s get started.</div>
+                                            <h1 class="headingStl-1">Pronto Express Quote!</h1>
+                                        </div>
+
+                                        <div class="instruction_Que_Bx mb">
+
+
+                                            <label class="driving_license_wrap mb-0">
+                                                <span class="txt_wrp f-W-B line-H-1_3">I would like to continue without
+                                                    my
+                                                    driving
+                                                    license.</span>
+                                                <span class="switch-toggle-lg">
+                                                    <input type="checkbox" id="without_driving_license"
+                                                        (change)="handleSelectedContinue($event)"
+                                                        formControlName="isdrivingLicence">
+                                                    <span class="slider round"></span>
+                                                </span>
+                                            </label>
+                                            <button id="openModalButton" [hidden]="true" data-toggle="modal"
+                                                data-target="#modal-Driving_License">Open Modal</button>
+                                        </div>
+
+                                        <div class="section-page-questions">
+                                            <div class="section-page-question" *ngIf="isEnterLicenseNumber">
+                                                <div class="question-wrap row no-gutters justify-content-between">
+                                                    <div class="col-lg-5 question-header d-flex"> <span
+                                                            class="question-counter"> <span class="countNbr"></span>
+                                                            <svg class="iconMark" width="15" height="14"
+                                                                viewbox="0 0 15 14" fill="none">
+                                                                <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                            </svg> </span>
+                                                        <div>
+                                                            <h3 class="question-text">Or manually enter your driver
+                                                                license
+                                                                number*</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 question-content">
+                                                        <div class="queNbrSpace">
+                                                            <div class="form-group mb_form-group">
+                                                                <div class="field_md field_labelTP">
+                                                                    <input class="form-control cmnField"
+                                                                        formControlName="licenseNum"
+                                                                        placeholder="Enter DL/ID #"
+                                                                        (focusout)="getDriverDetailbyDL($event)"
+                                                                        id="inputBoxlicenseNum"
+                                                                        [readonly]="isReadOnlydln" #inputBoxlicenseNum
+                                                                        numbersOnly
+                                                                        [ngClass]="{'pointer-none': isReadOnlydln}">
+                                                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                    <label class="primary-label label-Tp">DL/ID
+                                                                        #</label>
+
+                                                                    <div class="invalid-fld-feedback-invalid">Please
+                                                                        enter a valid DL/ID #</div>
+
+                                                                    <div class="invalid-fld-feedback">Please enter a
+                                                                        valid
+                                                                        DL/ID #</div>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="f-size-18" id="openModalButtonDLDOB" [hidden]="true"
+                                                    data-toggle="modal" data-target="#modal-Error_DL_DOB">Show Error
+                                                    Modal</button>
+
+                                            </div>
+
+                                            <div class="section-page-question">
+                                                <div class="question-wrap row no-gutters justify-content-between">
+                                                    <div class="col-lg-5 question-header d-flex"> <span
+                                                            class="question-counter"> <span class="countNbr"></span>
+                                                            <svg class="iconMark" width="15" height="14"
+                                                                viewbox="0 0 15 14" fill="none">
+                                                                <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                            </svg> </span>
+                                                        <div>
+                                                            <h3 class="question-text">Date of Birth*</h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 question-content">
+                                                        <div class="queNbrSpace">
+                                                            <div class="form-group mb_form-group">
+                                                                <div
+                                                                    class="field_md fld-icon-Date field_labelTP datepickerParent">
+                                                                    <input class="form-control cmnField datepicker_fld"
+                                                                        DobValidation placeholder="MM/DD/YYYY"
+                                                                        formControlName="dob"
+                                                                        (focusout)="getDriverDetailbyDOB($event.target.value)"
+                                                                        [readonly]="isReadOnlydob" type="text"
+                                                                        maxlength="10"
+                                                                        [ngClass]="{'pointer-none': isReadOnlydob}">
+
+                                                                    <input type="text"
+                                                                        class="form-control datepickerModel"
+                                                                        #dp="bsDatepicker" id="bsDatepickerDOB"
+                                                                        bsDatepicker [bsConfig]="bsConfig" DobValidation
+                                                                        maxlength="10" [maxDate]="maxDate"
+                                                                        [minDate]="minDate"
+                                                                        [(ngModel)]="datepickerModel"
+                                                                        (bsValueChange)="getdate($event)"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                        [ngClass]="{'pointer-none': isReadOnlydob, 'ffl-floated-force' : this.form.get('dob').value}">
+                                                                    <!-- [bsValue]="bsValue" -->
+                                                                    <label class="primary-label label-Tp">Date of
+                                                                        Occurrence</label>
+                                                                    <div class="invalid-fld-feedback">Please enter a
+                                                                        valid date</div>
+
+                                                                    <div class="fldIcon"><img
+                                                                            src="assets/images/icon-calendar.png" alt=""
+                                                                            alt="" (click)="dp.toggle()"
+                                                                            [attr.aria-expanded]="dp.isOpen"
+                                                                            [ngClass]="{'pointer-none': isReadOnlydob}" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="col-lg-6 question-content">
+                                                        <div class="queNbrSpace">
+                                                            <div class="form-group mb_form-group">
+                                                                <div class="field_md fld-icon-Date field_labelTP">
+                                                                    <input class="form-control cmnField datepicker_fld"  DobValidation placeholder="MM/DD/YYYY" formControlName="dob" (focusout)="getDriverDetailbyDOB($event)" [readonly]="isReadOnlydob" type="text" maxlength="10" [ngClass]="{'pointer-none': isReadOnlydob}" [hidden]="true">
+
+
+
+                                                                    <input type="text"
+                                                                        placeholder="MM/DD/YYYY"
+                                                                        class="form-control cmnField datepicker_fld"
+                                                                        [bsConfig]="bsConfig"
+                                                                        bsDatepicker  
+                                                                        DobValidation 
+                                                                        maxlength="10"
+                                                                        [maxDate]="maxDate"
+                                                                        [minDate]="minDate"
+                                                                        [readonly]="isReadOnlydob"
+                                                                        id="driverdob"
+                                                                        [ngClass]="{'pointer-none': isReadOnlydob}"
+                                                                        (focusout)="getDriverDetailbyDOB($event)"
+                                                                        [(ngModel)]="datepickerModel"
+                                                                        (bsValueChange)="getdate($event)"
+                                                                        [ngModelOptions]="{standalone: true}"
+                                                                    >
+
+                                                                   
+
+                                                                    Toggle "has-error" this class for Error 
+                                                                    <label class="primary-label label-Tp">Date of
+                                                                        Birth</label>
+                                                                    <div class="invalid-fld-feedback-invalid">Please enter a valid birthdate</div>
+
+                                                                    <div class="fldIcon"><img
+                                                                            src="./assets/images/icon-calendar.png"
+                                                                            alt="" /></div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+
+                                            <div class="section-page-question">
+                                                <div class="question-wrap row no-gutters justify-content-between">
+                                                    <div class="col-lg-5 question-header d-flex"> <span
+                                                            class="question-counter"> <span class="countNbr"></span>
+                                                            <svg class="iconMark" width="15" height="14"
+                                                                viewbox="0 0 15 14" fill="none">
+                                                                <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                            </svg> </span>
+                                                        <div>
+                                                            <h3 class="question-text">Personal Details of policy holder
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 question-content">
+                                                        <div class="queNbrSpace">
+                                                            <div class="form-group mb_form-group">
+                                                                <div class="field_md">
+                                                                    <input class="form-control cmnField"
+                                                                        [ngClass]="{'ffl-floated-force' : form.get('firstName').value != ''}"
+                                                                        formControlName="firstName"
+                                                                        [readonly]="isReadOnlyFname"
+                                                                        appOnlyAlphabetical>
+                                                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                    <label class="primary-label">First Name</label>
+                                                                    <div class="invalid-fld-feedback">Please enter a
+                                                                        valid
+                                                                        First Name</div>
+                                                                    <div class="invalid-fld-feedback-invalid">Please
+                                                                        enter a valid First Name</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb_form-group">
+                                                                <div class="field_md">
+                                                                    <input class="form-control cmnField"
+                                                                        [ngClass]="{'ffl-floated-force' : form.get('middleName').value != ''}"
+                                                                        formControlName="middleName"
+                                                                        [readonly]="isReadOnlymname"
+                                                                        appOnlyAlphabetical>
+                                                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                    <label class="primary-label">Middle Name</label>
+                                                                    <div class="invalid-fld-feedback">Please enter a
+                                                                        valid
+                                                                        Middle Name</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb_form-group">
+                                                                <div class="field_md">
+                                                                    <input class="form-control cmnField"
+                                                                        [ngClass]="{'ffl-floated-force' : form.get('lastName').value != ''}"
+                                                                        formControlName="lastName"
+                                                                        [readonly]="isReadOnlylname"
+                                                                        appOnlyAlphabetical>
+                                                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                    <label class="primary-label">Last Name</label>
+                                                                    <div class="invalid-fld-feedback">Please enter a
+                                                                        valid
+                                                                        Last Name</div>
+                                                                    <div class="invalid-fld-feedback-invalid">Please
+                                                                        enter a valid
+                                                                        Last Name</div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb_form-group">
+                                                                <div class="field_md">
+                                                                    <input class="form-control cmnField"
+                                                                        [ngClass]="{'has-error' : emailError, 'ffl-floated-force' : form.get('email').value != ''}"
+                                                                        formControlName="email"
+                                                                        (focusout)="emailCheck($event)">
+                                                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                    <label class="primary-label">Email Address</label>
+                                                                    <div class="invalid-fld-feedback"
+                                                                        *ngIf="emailError">Please enter a valid Email
+                                                                        Address</div>
+
+                                                                    <div class="invalid-fld-feedback-invalid"
+                                                                        *ngIf="!emailError">Please enter a valid Email
+                                                                        Address</div>
+
+                                                                    <button id="openModalButtonEmail" [hidden]="true"
+                                                                        data-toggle="modal"
+                                                                        data-target="#modal-Email_Exist">Open
+                                                                        Modal</button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group mb_form-group">
+                                                                <div class="wrap-FullGroupError">
+                                                                    <!-- [ngClass]="{'has-error' : form.get('phone1').value == '' || form.get('phone2').value != '' || form.get('phone3').value != ''}" -->
+                                                                    <!-- Toggle "has-error" thisclass for Error -->
+                                                                    <div class="row gutterField-8">
+                                                                        <div class="col-sm-4 phoneNext">
+                                                                            <div
+                                                                                class="form-group mb_form-group mb-sm-0">
+                                                                                <div class="field_md field_labelTP">
+                                                                                    <input class="form-control cmnField"
+                                                                                        formControlName="phone1"
+                                                                                        id="phone1" placeholder="XXX"
+                                                                                        type="tel" maxlength="3"
+                                                                                        (keyup)="keytab($event, 3, 1)"
+                                                                                        numbersOnly>
+                                                                                    <label
+                                                                                        class="primary-label label-Tp">Contact
+                                                                                        Number</label>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-4 phoneNext">
+                                                                            <div
+                                                                                class="form-group mb_form-group mb-sm-0">
+                                                                                <div class="field_md field_labelTP">
+                                                                                    <input class="form-control cmnField"
+                                                                                        formControlName="phone2"
+                                                                                        id="phone2" placeholder="XXX"
+                                                                                        type="tel" maxlength="3"
+                                                                                        (keyup)="keytab($event, 3, 2)"
+                                                                                        numbersOnly>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-4 phoneNext">
+                                                                            <div
+                                                                                class="form-group mb_form-group mb-sm-0">
+                                                                                <div class="field_md field_labelTP">
+                                                                                    <input class="form-control cmnField"
+                                                                                        formControlName="phone3"
+                                                                                        id="phone3" placeholder="XXXX"
+                                                                                        type="tel" maxlength="4"
+                                                                                        numbersOnly>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="invalid-fld-feedback">Please enter a valid
+                                                                    Contact Number</div>
+                                                                <!-- <div class="invalid-fld-feedback-invalid">Please enter a valid
+                                                                    Contact Number</div> -->
+                                                            </div>
+
+                                                            <div class="row gutterField-8">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group mb_form-group">
+                                                                        <div class="cstBlockwrap">
+                                                                            <label for="policy_Holder_gender_Male"
+                                                                                class="custom-control custom-block custom-radio mb-0">
+                                                                                <input id="policy_Holder_gender_Male"
+                                                                                    type="radio"
+                                                                                    class="custom-control-input form-check-input"
+                                                                                    checked formControlName="isMale"
+                                                                                    value="true">
+                                                                                <span
+                                                                                    class="custom-control-label-wrap"><span
+                                                                                        class="custom-control-indicator"></span>
+                                                                                    <span
+                                                                                        class="indicator-label">Male</span>
+                                                                                </span> </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group mb_form-group">
+                                                                        <div class="cstBlockwrap">
+                                                                            <label for="policy_Holder_gender_Female"
+                                                                                class="custom-control custom-block custom-radio mb-0">
+                                                                                <input id="policy_Holder_gender_Female"
+                                                                                    type="radio"
+                                                                                    class="custom-control-input form-check-input"
+                                                                                    formControlName="isMale"
+                                                                                    value="false">
+                                                                                <span
+                                                                                    class="custom-control-label-wrap"><span
+                                                                                        class="custom-control-indicator"></span>
+                                                                                    <span
+                                                                                        class="indicator-label">Female</span>
+                                                                                </span> </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="form-group mb_form-group">
+                                                                <div class="selectNG_dropdown">
+                                                                    <ng-select class="custom_ngSelect"
+                                                                        [items]="maritalStatus" bindLabel="value"
+                                                                        placeholder="Select" bindValue="key"
+                                                                        [searchable]="false"
+                                                                        formControlName="isMarried">
+
+                                                                        <ng-template ng-label-tmp let-item="item">
+                                                                            {{item.value}}
+                                                                        </ng-template>
+
+                                                                    </ng-select>
+                                                                    <label class="selectLabel">Marital
+                                                                        Status</label>
+                                                                    <svg class="arrowIcon"
+                                                                        xmlns="http://www.w3.org/2000/svg" width="11.67"
+                                                                        height="6.04" viewBox="0 0 11.67 6.04">
+                                                                        <polygon
+                                                                            points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                                                            fill="#fff"></polygon>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <!-- <div class="form-group mb_form-group">
+                                                                <div class="dropdown-select-wrap field_md">
+                                                                    <div class="dropdown-select dropdown"> <span
+                                                                            class="dropdown-select-header labelTP"
+                                                                            data-toggle="dropdown" data-flip="false">
+                                                                            
+                                                                            <label class="dropdown-label">Marital
+                                                                                Status</label>
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="Select">
+                                                                            <svg class="" xmlns="http://www.w3.org/2000/svg"
+                                                                                width="11.67" height="6.04"
+                                                                                viewBox="0 0 11.67 6.04">
+                                                                                <polygon
+                                                                                    points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                                                                    fill="#fff"></polygon>
+                                                                            </svg></span>
+                                                                        <div class="dropdown-menu">
+                                                                            <ul class="list-unstyled dopDownMenu-List mb-0">
+                                                                                <li><a class="item">Single</a></li>
+                                                                                <li><a class="item">Married</a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div> -->
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="section-page-question">
+                                                <div class="question-wrap row no-gutters justify-content-between">
+                                                    <div class="col-lg-5 question-header d-flex"> <span
+                                                            class="question-counter"> <span class="countNbr"></span>
+                                                            <svg class="iconMark" width="15" height="14"
+                                                                viewbox="0 0 15 14" fill="none">
+                                                                <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                            </svg> </span>
+                                                        <div>
+                                                            <h3 class="question-text">Any tickets or accidents in the
+                                                                past?
+                                                            </h3>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 question-content">
+                                                        <div class="queNbrSpace">
+                                                            <div class="row gutterField-8">
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group mb_form-group">
+                                                                        <div class="cstBlockwrap">
+                                                                            <label for="tickets_or_accidents-Yes"
+                                                                                class="custom-control custom-block custom-radio mb-0">
+                                                                                <input id="tickets_or_accidents-Yes"
+                                                                                    type="radio"
+                                                                                    class="custom-control-input form-check-input"
+                                                                                    formControlName="isAnytickets"
+                                                                                    value="Yes"
+                                                                                    (change)="addVoilation($event)">
+                                                                                <span
+                                                                                    class="custom-control-label-wrap"><span
+                                                                                        class="custom-control-indicator"></span>
+                                                                                    <span
+                                                                                        class="indicator-label">Yes</span>
+                                                                                </span> </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <div class="form-group mb_form-group">
+                                                                        <div class="cstBlockwrap">
+                                                                            <label for="tickets_or_accidents-No"
+                                                                                class="custom-control custom-block custom-radio mb-0">
+                                                                                <input id="tickets_or_accidents-No"
+                                                                                    type="radio"
+                                                                                    class="custom-control-input form-check-input"
+                                                                                    formControlName="isAnytickets"
+                                                                                    value="No"
+                                                                                    (change)="addVoilation($event)">
+                                                                                <span
+                                                                                    class="custom-control-label-wrap"><span
+                                                                                        class="custom-control-indicator"></span>
+                                                                                    <span
+                                                                                        class="indicator-label">No</span>
+                                                                                </span> </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="navigation-buttons">
+                                            <ul class="list-inline mb-0 text-right btnsList_form">
+                                                <li class="list-inline-item">
+                                                    <!-- <a class="btn btnstl-1 btnBg-3"  (click)="onSubmit(form.value)">Save & Continue</a>  -->
+                                                    <button type="button" class="btn btnstl-1 btnBg-3"
+                                                        [disabled]="!form.valid || isClicked || emailError"
+                                                        (click)="onSubmit(form.value)">Save & Continue</button>
+
+                                                    <!-- [disabled]="isClicked" -->
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-md-auto">
+                            <div class="modal drawerModal drawerSummary" id="drawerModal">
+                                <div class="drawerWrap">
+                                    <button type="button" class="close text-uppercase text-center btnCls"
+                                        data-dismiss="modal"> <span class="btntext">&times;</span> </button>
+                                    <div class="mngInside">
+                                        <div class="drawInside">
+                                            <div class="formScreen_Hgt summaryScroll cstScroller mCustomScrollbar"
+                                                data-mcs-theme="dark">
+                                                <div class="right-summary-rail pTB_quote">
+                                                  
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+
+                        <beyontec-sidebar></beyontec-sidebar>
+
+                    </div>
+                </div>
+            </div>
+
+            <div #myDrivingLicense class="modal fade modalCst" id="modal-Driving_License" data-backdrop="static">
+                <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+                    <div class="modal-content modalGetQuote">
+                        <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+                        <div class="modal-body pb-lg">
+                            <div class="row no-gutters justify-content-center">
+                                <div class="col-lg-10">
+                                    <div class="infoModalWrap text-center">
+                                        <div class="heading-ttl f-W-B">Driving License</div>
+                                        <div class="txt-summary last-p line-H-1_3">
+                                            <p class="text-color-3 txt-Md"><strong>I would like to continue without my
+                                                    driver
+                                                    license.</strong></p>
+                                            <p class="gray-color-2 f-size-18">By choosing to proceed without entering
+                                                your driver license,
+                                                Pronto Insurance can only provide an estimate and we warn you, results
+                                                will vary!</p>
+                                            <p class="f-size-18">Don't you want an accurate quote?</p>
+                                        </div>
+                                        <div class="btnsWrapp mx-width">
+                                            <ul class="list-unstyled  btnListing mb-0">
+                                                <li><a class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block"
+                                                        data-dismiss="modal" (click)="getProceed(false)">ENTER
+                                                        DRIVER’S LICENSE NUMBER</a></li>
+                                                <li><a class="btn cmnBtn btnOutline-2 sm-sz text-uppercase btn-block"
+                                                        data-dismiss="modal" (click)="getProceed(true)">PROCEED
+                                                        ANYWAYS</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div #myEmailExist class="modal fade modalCst" id="modal-Email_Exist">
+                <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+                    <div class="modal-content modalGetQuote">
+                        <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+                        <div class="modal-body pb-lg">
+                            <div class="row no-gutters justify-content-center">
+                                <div class="col-lg-10">
+                                    <div class="infoModalWrap text-center">
+                                        <div class="heading-ttl f-W-B">Email</div>
+                                        <div class="txt-summary last-p line-H-1_3">
+                                            <!-- <p class="text-color-3 txt-Md"><strong>I would like to continue without my
+                                                    driver
+                                                    license.</strong></p> -->
+                                            <!-- <p class="gray-color-2 f-size-18">Email already being used on an existing policy</p> -->
+                                            <p class="f-size-18">Email already being used on an existing policy</p>
+                                        </div>
+                                        <div class="btnsWrapp mx-width">
+                                            <ul class="list-unstyled  btnListing mb-0">
+                                                <li><a class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block"
+                                                        data-dismiss="modal">Proceed anyway</a></li>
+                                                <li><a class="btn cmnBtn btnOutline-2 sm-sz text-uppercase btn-block"
+                                                        data-dismiss="modal" (click)="getProceedEmail(true)">LOG IN</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="modal fade modalCst" id="modal-Error_DL_DOB">
+                <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+                    <div class="modal-content modalGetQuote">
+                        <!--<button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>-->
+                        <div class="modal-body pb-lg">
+                            <div class="row no-gutters justify-content-center">
+                                <div class="col-lg-10">
+                                    <div class="infoModalWrap text-center">
+                                        <div class="txt-summary last-p line-H-1_3">
+                                            <p class="text-color-3 txt-Md"><strong>Please Check The DL and
+                                                    D.O.B</strong></p>
+                                            <p class="gray-color-2 f-size-18">Pease enter the correct driver’s license
+                                                number and date of birth.</p>
+                                        </div>
+                                        <div class="btnsWrapp mx-width">
+                                            <ul class="list-unstyled  btnListing mb-0">
+                                                <li>
+                                                    <a href="#"
+                                                        class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block"
+                                                        data-dismiss="modal" (click)="getChangeData()">Continue</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <app-footer-quote></app-footer-quote>
+
+        </div>
+    </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->

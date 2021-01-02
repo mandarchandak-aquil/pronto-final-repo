@@ -1,0 +1,84 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+
+
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+    <div class="pgWrapFull spcTpHeader vrLinesWrap">
+     <app-header (languageChange)="onlanguageChange($event)"></app-header>
+
+      
+      <div class="cmsHead_wrap" *ngIf="page">
+      <div class="container-fluid lg-container">
+      <h1 class="cmsPg-ttl text-center" [innerHTML]="page.title"><!-- CORONAVIRUS (COVID-19) UPDATES --></h1>
+      </div>
+      </div>
+      <div class="section-lg cmsPg_wrap gray-color-2" *ngIf="page">
+      <div class="container-fluid lg-container">
+      
+      
+      <div class="pgEditorCont editorCont last-p">
+      <h4 class="cmsSub_Head" [innerHTML]="page.section1_title"><!-- Our Security --></h4>
+      <div class="mb__50" [innerHTML]="section1">
+<!-- <p>At Prontoinsurance.com and other related sites (the "Site"), the privacy and security of our visitors' data is very important. Our physical safeguards, procedural controls, and data access controls protect your data from unauthorized access. We continually monitor our systems to prevent unauthorized attempts of intrusion.</p>
+<p>We also want you to have confidence that you can manage your policy from virtually anywhere, anytime with the prontoinsurance.com or Pronto Mobile App(Texas only)</p>
+<ul>
+<li>Manage your policies and accounts on our website or mobile app(Texas). You can pay your insurance bill, file a claim, or connect with us.</li>
+<li>Contact customer service -  <a href="contact.php">Click Here</a>.</li>
+<li>Contact your local agent or agency by phone or email - <a href="find-an-agent.php">Click Here</a> to find local agent</li>
+</ul>
+<p>We value your business and ask that you take care of yourself during this public health emergency.</p> -->
+</div>
+
+<h2 class="text-center" [innerHTML]="page.section2_title"><!-- Claims customers --></h2>
+<div [innerHTML]="section2"></div>
+<!-- <h4 class="cmsSub_Head">To Our Valued Customers:</h4>
+<p>At Pronto Insurance our promise is to be there for our customers when they need us. Our technology lets us process physical damage claims through virtual inspections, providing flexibility to help processing any physical damage claim you might have. Employees have the ability to work remotely if needed and Pronto Insurance has multiple claims offices in the United States. This allows us to react quickly and adapt to any needs that may present themselves in the coming weeks.</p>
+<p>Our crisis management teams are monitoring COVID-19 (Coronavirus) developments to mitigate any potential business interruption. We are confident that we are prepared and have the resources available to continue to provide you best in class customer service during this unprecedented situation.</p> -->
+
+      </div>
+      
+      </div>
+      </div>
+      
+      <div class="overflow-hidden">
+        <div class="row gutter-8">
+          <div class="col-md-6">
+            <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-2.jpg)" data-aos="fade-up" data-aos-duration="900">
+              <div class="mngInside d-flex align-items-center">
+                <div class="w-100 z_ind1">
+                  <div class="textCont text-color-white text-center">
+                    <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">LEARN ABOUT</div>
+                    <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900">INDEPENDENT AGENT</div>
+                    <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a href="independent-agent.php" class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-3.jpg)" data-aos="fade-up" data-aos-duration="900">
+              <div class="mngInside d-flex align-items-center">
+                <div class="w-100 z_ind1">
+                  <div class="textCont text-color-white text-center">
+                    <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">OPEN YOUR</div>
+                    <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900">PRONTO FRANCHISE AGENCY</div>
+                    <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a href="https://www.prontofranchise.com" target="_blank" class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+   <app-counter-section   *ngIf="page"></app-counter-section>            
+
+            <footer class="footerWrap overflow-hidden" *ngIf="page"> 
+                <app-footer></app-footer>
+            </footer>
+
+    </div>
+  </div>
+  <!-- .perspScreen --> 
+</div>
+<!-- .fullPG_Wrap -->

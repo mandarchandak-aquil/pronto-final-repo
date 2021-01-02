@@ -1,0 +1,520 @@
+<app-pre-loader  *ngIf="loading"></app-pre-loader>
+
+
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+        <div class="pgWrapFull spcTpHeader vrLinesWrap">
+
+               <app-header (languageChange)="onlanguageChange($event)"></app-header>
+
+            <div class="dashboard_pg_wrap minScreen-hgt bg-patternGrdnt">
+                <app-dashboard-responsive-top-header></app-dashboard-responsive-top-header>
+                <div class="dashScreen_wrap">
+                    <div class="row no-gutters dashWrap_Row">
+                        <div class="col-lg-auto brdRgt">
+                            <div class="colWdth_side">
+                                <app-dashboard-side-nav></app-dashboard-side-nav>
+                            </div>
+                        </div>
+                        <div class="col-lg brdCol">
+                            <div class="dashboard_middle">
+                                <div class="dashB_mdl-pd">
+                                    <div class="dash_tp-btnsRow d-none d-lg-block" data-aos="fade-up"
+                                        data-aos-duration="900">
+                                        <div class="row no-gutters">
+                                            <div class="col"><a href="#" data-toggle="modal" data-target="#modal-Start-claim"
+                                                    class="btn cmnBtn btn-sz-md btnBg-1 text-uppercase">Report CLAIM</a>
+                                            </div>
+                                            <!-- <div class="col text-right">
+                                                <div class="d-inline-block">
+                                                    <div class="viewCard_wrap d-flex align-items-center">
+                                                        <div class="iconWrap"><img class="w-100"
+                                                                src="assets/images/icon-view-card.png" alt="" /></div>
+                                                        <div class="btnCol flex-fill"> <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-md btnBg-4 text-uppercase">VIEW
+                                                                YOUR ID CARDS</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dashboard-mdl_Scroll cstScroller cst_mCst_scroll_Desk" data-aos="fade-up"
+                                    data-aos-delay="300" data-aos-duration="900">
+
+                                    <div class="dashB_mdl-pd" >
+                                        <h1 class="dashlg-Head font-F-1 f-W-B">My Policies</h1>
+                                          <div class="cardDash_cmn dash_cardRow f-size-20 line-H-1_3" *ngFor="let prod of oneinc ;let i =index;trackBy: trackElement" >
+                       
+                                            <div class="statusLabel f-W-M">{{ prod.status }}</div>
+
+                                            <div class="row no-gutters">
+                                                <div class="col-md-auto text-center text-sm-left">
+                                                    <div class="h-100 d-flex align-items-center">
+                                                        <div class="w-100">
+                                                            <div class="iconWrap">
+                                            <img class="w-100" *ngIf="prod.status == 'medicare'"  src="assets/images/dash-policy-icon-1.png" alt="" />
+                                            <img class="w-100" *ngIf="prod.status == 'medicare'"  src="assets/images/dash-policy-icon-1.png" alt="" />
+                                             <img class="w-100" *ngIf="prod.status.status == 'car'"  src="assets/images/dash-policy-icon-2.png" alt="" />
+                                              <img class="w-100" *ngIf="prod.status.status == 'home'"  src="assets/images/dash-policy-icon-3.png" alt="" />
+                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md overflow-hidden">
+                                                    <div class="row h-100 rowGutter_spc insRowBrd">
+                                                        <div class="col-sm-auto">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-1 text-center text-md-left">
+                                                                    <div class="lable-ttl">Policy Number:</div>
+                                                                    <div class="f-W-M text-color-3"> 
+                                                    {{ prod.policyNo }}
+                                                                    </div>
+                                                                    <div class="policy_veiwDetailsWrap"><a class="btnPolicy_view f-W-M text-color-3"  (click)="getDetails(prod.policyNo)">View Details</a></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-2 text-center">
+                                                                    <div class="lable-ttl">Policy Premium:</div>
+                                                                    <div>
+                                                                        <div class="prcWrap">
+                                                                            $<span class="txtLg f-W-M">{{prod.customerDue}}</span>
+                                                                        </div>
+                                                                       {{prod.term}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-3 text-center text-md-left">
+                                                                    <div class="lable-ttl">Policy Period:</div>
+                                                                    <div class="f-W-M">
+                                                                     {{prod.fromDate | date:'mediumDate' }} to  {{prod.toDate | date:'mediumDate' }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <div
+                                                        class="btnCol h-100 d-flex align-items-center text-center text-md-right">
+                                                        <div class="w-100"> 
+                                                            
+                                                            <a routerLink="/dashboard02-policy-details"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="prod.policyStatus== 'CAN'">Renew now!</a>
+                                                                 <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-2" *ngIf="prod.policyStatus== 'CTP'">Pay now!</a>
+                                                                <a routerLink="/dashboard/policy-details/{{prod.policyNo}}"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="prod.policyStatus== 'EXP'">View Details!</a>
+                                                                <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="prod.policyStatus== 'RIN'">Pay now!</a>
+                                                                <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="prod.policyStatus== 'RIS '">Pay now!</a>
+                                                                <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="prod.policyStatus != 'CAN' && prod.policyStatus != 'CTP' && prod.policyStatus != 'RIS' && prod.policyStatus != 'RIN' && prod.policyStatus != 'EXP'">View Details!</a>
+                                                            
+                                                            
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    <div class="cardDash_cmn dash_cardRow f-size-20 line-H-1_3" *ngIf="productInfoList[0]">
+                                           
+                                            <div class="statusLabel f-W-M">{{ productInfoList[0].status }}</div>
+
+                                            <div class="row no-gutters">
+                                                <div class="col-md-auto text-center text-sm-left">
+                                                    <div class="h-100 d-flex align-items-center">
+                                                        <div class="w-100">
+                                                            <div class="iconWrap">
+                                            <img class="w-100" *ngIf="productInfoList[0].status == 'medicare'"  src="assets/images/dash-policy-icon-1.png" alt="" />
+                                             <img class="w-100" *ngIf="productInfoList[0].status.status == 'car'"  src="assets/images/dash-policy-icon-2.png" alt="" />
+                                              <img class="w-100" *ngIf="productInfoList[0].status.status == 'home'"  src="assets/images/dash-policy-icon-3.png" alt="" />
+                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md overflow-hidden">
+                                                    <div class="row h-100 rowGutter_spc insRowBrd">
+                                                        <div class="col-sm-auto">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-1 text-center text-md-left">
+                                                                    <div class="lable-ttl">Policy Number:</div>
+                                                                    <div class="f-W-M text-color-3"> 
+                                                                        <a class="text-color-3" href="#">{{ productInfoList[0].policyNo }}</a>
+                                                                    </div>
+                                                                    <div class="policy_veiwDetailsWrap"><a class="btnPolicy_view f-W-M text-color-3" (click)="getDetails(productInfoList[0].policyNo)">View Details</a></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-2 text-center">
+                                                                    <div class="lable-ttl">Policy Premium:</div>
+                                                                    <div>
+                                                                        <div class="prcWrap">
+                                                                            $<span class="txtLg f-W-M">{{productInfoList[0].customerDue}}</span>
+                                                                        </div>
+                                                                         Per Month
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-3 text-center text-md-left">
+                                                                    <div class="lable-ttl">Policy Period:</div>
+                                                                    <div class="f-W-M">
+                                                                     {{productInfoList[0].fromDate | date:'mediumDate' }} to  {{productInfoList[0].toDate | date:'mediumDate' }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <div
+                                                        class="btnCol h-100 d-flex align-items-center text-center text-md-right">
+                                                        <div class="w-100">
+                                                              <a routerLink="/dashboard02-policy-details"
+                                                            class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[0].policyStatus == 'CAN'">Renew now!</a>
+                                                             <a routerLink="/"
+                                                            class="btn cmnBtn btn-sz-dashb btnBg-2" *ngIf="productInfoList[0].policyStatus == 'CTP' ">Pay now!</a>
+                                                            <a routerLink="/dashboard/policy-details/{{productInfoList[0].policyNo}}"
+                                                            class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[0].policyStatus == 'EXP' ">View Details!</a>
+                                                            <a routerLink="/"
+                                                            class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[0].policyStatus == 'RIN'">Pay now!</a>
+                                                            <a routerLink="/"
+                                                            class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[0].policyStatus == 'RIS'">Pay now!</a>
+                                                            <a routerLink="/dashboard/policy-details/{{productInfoList[0].policyNo}}"
+                                                            class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[0].policyStatus != 'CAN' && productInfoList[0].policyStatus != 'CTP' && productInfoList[0].policyStatus != 'RIS' && productInfoList[0].policyStatus != 'RIN' && productInfoList[0].policyStatus != 'EXP'">View Details!</a>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                     <div class="cardDash_cmn dash_cardRow f-size-20 line-H-1_3" *ngIf="productInfoList[1]">
+                        
+                                            <div class="statusLabel f-W-M">{{productInfoList[1].status}}</div>
+
+                                            <div class="row no-gutters">
+                                                <div class="col-md-auto text-center text-sm-left">
+                                                    <div class="h-100 d-flex align-items-center">
+                                                        <div class="w-100">
+                                                            <div class="iconWrap">
+                                            <img class="w-100" *ngIf="productInfoList[1].status== 'medicare'"  src="assets/images/dash-policy-icon-1.png" alt="" />
+                                             <img class="w-100" *ngIf="productInfoList[1].status== 'car'"  src="assets/images/dash-policy-icon-2.png" alt="" />
+                                              <img class="w-100" *ngIf="productInfoList[1].status== 'home'"  src="assets/images/dash-policy-icon-3.png" alt="" />
+                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md overflow-hidden">
+                                                    <div class="row h-100 rowGutter_spc insRowBrd">
+                                                        <div class="col-sm-auto">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-1 text-center text-md-left">
+                                                                    <div class="lable-ttl">Policy Number:</div>
+                                                                    <div class="f-W-M text-color-3">{{productInfoList[1].policyNo}}
+                                                                       
+                                                                    </div>
+                                                                    <div class="policy_veiwDetailsWrap"><a class="btnPolicy_view f-W-M text-color-3" (click)="getDetails(productInfoList[1].policyNo)">View Details</a></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-2 text-center">
+                                                                    <div class="lable-ttl">Policy Premium:</div>
+                                                                    <div>
+                                                                        <div class="prcWrap">
+                                                                            $<span class="txtLg f-W-M">{{productInfoList[1].customerDue}}</span>
+                                                                        </div>
+                                                                       Per Month
+                                                                       
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-3 text-center text-md-left">
+                                                                    <div class="lable-ttl">Policy Period:</div>
+                                                                    <div class="f-W-M">
+                                                                     {{productInfoList[1].fromDate | date:'mediumDate' }} to  {{productInfoList[1].toDate | date:'mediumDate' }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <div
+                                                        class="btnCol h-100 d-flex align-items-center text-center text-md-right" *ngIf="productInfoList[2]">
+                                                        <div class="w-100"> <a routerLink="/dashboard02-policy-details"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[1].policyStatus == 'CAN' ">Renew now!</a>
+                                                                 <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-2" *ngIf="productInfoList[1].policyStatus == 'CTP' ">Pay now!</a>
+                                                                <a routerLink="/dashboard/policy-details/{{productInfoList[1].policyNo}}"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[1].policyStatus == 'EXP' ">View Details!</a>
+                                                                <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[1].policyStatus == 'RIN' ">Pay now!</a>
+                                                                <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[1].policyStatus == 'RIS' ">Pay now!</a>
+                                                                <a routerLink="/dashboard/policy-details/{{productInfoList[1].policyNo}}"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[1].policyStatus != 'CAN' && productInfoList[1].policyStatus != 'CTP' && productInfoList[1].policyStatus != 'RIS' && productInfoList[1].policyStatus != 'RIN' && productInfoList[1].policyStatus != 'EXP'">View Details!</a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                             <div class="cardDash_cmn dash_cardRow f-size-20 line-H-1_3" *ngIf="productInfoList[2]">
+                       
+                                            <div class="statusLabel f-W-M">{{ productInfoList[2].status }}</div>
+
+                                            <div class="row no-gutters">
+                                                <div class="col-md-auto text-center text-sm-left">
+                                                    <div class="h-100 d-flex align-items-center">
+                                                        <div class="w-100">
+                                                            <div class="iconWrap">
+                                            <img class="w-100" *ngIf="productInfoList[2].status == 'medicare'"  src="assets/images/dash-policy-icon-1.png" alt="" />
+                                             <img class="w-100" *ngIf="productInfoList[2].status.status == 'car'"  src="assets/images/dash-policy-icon-2.png" alt="" />
+                                              <img class="w-100" *ngIf="productInfoList[2].status.status == 'home'"  src="assets/images/dash-policy-icon-3.png" alt="" />
+                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md overflow-hidden">
+                                                    <div class="row h-100 rowGutter_spc insRowBrd">
+                                                        <div class="col-sm-auto">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-1 text-center text-md-left">
+                                                                    <div class="lable-ttl">Policy Number:</div>
+                                                                    <div class="f-W-M text-color-3"> 
+                                                    {{ productInfoList[2].policyNo }}
+                                                                    </div>
+                                                                    <div class="policy_veiwDetailsWrap"><a class="btnPolicy_view f-W-M text-color-3"  (click)="getDetails(productInfoList[2].policyNo)">View Details</a></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-2 text-center">
+                                                                    <div class="lable-ttl">Policy Premium:</div>
+                                                                    <div>
+                                                                        <div class="prcWrap">
+                                                                            $<span class="txtLg f-W-M">{{productInfoList[2].customerDue}}</span>
+                                                                        </div>
+                                                                        Per Month
+                                                                        
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-3 text-center text-md-left">
+                                                                    <div class="lable-ttl">Policy Period:</div>
+                                                                    <div class="f-W-M">
+                                                                     {{productInfoList[2].fromDate | date:'mediumDate' }} to  {{productInfoList[2].toDate | date:'mediumDate' }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <div
+                                                        class="btnCol h-100 d-flex align-items-center text-center text-md-right">
+                                                        <div class="w-100">
+                                                            <a routerLink="/dashboard02-policy-details"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[2].policyStatus == 'CAN' ">Renew now!</a>
+                                                                 <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-2" *ngIf="productInfoList[2].policyStatus == 'CTP' ">Pay now!</a>
+                                                                <a routerLink="/dashboard/policy-details/{{productInfoList[2].policyNo}}"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[2].policyStatus == 'EXP' ">View Details!</a>
+                                                                <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[2].policyStatus == 'RIN' ">Pay now!</a>
+                                                                <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[2].policyStatus == 'RIS' ">Pay now!</a>
+                                                                <a routerLink="/dashboard/policy-details/{{productInfoList[2].policyNo}}"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="productInfoList[2].policyStatus != 'CAN' && productInfoList[2].policyStatus != 'CTP' && productInfoList[2].policyStatus != 'RIS' && productInfoList[2].policyStatus != 'RIN' && productInfoList[2].policyStatus != 'EXP'">View Details!</a>
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="loadMoreRow text-center" *ngIf="productInfoList.length>=1" > <a *ngIf="!showpolicy" (click)="show()" class="btn btnLoadMore">Load
+                                                more Policies</a> </div>
+                                                <div class="loadMoreRow text-center" *ngIf="productInfoList.length<=1" > <a *ngIf="!showpolicy" >No
+                                                     Policies To Show</a> </div>
+                                                
+                                             <div *ngIf="showpolicy">
+                                                 
+                                                 <div [hidden]="i<3"class="cardDash_cmn dash_cardRow f-size-20 line-H-1_3" *ngFor="let prod of productInfoList ;let i =index;trackBy: trackElement" >
+                       
+                                            <div class="statusLabel f-W-M">{{ prod.status }}</div>
+
+                                            <div class="row no-gutters">
+                                                <div class="col-md-auto text-center text-sm-left">
+                                                    <div class="h-100 d-flex align-items-center">
+                                                        <div class="w-100">
+                                                            <div class="iconWrap">
+                                            <img class="w-100" *ngIf="prod.status == 'medicare'"  src="assets/images/dash-policy-icon-1.png" alt="" />
+                                            <img class="w-100" *ngIf="prod.status == 'medicare'"  src="assets/images/dash-policy-icon-1.png" alt="" />
+                                             <img class="w-100" *ngIf="prod.status.status == 'car'"  src="assets/images/dash-policy-icon-2.png" alt="" />
+                                              <img class="w-100" *ngIf="prod.status.status == 'home'"  src="assets/images/dash-policy-icon-3.png" alt="" />
+                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md overflow-hidden">
+                                                    <div class="row h-100 rowGutter_spc insRowBrd">
+                                                        <div class="col-sm-auto">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-1 text-center text-md-left">
+                                                                    <div class="lable-ttl">Policy Number:</div>
+                                                                    <div class="f-W-M text-color-3"> 
+                                                    {{ prod.policyNo }}
+                                                                    </div>
+                                                                    <div class="policy_veiwDetailsWrap"><a class="btnPolicy_view f-W-M text-color-3"  (click)="getDetails(prod.policyNo)">View Details</a></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-2 text-center">
+                                                                    <div class="lable-ttl">Policy Premium:</div>
+                                                                    <div>
+                                                                        <div class="prcWrap">
+                                                                            $<span class="txtLg f-W-M">{{prod.customerDue}}</span>
+                                                                        </div>
+                                                                       {{prod.term}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm">
+                                                            <div class="colCont_Wrp">
+                                                                <div class="contCol-3 text-center text-md-left">
+                                                                    <div class="lable-ttl">Policy Period:</div>
+                                                                    <div class="f-W-M">
+                                                                     {{prod.fromDate | date:'mediumDate' }} to  {{prod.toDate | date:'mediumDate' }}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <div
+                                                        class="btnCol h-100 d-flex align-items-center text-center text-md-right">
+                                                        <div class="w-100"> 
+                                                            
+                                                            <a routerLink="/dashboard02-policy-details"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="prod.policyStatus== 'CAN'">Renew now!</a>
+                                                                 <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-2" *ngIf="prod.policyStatus== 'CTP'">Pay now!</a>
+                                                                <a routerLink="/dashboard/policy-details/{{prod.policyNo}}"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="prod.policyStatus== 'EXP'">View Details!</a>
+                                                                <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="prod.policyStatus== 'RIN'">Pay now!</a>
+                                                                <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="prod.policyStatus== 'RIS '">Pay now!</a>
+                                                                <a routerLink="/dashboard/policy-details/{{prod.policyNo}}"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1" *ngIf="prod.policyStatus != 'CAN' && prod.policyStatus != 'CTP' && prod.policyStatus != 'RIS' && prod.policyStatus != 'RIN' && prod.policyStatus != 'EXP'">View Details!</a>
+                                                            
+                                                            
+
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                             </div>       
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-auto brdLft">
+                            <div class="colWdth_side">
+                                <app-dashboard-side-userinfo></app-dashboard-side-userinfo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footerWrap overflow-hidden">
+                <app-footer></app-footer>
+            </footer>
+        </div>
+    </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->
+<!-- Modal Start Claim -->
+<div class="modal fade modalCst" id="modal-Start-claim">
+    <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+      <div class="modal-content">
+        <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+        <div class="modal-body pb-lg">
+        <div class="row no-gutters justify-content-center">
+        <div class="col-lg-11">
+        <div class="claim_choose_wrap">
+        <div class="cont-Head f-W-B line-H-1_3 text-center">For Auto claims, Please select your state</div>
+        <ul class="list-unstyled mb-0 row gutter-8 btnsList">
+        <li class="col-sm-4"><a routerLink="/en/claims/claim-texas" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">Texas</a></li>
+        <li class="col-sm-4"><a routerLink="/en/claims/claim-california" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">California</a></li>
+        <li class="col-sm-4"><a routerLink="/en/claims/claim-florida" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">Florida</a></li>
+        </ul>
+        </div>
+        </div>
+         </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- End Modal Start Claim -->

@@ -1,0 +1,296 @@
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+        <div class="pgWrapFull spcTpHeader vrLinesWrap">
+            <app-header ></app-header>
+            <pro-stepper></pro-stepper>
+            <div class="quotePG_wrap overflow-hidden position-relative">
+                <div class="floatImg floatShape-2 quoteunderwriting_imgFloat_2 floating-Animate"><img class="w-100"
+                        src="assets/images/floating-img-2.png" alt=""></div>
+                <div class="floatImg floatShape-1 quoteunderwriting_imgFloat_1 floating-Animate"><img class="w-100"
+                        src="assets/images/floating-img-1.png" alt=""></div>
+                <div class="floatImg floatShape-4 quoteunderwriting_imgFloat_4 floating-Animate"><img class="w-100"
+                        src="assets/images/floating-img-4.png" alt=""></div>
+                <div class="floatImg floatShape-5 quoteunderwriting_imgFloat_5 floating-Animate"> <img class="w-100"
+                        src="assets/images/floating-img-5.png" alt=""> </div>
+                <div class="floatImg floatShape-2 quoteunderwriting_imgFloat_2_1 floating-Animate"><img class="w-100"
+                        src="assets/images/floating-img-2.png" alt=""></div>
+
+                <div class="container-fluid lg-container">
+                    <div class=" pTB_quote pb-0" data-aos="fade-up" data-aos-duration="700">
+                        <div class="section-page-header">
+                            <h1 class="headingStl-1">Policy Underwriting</h1>
+                        </div>
+                        <form  [formGroup]="underwritting_form" (ngSubmit)="submit()">
+                        <div class="section-page-questions">
+                            <div class="section-page-question">
+                                <div class="question-wrap">
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-12 question-header d-flex"> <span class="question-counter">
+                                                <span class="countNbr"></span> <svg class="iconMark" width="15"
+                                                    height="14" viewbox="0 0 15 14" fill="none">
+                                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                </svg> </span>
+                                            <div>
+                                                <h3 class="question-text">Additional Driver Info</h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-11 question-content" formArrayName="drivers" *ngFor="let driver of underwritting_form.get('drivers')['controls'] ; let i=index">
+                                           
+                                            <div class="underWrite_singleRow"  [formGroupName]="i">
+                                                    <div class="row gutterField-15">
+                                                      <div class="col-sm-5 col-md-4 align-self-center">
+                                                       <div class="underWrite_LabelHead f-W-B">{{driver.get('firstName').value}} {{driver.get('lastName').value}}</div>
+                                                      </div>
+                                                      <div class="col-sm-5">
+                                                            <div class="form-group mb_group_lg">
+                                                                <div class="field_bx">
+                                                                    <label class="label_field_cst">Driver's License</label>
+                                                                    <input  formControlName="licenseNo" type="tel" maxlength="8"  class="form-control cmnField" >
+                                                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                    <div class="invalid-fld-feedback">Please enter a valid
+                                                                        driver's license</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section-page-question">
+                                <div class="question-wrap">
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-12 question-header d-flex"> <span class="question-counter">
+                                                <span class="countNbr"></span> <svg class="iconMark" width="15"
+                                                    height="14" viewbox="0 0 15 14" fill="none">
+                                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                </svg> </span>
+                                            <div>
+                                                <h3 class="question-text">Employer Information</h3>
+                                                <p class="question-byline">Please enter the employer or school
+                                                    address for each listed driver</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-11 question-content" formArrayName="employers" *ngFor="let employer of underwritting_form.get('employers')['controls'] ; let i=index">
+                                           
+
+
+                                            <div class="underWrite_singleRow"  [formGroupName]="i">
+                                                    <div class="underWrite_LabelHead mb f-W-B">{{employer.get('firstName').value}} {{employer.get('lastName').value}}</div>
+                                                      <div class="row gutterField-15">
+                                                           
+                                                                <div class="col-md-4 col-sm-6">
+                                                                    <div class="form-group mb_group_lg">
+                                                                        <div class="field_bx">
+                                                                            <label class="label_field_cst">Employer/School
+                                                                                Name</label>
+                                                                            <input class="form-control cmnField" formControlName="employer" >
+                                                                            <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                            <div class="invalid-fld-feedback">Please enter a valid
+                                                                                employer/school name</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-8 col-sm-6">
+                                                                    <div class="form-group mb_group_lg">
+                                                                        <div class="field_bx">
+                                                                            <label class="label_field_cst">Address</label>
+                                                                            <input class="form-control cmnField" formControlName="employerAddress">
+                                                                            <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                            <div class="invalid-fld-feedback">Please enter a valid
+                                                                                address</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-6">
+                                                                    <div class="form-group mb_group_lg">
+                                                                        <div class="field_bx">
+                                                                            <label class="label_field_cst">City</label>
+                                                                            <input class="form-control cmnField" formControlName="employerCity">
+                                                                            <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                            <div class="invalid-fld-feedback">Please enter a valid
+                                                                                city</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-6">
+                                                                        <div class="form-group mb_group_lg">
+                                                                                <div class="field_bx">
+                                                                                <label class="label_field_cst">State</label>
+                                                                                <div class="dropdown-select-wrap field_md">
+                                                                                         
+                                                                                        <div class="selectNG_dropdown" >
+                                                                                                <ng-select class="custom_ngSelect" [items]="form_view_data['states'] " 
+                                                                                                   bindLabel="text"
+                                                                                                   bindValue="value"
+                                                                                                   [multiple]="false"
+                                                                                                   [searchable]="true"
+                                                                                                   formControlName="employerState"
+                                                                                                   >
+                                                                                                   </ng-select>
+                                                                                                   <label class="selectLabel">State</label>
+                                                             <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                               <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                               </svg>
+                                                                                                 </div>
+                                                                                    </div>
+                                                                                    </div>
+                                                                            </div>
+                                                                    
+                                                                </div>
+                                                                <div class="col-md-4 col-sm-6">
+                                                                    <div class="form-group mb_group_lg">
+                                                                        <div class="field_bx">
+                                                                            <label class="label_field_cst">Zip Code</label>
+                                                                            <input class="form-control cmnField" formControlName="employerZip" type="tel" maxlength="5">
+                                                                            <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                            <div class="invalid-fld-feedback">Please enter a valid
+                                                                                zip code</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                      </div>
+                                                      </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section-page-question" >
+                                <div class="question-wrap">
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-12 question-header d-flex"> <span class="question-counter">
+                                                <span class="countNbr"></span> <svg class="iconMark" width="15"
+                                                    height="14" viewbox="0 0 15 14" fill="none">
+                                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                </svg> </span>
+                                            <div>
+                                                <h3 class="question-text">Vehicles</h3>
+                                                <p class="question-byline">In order to purchase a policy, we need
+                                                    the Vin number for all vehicles</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-11 question-content"  formArrayName="vins" *ngFor="let vin of underwritting_form.get('vins')['controls'] ; let i=index">
+                                           
+
+                                            <div class="underWrite_singleRow" [formGroupName]="i">
+                                                    <div class="row gutterField-15">
+                                                      <div class="col-sm-5 col-md-4 align-self-center">
+                                                       <div class="underWrite_LabelHead f-W-B">{{vin.get('year').value}} {{vin.get('modelDescription').value}} {{vin.get('make').value}}</div>
+                                                      </div>
+                                                      <div class="col-sm-5">
+                                                            <div class="form-group mb_group_lg">
+                                                                <div class="field_bx">
+                                                                    <label class="label_field_cst">Vin Number</label>
+                                                                    <input class="form-control cmnField" formControlName="vinNumber" type="tel">
+                                                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                    <div class="invalid-fld-feedback">Please enter a valid
+                                                                        vin number</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section-page-question">
+                                <div class="question-wrap">
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-12 question-header d-flex"> <span class="question-counter">
+                                                <span class="countNbr"></span> <svg class="iconMark" width="15"
+                                                    height="14" viewbox="0 0 15 14" fill="none">
+                                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                </svg> </span>
+                                            <div>
+                                                <h3 class="question-text">Additional Questions</h3>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-9 question-content">
+                                            <div class="queInside-space">
+
+                                                <div class="addition_QueTP d-none d-sm-block f-size-18">
+                                                    <div class="row gutterField-15 justify-content-between">
+                                                        <div class="col-md-5 col-sm-6">
+                                                            <div class="tpHead text-color-3 f-W-B line-H-1_2">
+                                                                Questions</div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="tpHead text-color-3 f-W-B line-H-1_2">
+                                                                Answer/Explain</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="addition_Que_wrap" formArrayName="questions" *ngFor="let question of underwritting_form.get('questions')['controls'] ; let i=index">
+                                                    <div class="additon_Que_Row" [formGroupName]="i">
+                                                        <div class="row gutterField-15 justify-content-between">
+                                                            <div class="col-md-5 col-sm-6">
+                                                                <div
+                                                                    class=" f-W-M line-H-1_4 f-size-18">
+                                                                    {{question.get('question1').value}}
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <div class="additional-spcL-ans">
+                                                                    <div class="form-group">
+                                                                        <div class="dropdown-select-wrap field_md">
+                                                                         
+                                                                            <div class="selectNG_dropdown" >
+                                                                                    <ng-select class="custom_ngSelect" [items]="form_view_data['yesNoOther'] " 
+                                                                                       bindLabel="option" (change)="change_yes_no(i,$event.value)"
+                                                                                       bindValue="value"
+                                                                                       [multiple]="false"
+                                                                                       [searchable]="true"
+                                                                                       formControlName="defaultAnswer"
+                                                                                       >
+                                                                                       </ng-select>
+                                                                                       <!-- <label class="selectLabel">Policy Term</label> -->
+                                                 <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                   <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                   </svg>
+                                                                                     </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                       
+                                                            <!-- <input class="form-control cmnField" [ngClass]="{'has-error' : question.get('answer').errors }" [required]="question.get('defaultAnswer').value=='True' || question.get('defaultAnswer').value=='' || question.get('defaultAnswer').value==null ? false : true" formControlName="answer" placeholder="Explain If Needed"> -->
+                                                            <input class="form-control cmnField" [ngClass]="{'has-error' : question.get('answer').errors }"  formControlName="answer" placeholder="Explain If Needed">
+                                                            <div class="invalid-fld-feedback">Please enter an explanation</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                   
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="navigation-buttons">
+                            <div class="queInside-space pl-md-0">
+                                <div class="row gutterField-15">
+                                    <div class="col-lg-9">
+                                        <ul class="list-inline mb-0 text-right btnsList_form">
+                                            <li class="list-inline-item"> <a routerLink="/quote-pro/quotation" class="btn btnstl-1 btnBg-3">Back</a>
+                                            </li>
+                                            <li class="list-inline-item"><button   type="submit" [disabled]="!underwritting_form.valid" class="btn btnstl-1 btnBg-3 ">Continue</button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <app-footer-quote></app-footer-quote>
+        </div>
+    </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->

@@ -1,0 +1,290 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+<!-- <app-sidebar></app-sidebar> -->
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+        <div class="pgWrapFull spcTpHeader vrLinesWrap">
+
+         <app-header (languageChange)="onlanguageChange($event)"></app-header>
+
+            <div class="bg-patternGrdnt">
+                <div class="container-fluid lg-container loginPg_wrap">
+
+                    <div class="text-center">
+                        <div class="loginChrtr_mng">
+                            <div class="loginCharacter">
+                                <img class="w-100" src="assets/images/login-character.png" alt="" />
+                            </div>
+                            <div class="loginOuterBx">
+                                <div class="charact_Hand"><img src="assets/images/login-character-hand.png" alt="" /></div>
+                                <div class="login_Bx">
+                                    <h1 class="heading_bx font-F-2 text-center">Login</h1>
+
+                                    <div class="loginForm_wrp">
+                                        <form [formGroup]="loginform" (ngSubmit)="onSubmit()">
+                                        <div class="row no-gutters justify-content-center">
+                                            <div class="col-lg-8 col-sm-9">
+                                                <div class="form-group">
+                                                    <div class="fldIconMng round_fldLg">
+                                                        <div class="iconWrap"><img class="w-100"
+                                                                src="assets/images/field-icon-email.png" alt=""></div>
+                                                        <input type="text" name="email" formControlName="email" class="form-control iconSpc fldRound"
+                                                            placeholder="Email id" [ngClass]="{'ffl-floated-force' : loginform.get('email').value != ''}">
+                                                            <div class="invalid-fld-feedback-invalid text-left">please enter valid email</div>
+                                                    </div>
+
+                                                   
+
+                                                </div>
+                                                <div class="form-group">
+                                                                      <div class="fldIconMng round_fldLg  passEye_icon">
+
+                                                        <div class="iconWrap"><img class="w-100"
+                                                                src="assets/images/field-icon-password.png" alt=""></div>
+                                                        <input [type]="showpass1 ? 'text' : 'password'" class="form-control iconSpc fldRound" name="password" formControlName="password"
+                                                            placeholder="Password">
+                                                            <div class="eye_btnWrap">
+                                                    <button class="btn btnEye toggle-password fa fa-eye" (click)="passchange1()"*ngIf="!showpass1">
+                                                                
+                                                            </button>
+                                                            <button class="btn btnEye toggle-password fa fa-eye-slash"  (click)="passchange1()" *ngIf="showpass1">
+
+                                                        </button>
+
+
+                                                        </div>
+                                                                            <div class="invalid-fld-feedback-invalid text-left">please enter valid password</div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="forgotLine keepLogin_forget d-flex flex-wrap justify-content-between align-items-center">
+                                                        <div class="keepLoginRow mt-0 line-H-1">
+                                                            <label class="check-sm-wrap checkCircle checkLogin mb-0">
+                                                                <input type="checkbox" class="inputCheck" checked>
+                                                                <span class="wrapRow d-flex align-items-center"> <span
+                                                                        class="checkIndicate"></span> <span
+                                                                        class="labelText flex-fill f-size-16 line-H-1_4">Keep
+                                                                        me loged in</span> </span> </label>
+                                                        </div>
+                                                        <div class="f-size-16 line-H-1_3 text-right">
+                                                        <a class="link-color-black f-W-M" routerLink="/forgot-password">Forgot
+                                                            Password?</a></div>
+                                                    </div>
+                                                </div>
+                                                <div class="btnRow">
+                                                    <button type="submit" [disabled]="!loginform.valid"
+                                                        class="btn btn-block cmnBtn btnBg-1 btnLogin text-uppercase">Login</button>
+                                                </div>
+
+                                                
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                    </div>
+
+                                    <div class="seprWrap seprOR lgSeprator">
+                                        <hr class="seprLine">
+                                    </div>
+
+                                    <div class="social_login_wrap">
+                                        <div class="ttl text-center gray-color-2 f-size-20">Login with your social
+                                            account</div>
+
+                                        <div class="row no-gutters justify-content-center">
+                                            <div class="col-lg-11">
+                                                <ul class="list-unstyled social_List_row row">
+                                                    <li class="col-sm-6">
+                                                        <a class="btn login_scl"  (click)="checksocial('google')" (click)="signInWithGoogle()"  >
+                                                            <span class="txtWrap"><img class="icon-img"
+                                                                    src="assets/images/login-social-gplus.png"
+                                                                    alt="" />Continue with Google</span>
+
+                                                        </a>
+                                                     
+
+
+                                                        <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+
+                                                    </li>
+                                                    <li class="col-sm-6">
+                                                        <a class="btn login_scl scl-ip" routerLink="/" target="_blank">
+                                                            <span class="txtWrap"><i class="icon-txt fa fa-apple"></i>
+                                                                Continue with
+                                                                Apple</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-sm-6">
+                                                        <a class="btn login_scl scl-fb"(click)="checksocial('fb')"  (click)="signInWithGoogle()">
+                                                            <span class="txtWrap"><i
+                                                                    class="icon-txt fa fa-facebook-official"></i>
+                                                                Connect with Facebook</span>
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-sm-6">
+                                                        <a class="btn login_scl scl-twitter"  target="_blank">
+                                                            <span class="txtWrap"><i class="icon-txt fa fa-twitter"></i>
+                                                                Continue
+                                                                with Twitter</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+                                         <div class="notMember text-center" *ngIf="duplicate">
+                                    
+                                        <div class="link-color-2 f-size-18 f-W-M">Duplicate Credentials Entered!</div>
+                                    </div>
+
+                                    <div class="notMember text-center">
+                                        <div class="ttl_head line-H-1_2 font-F-2">Not a member yet?</div>
+                                        <a routerLink="/auth/signup" class="link-color-2 f-size-18 f-W-M">Signup for online
+                                            access!</a>
+                                    </div>
+
+
+                                </div>
+                                <div class="callUs-row line-H-1_3 text-center">Or call us for more information <a
+                                        href="tel:1-888-338-6523" class="text-color-black f-W-M">1-888-338-6523</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+
+            <footer class="footerWrap overflow-hidden">
+                <app-footer></app-footer>
+            </footer>
+        </div>
+    </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->
+  <button style="display: none;" id="social" type="hidden" data-toggle="modal" data-target="#modal_policy_number" ></button>
+
+<!-- Modal Social login Policy No. -->
+<div class="modal fade modalCst show"  style="display: block;" id="modal_policy_number" *ngIf="showModalBox">
+  <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+    <div class="modal-content modalGetQuote">
+      <button type="button" class="close btnClose" data-dismiss="modal" (click)="closemodal()"><span>×</span></button>
+      <div class="modal-body pb-lg">
+      <div class="row no-gutters justify-content-center">
+         <form [formGroup]="policyform" (ngSubmit)="validatedata()">
+      <div class="col-lg-12">
+      <div class="infoModalWrap ">
+      <div class="txt-summary last-p line-H-1_3">
+      <p class="text-color-3 txt-Md text-center"><strong>Enter your policy to get verify</strong></p>
+      
+      <div class="form-group mb_form-group">
+                              <div class="field_md">
+                                <input class="form-control cmnField" name="policyNo" formControlName="policyNo" [ngClass]="{'ffl-floated-force' : policyform.get('policyNo').value != ''}" >
+                                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                <label class="primary-label">Enter policy number</label>
+                                <div class="invalid-fld-feedback-invalid" >Please enter valid policy number</div>
+                              </div>
+                            </div>
+                           
+                                  <div class="form-group mb_form-group">
+                              <div class="field_md">
+                                <input class="form-control cmnField" name="phone" formControlName="phone"   appPhoneMask [ngClass]="{'ffl-floated-force' : policyform.get('phone').value != ''}">
+                               
+                                <label class="primary-label">Phone</label>
+                                   <div class="invalid-fld-feedback-invalid" >Please enter valid phone number</div>
+                              </div>
+                            </div>
+                            <div class="row gutterField-8">
+                            <div class="col-md-6">
+                            <div class="form-group mb_form-group">
+                              <div class="field_md fld-icon-Date field_labelTP"> 
+                                <input class="form-control cmnField datepicker_fld" name="dob" formControlName="dob" placeholder="MM/DD/YYYY" [ngClass]="{'ffl-floated-force' : policyform.get('dob').value != ''}" DobValidation>
+                                <!-- Toggle "has-error" this class for Error -->
+                                <label class="primary-label label-Tp">DOB</label>
+                                <div class="fldIcon"><img src="images/icon-calendar.png" alt=""></div>
+                                 <div class="invalid-fld-feedback-invalid" >Please enter valid DOB </div>
+                              </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group mb_form-group">
+                              <div class="field_md">
+                                <input class="form-control cmnField" name="zip" formControlName="zip" [ngClass]="{'ffl-floated-force' : policyform.get('zip').value != ''}" maxlength="5">
+                                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                <label class="primary-label">Zip code</label>
+                                <div class="invalid-fld-feedback-invalid" >Please enter valid zip code </div>
+                              </div>
+                            </div>
+                            
+                            </div>
+                            </div>
+                            
+                            
+                            
+            </div>
+      <div class="btnsWrapp mx-width">
+      <ul class="list-unstyled  btnListing mb-0">
+      <li><button  [disabled]="!policyform.valid" type="submit" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">Submit</button></li>
+      </ul>
+      </div>
+      </div>
+      </div>
+       </form>
+       </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<div class="modal fade modalCst show"  style="display: block;" id="modal-social_login_Error" *ngIf="socialdeactivate">
+  <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+    <div class="modal-content modalGetQuote">
+      <button type="button" class="close btnClose" data-dismiss="modal" (click)="closesocial()"><span>×</span></button>
+      <div class="modal-body pb-lg">
+      <div class="row no-gutters justify-content-center">
+      <div class="col-lg-12">
+      <div class="infoModalWrap">
+      <div class="txt-summary last-p line-H-1_3">
+      <p class="text-color-3 txt-Md text-center"><strong>Social Login Has Deactivated By The User Please Login And Activate .</strong></p>
+            
+            </div>
+      
+      </div>
+      </div>
+       </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<div class="modal fade modalCst show"  style="display: block;" id="modal-social_login_Error" *ngIf="socialdeactivate1">
+    <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+      <div class="modal-content modalGetQuote">
+        <button type="button" class="close btnClose" data-dismiss="modal" (click)="closesocial()"><span>×</span></button>
+        <div class="modal-body pb-lg">
+        <div class="row no-gutters justify-content-center">
+        <div class="col-lg-12">
+        <div class="infoModalWrap">
+        <div class="txt-summary last-p line-H-1_3">
+        <p class="text-color-3 txt-Md text-center"><strong>Wrong Credentials Entered.</strong></p>
+              
+              </div>
+        
+        </div>
+        </div>
+         </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+<div class="modal-backdrop fade show" *ngIf="showModalBox || socialdeactivate || socialdeactivate1"></div>

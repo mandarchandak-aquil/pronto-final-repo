@@ -1,0 +1,90 @@
+<div class="secondNav_Wrapp fixSecondNav">
+  <div class="mngIns-tp">
+    <div class="container-fluid lg-container">
+      <div class="row no-gutters">
+        <div class="col-md">
+          <div class="d-none d-md-block">
+            <ul class="navbar justify-content-center list-unstyled mb-0 secondaryNav">
+              <!-- <li class="nav-item active"> <a class="nav-link" href="#"> <span class="navTtl">Start</span> <span
+                    class="dot"></span> </a> </li>
+              <li class="nav-item"> <a class="nav-link" href="#"> <span class="navTtl">DRIVER</span> <span
+                    class="dot"></span> </a> </li>
+              <li class="nav-item"> <a class="nav-link" href="#"> <span class="navTtl">CARS</span> <span
+                    class="dot"></span> </a> </li>
+              <li class="nav-item"> <a class="nav-link" href="#"> <span class="navTtl">COVERAGE</span> <span
+                    class="dot"></span> </a> </li> -->
+
+
+                    <li class="nav-item " [ngClass]="{'active' : path=='primary-details' || path=='user-info' || path=='driver-list' || path=='include-driver' || path=='02-b' || path=='02-c' || path=='03' || path=='underwritting' ||  path=='quote-summary' || path=='undisclosed-include' || path=='undisclosed-exclude' || path=='undisclosed-list' || path=='payment' }"> <a class="nav-link" (click)="gotopage('one-ink/user-info')"> <span class="navTtl">Start</span> <span class="dot"></span> </a> </li>
+                    <li class="nav-item" [ngClass]="{'active' : path=='primary-details' || path=='driver-list' || path=='include-driver' || path=='02-b' || path=='02-c' || path=='03' || path=='underwritting' ||  path=='quote-summary' || path=='undisclosed-include' || path=='undisclosed-exclude' || path=='undisclosed-list' || path=='payment'}"> <a class="nav-link"  (click)="gotopage('one-ink/driver-list')" > <span class="navTtl">DRIVER</span> <span class="dot"></span> </a> </li>
+                    <li class="nav-item" [ngClass]="{'active' :  path=='02-b' || path=='02-c' || path=='03' || path=='underwritting' ||  path=='quote-summary' || path=='undisclosed-include' || path=='undisclosed-exclude' || path=='undisclosed-list' || path=='payment'}"> <a class="nav-link" (click)="gotopage('one-ink/02-c')" > <span class="navTtl">CARS</span> <span class="dot"></span> </a> </li>
+                    <li class="nav-item" [ngClass]="{'active' : path=='03' || path=='underwritting' ||  path=='quote-summary' || path=='undisclosed-include' || path=='undisclosed-exclude' || path=='undisclosed-list' || path=='payment'}"> <a class="nav-link" (click)="gotopage('one-ink/03')" > <span class="navTtl" >COVERAGE</span> <span class="dot"></span> </a> </li>
+            </ul>
+          </div>
+
+ 
+
+        </div>
+        <div class="col-md-auto d-lg-none text-right">
+          <button class="btn btnBg-1 summary-Btn" type="button" data-toggle="modal"
+            data-target="#drawerModal"><span class="d-flex flex-row"><img class="icon"
+                src="assets/images/summary-btn-icon.svg" alt="" />Summary</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<a style="display: none" data-toggle="modal" data-target="#modal-FCRA-message" #error_dialog></a>
+
+<div class="modal fade modalCst" id="modal-FCRA-message" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+    <div class="modal-content">
+     <!-- <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button> -->
+      <div class="modal-body pb-lg">
+      <div class="row no-gutters justify-content-center">
+      <div class="col-lg-11">
+      <div class="section-page-questions">
+      <div class="section-page-question">
+                      <div class="question-wrap pb-0">
+                        <div class="question-header">
+                          <div>
+                            <h3 class="question-text">FCRA message</h3>
+                            <p class="question-byline">The system will now order third party reports such as MVR</p>
+                          </div>
+                        </div>
+                        <div class="question-content">
+                            <div class="form-group mb_group_lg">
+                              <label class="check-control_Circle mb-0">
+                              <input type="checkbox" [checked]="true" class="inputCheck">
+                              <span class="wrapRow d-flex"> <span class="checkIndicate"></span> <span class="labelText gray-color-1 f-size-18 f-W-N line-H-1_3 flex-fill align-self-center">The Federal Fair Credit Reporting Act, Driver’s Privacy Protection Act, analogous state laws, and other state and federal laws govern the user of reports delivered via the PolicyOne system. It is your responsibility to ensure that your request are lawful. When ordering reports for underwriting purposes, you must have a completed application and/or the verbal request of subject consumer.</span> </span> </label>
+                            </div>
+                            <div class="form-group mb_group_lg">
+                              <label class="check-control_Circle mb-0">
+                              <input type="checkbox" [checked]="true" class="inputCheck">
+                              <span class="wrapRow d-flex"> <span class="checkIndicate"></span> <span class="labelText gray-color-1 f-size-18 f-W-N line-H-1_3 flex-fill align-self-center">The Federal Fair Credit Reporting Act imposes criminal penalties - including a fine, up to two years in prison, or both - against anyone who knowingly and willfully obtains information on a consumer from a consumer reporting agency under false pretenses, and other penalties for anyone who obtains such consumer information without a permissible purpose.</span> </span> </label>
+                            </div>
+
+                        </div>
+                      </div>
+                    </div>
+      </div>
+      <div class="navigation-buttons">
+                    <ul class="list-inline mb-0 text-right btnsList_form">
+                    <li class="list-inline-item"><a data-dismiss="modal"  class="btn btnstl-1 btnBrd" data-dismiss="modal">Disagree</a></li>
+                    <li class="list-inline-item"><a data-dismiss="modal" routerLink="/one-ink/undisclosed-list" class="btn btnstl-1 btnBg-3">Agree</a></li>
+                    </ul>
+                  </div>
+      </div>
+      </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

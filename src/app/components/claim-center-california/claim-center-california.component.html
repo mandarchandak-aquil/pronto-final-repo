@@ -1,0 +1,232 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+
+
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+      <div class="pgWrapFull spcTpHeader vrLinesWrap mt-45">
+        <app-header (languageChange)="onlanguageChange($event)"></app-header>
+        <div class="cmsHead_wrap" *ngIf="pagearr">
+          <div class="container-fluid lg-container">
+            <h1 class="cmsPg-ttl text-center" [innerHTML]="pagearr.title"></h1>
+          </div>
+        </div>
+        <div class="section-lg cmsPg_wrap gray-color-2" *ngIf="pagearr">
+          <div class="container-fluid lg-container">
+            <div class="pgEditorCont editorCont last-p" [innerHTML]="pagearr.subheading">
+             {{pagearr.Claim_Contact_Information}}
+              <div class="table-responsive report_Table_Wrap">
+                <table >
+                  <thead>
+                    <tr>
+                      <th class="wdt-td-Head" >{{pagearr.Insurance_Carrier}}</th>
+                      <th class="wdt-td-nbr" [innerHTML]="pagearr.Claim_Contact_Information"></th>
+                      <th class="wdt-td-nbr" [innerHTML]="pagearr.Billing_Contact_Information"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td [innerHTML]="pagearr.Pronto_Insurance"></td>
+                      <td><a class="link-color-2" href="{{pagearr.CLAIM_ONLINE_url}}" >{{pagearr.CLAIM_ONLINE}}</a></td>
+                      <td><a class="link-color-2" href="{{pagearr.Online_Bill_Pay_url}}" target="_blank">{{pagearr.Online_Bill_Pay}}</a></td>
+                    </tr>
+                    
+                    <tr *ngFor="let cm1 of colum1;let i = index;">
+
+                      <td>{{cm1}}</td>
+                      <td><a href="tel:{{colum2[i]}}">{{colum2[i]}}</a></td>
+                      <td><a href="tel:{{colum3[i]}}">{{colum3[i]}}</a></td>
+                    </tr>
+                    <!-- <tr>
+                      <td>Alliance United</td>
+                      <td><a href="tel:800-508-5833">800-508-5833</a></td>
+                      <td><a href="tel:866-530-5500">866-530-5500</a></td>
+                    </tr>
+                    <tr>
+                      <td>Allstar</td>
+                      <td><a href="tel:800-202-7827">800-202-7827</a></td>
+                      <td><a href="tel:800-202-7827">800-202-7827</a></td>
+                    </tr>
+                    <tr>
+                      <td>Anchor General</td>
+                      <td><a href="tel:800-542-6246">800-542-6246</a></td>
+                      <td><a href="tel:800-542-6246">800-542-6246</a></td>
+                    </tr>
+                    <tr>
+                      <td>Arrowhead General</td>
+                      <td><a href="tel:800-669-1889">800-669-1889</a></td>
+                      <td><a href="tel:800-669-1889">800-669-1889</a></td>
+                    </tr>
+                    <tr>
+                      <td>Aspire / Greenpath</td>
+                      <td>877-789-GPIC</td>
+                      <td><a href="tel:916-790-2409">916-790-2409</a></td>
+                    </tr>
+                    <tr>
+                      <td>Bristol West</td>
+                      <td><a href="tel:800-274-7865">800-274-7865</a></td>
+                      <td><a href="tel:800-274-7865">800-274-7865</a></td>
+                    </tr>
+                    <tr>
+                      <td>Carnegie</td>
+                      <td><a href="tel:800-233-2442">800-233-2442</a></td>
+                      <td><a href="tel:800-233-2442">800-233-2442</a></td>
+                    </tr>
+                    <tr>
+                      <td>Dairyland / Viking</td>
+                      <td>800-334-0090</td>
+                      <td>800-334-0090</td>
+                    </tr>
+                    <tr>
+                      <td>Foremost</td>
+                      <td><a href="tel:800-274-7865">800-274-7865</a></td>
+                      <td><a href="tel:888-888-0080">888-888-0080</a></td>
+                    </tr>
+                    <tr>
+                      <td>Freedom</td>
+                      <td><a href="tel:888-542-4222">888-542-4222</a></td>
+                      <td><a href="tel:888-542-4222">888-542-4222</a></td>
+                    </tr>
+                    <tr>
+                      <td>Infinity</td>
+                      <td><a href="tel:800-334-1661">800-334-1661</a></td>
+                      <td><a href="tel:800-782-1020">800-782-1020</a></td>
+                    </tr>
+                    <tr>
+                      <td>Kemper / Financial Indemnity</td>
+                      <td><a href="tel:888-253-7834">888-253-7834</a></td>
+                      <td><a href="tel:800-933-8788">800-933-8788</a></td>
+                    </tr>
+                    <tr>
+                      <td>Mapfre</td>
+                      <td>877-MAPFRE5</td>
+                      <td>877-MAPFRE5</td>
+                    </tr>
+                    <tr>
+                      <td>Mercury Insurance</td>
+                      <td><a href="tel:888-917-6372">888-917-6372</a></td>
+                      <td><a href="tel:888-917-6372">888-917-6372</a></td>
+                    </tr>
+                    <tr>
+                      <td>Mexipass</td>
+                      <td><a href="tel:800-639-4727">800-639-4727</a></td>
+                      <td><a href="tel:800-639-4727">800-639-4727</a></td>
+                    </tr>
+                    <tr>
+                      <td>Multistate</td>
+                      <td><a href="tel:800-299-5709">800-299-5709</a></td>
+                      <td><a href="tel:800-209-4110">800-209-4110</a></td>
+                    </tr>
+                    <tr>
+                      <td>National General</td>
+                      <td><a href="tel:800-325-1088">800-325-1088</a></td>
+                      <td><a href="tel:800-462-2123">800-462-2123</a></td>
+                    </tr>
+                    <tr>
+                      <td>Nations</td>
+                      <td><a href="tel:562-252-3434">562-252-3434</a></td>
+                      <td><a href="tel:562-252-3434">562-252-3434</a></td>
+                    </tr>
+                    <tr>
+                      <td>Pacific Specialty / Mcgraw</td>
+                      <td><a href="tel:800-962-1172">800-962-1172</a></td>
+                      <td><a href="tel:800-303-5000">800-303-5000</a></td>
+                    </tr>
+                    <tr>
+                      <td>Progressive</td>
+                      <td><a href="tel:800-274-4499">800-274-4499</a></td>
+                      <td>800-PROGRESSIVE</td>
+                    </tr>
+                    <tr>
+                      <td>Reliant General</td>
+                      <td><a href="tel:888-999-2200">888-999-2200</a></td>
+                      <td><a href="tel:888-592-9956">888-592-9956</a></td>
+                    </tr>
+                    <tr>
+                      <td>Robert Moreno</td>
+                      <td><a href="tel:714-738-1383">714-738-1383</a></td>
+                      <td><a href="tel:800-815-7647">800-815-7647</a></td>
+                    </tr>
+                    <tr>
+                      <td>SCJ</td>
+                      <td><a href="tel:925-474-3698">925-474-3698</a></td>
+                      <td><a href="tel:925-474-3698">925-474-3698</a></td>
+                    </tr>
+                    <tr>
+                      <td>Stillwater / Fidelity National</td>
+                      <td><a href="tel:800-220-1351">800-220-1351</a></td>
+                      <td><a href="tel:855-712-4092">855-712-4092</a></td>
+                    </tr>
+                    <tr>
+                      <td>Suncoast</td>
+                      <td><a href="tel:949-768-1132">949-768-1132</a></td>
+                      <td><a href="tel:949-768-1132">949-768-1132</a></td>
+                    </tr>
+                    <tr>
+                      <td>Victoria</td>
+                      <td><a href="tel:800-926-3168">800-926-3168</a></td>
+                      <td><a href="tel:800-888-8424">800-888-8424</a></td>
+                    </tr>
+                    <tr>
+                      <td>Western General Insurance</td>
+                      <td><a href="tel:818-880-5433">818-880-5433</a></td>
+                      <td><a href="tel:800-758-3311">800-758-3311</a></td>
+                    </tr>
+                    <tr>
+                      <td>Workmen’s Auto Insurance</td>
+                      <td><a href="tel:888-811-4054">888-811-4054</a></td>
+                      <td><a href="tel:800-927-8221">800-927-8221</a></td>
+                    </tr> -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="overflow-hidden">
+          <div *ngIf="pagearr" class="w-100">
+            <app-ads class="row gutter-8"></app-ads>   
+            </div> 
+     <!--     <div clas
+          <!-- <div class="row gutter-8">
+            <div class="col-md-6">
+              <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-2.jpg)"
+                data-aos="fade-up" data-aos-duration="900">
+                <div class="mngInside d-flex align-items-center">
+                  <div class="w-100 z_ind1">
+                    <div class="textCont text-color-white text-center">
+                      <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">LEARN ABOUT</div>
+                      <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300"
+                        data-aos-duration="900">INDEPENDENT AGENT</div>
+                      <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a href="#"
+                          class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-3.jpg)"
+                data-aos="fade-up" data-aos-duration="900">
+                <div class="mngInside d-flex align-items-center">
+                  <div class="w-100 z_ind1">
+                    <div class="textCont text-color-white text-center">
+                      <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">OPEN YOUR</div>
+                      <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300"
+                        data-aos-duration="900">PRONTO FRANCHISE AGENCY</div>
+                      <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a href="#"
+                          class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+        <footer class="footerWrap overflow-hidden" *ngIf="pagearr" >
+            <app-footer></app-footer>
+        </footer>
+      </div>
+    </div>
+    <!-- .perspScreen -->
+  </div>

@@ -1,0 +1,168 @@
+{
+  "agentId": "PI001",
+  "productState": "TX",
+  "requestType": "EQ",
+  "quoteNo": "PR-000131365-00",
+  "vehicles": [
+    {
+      "action": "insert",
+      "vin": "2HGFA1F54AH305189",
+      "year": "2010",
+      "make": "HONDA",
+      "model": "CIVIC LX",
+      "vehDrivenMiles": false,
+      "vehTon": false,
+      "trim": "",
+      "bisUse": false,
+      "vehInspection": false,
+      "eqAmount": "",
+      "requests": {
+        "compDeductible": 0,
+        "collDeductible": 0,
+        "rentReimbursement": 0,
+        "towingAndLabor": 0,
+        "custEquipment": false,
+        "rsa": true,
+        "action": "insert"
+      },
+      "garageInfo": {
+        "zip": "78526",
+        "street": "",
+        "aptNumber": 0,
+        "city": "",
+        "state": "TX",
+        "county": "Cameron",
+        "unit": ""
+      },
+      "lossPayee": {
+        "zip": "",
+        "state": "",
+        "city": "",
+        "address": "",
+        "name": "",
+        "isLossPayee": false
+      }
+    },
+    {
+      "vehId": 1,
+      "vin": "2T1KR32E33C139624",
+      "year": "2003",
+      "make": "TOYOTA",
+      "model": "MATRIX BASE",
+      "vehDrivenMiles": false,
+      "vehTon": false,
+      "trim": "",
+      "bisUse": false,
+      "vehInspection": false,
+      "eqAmount": "",
+      "requests": {
+        "compDeductible": 0,
+        "collDeductible": 0,
+        "rentReimbursement": 0,
+        "towingAndLabor": 0,
+        "custEquipment": false,
+        "rsa": false
+      },
+      "garageInfo": {
+        "zip": "78526",
+        "street": "",
+        "aptNumber": 0,
+        "city": "",
+        "state": "TX",
+        "county": "Cameron",
+        "unit": ""
+      },
+      "lossPayee": {
+        "zip": "",
+        "state": "",
+        "city": "",
+        "address": "",
+        "name": "",
+        "isLossPayee": false
+      }
+    }
+  ],
+  "additionalDrivers": [
+    {
+      "drvId": 2,
+      "id": "0",
+      "driverStatus": "N",
+      "firstName": "soham",
+      "lastName": "mane",
+      "email": "",
+      "phoneNumber": "",
+      "dob": "08/08/1993",
+      "isMale": true,
+      "isMarried": "M",
+      "relationship": "S",
+      "licenseNum": "",
+      "licenseType": "T",
+      "stateLicense": "TX",
+      "yearsLicensed": 0,
+      "sr22": false,
+      "is2ndNamedInsured": true,
+      "discounts": {
+        
+      },
+      "violationsArray": [
+        
+      ],
+      "texasDriverLicense": true,
+      "isExcluded": true
+    }
+  ],
+  "primaryDriver": {
+    "id": "0",
+    "drvId": 1,
+    "yearsLicensed": "3",
+    "isMarried": "M",
+    "isMale": false,
+    "dob": "07/07/1991",
+    "licenseNum": "42731631",
+    "employer": "",
+    "occupation": "Homemaker",
+    "sr22": false,
+    "countryLicense": "US",
+    "stateLicense": "TX",
+    "licenseType": "T",
+    "relationship": "I",
+    "county": "Cameron",
+    "state": "",
+    "city": "",
+    "unit": "",
+    "zip": "78526",
+    "phoneNumber": "9797857735",
+    "email": "nilisha.mane@prontoinsurance.com",
+    "suffix": "",
+    "lastName": "MANE",
+    "middleName": "",
+    "firstName": "NILISHA",
+    "street": "",
+    "requests": {
+      "rqEffDt": "12/22/2020",
+      "downPayment": "16.67",
+      "productCode": "PTXNSA",
+      "term": "6MthNonEFT_EXP",
+      "liabilityPropertyDamage": "N"
+    },
+    "discounts": {
+      "isAutoPay": false,
+      "pdEndorsement": false,
+      "lbEndorsement": false
+    },
+    "coverages": {
+      "umbi": "30000/60000",
+      "umpd": "25000",
+      "pip": "2500",
+      "bi": "30000/60000",
+      "pd": "25000",
+      "med": "0"
+    },
+    "priorCarrier": {
+      
+    },
+    "violationsArray": [
+      
+    ]
+  }
+}

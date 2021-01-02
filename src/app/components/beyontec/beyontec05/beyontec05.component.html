@@ -1,0 +1,339 @@
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+    <div class="pgWrapFull spcTpHeader vrLinesWrap">
+      <app-header></app-header>
+      <app-beyontec-breadcrum></app-beyontec-breadcrum>
+      <div class="quotePG_wrap overflow-hidden position-relative">
+        <div class="containerPD-L">
+          <div class="row no-gutters">
+            <div class="col-md">
+              <div class="formScreen_Hgt spcMng_mp">
+                <div class="queCol_Outer pTB_quote lg-BT-scroll" data-aos="fade-up" data-aos-duration="700">
+                  <div class="section-page-header">
+                    <h1 class="headingStl-1">Choose the quote that’s best for you!</h1>
+                  </div>
+                  <ul class="list-inline listQuote-Info">
+                    <li class="list-inline-item">
+                      <div class="quoteInfo_item">
+                        <div class="txt-head line-H-1_3 f-W-B">Quote For:</div>
+                        <div class="txtWrap f-size-18 line-H-1_3 gray-color-2">{{driverName | titlecase}}</div>
+                      </div>
+                    </li>
+                    <li class="list-inline-item">
+                      <div class="quoteInfo_item">
+                        <div class="txt-head line-H-1_3 f-W-B">Quote Number:</div>
+                        <div class="txtWrap f-size-18 line-H-1_3 gray-color-2" *ngIf = "minQuote" >{{minQuote.productQuoteId}}</div>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <div *ngIf="expandedLength > 0">
+                    <div class="beyontecQuote_Bx" *ngFor="let plan of paymentPrograms.expanded; let i = index">
+                      <div class="wrap-in">
+                        <div class="row no-gutters mngIns">
+                          <div class="col-md d-flex align-items-center">
+                            <div class="w-100 spc-row-TB line-H-1_3">
+                              <div class="row align-items-center gutter-15vw">
+                                <div class="col-md-4 text-center text-md-left">
+                                  <div class="head-text f-W-B">{{plan.translateName}} - {{plan.monthPolicy}}</div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="payment_prc_Box text-center">
+                                    <div class="amount f-W-B text-color-3"><span class="dollar">$</span>
+                                      {{(plan.downPayment | number:"1.0-0")}}
+                                    </div>
+                                    <div class="txtWrp text-size-md f-size-18 gray-color-2">{{plan.pluralMonth}}</div>
+                                  </div>
+                                </div>
+                                <div class="col-md-5 text-center text-md-left">
+                                  <div class="txtInfo text-size-md f-size-18 gray-color-2">* Total policy premium:
+                                    <span class="dollar">$ </span>{{plan.totalPremium | number:"2.2-2"}}</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-auto brd d-flex align-items-center">
+                            <div class="w-100 colBtn text-center text-md-right"> 
+                              <button
+                                class="btn cmnBtn btnBg-1 ctaBtn text-uppercase collapsed select_policy_btn_{{i}}" id="select_policy_btn_{{i}}"
+                                  (click)="selectPolicy($event,'btnCollapse', i)">Select</button> 
+                                <!--data-toggle="collapse" data-target="#beyontec_quote_0" -->
+                            </div>
+                          </div>
+                        </div>
+                        <button class="btn btnBg-2 btnPosition btnwhats-cover collapsed select_policy_{{i}}">
+                          <!--data-toggle="collapse" data-target="#beyontec_quote_0" btnCollapse-->
+                          <span class="mngIcon" (click)="selectPolicy1('select_policy_btn', i)">What’s covered</span>
+                        </button>
+                      </div>
+
+<!-- class="collapse" id="beyontec_quote_0" -->
+                      <div  class="beyontec_quote_{{i}} btnCollapse">
+                        <div class="collapseCont_mng">
+
+                          <!-- data-target="#beyontec_quote_0" data-toggle="collapse" -->
+                          <button class="btn btnClose_collapse" (click)="closeSelectPolicy(i)"><span class="btn-in">&times;</span></button>
+
+                          <div class="quoteInfoWrap_beyontec">
+
+
+                            <ul class="nav tabStyle-1 justify-content-center justify-content-md-start">
+                              <li class="nav-item"><a class="nav-link active" data-toggle="tab"
+                                  href="#quote-{{i}}_Policy_tab_0_1"><span class="iconWrap"><img
+                                      src="assets/images/tab-icon-policy.png" alt="" /></span><span class="nav-ttl">Policy
+                                    Coverage</span></a> </li>
+                              <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                                  href="#quote-{{i}}_Policy_tab_0_2"><span class="iconWrap"><img
+                                      src="assets/images/tab-icon-vehicle.png" alt="" /></span><span
+                                    class="nav-ttl">Vehicle
+                                    Coverage</span></a> </li>
+                            </ul>
+                            <div class="row gutter-15vw">
+                              <div class="col-lg-8 col-md-9">
+                                <div class="tab-content tab_mngSpc">
+                                  <div class="tab-pane show active" id="quote-{{i}}_Policy_tab_0_1">
+                                    <div class="txtSummary line-H-1_3 f-size-18">
+                                      <table class="table mb-0 table-style-1 resp-sm gray-color-2">
+                                        <tbody>
+                                          <tr>
+                                            <td class="text-right">Uninsured/Underinsured Motorist - Bodily Injury -
+                                            </td>
+                                            <td>
+                                              <strong class="text-color-3 f-size-20" *ngIf="json_coverage.umbi != 0">${{json_coverage.umbi}}</strong>
+                                              <strong class="text-color-3 f-size-20" *ngIf="json_coverage.umbi == 0">Reject</strong>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td class="text-right">Uninsured/Underinsured Motorist - Property Damage -
+                                            </td>
+                                            <td>
+                                              <strong class="text-color-3 f-size-20"  *ngIf="json_coverage.umpd != 0">${{json_coverage.umpd}}</strong>
+                                              <strong class="text-color-3 f-size-20" *ngIf="json_coverage.umpd == 0">Reject</strong>
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td class="text-right">Personal Injury Protection -</td>
+                                            <td>
+                                              <strong class="text-color-3 f-size-20"  *ngIf="json_coverage.pip != 0">${{json_coverage.pip}}</strong>
+                                              <strong class="text-color-3 f-size-20" *ngIf="json_coverage.pip == 0">Reject</strong>
+                                            </td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <div class="tab-pane" id="quote-{{i}}_Policy_tab_0_2">
+                                    <div class="txtSummary line-H-1_3 f-size-18">
+
+                                      <table class="table mb-0 table-style-1 resp-sm gray-color-2">
+                                        <tbody>
+                                          <tr *ngFor="let vehicle of json_vehicle;" >
+                                            <!-- vehicle.include -->
+                                            <td *ngIf="vehicle.include"><strong class="text-color-3 f-size-20">{{vehicle.year}} {{vehicle.make}} {{vehicle.model}}</strong></td>
+                                            <td *ngIf="vehicle.include">- 
+                                              <span *ngIf="vehicle.type_of_coverage == 0">
+                                                Liability Only
+                                              </span>
+                                              <span *ngIf="vehicle.type_of_coverage != 0">
+                                                Liability/Comprehensive/Collision (${{vehicle.type_of_coverage}} deductible)
+                                              </span>
+                                          </td>
+                                          </tr>
+                                          <!-- <tr>
+                                            <td><strong class="text-color-3 f-size-20">2002 CHEVROLET MALIBU LS</strong>
+                                            </td>
+                                            <td>- In liability only / Com</td>
+                                          </tr> -->
+                                        </tbody>
+                                      </table>
+
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-4 col-md-3 text-center text-md-right">
+                                <div class="purchasePolicy_cta text-center">
+                                  <div class="imgWrap"><img src="assets/images/pront-character-sm.png" alt="" /></div>
+                                  <!-- <a class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">PURCHASE
+                                    POLICY</a> -->
+                                    <button type="button" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block" (click)="onSubmit(plan)">PURCHASE POLICY</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+
+                    </div>
+                  </div>
+          
+                  <!-- <div *ngIf="limitedLength > 0">
+                    <div class="beyontecQuote_Bx" *ngFor="let plan of paymentPrograms.limited; let i = index">
+                      <div class="wrap-in">
+                        <div class="row no-gutters mngIns">
+                          <div class="col-md d-flex align-items-center">
+                            <div class="w-100 spc-row-TB line-H-1_3">
+                              <div class="row align-items-center gutter-15vw">
+                                <div class="col-md-4 text-center text-md-left">
+                                  <div class="head-text f-W-B">{{plan.translateName}} - {{plan.monthPolicy}}</div>
+                                </div>
+                                <div class="col-md-3">
+                                  <div class="payment_prc_Box text-center">
+                                    <div class="amount f-W-B text-color-3"><span class="dollar">$</span>
+                                      {{(plan.downPayment | number:"1.0-0")}}
+                                    </div>
+                                    <div class="txtWrp text-size-md f-size-18 gray-color-2">{{plan.pluralMonth}}</div>
+                                  </div>
+                                </div>
+                                <div class="col-md-5 text-center text-md-left">
+                                  <div class="txtInfo text-size-md f-size-18 gray-color-2">* Total policy premium:
+                                    <span class="dollar">$ </span>{{plan.totalPremium | number:"2.2-2"}}</div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-auto brd d-flex align-items-center">
+                            <div class="w-100 colBtn text-center text-md-right"> <a href="#"
+                                class="btn cmnBtn btnBg-1 ctaBtn text-uppercase btnCollapse collapsed"
+                                data-toggle="collapse" data-target="#beyontec_quote_1">Select</a> </div>
+                          </div>
+                        </div>
+                        <a class="btn btnBg-2 btnPosition btnwhats-cover btnCollapse collapsed" href="#"
+                          data-toggle="collapse" data-target="#beyontec_quote_1"><span class="mngIcon">What’s
+                            covered</span></a>
+                      </div>
+                      <div class="collapse" id="beyontec_quote_1">
+                        <div class="collapseCont_mng">
+                          <a class="btn btnClose_collapse" href="#" data-toggle="collapse"
+                            data-target="#beyontec_quote_1"><span class="btn-in">&times;</span></a>
+
+                          <div class="quoteInfoWrap_beyontec">
+
+
+                            <ul class="nav tabStyle-1 justify-content-center justify-content-md-start">
+                              <li class="nav-item"><a class="nav-link active" data-toggle="tab"
+                                  href="#quote-1_Policy_tab_1"><span class="iconWrap"><img
+                                      src="assets/images/tab-icon-policy.png" alt="" /></span><span class="nav-ttl">Policy
+                                    Coverage</span></a> </li>
+                              <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                                  href="#quote-1_Policy_tab_2"><span class="iconWrap"><img
+                                      src="assets/images/tab-icon-vehicle.png" alt="" /></span><span
+                                    class="nav-ttl">Vehicle
+                                    Coverage</span></a> </li>
+                            </ul>
+                            <div class="row gutter-15vw">
+                              <div class="col-lg-8 col-md-9">
+                                <div class="tab-content tab_mngSpc">
+                                  <div class="tab-pane show active" id="quote-1_Policy_tab_1">
+                                    <div class="txtSummary line-H-1_3 f-size-18">
+                                      <table class="table mb-0 table-style-1 resp-sm gray-color-2">
+                                        <tbody>
+                                          <tr>
+                                            <td class="text-right">Uninsured/Underinsured Motorist - Bodily Injury -
+                                            </td>
+                                            <td><strong class="text-color-3 f-size-20">$30,000 - $60,000</strong></td>
+                                          </tr>
+                                          <tr>
+                                            <td class="text-right">Uninsured/Underinsured Motorist - Property Damage -
+                                            </td>
+                                            <td><strong class="text-color-3 f-size-20">$25,000</strong></td>
+                                          </tr>
+                                          <tr>
+                                            <td class="text-right">Personal Injury Protection -</td>
+                                            <td><strong class="text-color-3 f-size-20">$2,500</strong></td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                  <div class="tab-pane" id="quote-1_Policy_tab_2">
+                                    <div class="txtSummary line-H-1_3 f-size-18">
+
+                                      <table class="table mb-0 table-style-1 resp-sm gray-color-2">
+                                        <tbody>
+                                          <tr>
+                                            <td><strong class="text-color-3 f-size-20">1995 FORD ESCORT LX</strong></td>
+                                            <td>- In liability only</td>
+
+                                          </tr>
+                                          <tr>
+                                            <td><strong class="text-color-3 f-size-20">2002 CHEVROLET MALIBU LS</strong>
+                                            </td>
+                                            <td>- In liability only / Com</td>
+                                          </tr>
+                                        </tbody>
+                                      </table>
+
+                                    </div>
+
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-4 col-md-3 text-center text-md-right">
+                                <div class="purchasePolicy_cta text-center">
+                                  <div class="imgWrap"><img src="assets/images/pront-character-sm.png" alt="" /></div>
+                                  <a class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">PURCHASE
+                                    POLICY</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> -->
+
+                  <div class="beyontecQuote_Bx callAgent_Card">
+                    <div class="mngIn_wrap d-flex align-items-center">
+                      <div class="w-100">
+                        <div class="row gutter-10vw align-items-center">
+                          <div class="col-md-7">
+                            <div class="callAgent_cont d-md-flex">
+                              <div class="iconWrap"><img src="assets/images/call-agent-icon.png" alt="" /></div>
+                              <div class="infoWrap line-H-1_4 text-center text-md-left flex-fill align-self-end">
+                                <div class="heading text-color-3 f-W-B">Speak with an expert</div>
+                                <div class="txt-summary gray-color-2 f-size-16">Connect with a licensed insurance
+                                  agent to find more discounts, answer your questions, or purchase a policy.</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-5">
+                            <div class="nbrWrap text-center text-md-right">
+                              <a href="tel:1-(979)-243-6677" class="btn callAgent-nbr text-color-3"><img class="icon"
+                                  src="assets/images/icon-call-phone.svg" alt="" />1-(979) 243-6677</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="infoCard_wrap_cmn">
+                    <div class="bx-head line-H-1_3 f-W-B">Disclaimer:</div>
+
+                    <div class="cardInfo_Bx_cmn f-size-18 gray-color-2">
+                      <div class="line-H-1_8 last-p">
+                        <p>I hereby certify that the vehicle(s) insured by the policy applied for are not used for any
+                          commercial or business purposes. I will not use my vehicle in the course of my employment or
+                          while I am self employed. This statement is made for the purpose of inducing the insurance
+                          company to issue the coverage for which I have applied and will form part of the
+                          application.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <beyontec-sidebar></beyontec-sidebar>
+          </div>
+        </div>
+      </div>
+      <app-footer-quote></app-footer-quote>
+    </div>
+  </div>
+  <!-- .perspScreen -->
+</div>
+<!-- .fullPG_Wrap -->

@@ -1,0 +1,370 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+
+
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+    <div class="pgWrapFull spcTpHeader vrLinesWrap">
+       <app-header (languageChange)="onlanguageChange($event)"></app-header>
+      <div class="cmsHead_wrap" *ngIf="pageArr">
+        <div class="container-fluid lg-container">
+          <h1 class="cmsPg-ttl text-center" [innerHTML]="pageArr.page_title"></h1>
+        </div>
+      </div>
+      <div class="section-lg cmsPg_wrap gray-color-2"  *ngIf="pageArr">
+        <div class="container-fluid lg-container">
+          <div class="pgEditorCont editorCont last-p">
+            <h4 class="cmsSub_Head" [innerHTML]="pageArr.page_subtitle1">{{pageArr.page_subtitle1}}<!-- Our Security --></h4>
+            <p [innerHTML]="pageArr.Our_Security1"><!-- Welcome to Pronto! Pronto (Pronto General Agency, Ltd.) and its affiliated companies are subsidiaries
+              of Arthur J. Gallagher &amp; Co., a Delaware corporation, which owns this website and any derivative
+              website on which these Terms of Use are posted. We have adopted these Terms of Use (these “Terms”) to
+              make you aware of the terms and conditions of your use of the this website, any derivative websites on
+              which links to these Terms are posted, and any Content (as defined in the Content section below) or
+              other products or services that are offered or provided via the aforementioned websites (collectively,
+              the “Website”). If you purport to be the agent of, represent, or otherwise act on behalf of an entity or
+              any other person, references to “you,” “your” or “User” shall include such entity or person in addition
+              to you, and your acceptance of these Terms shall constitute acceptance on behalf of such entity or
+              person and your representation that you have the authority to bind such entity or person to these Terms. -->
+            </p>
+            <p [innerHTML]="pageArr.Our_Security2"><!-- Pronto reserves the right, at its discretion, to change, modify, add or remove portions of these Terms
+              at any time by posting such changes to this Website. You understand that you have the affirmative
+              obligation to check these Terms periodically for changes, and you hereby agree to periodically review
+              these Terms for such changes. The continued use of the Website following the posting of any such
+              modifications to these Terms will constitute your acceptance of such changes. --></p>
+            <p [innerHTML]="pageArr.Our_Security3"><!-- BY USING OR OTHERWISE ACCESSING THE WEBSITE; CREATING, REGISTERING OR ACCESSING AN ACCOUNT; POSTING OR
+              DOWNLOADING CONTENT, OR ANY OTHER INFORMATION TO OR FROM THE WEBSITE; PURCHASING ANY PRODUCTS OR
+              SERVICES VIA THE WEBSITE; OR MANIFESTING YOUR ASSENT TO THESE TERMS IN ANY OTHER MANNER, YOU HEREBY
+              UNEQUIVOCALLY AND EXPRESSLY AGREE TO, AND SHALL BE SUBJECT TO, THESE TERMS. IF YOU DO NOT UNEQUIVOCALLY
+              AGREE TO THESE TERMS, YOU MAY NOT USE OR OTHERWISE ACCESS THE WEBSITE, CREATE, REGISTER OR ACCESS AN
+              ACCOUNT, POST OR DOWNLOAD CONTENT OR ANY OTHER INFORMATION TO OR FROM THE WEBSITE, OR PURCHASE ANY
+              PRODUCTS OR SERVICES VIA THE WEBSITE. YOUR USE OF THE WEBSITE IS SUBJECT TO YOUR PRIOR AND CONTINUED
+              ACCEPTANCE OF THESE TERMS, AS WELL AS THE TERMS OF PRONTO’S PRIVACY POLICY. IN ADDITION, ANY PURCHASES
+              OF PRODUCTS AND/OR SERVICES FROM PRONTO SHALL BE SUBJECT TO THE DISCLOSURES. PLEASE READ THESE TERMS
+              CAREFULLY AS THEY CONTAIN IMPORTANT INFORMATION REGARDING YOUR LEGAL RIGHTS, REMEDIES AND OBLIGATIONS,
+              INCLUDING BUT NOT LIMITED TO, CERTAIN LIMITATIONS AND EXCLUSIONS. --></p>
+
+            <div id="accordion_term_of_use">
+              <div class="cst_accord ng-accordian cst_accord116">
+                <ngb-accordion [closeOthers]="false" class="cst_accord">
+                  <ngb-panel class="accord_head" id="term_of_use_1" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" [innerHTML]="pageArr.point1" (click)="getScroll(116)"><!-- General Terms of Use and Restrictions on Use --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <div [innerHTML]="pageArr.point1_desc"></div>
+                     <!--  <p class="text-gray-70" >Pronto hereby grants you a limited, nonexclusive, nonassignable,
+                        nontransferable license to
+                        access and use the Website solely for the noncommercial, personal use of User or the internal
+                        business needs of the entity of which User is an authorized representative, as the case may be,
+                        subject to your agreement to, compliance with and satisfaction of these Terms. All rights not
+                        otherwise expressly granted by these Terms are reserved by Pronto. If you do not comply with
+                        these Terms at any time, Pronto reserves the right to revoke the aforementioned license(s),
+                        limit your access to the Website or restrict your ability to post or download Content, or order
+                        products and services. You agree not to reproduce, duplicate, copy, distribute, transmit, sell,
+                        trade, resell or exploit for any purpose any portion of or any information from the Website. You
+                        may not obscure or remove any proprietary rights notices contained in or on the Content. You are
+                        solely responsible for providing, maintaining and ensuring the compatibility of all hardware,
+                        software, electrical and other physical requirements necessary for your access to and use of the
+                        Website or any part thereof.</p>
+                      <p class="text-gray-70">Pronto may discontinue or alter any aspect of the Website, remove Content
+                        from the Website,
+                        restrict the time the Website is available or restrict the amount of use permitted at Pronto’s
+                        sole discretion and without prior notice or liability. You agree that Pronto may, with or
+                        without cause, immediately suspend and/or terminate your access to the Website or any part
+                        thereof. Cause for such measures shall include, without limitation: </p>
+                      <ul class="list-unstyled">
+                        <li>(a) breaches or violations of these Terms or other incorporated agreements or guidelines;
+                        </li>
+                        <li>(b) discontinuance or material modification to the Website;</li>
+                        <li>(c) unexpected technical or security issues or problems; </li>
+                        <li>(d) extended periods of inactivity; and/or </li>
+                        <li>(e) engagement by you in fraudulent or illegal activities. You further agree that such
+                          measures shall be taken in Pronto’s sole discretion and without liability to you or any third
+                          party.</li>
+                      </ul>
+                      <p class="text-gray-70">
+                        Please note that Pronto cannot guarantee functionality with all types of mobile devices in using
+                        this Website. You should contact your service provider directly for technical assistance or any
+                        questions. Please note that security features vary by carrier/service provider and mobile
+                        device. Additional minutes/charges may apply and may be charged by your mobile carrier/service
+                        provider. You are solely responsible for such charges associated with your use of this Website.
+                        <br>For purposes of these Terms, references to “post” or “posting” shall refer to any manner of
+                        posting, transmitting, uploading, providing, making available or otherwise transferring material
+                        or information.</p> -->
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id123"  title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" [innerHTML]="pageArr.point2" (click)="getScroll2(123)"><!-- Pronto Intellectual Property --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <p class="text-gray-70" [innerHTML]="pageArr.point2_desc"><!-- Unless otherwise specifically noted in these Terms, images, trademarks,
+                        service marks, logos,
+                        icons and any other intellectual property (collectively, “Website IP”) displayed on this Website
+                        are the property of Pronto, or third parties who have authorized their use by Pronto. Nothing
+                        contained on this Website should be construed as granting any license or right to use any
+                        Website IP displayed on this Website without the written permission of Pronto or such third
+                        party that may own the Website IP. Misuse of any Website IP, or any other Content, displayed on
+                        this Website is prohibited. The Website, including, without limitation, any Content, is the
+                        copyrighted property of Pronto or its respective owner, and it may not be reproduced, recreated,
+                        modified, accessed or used in any manner or disseminated or distributed to any other party in
+                        violation of these Terms. Any unauthorized use of any Content or Website IP, whether owned by
+                        Pronto or other parties, may violate copyright laws, trademark laws, privacy and publicity laws
+                        and communications regulations and statutes. You will not copy, reverse engineer, disassemble,
+                        decompile, translate, modify, reproduce, republish, transmit, sell, offer for sale, disseminate
+                        or redistribute the Website IP or any part thereof or grant any other person or entity the right
+                        or access to do so. --></p>
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id126"  title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title"  (click)="getScroll2(126)" [innerHTML]="pageArr.point3"><!-- Accounts --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <div [innerHTML]="pageArr.point3_desc"></div>
+                     
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id128" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" [innerHTML]="pageArr.point4"  (click)="getScroll2(128)"><!-- Content --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <p class="text-gray-70" [innerHTML]="pageArr.point4_desc"><!-- You acknowledge that the Website may contain or provide access to
+                        information, software,
+                        photos, video, text, graphics, music, sounds or other material provided by Pronto or third
+                        parties (collectively, “Content”) that are protected by copyrights, patents, trademarks, trade
+                        secrets or other intellectual property laws, and that these rights are valid and protected in
+                        all forms, media and technologies existing now or hereafter developed.  --></p>
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id129" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" (click)="getScroll2(129)" [innerHTML]="pageArr.point5"><!-- Feedback --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <div [innerHTML]="pageArr.point5_desc"></div>
+                    
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id130" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" (click)="getScroll2(130)" [innerHTML]="pageArr.point6"><!-- Pronto’s Privacy Policy --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <p class="text-gray-70 m-0 mb-3" [innerHTML]="pageArr.point6_desc"><!-- Pronto collects, stores and uses data collected from you in
+                        accordance with Pronto’s Privacy
+                        Policy. The terms and conditions of the Privacy Policy are hereby expressly incorporated into
+                        these Terms. --></p>
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id131" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title"  (click)="getScroll2(131)"  [innerHTML]="pageArr.point7"><!-- Links --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <p class="text-gray-70 m-0 mb-3" [innerHTML]="pageArr.point7_desc"><!-- The Website may provide, or third parties may provide, links to
+                        other websites or resources on
+                        the Internet. Because Pronto has no control over such websites or resources, you acknowledge and
+                        agree that Pronto is not responsible for the availability of such external websites or
+                        resources, and Pronto does not endorse and is not responsible or liable for any content,
+                        advertising, products, or other materials on or available from such websites or resources or for
+                        any privacy or other practices of the third parties operating those websites or resources. You
+                        further acknowledge and agree that Pronto shall not be responsible or liable, directly or
+                        indirectly, for any damage or loss caused or alleged to be caused by or in connection with your
+                        use of or reliance on any such content, goods or services available on or through any such
+                        website or resource. Pronto strongly encourages you to review any separate terms of use and
+                        privacy policies governing use of these third party websites and resources. --></p>
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id132" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" (click)="getScroll2(132)" [innerHTML]="pageArr.point8"><!-- Purchases --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <div [innerHTML]="pageArr.point8_desc"> </div>
+                     <!--  <p class="text-gray-70" [innerHTML]="pageArr.point8_desc">Pronto may allow users to place Orders for products and/or services via
+                        the Website or through
+                        its third party affiliate. “Order” shall mean any order placed by a user for products and/or
+                        services via the Website that is accepted by Pronto. If you place an Order to purchase products
+                        and/or services, you are subject to the additional terms of this section. Other Pronto sites may
+                        have additional or alternative terms of service, which shall govern your purchase of products
+                        and/or services. Please note that you may also be directed to a third party website to make or
+                        complete such purchases, in which case your purchase will also be governed by the terms of such
+                        third party website. By making such purchases, you hereby agree that Pronto has no
+                        responsibility, and shall have no liability, for any claim related to your purchases on such
+                        third party websites.</p>
+                      <p class="text-gray-70"> Upon placing an Order, you shall pay to Pronto the purchase price as set
+                        forth in the
+                        “Shopping Cart” or similar ordering mechanism. Pronto or its third party affiliates may utilize
+                        the services of certain third party payment processors to process payments of credit cards and
+                        other accepted methods of payment. Your purchase is subject to any additional terms and
+                        conditions imposed by such third party payment processors. The purchase price and any applicable
+                        fees or taxes shall be applied to your chosen method of payment upon submission of your Order.
+                      </p>
+                      <p class="text-gray-70">Prices and availability of products are subject to change without notice.
+                        Errors will be
+                        corrected where discovered, and Pronto reserves the right to revoke any stated offer and to
+                        correct any errors, inaccuracies or omissions including after an order has been submitted and
+                        whether or not the Order has been confirmed and your payment method accepted and charged. In the
+                        event your payment method has been accepted and charged, Pronto will issue you the appropriate
+                        credit within a reasonable time after your order has been revoked.</p>
+                      <p class="text-gray-70">In the event you purchase products that embody or otherwise contain
+                        Content owned by Pronto or
+                        other parties, you agree to the following restrictions regarding such products and the Content
+                        or other information contained or embodied therein: (a) you may not resell any Content or
+                        otherwise profit from its use or display; (b) you may not, nor will you allow any other party
+                        to, reproduce, modify, edit, adapt, publish, translate, display, distribute, sell, sublicense or
+                        create derivative works or compilations incorporating such Content without the express
+                        permission of the owner of such Content; (c) you will not otherwise violate any additional legal
+                        or contractual restrictions governing use of the Content; and (d) you will not obscure or remove
+                        any proprietary rights notices contained in or on the Content.</p> -->
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id133" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title"  (click)="getScroll2(133)" [innerHTML]="pageArr.point9"><!-- User Representations --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <div [innerHTML]="pageArr.point9_desc"></div>
+                      
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id134" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" (click)="getScroll2(134)" [innerHTML]="pageArr.point10"><!-- Prohibited Uses --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                    <div [innerHTML]="pageArr.point10_desc"></div>
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id135" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title"  (click)="getScroll2(135)" [innerHTML]="pageArr.point11"> <!-- Disclaimers --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <div [innerHTML]="pageArr.point11_desc"></div>
+                      
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id136" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" (click)="getScroll2(136)" [innerHTML]="pageArr.point12"> <!-- PLEASE NOTE THE FOLLOWING IMPORTANT DISCLAIMERS OF WARRANTIES --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <div [innerHTML]="pageArr.point12_desc"></div>
+                   
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id137" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" (click)="getScroll2(137)"  [innerHTML]="pageArr.point13"><!-- Limitation of Liability --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                      <div [innerHTML]="pageArr.point13_desc"></div>
+                     
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id138" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" (click)="getScroll2(138)" [innerHTML]="pageArr.point14"><!-- Indemnification --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                        <div [innerHTML]="pageArr.point14_desc"></div>
+                   
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id139" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" (click)="getScroll2(139)" [innerHTML]="pageArr.point15"><!-- Term and Termination --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                       <div [innerHTML]="pageArr.point15_desc"></div>
+                     
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id40" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title" (click)="getScroll2(40)" [innerHTML]="pageArr.point16"><!-- Governing Law and Other Miscellaneous Terms --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                        <div [innerHTML]="pageArr.point16_desc"></div>
+                     
+                    </ng-template>
+                  </ngb-panel>
+
+                  <ngb-panel class="accord_head" id="id41" title="">
+                    <ng-template ngbPanelTitle>
+                      <a class="accordn_title"  (click)="getScroll2(41)"  [innerHTML]="pageArr.point17"><!-- Copyright and Copyright Notices --></a>
+                    </ng-template>
+                    <ng-template class="accord_body" ngbPanelContent>
+                       <div [innerHTML]="pageArr.point17_desc"></div>
+                     
+                    </ng-template>
+                  </ngb-panel>
+                </ngb-accordion>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="overflow-hidden">
+            <div *ngIf="pageArr" class="w-100">
+               <app-ads class="row gutter-8"></app-ads>   
+               </div> 
+   <!--      <div class="row gutter-8">
+          <div class="col-md-6">
+            <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-2.jpg)"
+              data-aos="fade-up" data-aos-duration="900">
+              <div class="mngInside d-flex align-items-center">
+                <div class="w-100 z_ind1">
+                  <div class="textCont text-color-white text-center">
+                    <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">LEARN ABOUT</div>
+                    <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300"
+                      data-aos-duration="900">INDEPENDENT AGENT</div>
+                    <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a href="#"
+                        class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-3.jpg)"
+              data-aos="fade-up" data-aos-duration="900">
+              <div class="mngInside d-flex align-items-center">
+                <div class="w-100 z_ind1">
+                  <div class="textCont text-color-white text-center">
+                    <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">OPEN YOUR</div>
+                    <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300"
+                      data-aos-duration="900">PRONTO FRANCHISE AGENCY</div>
+                    <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a href="#"
+                        class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <footer class="footerWrap overflow-hidden">
+        <app-footer></app-footer>
+      </footer>
+    </div>
+  </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->

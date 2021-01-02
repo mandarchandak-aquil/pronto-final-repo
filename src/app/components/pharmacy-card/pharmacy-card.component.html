@@ -1,0 +1,311 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+
+      <div class="pgWrapFull spcTpHeader vrLinesWrap">
+     
+        <app-header (languageChange)="onlanguageChange($event)"></app-header>
+
+        <div class="insideHeaderSec overflow-hidden" *ngIf="page">
+          <div class="row no-gutters">
+            <div class="col-md-6">
+              <div class="secimgWrap position-relative imgFit fullScreen-LessNav fullAuto-MD">
+                <img class="w-100 obj-fit" src="{{project_path}}{{page.banner_img}}" alt="{{page.banner_img_alt}}"  title="{{page.banner_img_title}}"/>
+              </div>
+            </div>
+            <div class="col-md-6 d-flex align-items-center position-relative headContCol" *ngIf="page">
+              <div class="w-100">
+                <div class="wrapContSec">
+                  <div class="topIns_head">
+                    <h1 class="pgTitle-head headPG" data-aos="fade-up" data-aos-duration="900">
+                     
+                    {{page.title}}</h1>
+                    <div class="contInfo" data-aos="fade-up" data-aos-delay="400" data-aos-duration="900" [innerHTML]="subtitle">
+              
+                    </div>
+
+                    <div class="tp-choose-wrap" data-aos="fade-up" data-aos-delay="700" data-aos-duration="900" *ngIf="downlod_buttons">
+                      <div class="txtLine line-H-1_3 text-gray-70" [innerHTML]="page.please_dowload_text"><!-- Please Download and Print Pronto Pharmacy Discount Card: --></div>
+                      <ul class="list-unstyled mb-0 choose_btnsList">
+                        <li class="list-inline-item"><a href="{{downlod_buttons_url[0]}}" target="_blank" class="btn cmnBtn btnBg-2 text-uppercase">{{downlod_buttons[0]}}</a></li>
+                        <li class="list-inline-item"><a href="{{downlod_buttons_url[1]}}" target="_blank" class="btn cmnBtn btnBg-2 text-uppercase">{{downlod_buttons[1]}}</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="call-Or-Chat" data-aos="fade-up" data-aos-delay="900" data-aos-duration="900">
+                      <div class="callText line-H-1_2">{{page.call_us_text}} <a class="f-W-B text-decoration-none link-color-black" href="tel:{{page.number}}">{{page.number}}</a></div>
+
+                      <div class="chatBtn mxWidth">
+                        <a href="#" class="btn btn-block cmnBtn btnOutline-2 btn text-uppercase">{{page.call_us_text}}</a>
+                      </div>
+                    </div>
+
+
+
+                  </div>
+                </div>
+                <div class="scrollBT-pos mngMob text-center">
+                  <div class="scrollDown" data-aos="fade-up" data-aos-delay="1200" data-aos-duration="900">
+                    <div class="arrowIcon"></div>
+                    <div class="scrollTxt line" [innerHTML]="page.call_us_text"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="overflow-hidden" *ngIf="page">
+          <div class="section-xl secFullwrap position-relative">
+            <div class="floatImg floatShape-5 auto_imgFloat_5 floating-Animate">
+              <img class="w-100" src="/assets/images/floating-img-5.png" alt="">
+            </div>
+            <div class="row no-gutters align-items-center">
+              <div class="col-md-6">
+                <div class="w-100 contCol-wrap containerPD-L">
+                  <div class="bxCont_Info pb-5 pb-md-0">
+                    <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="page.section2_title"><!-- Always get the lowest price on your prescriptions! --></h2>
+
+                    <div class="textSummary gray-color-1 line-H-1_8 last-p" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900" [innerHTML]="section2_desc">
+
+                     
+                      
+                    </div>
+                    <div class="btnRow" data-aos="fade-up" data-aos-delay="700" data-aos-duration="900">
+                      <a (click)="scroll('pharmareadDetailssec')"  class="btn cmnBtn btnBg-1 text-uppercase scrollClick">{{page.section2_button_text}}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="imgWrap">
+                  <img class="w-100" src="{{project_path}}{{page.section2_img}}" alt="{{page.section2_img_alt}}"  title="{{page.section2_img_title}}"/>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-xl position-relative mngSecLink">
+            <div class="secLink" id="pharmareadDetailssec"></div>
+
+            <div class="floatImg floatShape-2 auto_imgFloat_2 floating-Animate">
+              <img class="w-100" src="/assets/images/floating-img-2.png" alt="">
+            </div>
+            <div class="floatImg floatShape-3 auto_imgFloat_3 floating-Animate">
+              <img class="w-100" src="/assets/images/floating-img-3.png" alt="">
+            </div>
+            <div class="container-fluid lg-container">
+              <div class="row no-gutters">
+                <div class="col-lg-10">
+                  <div class="editorCont last-p gray-color-1" data-aos="fade-up" data-aos-duration="900">
+                    <div class="pharmacySec_tbl_wrap">
+                      <p [innerHTML]="page.section3_title"></p>
+                      <div class="headWrap_pharma">
+                        <h5 class="head_pharmacy_Cont mb-0 font-F-1 f-W-B text-color-black" [innerHTML]="page.section3_table_title">Y<!-- ou can save money at independent pharmacies and major chain drug stores, including: --></h5>
+                      </div>
+                      <div class="table-responsive table_brd_outer f-W-M line-H-1_4">
+                        <table class="table table-borderless mb-0 table-style-cst gray-color-2">
+                          <tbody>
+                            <tr *ngFor="let tabs of section3_table_tabs_new;let i = index;">
+                              <td>{{tabs.one}}</td>
+                              <td>{{tabs.two}}</td>
+                              <td>{{tabs.three}}</td>
+                            </tr>
+                      <!--       <tr>
+                              <td>CVS</td>
+                              <td>Rite Aid</td>
+                              <td>Wal-Mart</td>
+                            </tr>
+                            <tr>
+                              <td>Costco</td>
+                              <td>Safeway</td>
+                              <td>Winn-Dixie</td>
+                            </tr>
+                            <tr>
+                              <td>Kmart</td>
+                              <td>Target</td>
+                              <td>and more...</td>
+                            </tr>
+                            <tr>
+                              <td>Kroger</td>
+                              <td>Vons</td>
+                              <td></td>
+                            </tr> -->
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="pharmacySec_tbl_wrap">
+                      <div class="headWrap_pharma">
+                        <h5 class="head_pharmacy_Cont font-F-1 f-W-B text-color-black" [innerHTML]="page.section4_title"><!-- Save on thousands of brand name and generic prescription drugs. --></h5>
+                        <p class="mb-0" [innerHTML]="page.section4_table_title"><!-- Use your prescription drug program as often as you wish. --></p>
+                      </div>
+
+                      <div class="table-responsive table_brd_outer no-bt-brd f-W-M line-H-1_4">
+                        <table class="table table-borderless mb-0 table-style-cst gray-color-1">
+                          <thead class="text-nowrap">
+                            <tr>
+                              <th>{{page.section4_col1_title}}</th>
+                              <th class="text-center">{{page.section4_col2_title}}</th>
+                              <th class="text-center">{{page.section4_col3_title}}</th>
+                              <th class="text-center">{{page.section4_col4_title}}</th>
+                              <th class="text-center">{{page.section4_col5_title}}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor=" let sb1 of section4_col1_subtitles;let i =index;">
+                              <td>{{sb1}}</td>
+                              <td class="text-center">{{section4_col2_subtitles[i]}}</td>
+                              <td class="text-center">{{section4_col3_subtitles[i]}}</td>
+                              <td class="text-center">{{section4_col4_subtitles[i]}}</td>
+                              <td class="text-center">{{section4_col5_subtitles[i]}}</td>                                          
+                            </tr>
+                     <!--        <tr>
+                              <td>Lisinopril, Tab 40mg</td>
+                              <td class="text-center">$14.08</td>
+                              <td class="text-center">$9.35</td>
+                              <td class="text-center">$4.73</td>
+                              <td class="text-center">34%</td>                                          
+                            </tr>
+                            <tr>
+                              <td>Amlodipine, Tab 10mg</td>                                           
+                              <td class="text-center">$26.68</td>
+                              <td class="text-center">$7.26</td>
+                              <td class="text-center">$19.42</td>
+                              <td class="text-center">73%</td>                                          
+                            </tr>
+                            <tr>
+                              <td>Azithromycin, Tab 250mg</td>                                            
+                              <td class="text-center">$27.84</td>
+                              <td class="text-center">$13.33</td>
+                              <td class="text-center">$14.51</td>
+                              <td class="text-center">52%</td>                                                                                  
+                            </tr>
+                            <tr>
+                              <td>Omeprazole, Cap 20mg</td>
+                              <td class="text-center">$24.62</td>
+                              <td class="text-center">$13.09</td>
+                              <td class="text-center">$11.53</td>
+                              <td class="text-center">47%</td>                                                                                  
+                            </tr>
+                            <tr>
+                              <td>Pantoprazole, Tab 40mg</td>
+                              <td class="text-center">$68.32</td>
+                              <td class="text-center">$12.94</td>
+                              <td class="text-center">$55.38</td>
+                              <td class="text-center">81%</td>                                                                                  
+                            </tr> -->
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="pharmaNote_txt f-size-18" [innerHTML]="page.saving_text">
+                    <!--   *Savings are examples. Actual savings vary based on area and provider.<br>
+                      Note: This benefit cannot be used in conjunction with any other prescription drug discount program or insurance. While our provider lists are continuall updated, provider status can change. We recommend that you confirm the provider you selected participates in the program before dropping off your prescription. Drug pricing may vary based on factors including the package size dispensed, date and time dispensed, and dispensing location. This is not insurance. -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div  *ngIf="ads"class="insuranceBanner mr_B text-color-white position-relative z_ind1" style="background-image:url({{project_path}}{{ads[0].ad_banner1}})">
+            <div class="container-fluid lg-container">
+              <div class="row align-items-center mngInside">
+               <div class="col">
+                                <div *ngIf="ads[0].align == 1" class="contWrap w-100 ">
+                                    <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_title"></h2>
+                                    <div class="txtCont f-W-M text-gray-80">
+                                        <ul class="list-unstyled mb-0">
+                                            <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_subtitle">
+                                              </li>
+                                          <!--   <li data-aos="fade-up" data-aos-delay="400" data-aos-duration="900">25%
+                                                Multi-car Discount</li> -->
+                                        </ul>
+                                    </div>
+                                    <div class="btnRow" data-aos="fade-up" data-aos-delay="700"
+                                        data-aos-duration="900" *ngIf="ads[0].ad_banner1_button_text"><a routerLink="{{ads[0].ad_banner1_button_url}}"
+                                            class="btn cmnBtn btnBg-1 text-uppercase">{{ads[0].ad_banner1_button_text}}</a></div>
+                                </div>
+                                  <div *ngIf="ads[0].align == 2" class="contWrap w-100 text-right">
+                                    <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_title"></h2>
+                                    <div class="txtCont f-W-M text-gray-80">
+                                        <ul class="list-unstyled mb-0">
+                                            <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_subtitle">
+                                              </li>
+                                          <!--   <li data-aos="fade-up" data-aos-delay="400" data-aos-duration="900">25%
+                                                Multi-car Discount</li> -->
+                                        </ul>
+                                    </div>
+                                    <div class="btnRow" data-aos="fade-up" data-aos-delay="700"
+                                        data-aos-duration="900" *ngIf="ads[0].ad_banner1_button_text"><a routerLink="{{ads[0].ad_banner1_button_url}}"
+                                            class="btn cmnBtn btnBg-1 text-uppercase">{{ads[0].ad_banner1_button_text}}</a></div>
+                                </div>
+                                   <div  *ngIf="ads[0].align == 3" class="contWrap w-100 text-center">
+                                    <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_title"></h2>
+                                    <div class="txtCont f-W-M text-gray-80">
+                                        <ul class="list-unstyled mb-0">
+                                            <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_subtitle">
+                                              </li>
+                                          <!--   <li data-aos="fade-up" data-aos-delay="400" data-aos-duration="900">25%
+                                                Multi-car Discount</li> -->
+                                        </ul>
+                                    </div>
+                                    <div class="btnRow" data-aos="fade-up" data-aos-delay="700"
+                                        data-aos-duration="900" *ngIf="ads[0].ad_banner1_button_text"><a routerLink="{{ads[0].ad_banner1_button_url}}"
+                                            class="btn cmnBtn btnBg-1 text-uppercase">{{ads[0].ad_banner1_button_text}}</a></div>
+                                </div>
+                            </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="overflow-hidden">
+          <div  class="w-100" *ngIf="page">
+               <app-ads class="row gutter-8"></app-ads>   
+               </div> 
+               
+      <!--     <div class="row gutter-8">
+            <div class="col-md-6">
+              <div class="boxImgInfo mr_B bxFull" style="background-image:url(images/auto-ins-box-2.jpg)" data-aos="fade-up" data-aos-duration="900">
+                <div class="mngInside d-flex align-items-center">
+                  <div class="w-100 z_ind1">
+                    <div class="textCont text-color-white text-center">
+                      <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">LEARN ABOUT</div>
+                      <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900">INDEPENDENT AGENT</div>
+                      <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a href="independent-agent.php" class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="boxImgInfo mr_B bxFull" style="background-image:url(images/auto-ins-box-3.jpg)" data-aos="fade-up" data-aos-duration="900">
+                <div class="mngInside d-flex align-items-center">
+                  <div class="w-100 z_ind1">
+                    <div class="textCont text-color-white text-center">
+                      <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">OPEN YOUR</div>
+                      <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900">PRONTO FRANCHISE AGENCY</div>
+                      <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a href="https://www.prontofranchise.com" target="_blank" class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+
+           <div *ngIf="page">
+            <app-counter-section page_url="boat-insurance"></app-counter-section>            
+          </div>
+        <footer  *ngIf="page" class="footerWrap overflow-hidden">
+          <app-footer></app-footer>
+        </footer>
+
+      </div>
+
+    </div> <!-- .perspScreen -->
+  </div> <!-- .fullPG_Wrap -->

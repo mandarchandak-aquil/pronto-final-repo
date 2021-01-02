@@ -1,0 +1,714 @@
+<app-pre-loader *ngIf="loading"></app-pre-loader>
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+    <div class="pgWrapFull spcTpHeader vrLinesWrap">
+      <app-header></app-header>
+      <app-beyontec-breadcrum></app-beyontec-breadcrum>
+
+      <div class="quotePG_wrap overflow-hidden position-relative">
+        <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate"> <img class="w-100"
+            src="assets/images//floating-img-1.png" alt=""> </div>
+        <div class="floatImg floatShape-5 quote1_imgFloat_5 floating-Animate"> <img class="w-100"
+            src="assets/images//floating-img-5.png" alt=""> </div>
+        <div class="containerPD-L">
+          <div class="row no-gutters">
+            <div class="col-md">
+              <div class="formScreen_Hgt spcMng_mp">
+                <div class="queCol_Outer pTB_quote lg-BT-scroll" data-aos="fade-up" data-aos-duration="700">
+                  <div class="section-page-header brdLine-BT">
+                    <h1 class="headingStl-1">Confirm Policy Info</h1>
+                  </div>
+
+                  <div class="pg-tltp-spc">
+                    <ul class="list-inline listQuote-Info extra-mb">
+                      <li class="list-inline-item">
+                        <div class="quoteInfo_item">
+                          <div class="txt-head line-H-1_3 f-W-B">Quote For:</div>
+                          <div class="txtWrap f-size-18 line-H-1_3 gray-color-2">{{quoteFor | titlecase}}</div>
+                        </div>
+                      </li>
+                      <li class="list-inline-item">
+                        <div class="quoteInfo_item">
+                          <div class="txt-head line-H-1_3 f-W-B">Quote Number:</div>
+                          <div class="txtWrap f-size-18 line-H-1_3 gray-color-2">{{productQuoteId}}</div>
+                        </div>
+                      </li>
+                    </ul>
+
+                    <form [formGroup]="form">
+
+
+                      <div class="section-page-questions">
+                        <div class="section-page-question">
+                          <div class="question-wrap row no-gutters justify-content-between">
+                            <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                  class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                  viewbox="0 0 15 14" fill="none">
+                                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                </svg> </span>
+                              <div>
+                                <h3 class="question-text">When would you like your policy to start?</h3>
+                                <p class="question-byline">Need Immediate Coverage? Simply select today´s date.</p>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 question-content">
+                              <div class="queNbrSpace">
+                                <!-- <div class="form-group mb_form-group">
+                                  <div class="field_md fld-icon-Date field_labelTP">
+                                    <input class="form-control cmnField datepicker_fld" required="" value=""
+                                      placeholder="MM/DD/YYYY">
+                                    Toggle "has-error" this class for Error
+                                    <label class="primary-label label-Tp">Policy Start Date</label>
+                                    <div class="invalid-fld-feedback">Please enter a valid date</div>
+
+                                    <div class="fldIcon"><img src="assets/images//icon-calendar.png" alt="" /></div>
+
+                                  </div>
+                                  <div class="form-instr-meta gray-color-2">*Ensure that your current policy covers you
+                                    until this date.</div>
+                                </div> -->
+
+                                <div class="form-group mb_form-group">
+
+
+                                
+
+
+
+                                  <div class="field_md fld-icon-Date field_labelTP datepickerParent">
+
+                                    <!-- <div class="input-group">
+                                      <input
+                                        DobValidation  maxlength="10"
+                                        class="form-control cmnField datepicker_fld" placeholder="MM/DD/YYYY"
+                                        name="dp" ngbDatepicker #d="ngbDatepicker">
+                                      <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                                      </div>
+                                    </div> -->
+
+                                    <!-- <input class="form-control cmnField datepicker_fld" placeholder="MM/DD/YYYY"
+                                      DobValidation  type="text" maxlength="10" formControlName="psd"> -->
+
+                                      <input class="form-control cmnField datepicker_fld"
+                                        placeholder="MM/DD/YYYY" formControlName="psd" DobValidation type="text" maxlength="10" (focusout)="focusOutRqEff(form.get('psd').value)" id="rqEffDt">
+
+                                        <input type="text"
+                                        class="form-control datepickerModel"
+                                        #dp="bsDatepicker"
+                                        bsDatepicker
+                                        [bsConfig]="bsConfig"
+                                        DobValidation 
+                                        maxlength="10"
+                                        [maxDate]="maxDate"
+                                        [minDate]="minDate"
+                                        [(ngModel)]="datepickerModel"
+                                        (bsValueChange)="getdate($event, 'psd')"
+                                        [ngModelOptions]="{standalone: true}"
+                                        [ngClass]="{'ffl-floated-force1' : form.get('psd').value}"
+                                      >
+
+                                    <label class="primary-label label-Tp">Policy Start Date</label>
+                                    <div class="invalid-fld-feedback">Please enter a valid Date</div>
+
+                                      <div class="fldIcon"><img src="assets/images/icon-calendar.png" alt="" (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen" /></div>
+                                      
+                                      <button class="f-size-18" id="openModalButtonPolicyStart" [hidden]="true" data-toggle="modal"
+                                                data-target="#modal-Error_Policy_start">Show Error Modal</button>
+
+
+                                  </div>
+                                  <div class="form-instr-meta gray-color-2">*Ensure that your current policy covers you
+                                    until this date.</div>
+                                </div>
+
+
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="section-page-question">
+                          <div class="question-wrap row no-gutters justify-content-between">
+                            <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                  class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                  viewbox="0 0 15 14" fill="none">
+                                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                </svg> </span>
+                              <div>
+                                <h3 class="question-text">Personal Details of policy holder</h3>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 question-content">
+                              <div class="queNbrSpace">
+                                <div class="form-group mb_form-group">
+                                  <div class="field_md">
+                                    <!-- <input class="form-control cmnField" required="" value=""> -->
+                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+
+                                    <input class="form-control cmnField"
+                                      [ngClass]="{'ffl-floated-force' : form.get('firstName').value != ''}"
+                                      formControlName="firstName" [readonly]="form.get('firstName').value != ''">
+
+                                    <label class="primary-label">First Name</label>
+                                    <div class="invalid-fld-feedback">Please enter a valid First Name</div>
+                                  </div>
+                                </div>
+                                <div class="form-group mb_form-group">
+                                  <div class="field_md">
+                                    <!-- <input class="form-control cmnField" required="" value=""> -->
+                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                    <input class="form-control cmnField"
+                                      [ngClass]="{'ffl-floated-force' : form.get('middleName').value != ''}"
+                                      formControlName="middleName" [readonly]="form.get('middleName').value != ''">
+
+                                    <label class="primary-label">Middle Name</label>
+                                    <div class="invalid-fld-feedback">Please enter a valid Middle Name</div>
+                                  </div>
+                                </div>
+                                <div class="form-group mb_form-group">
+                                  <div class="field_md">
+                                    <!-- <input class="form-control cmnField" required="" value=""> -->
+                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                    <input class="form-control cmnField"
+                                      [ngClass]="{'ffl-floated-force' : form.get('lastName').value != ''}"
+                                      formControlName="lastName" [readonly]="form.get('lastName').value != ''">
+
+                                    <label class="primary-label">Last Name</label>
+                                    <div class="invalid-fld-feedback">Please enter a valid Last Name</div>
+                                  </div>
+                                </div>
+                                <!-- <div class="form-group mb_form-group">
+                                  <div class="tltp-mng_R">
+                                    <div class="field_md fld-icon-Date field_labelTP">
+                                      <input class="form-control cmnField datepicker_fld" required="" value=""
+                                        placeholder="MM/DD/YYYY">
+                                      Toggle "has-error" this class for Error
+                                      <label class="primary-label label-Tp">Date of Birth</label>
+                                      <div class="invalid-fld-feedback">Please enter a valid birthdate</div>
+
+                                      <div class="fldIcon"><img src="assets/images//icon-calendar.png" alt="" /></div>
+
+                                    </div>
+                                    <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                      title="Date of Birth - Driver's date of birth"><img class="iconTooltip_img"
+                                        src="assets/images//icon-info.svg" alt=""></span>
+                                  </div>
+
+                                </div> -->
+
+
+                                <div class="form-group mb_form-group">
+                                  <div class="tltp-mng_R">
+                                      <div
+                                          class="field_md fld-icon-Date field_labelTP datepickerParent">
+                                            <!-- <input
+                                              class="form-control cmnField datepicker_fld"
+                                              formControlName="dob"
+                                              placeholder="MM/DD/YYYY"
+                                              (focusout)="getDriverDetailbyDOB($event)"
+                                              [readonly]="isReadOnlydob" DobValidation
+                                              type="text" maxlength="10"
+                                              [ngClass]="{'pointer-none': isReadOnlydob}"> -->
+
+                                              <input class="form-control cmnField datepicker_fld" placeholder="MM/DD/YYYY" formControlName="dob" [readonly]="form.get('dob').value != ''" DobValidation numbersOnly type="text" maxlength="10" [ngClass]="{'ffl-floated-force' : form.get('dob').value}">
+
+
+                                              <input type="text"
+                                              class="form-control datepickerModel"
+                                              #dp="bsDatepicker"
+                                              bsDatepicker
+                                              [bsConfig]="bsConfig"
+                                              DobValidation 
+                                              maxlength="10"
+                                              [maxDate]="maxDate"
+                                              [minDate]="minDate"
+                                              [(ngModel)]="datepickerModel"
+                                              (bsValueChange)="getdate($event, 'dob')"
+                                              [ngModelOptions]="{standalone: true}"
+                                              
+                                            >
+
+                                          <label class="primary-label label-Tp">Date
+                                              of
+                                              Birth</label>
+                                          <div class="invalid-fld-feedback">Please
+                                              enter a valid
+                                              birthdate</div>
+
+                                          <div class="fldIcon"><img
+                                                  src="./assets/images/icon-calendar.png"
+                                                  alt=""  (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen" [ngClass]="{'pointer-none': isReadOnlydob}"/></div>
+
+
+                                          <button class="f-size-18"
+                                              id="openModalButtonDLDOB"
+                                              [hidden]="true" data-toggle="modal"
+                                              data-target="#modal-Error_DL_DOB">Show
+                                              Error Modal</button>
+
+                                      </div>
+
+                                      <span class="tooltipIcon" data-tooltip="tooltip"
+                                          data-html="true"
+                                          title="Date of Birth - Driver's date of birth"><img
+                                              class="iconTooltip_img"
+                                              src="./assets/images/icon-info.svg"
+                                              alt=""></span>
+
+                                  </div>
+
+                              </div>
+
+                                <!-- <div class="form-group mb_form-group">
+                                  <div class="tltp-mng_R">
+                                    <div class="input-group datePicker field_md fld-icon-Date field_labelTP">
+
+                                      <input class="form-control cmnField datepicker_fld" placeholder="MM/DD/YYYY"
+                                        formControlName="dob" [readonly]="form.get('dob').value != ''" DobValidation
+                                        numbersOnly type="text" maxlength="10"> -->
+
+
+                                      <!-- <div class="input-group">
+                                        <input
+                                          DobValidation  maxlength="10" type="hidden"
+                                          class="form-control cmnField datepicker_fld" placeholder="MM/DD/YYYY"
+                                          ngbDatepicker #d1="ngbDatepicker" formControlName="dob" [readonly]="form.get('dob').value != ''" DobValidation >
+                                        <div class="input-group-append">
+                                          <button class="btn btn-outline-secondary calendar" (click)="d1.toggle()" type="button"></button>
+                                        </div>
+                                      </div> -->
+
+
+                                      <!-- <input class="form-control cmnField datepicker_fld" placeholder="MM/DD/YYYY" name="dp" ngbDatepicker #d1="ngbDatepicker" (click)="d1.toggle()"> -->
+                                      <!-- <label class="primary-label label-Tp">Date of Birth</label>
+                                    </div>
+                                    <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                      title="Date of Birth - Driver's date of birth"><img class="iconTooltip_img"
+                                        src="assets/images/icon-info.svg" alt=""></span>
+                                  </div>
+                                </div> -->
+
+                                <fieldset [disabled]="form.get('isMale').value != ''">
+                                  <div class="row gutterField-8">
+
+                                    <div class="col-sm-6">
+                                      <div class="form-group mb_form-group">
+                                        <div class="cstBlockwrap">
+                                          <label for="policy_Holder_gender_Male"
+                                            class="custom-control custom-block custom-radio mb-0 disabled-control">
+                                            <!-- <input id="policy_Holder_gender_Male" name="policy_Holder_type_gender"
+                                            type="radio" class="custom-control-input form-check-input" checked> -->
+                                            <input id="policy_Holder_gender_Male" type="radio"
+                                              class="custom-control-input form-check-input" checked
+                                              formControlName="isMale" value="true"
+                                              [readonly]="form.get('isMale').value != ''">
+                                            <span class="custom-control-label-wrap"><span
+                                                class="custom-control-indicator"></span> <span
+                                                class="indicator-label">Male</span> </span> </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <div class="form-group mb_form-group">
+                                        <div class="cstBlockwrap">
+                                          <label for="policy_Holder_gender_Female"
+                                            class="custom-control custom-block custom-radio mb-0 disabled-control">
+                                            <!-- <input id="policy_Holder_gender_Female" name="policy_Holder_type_gender"
+                                            type="radio" class="custom-control-input form-check-input"> -->
+                                            <input id="policy_Holder_gender_Female" type="radio"
+                                              class="custom-control-input form-check-input" formControlName="isMale"
+                                              value="false" [readonly]="form.get('isMale').value != ''">
+                                            <span class="custom-control-label-wrap"><span
+                                                class="custom-control-indicator"></span> <span
+                                                class="indicator-label">Female</span> </span> </label>
+                                        </div>
+                                      </div>
+                                    </div>
+
+
+                                  </div>
+                                </fieldset>
+
+                                <div class="form-group mb_form-group">
+                                  <div class="selectNG_dropdown disabled">
+                                    <ng-select class="custom_ngSelect summary-info " [items]="maritalStatus"
+                                      bindLabel="value" bindValue="key" placeholder="Select" [searchable]="false"
+                                      formControlName="isMarried" [readonly]="form.get('isMarried').value != ''">
+                                      <ng-template ng-label-tmp let-item="item"> {{item.value}} </ng-template>
+                                    </ng-select>
+                                    <label class="selectLabel">Marital Status</label>
+                                    <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67"
+                                      height="6.04" viewBox="0 0 11.67 6.04">
+                                      <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                        fill="#fff"></polygon>
+                                    </svg>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="section-page-question">
+                          <div class="question-wrap row no-gutters justify-content-between">
+                            <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                  class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                  viewbox="0 0 15 14" fill="none">
+                                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                </svg> </span>
+                              <div>
+                                <h3 class="question-text">Address of policy holder</h3>
+                              </div>
+                            </div>
+                            <div class="col-lg-6 question-content">
+                              <div class="queNbrSpace">
+                                <div class="row gutterField-8">
+                                  <div class="col-sm-8">
+                                    <div class="form-group mb_form-group">
+                                      <div class="field_md">
+                                        <input class="form-control cmnField"
+                                          [ngClass]="{'ffl-floated-force' : form.get('street').value != ''}"
+                                          formControlName="street">
+                                        <!-- <input class="form-control cmnField" required="" value=""> -->
+                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                        <label class="primary-label">Address</label>
+                                        <div class="invalid-fld-feedback">Incomplete address</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <div class="form-group mb_form-group">
+                                      <div class="field_md">
+                                        <input class="form-control cmnField"
+                                          [ngClass]="{'ffl-floated-force' : form.get('unit').value != ''}"
+                                          formControlName="unit">
+                                        <!-- <input class="form-control cmnField" required="" value=""> -->
+                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                        <label class="primary-label">Unit</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <div class="form-group mb_form-group">
+                                      <div class="field_md">
+                                        <input class="form-control cmnField"
+                                          [ngClass]="{'ffl-floated-force' : form.get('city').value != ''}"
+                                          formControlName="city">
+                                        <!-- <input class="form-control cmnField" required="" value=""> -->
+                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                        <label class="primary-label">City</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <div class="form-group mb_form-group">
+                                      <div class="selectNG_dropdown">
+                                        <ng-select class="custom_ngSelect summary-info" [items]="stateList"
+                                          bindLabel="value" bindValue="key" placeholder="Select" [searchable]="true"
+                                          [ngClass]="{'ffl-floated-force' : form.get('state').value != ''}"
+                                          formControlName="state">
+                                          <ng-template ng-label-tmp let-item="item"> {{item.value}} </ng-template>
+                                        </ng-select>
+                                        <label class="selectLabel">State</label>
+                                        <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67"
+                                          height="6.04" viewBox="0 0 11.67 6.04">
+                                          <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                            fill="#fff"></polygon>
+                                        </svg>
+                                      </div>
+
+                                      <!-- <div class="field_md">
+                                        <input class="form-control cmnField" [ngClass]="{'ffl-floated-force' : form.get('state').value != ''}" formControlName="state">
+                                        <label class="primary-label">State</label>
+                                      </div> -->
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <div class="form-group mb_form-group">
+                                      <div class="field_md">
+                                        <input class="form-control cmnField"
+                                          [ngClass]="{'ffl-floated-force' : form.get('zip').value != ''}"
+                                          formControlName="zip" [readonly]="form.get('zip').value != ''">
+
+                                        <!-- <input class="form-control cmnField" required="" value=""> -->
+                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                        <label class="primary-label">Zip Code</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <div class="form-group mb_form-group">
+                                      <!-- <div class="field_md">
+                                        <input class="form-control cmnField" [ngClass]="{'ffl-floated-force' : form.get('county').value != ''}" formControlName="county">
+                                        <label class="primary-label">Country</label>
+                                        <div class="invalid-fld-feedback">Please enter Country</div>
+                                      </div> -->
+
+                                      <div class="selectNG_dropdown">
+                                        <ng-select class="custom_ngSelect summary-info" [items]="countieList"
+                                          bindLabel="value" bindValue="value" placeholder="Select" [searchable]="false"
+                                          [ngClass]="{'ffl-floated-force' : form.get('county').value != '' , 'has-error' : invalidCounty}"
+                                          formControlName="county" (change)="getCountryValues($event)">
+                                          <ng-template ng-label-tmp let-item="item"> {{item.value}} </ng-template>
+                                        </ng-select>
+                                        <label class="selectLabel">Country</label>
+                                        <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67"
+                                          height="6.04" viewBox="0 0 11.67 6.04">
+                                          <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                            fill="#fff"></polygon>
+                                        </svg>
+                                      </div>
+
+
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <div class="form-group mb_form-group">
+                                      <div class="field_md">
+                                        <input class="form-control cmnField"
+                                          [ngClass]="{'has-error' : emailError, 'ffl-floated-force' : form.get('email').value != ''}"
+                                          formControlName="email" (focusout)="emailCheck($event)">
+                                        <button id="openModalButtonEmail" [hidden]="true" data-toggle="modal"
+                                          data-target="#modal-Email_Exist">Open Modal</button>
+                                        <!-- <input class="form-control cmnField" required="" value=""> -->
+                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                        <label class="primary-label">Email</label>
+                                        <div class="invalid-fld-feedback" *ngIf="emailError">Please enter a valid Email
+                                          Address</div>
+
+                                        <div class="invalid-fld-feedback-invalid" *ngIf="!emailError">Please enter a
+                                          valid Email Address</div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="form-group mb_form-group">
+                                  <div class="wrap-FullGroupError">
+                                    <!-- Toggle "has-error" thisclass for Error -->
+                                    <div class="row gutterField-8">
+                                      <div class="col-sm-4">
+                                        <div class="form-group mb_form-group mb-sm-0">
+                                          <div class="field_md field_labelTP">
+                                            <!-- <input class="form-control cmnField" required="" value="" placeholder="XXX">
+                                             -->
+                                            <input class="form-control cmnField" formControlName="phone1"
+                                              placeholder="XXX" type="text" maxlength="3" numbersOnly>
+                                            <label class="primary-label label-Tp">Contact Number</label>
+
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-sm-4">
+                                        <div class="form-group mb_form-group mb-sm-0">
+                                          <div class="field_md field_labelTP">
+                                            <!-- <input class="form-control cmnField" required="" value="" placeholder="XXX">
+                                             -->
+                                            <input class="form-control cmnField" formControlName="phone2"
+                                              placeholder="XXX" type="text" maxlength="3" numbersOnly>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="col-sm-4">
+                                        <div class="form-group mb_form-group mb-sm-0">
+                                          <div class="field_md field_labelTP">
+                                            <!-- <input class="form-control cmnField" required="" value="" placeholder="XXX">
+                                             -->
+                                            <input class="form-control cmnField" formControlName="phone3"
+                                              placeholder="XXXX" type="text" maxlength="4" numbersOnly>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="invalid-fld-feedback">Please enter a valid Contact Number</div>
+                                </div>
+                                <div class="form-group mb_form-group">
+                                  <div class="field_md field_labelTP">
+                                    <input class="form-control cmnField" formControlName="licenseNum"
+                                      placeholder="Enter DL/ID #" [readonly]="form.get('licenseNum').value != ''"
+                                      numbersOnly
+                                      [ngClass]="{'ffl-floated-force' : form.get('licenseNum').value != ''}">
+                                    <!-- <input class="form-control cmnField" required="" value=""> -->
+                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                    <label class="primary-label">Driver's License</label>
+                                    <div class="invalid-fld-feedback">Please enter a valid DL</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="navigation-buttons">
+                        <ul class="list-inline mb-0 text-right btnsList_form">
+                          <li class="list-inline-item">
+                            <!-- <a class="btn btnstl-1 btnBg-3">Save & Continue</a> -->
+                            <button type="button" class="btn btnstl-1 btnBg-3"
+                              [disabled]="isClicked || invalidCounty || !form.valid" (click)="onSubmit(form.value)">Save & Continue</button>
+
+                              <button id="openModalButtonAddress"  [hidden]="true" data-toggle="modal"
+                              data-target="#modal-Verify_Address">Open Modal</button>
+
+                          </li>
+                        </ul>
+                      </div>
+
+
+                    </form>
+
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <beyontec-sidebar></beyontec-sidebar>
+
+          </div>
+        </div>
+      </div>
+
+      <div #myEmailExist class="modal fade modalCst" id="modal-Email_Exist">
+        <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+          <div class="modal-content modalGetQuote">
+            <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+            <div class="modal-body pb-lg">
+              <div class="row no-gutters justify-content-center">
+                <div class="col-lg-10">
+                  <div class="infoModalWrap text-center">
+                    <div class="heading-ttl font-F-3">Email</div>
+                    <div class="txt-summary last-p line-H-1_3">
+                      <!-- <p class="text-color-3 txt-Md"><strong>I would like to continue without my
+                                            driver
+                                            license.</strong></p> -->
+                      <!-- <p class="gray-color-2 f-size-18">Email already being used on an existing policy</p> -->
+                      <p class="f-size-18">Email already being used on an existing policy</p>
+                    </div>
+                    <div class="btnsWrapp mx-width">
+                      <ul class="list-unstyled  btnListing mb-0">
+                        <li><a class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block" data-dismiss="modal">Proceed
+                            anyway</a></li>
+                        <li><a class="btn cmnBtn btnOutline-2 sm-sz text-uppercase btn-block" data-dismiss="modal"
+                            (click)="getProceedEmail(true)">LOG IN</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Verify Address -->
+      <div class="modal fade modalCst" id="modal-Verify_Address">
+        <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+          <div class="modal-content">
+            <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+            <button type="button" class="close" data-dismiss="modal" id="closeAddExpenseModal" [hidden]="true">&times;</button>
+            
+            <div class="modal-body pb-lg">
+              <div class="row no-gutters justify-content-center">
+                <form [formGroup]="form1">
+                  <div class="col-lg-11">
+                    <div class="section-page-questions">
+                      <div class="section-page-question">
+                        <div class="question-wrap pb-0">
+                          <div class="question-header">
+                            <div>
+                              <h3 class="question-text">Verify Your Address</h3>
+                              <p class="question-byline">We detected an error with the address you provided. Please review
+                                your address below and choose 'Change Address' to make any necessary changes</p>
+                            </div>
+                          </div>
+                          
+                          <div class="question-content">
+                            <div class="form-group mb_group_lg">
+                              <label for="verify_address-Original" class="check-control_Circle mb-0">
+                                <input id="verify_address-Original" type="radio"  formControlName="addressCheck" value=1  class="inputCheck">
+                                <span class="wrapRow d-flex align-items-center"> <span class="checkIndicate"></span> <span
+                                    class="labelText f-size-18 flex-fill">Keep Original Address</span> </span> </label>
+                              <div class="spcLeft_control_Circle">
+                                <div class="gray-color-1 f-size-18 line-H-1_3">{{this.currentAddress}}</div>
+                              </div>
+                            </div>
+
+                            <div class="form-group mb_group_lg">
+                              <label for="verify_address-Suggest" class="check-control_Circle mb-0">
+                                <input id="verify_address-Suggest" type="radio" formControlName="addressCheck" value=2  class="inputCheck"  >
+                                <span class="wrapRow d-flex align-items-center"> <span class="checkIndicate"></span> <span
+                                    class="labelText f-size-18 flex-fill">Select Suggested Address</span> </span> </label>
+                              <div class="spcLeft_control_Circle">
+                                <div class="gray-color-1 f-size-18 line-H-1_3">{{this.suggestAddress}}
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group mb_group_lg">
+                              <label for="verify_address-Change" class="check-control_Circle mb-0">
+                                <input id="verify_address-Change" type="radio" formControlName="addressCheck" value=3  class="inputCheck" checked>
+                                <span class="wrapRow d-flex align-items-center"> <span class="checkIndicate"></span> <span
+                                    class="labelText f-size-18 flex-fill">Change Address</span> </span> </label>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="navigation-buttons">
+                      <ul class="list-inline mb-0 text-right btnsList_form">
+                        <li class="list-inline-item">
+                          <!-- <a href="#" class="btn btnstl-1 btnBg-3">Save &amp; Continue</a> -->
+                          <button type="button" class="btn btnstl-1 btnBg-3" (click)="onSubmitFinal(form1.value)">Save & Continue</button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- End Modal Verify Address -->
+
+
+      <div class="modal fade modalCst" id="modal-Error_Policy_start">
+        <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+          <div class="modal-content modalGetQuote">
+            <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+            <div class="modal-body pb-lg">
+            <div class="row no-gutters justify-content-center">
+            <div class="col-lg-10">
+            <div class="infoModalWrap text-center">
+            <div class="txt-summary last-p line-H-1_3">
+            <p class="text-color-3 txt-Md"><strong>Please Check Policy Start Date</strong></p>
+            <p class="gray-color-2 f-size-18">Policy start date can start as soon as today, or as late as
+              35 days from today.</p>
+                  </div>
+            <div class="btnsWrapp mx-width">
+            <ul class="list-unstyled  btnListing mb-0">
+            <li>
+                <a class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block" data-dismiss="modal" >Continue</a>
+            </li>
+            </ul>
+            </div>
+            </div>
+            </div>
+             </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+
+      <app-footer-quote></app-footer-quote>
+    </div>
+  </div>
+  <!-- .perspScreen -->
+</div>
+<!-- .fullPG_Wrap -->

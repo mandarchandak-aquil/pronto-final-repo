@@ -1,0 +1,264 @@
+<app-page-loader *ngIf="loading"></app-page-loader>
+
+<div class="fullPG_Wrap" > 
+    <div class="perspScreen">
+        <div class="pgWrapFull spcTpHeader vrLinesWrap">
+            <app-header (languageChange)="onlanguageChange($event)"></app-header>
+            <div class="overflow-hidden" *ngIf="page">
+                <div class="mob_app_Hero_outer">
+                    <div class="mob_app_HeroSec">
+                        <div class="row no-gutters">
+                            <div class="col-md-5" *ngIf="page">
+                                <div class="prontoHero_img">
+                                    <img src="{{project_path}}{{page.pronto_hero_img}}" alt="" />
+                                </div>
+                            </div>
+                            <div class="col-md-7" *ngIf="page">
+                                <div class="download_app_wrapp clearfix">
+
+                                    <div class="appDownload_header text-center text-color-white" data-aos="fade-up"
+                                        data-aos-duration="900">
+                                        <div class="txt-sm">{{page['download_now']}}</div>
+                                        <div class="txt-lg f-W-B">{{page['title']}}</div>
+                                        <ul class="list-unstyled listApp_link mb-0 d-flex justify-content-center">
+                                            <li>
+                                                <a class="app_link_store" href="{{page.apple_url}}" target="_blank"><img
+                                                        class="w-100" src="assets/images/app_store_apple.png" alt="" /></a>
+                                            </li>
+                                            <li>
+                                                <a class="app_link_store" href="{{page.google_url}}" target="_blank"><img
+                                                        class="w-100" src="assets/images/app_store_google_play.png"
+                                                        alt="" /></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="mng_Mob_app_screens"  *ngIf="page">
+
+                                        <div class="app_mobile_hero d-flex">
+                                            <div class="imgCol screen_down" data-aos="fade-up" data-aos-delay="500"
+                                                data-aos-duration="900">
+                                                <img src="{{project_path}}{{page['app_screen2']}}" alt="" />
+                                            </div>
+                                            <div class="imgCol screen_up" data-aos="fade-up" data-aos-delay="300"
+                                                data-aos-duration="900">
+                                                <img src="{{project_path}}{{page['app_screen1']}}" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app_down_sec_2" *ngIf="page">
+                    <div class="appDown_head_text font-F-2 text-center text-md-left" data-aos="fade-up"
+                        data-aos-duration="900">
+                        {{page['section2_title1']}}<br>
+                        <span class="text-color-3">{{page['section2_title2']}}</span></div>
+                </div>
+
+                <div class="container-fluid lg-container" *ngIf="page">
+
+                    <div class="sec_mobApp_Dwn">
+                        <div class="mobApp_info_Sec">
+                            <div class="row gutter-10vw">
+                                <div class="col-md-6">
+                                    <div class="imgWrapper">
+                                        <div class="app_imgScreen"  *ngIf="page">
+                                            <div class="d-inline-block aos-rotate-Right" data-aos
+                                                data-aos-delay="200">
+                                                <img src="{{project_path}}{{page['app_screen3']}}" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 align-self-center">
+                                    <div class="app_infoCont_wrap position-relative z-ind-1">
+                                        <div class="cont_app_info mx-width text-center text-md-left"
+                                            data-aos="fade-up" data-aos-duration="900">
+                                            <div class="contHead text-color-3 f-W-B" [innerHTML]="page['section2_title_1']">
+                                                
+                                               </div>
+                                            <div class="cont_summary" [innerHTML]="page['section2_subtitle']"></div>
+                                            <div class="ctaRow">
+                                                <ul
+                                                    class="list-unstyled mb-0 d-flex align-items-center justify-content-center justify-content-md-start app_downloadList">
+                                                    <li><span
+                                                            class="btn cmnBtn btnBg-1 noHover btn-sz-md text-uppercase" [innerHTML]="page['download_button']"></span></li>
+                                                    <li>
+                                                        <ul
+                                                            class="list-unstyled mb-0 d-flex align-items-center appStore_links">
+                                                            <li><a href="{{page.apple_url}}" target="_blank"
+                                                                    class="btn store_Icon_link"><i
+                                                                        class="fa fa-apple"></i></a></li>
+                                                            <li><a href="{{page.google_url}}" target="_blank"
+                                                                    class="btn store_Icon_link">
+                                                                   
+                                                                    <i
+                                                                        class="fa fa-android"></i></a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="mobApp_info_Sec align_sec_1">
+                            <div class="row gutter-10vw">
+                                <div class="col-md-6 order-md-1">
+                                    <div class="imgWrapper">
+                                        <div class="app_imgScreen"  *ngIf="page">
+                                            <div class="d-inline-block aos-rotate-Left" data-aos
+                                                data-aos-delay="200">
+                                                <img src="{{project_path}}{{page['section3_screen']}}" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 align-self-center order-md-0">
+                                    <div class="app_infoCont_wrap position-relative z-ind-1">
+                                        <div class="cont_app_info mx-width text-center text-md-left"
+                                            data-aos="fade-up" data-aos-duration="900">
+                                            <div class="contHead text-color-3 f-W-B" [innerHTML]="page['section3_title']"></div>
+                                            <div class="cont_summary" [innerHTML]="page['section3_subtitle']"></div>
+                                            <div class="ctaRow">
+                                                <ul
+                                                    class="list-unstyled mb-0 d-flex align-items-center justify-content-center justify-content-md-start app_downloadList">
+                                                    <li><span
+                                                            class="btn cmnBtn btnBg-1 noHover btn-sz-md text-uppercase" [innerHTML]="page['download_button2']"></span></li>
+                                                    <li>
+                                                        <ul
+                                                            class="list-unstyled mb-0 d-flex align-items-center appStore_links">
+                                                            <li><a href="{{page['apple_url']}}" target="_blank"
+                                                                class="btn store_Icon_link"><i
+                                                                    class="fa fa-apple"></i></a></li>
+                                                        <li><a href="{{page['google_url']}}" target="_blank"
+                                                                class="btn store_Icon_link"><i
+                                                                    class="fa fa-android"></i></a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="mobApp_info_Sec">
+                            <div class="row gutter-10vw">
+                                <div class="col-md-6">
+                                    <div class="imgWrapper">
+                                        <div class="app_imgScreen"  *ngIf="page">
+                                            <div class="d-inline-block aos-rotate-Right" data-aos
+                                                data-aos-delay="200">
+                                                <img src="{{project_path}}{{page['section4_screen']}}" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 align-self-center">
+                                    <div class="app_infoCont_wrap position-relative z-ind-1">
+                                        <div class="cont_app_info mx-width text-center text-md-left"
+                                            data-aos="fade-up" data-aos-duration="900">
+                                            <div class="contHead text-color-3 f-W-B" [innerHTML]="page['section4_title']"></div>
+                                            <div class="cont_summary" [innerHTML]="page['section4_subtitle']"></div>
+                                            <div class="ctaRow">
+                                                <ul
+                                                    class="list-unstyled mb-0 d-flex align-items-center justify-content-center justify-content-md-start app_downloadList">
+                                                    <li><span
+                                                            class="btn cmnBtn btnBg-1 noHover btn-sz-md text-uppercase " [innerHTML]="page['download_button3']"></span></li>
+                                                    <li>
+                                                        <ul
+                                                            class="list-unstyled mb-0 d-flex align-items-center appStore_links">
+                                                            <li><a href="{{page['apple_url']}}" target="_blank"
+                                                                class="btn store_Icon_link"><i
+                                                                    class="fa fa-apple"></i></a></li>
+                                                        <li><a href="{{page['google_url']}}" target="_blank"
+                                                                class="btn store_Icon_link"><i
+                                                                    class="fa fa-android"></i></a></li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="appDownload_bt_sec" *ngIf="page">
+                    <div class="container-fluid downloadApp_bt_container">
+                        <div class="row gutter-15vw">
+                            <div class="col-md-4" *ngFor="let sb of section5_titles;let i = index;">
+                                <div class="app_Info_col text-center" data-aos="fade-up" data-aos-duration="900">
+
+                                    <div class="cont_app_info position-relative z-ind-1">
+                                        <div class="contHead text-color-3 f-W-B" [innerHTML]="sb"> </div>
+                                        <div class="cont_summary">{{section5_subtitles[i]}}</div>
+                                    </div>
+
+                                    <div class="appScreen_img">
+                                        <img class="w-100" src="{{project_path}}{{section5_screens[i]}}" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-4">
+                                <div class="app_Info_col text-center" data-aos="fade-up" data-aos-duration="900">
+
+                                    <div class="cont_app_info position-relative z-ind-1">
+                                        <div class="contHead text-color-3 f-W-B">Access ID cards and proof of
+                                            insurance</div>
+                                        <div class="cont_summary">Access your insurance ID cards on the go. Email or
+                                            print your ID cards when you need.</div>
+                                    </div>
+
+                                    <div class="appScreen_img">
+                                        <img class="w-100" src="assets/images/mobile-app-download-5.png" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="app_Info_col text-center" data-aos="fade-up" data-aos-duration="900">
+
+                                    <div class="cont_app_info position-relative z-ind-1">
+                                        <div class="contHead text-color-3 f-W-B">Store multiple payment source</div>
+                                        <div class="cont_summary">You can store multiple payment cards for payment
+                                            of premium.</div>
+                                    </div>
+
+                                    <div class="appScreen_img">
+                                        <img class="w-100" src="assets/images/mobile-app-download-6.png" alt="" />
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <footer class="footerWrap overflow-hidden">
+                <app-footer></app-footer>
+            </footer>
+
+        </div>
+
+    </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->

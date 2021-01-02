@@ -1,0 +1,619 @@
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+        <div class="pgWrapFull spcTpHeader">
+            <app-header></app-header>
+            <oneink-stepper></oneink-stepper>
+            <div class="quotePG_wrap overflow-hidden position-relative">
+                <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate"> <img class="w-100"
+                        src="./assets/images/floating-img-1.png" alt=""> </div>
+                <div class="floatImg floatShape-5 quote1_imgFloat_5 floating-Animate"> <img class="w-100"
+                        src="./assets/images/floating-img-5.png" alt=""> </div>
+                <div class="containerPD-L">
+                    <div class="row no-gutters">
+                        <div class="col-md">
+                            <div class="formScreen_Hgt spcMng_mp">
+                                <div class="queCol_Outer pTB_quote lg-BT-scroll" data-aos="fade-up"
+                                    data-aos-duration="700">
+                                    
+                                    <form [formGroup]="form">
+
+                                        <div class="secPg_head_row">
+                                            <div class="row gutter-10vw align-items-end">
+                                                <div class="col-md">
+                                                    <div class="section-page-header brdLine-BT mb-0">
+                                                        <div class="ttl-tpLine gray-color-2" *ngIf="oneInkDriverForm.drivers_array$!=undefined">{{oneInkDriverForm.drivers_array$['controls']['driver']['controls'][0].get('firstName').value}} {{oneInkDriverForm.drivers_array$['controls']['driver']['controls'][0].get('lastName').value}}</div>
+                                                        <h1 class="headingStl-1">A few questions about the driver</h1>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <div class="cont-Rgt">
+                                                        <div class="quoteNbr f-size-18 f-W-M"><span
+                                                                class="text-color-3">Quote Number: </span>{{qouteId}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="pg-tltp-spc">
+                                            <div class="section-page-questions">
+                                                <div class="section-page-question" *ngIf="index ==  undefined || index == null || index == ''">
+                                                    <div class="question-wrap row no-gutters justify-content-between">
+                                                        <div class="col-lg-5 question-header d-flex"> <span
+                                                                class="question-counter"> <span class="countNbr"></span>
+                                                                <svg class="iconMark" width="15" height="14"
+                                                                    viewbox="0 0 15 14" fill="none">
+                                                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                                </svg> </span>
+                                                            <div>
+                                                                <h3 class="question-text">Tell us about your vehicle</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 question-content">
+                                                            <div class="queNbrSpace">
+                                                                <div class="form-group mb_form-group">
+                                                                    <div class="tltp-mng_R">
+                                                                        <div class="field_md field_labelTP">
+                                                                            <input class="form-control cmnField" Usage  formControlName="vin" placeholder="Vehicle Identification Number (VIN)" [readonly]="isReadOnlyVin" emptyvalueValidationcheck [currentControl]="form.get('vin')">
+                                                                          
+                                                                            <label class="primary-label label-Tp">Vehicle
+                                                                                Identification Number (VIN)</label>
+                                                                            <div class="invalid-fld-feedback">Vin Is required</div>
+                                                                        </div>
+                                                                       
+                                                                        <span class="tooltipIcon" data-tooltip="tooltip"
+                                                                            data-html="true"
+                                                                            title="Tips: Every VIN has 17 alphanumeric characters The letters I, O and Q are never used At least 6 charachters are numeric Common Typing mistakes are B for 8, S for 5, O for 0, I for 1, or vice versa"><img
+                                                                                class="iconTooltip_img"
+                                                                                src="./assets/images/icon-info.svg"
+                                                                                alt=""></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group mb_form-group">
+                                                                    <ul class="list-inline mb-0 text-right btnsList_form">
+                                                                        <li class="list-inline-item"> 
+                                                                            
+                                                                                <button type="button" class="btn btnstl-1 btnBg-3" [disabled]="!form.get('vin').valid" (click)="vinVerify(form.get('vin').value)">Verify</button>
+
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Toggle Once Verify VIN -->
+                                             
+                                                <!-- <div *ngIf="isVinValid || index "> -->
+                                                        <div *ngIf="isVinValid || index" >
+                                                    <div class="section-page-question">
+                                                        <div class="question-wrap row no-gutters justify-content-between">
+                                                            <div class="col-lg-5 question-header d-flex"> <span
+                                                                    class="question-counter"> <span class="countNbr"></span>
+                                                                    <svg class="iconMark" width="15" height="14"
+                                                                        viewbox="0 0 15 14" fill="none">
+                                                                        <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                                    </svg> </span>
+                                                                <div>
+                                                                    <h3 class="question-text">Vehicle Details</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 question-content">
+                                                                <div class="queNbrSpace">
+
+                                                                    
+                                                                        <div class="form-group mb_form-group">
+                                                                            <div class="field_md">
+                                                                                <input class="form-control cmnField"
+                                                                                [ngClass]="{'ffl-floated-force' : form.get('year').value != ''}"  formControlName="year" readonly>
+                                                                                <label class="primary-label">Year</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    
+
+                                                                    
+                                                                        <div class="form-group mb_form-group">
+                                                                            <div class="field_md">
+                                                                                <input class="form-control cmnField"
+                                                                                [ngClass]="{'ffl-floated-force' : form.get('make').value != ''}"  formControlName="make" readonly>
+                                                                                <label class="primary-label">Make</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    
+
+                                                                    
+                                                                        <div class="form-group mb_form-group">
+                                                                            <div class="field_md">
+                                                                                <input class="form-control cmnField"
+                                                                                [ngClass]="{'ffl-floated-force' : form.get('model').value != ''}" formControlName="model" readonly>
+                                                                                <label class="primary-label">Model</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    
+
+                                                                    
+                                                                        <div class="form-group mb_form-group">
+                                                                            <div class="field_md">
+                                                                                <input class="form-control cmnField"
+                                                                                [ngClass]="{'ffl-floated-force' : form.get('bodyType').value != ''}" formControlName="bodyType" readonly>
+                                                                                <label class="primary-label">Body Type</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="section-page-question">
+                                                        <div class="question-wrap row no-gutters justify-content-between">
+                                                            <div class="col-lg-5 question-header d-flex"> <span
+                                                                    class="question-counter"> <span class="countNbr"></span>
+                                                                    <svg class="iconMark" width="15" height="14"
+                                                                        viewbox="0 0 15 14" fill="none">
+                                                                        <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                                    </svg> </span>
+                                                                <div>
+                                                                    <h3 class="question-text">Vehicle Coverages</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 question-content">
+                                                                <div class="queNbrSpace" formGroupName="vehicleCoverages">
+
+
+                                                                    <div class="form-group mb_form-group">
+                                                                            <div class="tltp-mng_R">
+                                                                        <div class="selectNG_dropdown"> 
+                                                                                <ng-select class="custom_ngSelect" [items]="comprehensiveList"
+                                                                                bindLabel="name"
+                                                                                placeholder="Select"
+                                                                                bindValue="id"
+                                                                                [searchable]="false" formControlName="comprehensive">
+        
+                                                                                <ng-template ng-label-tmp let-item="item">
+                                                                                    {{item.name}}
+                                                                                </ng-template>
+        
+                                                                            </ng-select>
+                                                                            <label class="selectLabel">Comprehensive</label>
+                                                                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                                        <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                                        </svg>
+                                                                        </div>
+
+                                                                        <span class="tooltipIcon" data-tooltip="tooltip"
+                                                                        data-html="true"
+                                                                        title="May cover damages to your car involving incidents besides a car collision such as vandalism, natural disasters, accidents with animals, etc."><img
+                                                                            class="iconTooltip_img"
+                                                                            src="./assets/images/icon-info.svg"
+                                                                            alt=""></span>
+                                                                            </div>
+                                                                    </div>
+
+                                                                    <div class="form-group mb_form-group">
+                                                                            <div class="tltp-mng_R">
+                                                                        <div class="selectNG_dropdown"> 
+                                                                                <ng-select class="custom_ngSelect" [items]="collisionList"
+                                                                                bindLabel="name"
+                                                                                placeholder="Select"
+                                                                                bindValue="id"
+                                                                                [searchable]="false" formControlName="collision">
+        
+                                                                                <ng-template ng-label-tmp let-item="item">
+                                                                                    {{item.name}}
+                                                                                </ng-template>
+        
+                                                                            </ng-select>
+                                                                            <label class="selectLabel">Collision</label>
+                                                                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                                        <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                                        </svg>
+                                                                        </div>
+                                                                         <span class="tooltipIcon" data-tooltip="tooltip"
+                                                                        data-html="true"
+                                                                        title="May cover damages to your car involved in an accident."><img
+                                                                            class="iconTooltip_img"
+                                                                            src="./assets/images/icon-info.svg"
+                                                                            alt=""></span>
+                                                                            </div>
+
+                                                                    </div>
+
+                                                                    <div class="form-group mb_form-group">
+                                                                            <div class="tltp-mng_R">
+                                                                        <div class="selectNG_dropdown"> 
+                                                                                <ng-select class="custom_ngSelect" [items]="rentalRembusmentList"
+                                                                                bindLabel="name"
+                                                                                placeholder="Select"
+                                                                                bindValue="id"
+                                                                                [searchable]="false" formControlName="rentalReimburse">
+        
+                                                                                <ng-template ng-label-tmp let-item="item">
+                                                                                    {{item.name}}
+                                                                                </ng-template>
+        
+                                                                            </ng-select>
+                                                                            <label class="selectLabel">Rental
+                                                                                Reimburse</label>
+                                                                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                                        <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                                        </svg>
+                                                                        </div>
+                                                                        <span class="tooltipIcon" data-tooltip="tooltip"
+                                                                        data-html="true"
+                                                                        title="May help pay for a rental car while your vehicle is being repaired after an accident."><img
+                                                                            class="iconTooltip_img"
+                                                                            src="./assets/images/icon-info.svg"
+                                                                            alt=""></span>
+                                                                            </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="section-page-question">
+                                                        <div class="question-wrap row no-gutters justify-content-between">
+                                                            <div class="col-lg-5 question-header d-flex"> <span
+                                                                    class="question-counter"> <span class="countNbr"></span>
+                                                                    <svg class="iconMark" width="15" height="14"
+                                                                        viewbox="0 0 15 14" fill="none">
+                                                                        <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                                    </svg> </span>
+                                                                <div>
+                                                                    <h3 class="question-text">Usage</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 question-content">
+                                                                <div class="queNbrSpace">
+
+                                                                    <div class="form-group mb_form-group">
+                                                                        <div class="selectNG_dropdown"> 
+                                                                                <ng-select class="custom_ngSelect" [items]="typeOfUseList"
+                                                                                bindLabel="name"
+                                                                                placeholder="Select"
+                                                                                bindValue="name"
+                                                                                [searchable]="false" formControlName="usageType">
+        
+                                                                                <ng-template ng-label-tmp let-item="item">
+                                                                                    {{item.name}}
+                                                                                </ng-template>
+        
+                                                                            </ng-select>
+                                                                            <label class="selectLabel">Type of Use</label>
+                                                                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                                        <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                                        </svg>
+                                                                        </div>
+                                                                    </div>
+                                                                   
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="section-page-question">
+                                                        <div class="question-wrap row no-gutters justify-content-between">
+                                                            <div class="col-lg-5 question-header d-flex"> <span
+                                                                    class="question-counter"> <span class="countNbr"></span>
+                                                                    <svg class="iconMark" width="15" height="14"
+                                                                        viewbox="0 0 15 14" fill="none">
+                                                                        <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                                    </svg> </span>
+                                                                <div>
+                                                                    <h3 class="question-text">Is your vehicle Leased or
+                                                                        Financed?</h3>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-6 question-content">
+                                                                <div class="queNbrSpace">
+                                                                    <div class="tltp-mng_R">
+                                                                        <div class="row gutterField-8">
+                                                                            <div class="col-6">
+                                                                                <div class="form-group mb_form-group">
+                                                                                    <div class="cstBlockwrap">
+                                                                                        <label
+                                                                                            for="vehicle_leased_or_financed-Yes"
+                                                                                            class="custom-control custom-block custom-radio mb-0">
+                                                                                            <input
+                                                                                                id="vehicle_leased_or_financed-Yes"
+                                                                                                type="radio"
+                                                                                                class="custom-control-input form-check-input"
+                                                                                                formControlName="leased" value="yes">
+                                                                                            <span
+                                                                                                class="custom-control-label-wrap"><span
+                                                                                                    class="custom-control-indicator"></span>
+                                                                                                <span
+                                                                                                    class="indicator-label">Yes</span>
+                                                                                            </span> </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-6">
+                                                                                <div class="form-group mb_form-group">
+                                                                                    <div class="cstBlockwrap">
+                                                                                        <label
+                                                                                            for="vehicle_leased_or_financed-No"
+                                                                                            class="custom-control custom-block custom-radio mb-0">
+                                                                                            <input
+                                                                                                id="vehicle_leased_or_financed-No"
+                                                                                                type="radio"
+                                                                                                class="custom-control-input form-check-input" formControlName="leased" value="no">
+                                                                                            <span
+                                                                                                class="custom-control-label-wrap"><span
+                                                                                                    class="custom-control-indicator"></span>
+                                                                                                <span
+                                                                                                    class="indicator-label">No</span>
+                                                                                            </span> </label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <span class="tooltipIcon" data-tooltip="tooltip"
+                                                                            data-html="true"
+                                                                            title="Select YES if your vehicle is leased or financed"><img
+                                                                                class="iconTooltip_img"
+                                                                                src="./assets/images/icon-info.svg"
+                                                                                alt=""></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div *ngIf="form.get('leased').value === 'yes'">
+                                                        <!-- Is your vehicle Leased or Financed? If Select Yes then Toggle below Div -->
+                                                        <div formGroupName="lienholder" >
+                                                            <div class="section-page-question" >
+                                                                <div
+                                                                    class="question-wrap row no-gutters justify-content-between">
+                                                                    <div class="col-lg-5 question-header d-flex"> <span
+                                                                            class="question-counter"> <span
+                                                                                class="countNbr"></span> <svg class="iconMark"
+                                                                                width="15" height="14" viewbox="0 0 15 14"
+                                                                                fill="none">
+                                                                                <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                                            </svg> </span>
+                                                                        <div>
+                                                                            <h3 class="question-text">Add Lienholder</h3>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6 question-content">
+                                                                        <div class="queNbrSpace">
+                                                                            <div class="row gutterField-8">
+                                                                                <div class="col-sm-4">
+                                                                                    <div class="form-group mb_form-group">
+                                                                                        <div class="field_md">
+                                                                                            <input class="form-control cmnField" [ngClass]="{'ffl-floated-force' : form.controls['lienholder'].get('name').value != ''}"  formControlName="name" emptyvalueValidationcheck [currentControl]="form.controls['lienholder'].get('name')">
+                                                                                            <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                                            <label class="primary-label">Bank
+                                                                                                Name</label>
+                                                                                                <div class="invalid-fld-feedback">Bank Name Required</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                    <div class="form-group mb_form-group">
+                                                                                        <div class="field_md">
+                                                                                            <input class="form-control cmnField" [ngClass]="{'ffl-floated-force' : form.controls['lienholder'].get('address').value != ''}"  formControlName="address" emptyvalueValidationcheck [currentControl]="form.controls['lienholder'].get('address')">
+                                                                                            <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                                            <label
+                                                                                                class="primary-label">Address</label>
+                                                                                                <div class="invalid-fld-feedback">Address Required</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-4">
+                                                                                        <div class="form-group mb_form-group">
+                                                                                            <div class="field_md">
+                                                                                                <input class="form-control cmnField" [ngClass]="{'ffl-floated-force' : form.controls['lienholder'].get('city').value != ''}"  formControlName="city" emptyvalueValidationcheck [currentControl]="form.controls['lienholder'].get('city')">
+                                                                                                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                                                <label
+                                                                                                    class="primary-label">City</label>
+                                                                                                    <div class="invalid-fld-feedback">City Required</div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                <div class="col-sm-6">
+                                                                                    
+
+
+                                                                                    <div class="form-group mb_form-group">
+                                                                                        <div class="selectNG_dropdown" > 
+                                                                                                <ng-select class="custom_ngSelect" [items]="stateList" emptyvalueValidationcheck [currentControl]="form.controls['lienholder'].get('state')"
+                                                                                                bindLabel="name"
+                                                                                                placeholder="Select"
+                                                                                                bindValue="value"
+                                                                                                [searchable]="false" formControlName="state">
+                        
+                                                                                                <ng-template ng-label-tmp let-item="item">
+                                                                                                    {{item.name}}
+                                                                                                </ng-template>
+                        
+                                                                                            </ng-select>
+                                                                                            <label class="selectLabel">State</label>
+                                                                                            <div class="invalid-fld-feedback">State Required</div>
+                                                                                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                                                        <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                                                        </svg>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="col-sm-6">
+                                                                                    <div class="form-group mb_form-group">
+                                                                                        <div class="field_md">
+                                                                                            <input class="form-control cmnField" [ngClass]="{'ffl-floated-force' : form.controls['lienholder'].get('zipCode').value != ''}"  formControlName="zipCode" emptyvalueValidationcheck [currentControl]="form.controls['lienholder'].get('zipCode')">
+                                                                                            <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                                            <label class="primary-label">Zip
+                                                                                                Code</label>
+                                                                                                <div class="invalid-fld-feedback">Zipcode Required</div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+
+
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="section-page-questions-response">
+                                                                    <div
+                                                                        class="question-wrap row no-gutters justify-content-between">
+                                                                        <div class="col-lg-5 question-header d-flex"> <span
+                                                                                class="question-counter invisible"> <span
+                                                                                    class="countNbr"></span> <svg
+                                                                                    class="iconMark" width="15" height="14"
+                                                                                    viewbox="0 0 15 14" fill="none">
+                                                                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                                                </svg> </span>
+                                                                            <div>
+                                                                                <h3 class="question-text">Please chose an
+                                                                                    option:</h3>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-lg-6 question-content">
+                                                                            <div class="queNbrSpace">
+                                                                                <div class="row gutterField-8">
+                                                                                    <div class="col-sm-6">
+                                                                                        <div class="form-group mb_form-group">
+                                                                                            <div class="cstBlockwrap">
+                                                                                                <label
+                                                                                                    for="lienholder_options-Lienholder"
+                                                                                                    class="custom-control custom-block custom-radio mb-0">
+                                                                                                    <input
+                                                                                                        id="lienholder_options-Lienholder"
+                                                                                                        
+                                                                                                        type="radio"
+                                                                                                        class="custom-control-input form-check-input"
+                                                                                                        formControlName="type" value="Lienholder"
+                                                                                                        >
+                                                                                                    <span
+                                                                                                        class="custom-control-label-wrap"><span
+                                                                                                            class="custom-control-indicator"></span>
+                                                                                                        <span
+                                                                                                            class="indicator-label">Lienholder</span>
+                                                                                                    </span> </label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-6">
+                                                                                        <div class="form-group mb_form-group">
+                                                                                            <div class="cstBlockwrap">
+                                                                                                <label
+                                                                                                    for="lienholder_options-Additional-Interest"
+                                                                                                    class="custom-control custom-block custom-radio mb-0">
+                                                                                                    <input
+                                                                                                        id="lienholder_options-Additional-Interest"
+                                                                                                        
+                                                                                                        type="radio"
+                                                                                                        class="custom-control-input form-check-input" formControlName="type" value="Additional Interest">
+                                                                                                    <span
+                                                                                                        class="custom-control-label-wrap"><span
+                                                                                                            class="custom-control-indicator"></span>
+                                                                                                        <span
+                                                                                                            class="indicator-label">Additional
+                                                                                                            Interest</span>
+                                                                                                    </span> </label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-6">
+                                                                                        <div class="form-group mb_form-group">
+                                                                                            <div class="cstBlockwrap">
+                                                                                                <label
+                                                                                                    for="lienholder_options-Loss-Payee"
+                                                                                                    class="custom-control custom-block custom-radio mb-0">
+                                                                                                    <input
+                                                                                                        id="lienholder_options-Loss-Payee"
+                                                                                                        
+                                                                                                        type="radio"
+                                                                                                        class="custom-control-input form-check-input" formControlName="type" value="Loss Payee">
+                                                                                                    <span
+                                                                                                        class="custom-control-label-wrap"><span
+                                                                                                            class="custom-control-indicator"></span>
+                                                                                                        <span
+                                                                                                            class="indicator-label">Loss
+                                                                                                            Payee</span> </span>
+                                                                                                </label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-6">
+                                                                                        <div class="form-group mb_form-group">
+                                                                                            <div class="cstBlockwrap">
+                                                                                                <label
+                                                                                                    for="lienholder_options-Lessor"
+                                                                                                    class="custom-control custom-block custom-radio mb-0">
+                                                                                                    <input
+                                                                                                        id="lienholder_options-Lessor"
+                                                                                                        
+                                                                                                        type="radio"
+                                                                                                        class="custom-control-input form-check-input" formControlName="type" value="Lessor">
+                                                                                                    <span
+                                                                                                        class="custom-control-label-wrap"><span
+                                                                                                            class="custom-control-indicator"></span>
+                                                                                                        <span
+                                                                                                            class="indicator-label">Lessor</span>
+                                                                                                    </span> </label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                </div>
+
+
+
+
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <!-- End vehicle Leased or Financed? Div -->
+                                                    </div>
+
+                                                    <div class="navigation-buttons">
+                                                        <ul class="list-inline mb-0 text-right btnsList_form">
+                                                            <li class="list-inline-item"> 
+                                                                <!-- <a href="#"
+                                                                    class="btn btnstl-1 btnBg-3">Save & Continue</a>  -->
+                                                                    <button type="button" class="btn btnstl-1 btnBg-3" [disabled]="!form.valid" (click)="onSubmit(form.value)">Save & Continue</button>
+                                                                </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <!-- End Toggle Once Verify VIN -->
+
+
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <oneink-sidebar></oneink-sidebar>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <app-footer-quote></app-footer-quote>
+
+        </div>
+    </div>
+    <!-- .perspScreen -->
+</div>
+<!-- .fullPG_Wrap -->

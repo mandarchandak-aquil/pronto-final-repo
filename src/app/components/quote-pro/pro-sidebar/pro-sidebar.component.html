@@ -1,0 +1,131 @@
+
+
+
+
+
+
+
+ <div class="col-md-auto" >
+  <div class="modal drawerModal drawerSummary" malihu-scrollbar [scrollbarOptions]="scrollbarOptions" id="drawerModal" *ngIf="location_data.length>0">
+
+
+        <div class="drawerWrap" >
+
+          
+          <button type="button" class="close text-uppercase text-center btnCls" data-dismiss="modal"> <span class="btntext">×</span> </button>
+          <div class="mngInside">
+            <div class="drawInside">
+                <div class="formScreen_Hgt summaryScroll cstScroller mCustomScrollbar" data-mcs-theme="dark">
+                    <div class="right-summary-rail pTB_quote">
+                      <div class="summary-rail-section">
+                        <div class="summaryHead text-color-3">Quote Summary</div>
+                      </div>
+                      <ng-templete *ngIf="coverages.length>0">
+                      <div  class="summary-rail-section" *ngFor="let coverage of coverages">
+                        <div class="summaryHead text-color-3 mng-btnEdit">Coverage Limit
+                            <button  routerLink="/quote-pro/coverage" class="btn btnEdit"><img class="icon w-100 mCS_img_loaded" src="./assets/images/icon-edit.svg" alt=""></button>
+                          </div>
+                        <div class="summary-rail-item railIconWrap">
+                          <div class="response-list listSZ-md">
+                            <div class="response-item">Effective: {{ coverage['effectiveDate'] | date :'MM/dd/yyyy '}}<br>
+                            Expires: </div>
+                            <ng-templete *ngFor="let commonCoverage of coverage['commonCoverages']">
+                            <div class="response-item">{{commonCoverage['name']}}: 
+                              <ng-templete *ngFor="let limit of commonCoverage['limits']">
+                                <div *ngIf="limit['value']==commonCoverage['selectedValue']">{{limit['description']}}</div>
+                              </ng-templete>
+                            </div>
+                            <!-- <div class="response-item">Uninsured Motorist <br>
+                            Bodily Injury: Rejected</div>
+                            <div class="response-item">Personal Injury Protection: Rejected</div>
+                            <div class="response-item">Medical Payments: Rejected</div> -->
+                          </ng-templete>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-templete>
+                      <div class="summary-rail-section" >
+                          <div class="summaryHead text-color-3 mng-btnEdit">Location
+                              <button  routerLink="/quote-pro/01" class="btn btnEdit"><img class="icon w-100 mCS_img_loaded" src="./assets/images/icon-edit.svg" alt=""></button>
+                            
+                          </div>
+      
+                            <div  class="queNbrSpace" >
+                             
+                       
+                          <div  class="summary-rail-item" *ngFor=" let location of location_data ">
+                         
+                            <div class="response-list gray-color-2">
+                              <div class="response-item">{{location['address'] }}</div>
+                              <div class="response-item">{{location['city'] }} , {{location['state'] }} {{location['zipCode'] }} </div>
+                              
+                            </div>
+                          </div>
+                          
+                          </div>
+                          
+                        
+                      </div>
+                      <div class="summary-rail-section" *ngIf="sessionData['vehicles'].length>0">
+                          <div class="summaryHead text-color-3">Vehicles</div>
+                       
+                            <div 
+                            *ngFor="let row of sessionData['vehicles'] ; let index=index"   class="summary-rail-item">
+                          
+                          <div >
+                            <div class="summarysubHead mng-btnEdit">{{row['year'] }} {{row['make']  }} {{row['modelDescription'] }}
+                              <button (click)="edit_vehicle(index)" class="btn btnEdit"><img class="icon w-100 mCS_img_loaded" src="./assets/images/icon-edit.svg" alt=""></button>
+                            </div>
+                            <div class="response-list gray-color-2">
+                              
+                              <div class="response-item">Annual Miles :{{row['annualMiles']}}</div>
+                            </div>
+                            </div>
+                          </div>
+                        
+                          <div class="btnRow pl-0">
+                          <button type="button" routerLink="/quote-pro/additional-vehicle"  class="btn btn-text-link link-color-2">+ Add another Vehicle</button>
+                          </div>
+                        </div>
+                        <div class="summary-rail-section" *ngIf="sessionData['drivers'].length>0">
+                            <div class="summaryHead text-color-3">Drivers</div>
+                         
+                              <div 
+                              *ngFor="let row of sessionData['drivers'] ; let index=index"   class="summary-rail-item">
+                            
+                            <div >
+                              <div class="summarysubHead mng-btnEdit">{{row['firstName'] }} {{row['lastName']  }} {{row['model'] }}
+                                <button (click)="edit_driver(index)" class="btn btnEdit"><img class="icon w-100 mCS_img_loaded" src="./assets/images/icon-edit.svg" alt=""></button>
+                              </div>
+
+                              <div class="response-list gray-color-2">
+                                <div class="response-item"><span *ngIf="row['gender']=='F'">Female</span>
+                                  <span *ngIf="!row['gender']=='M'">Male</span></div>
+                                <div class="response-item">{{row['occupation'] }}</div>
+                                <div class="response-item" > <span *ngIf="row['included']">Included</span>
+                                  <span *ngIf="!row['included']">Excluded</span></div>
+                              </div>
+                              </div>
+                            </div>
+                          
+                            <div class="btnRow pl-0">
+                            <button type="button" routerLink="/quote-pro/additional-driver"  class="btn btn-text-link link-color-2">+ Add another Driver</button>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+   

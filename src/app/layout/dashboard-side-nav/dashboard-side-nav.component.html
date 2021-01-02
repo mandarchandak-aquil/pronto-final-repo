@@ -1,0 +1,151 @@
+<div class="dashb_side_Nav" data-aos="fade-up" data-aos-duration="900">
+
+    <div class="sidebarItem_row">
+        <div class="management_dash text-center text-lg-left line-H-1_3">
+            Policy Management <strong class="txtlg">Dashboard</strong>
+        </div>
+    </div>
+
+    <div class="sidebarItem_row">
+        <div class="navDashboard">
+            <ngx-slick-carousel class="carousel dashboard-links-slider" #slickModal="slick-carousel" [config]="slideConfig" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900">
+                <div ngxSlickItem *ngFor="let slide of slides let i = index" class="slide slideInside">
+                    <div class="slide-item">
+                        <div class="navItem">
+                            <a class="nav-in d-lg-flex align-items-center" routerLink="{{slide.link}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                <span class="iconWrapp">
+                                    <span class="iconIn">
+                                        <span class="nbr_circle" *ngIf="i==0"><span class="nbr_in">{{length}}</span></span>
+                                        <!-- <img class="w-100" src="assets/images/dash-nav-notification.png" alt="" /> -->
+                                        <img class="w-100 d-none d-lg-inline-block" src="{{ slide.img }}" alt="" width="100%">
+                                        <img class="w-100 d-lg-none" src="{{ slide.mobimg }}" alt="">
+                                    </span>
+                                </span>
+                                <span class="textnav flex-fill">{{slide.name}}</span>
+                                
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <div class="slide-item">
+                        <div class="navItem">
+                            <a class="nav-in d-lg-flex align-items-center" routerLink="/dashboard02-my-policies" routerLinkActive="active">
+                                <span class="iconWrapp">
+                                    <span class="iconIn"><img class="w-100" src="assets/images/dash-nav-policy.png" alt="" /></span>
+                                </span>
+                                <span class="textnav flex-fill">My Policies</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <div class="navItem">
+                            <a class="nav-in d-lg-flex align-items-center" routerLink="/dashboard03-claim-center" routerLinkActive="active">
+                                <span class="iconWrapp">
+                                    <span class="iconIn"><img class="w-100" src="assets/images/dash-nav-claim.png" alt="" /></span>
+                                </span>
+                                <span class="textnav flex-fill">Claim Center</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <div class="navItem">
+                            <a class="nav-in d-lg-flex align-items-center" routerLink="/dashboard04-documents" routerLinkActive="active">
+                                <span class="iconWrapp">
+                                    <span class="iconIn"><img class="w-100" src="assets/images/dash-nav-documents.png" alt="" /></span>
+                                </span>
+                                <span class="textnav flex-fill">Documents</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <div class="navItem">
+                            <a class="nav-in d-lg-flex align-items-center" routerLink="/dashboard05-payment-settings" routerLinkActive="active">
+                                <span class="iconWrapp">
+                                    <span class="iconIn"><img class="w-100" src="assets/images/dash-nav-payment.png" alt="" /></span>
+                                </span>
+                                <span class="textnav flex-fill">Payment Settings</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <div class="navItem">
+                            <a class="nav-in d-lg-flex align-items-center" routerLink="/dashboard06-account-setting" routerLinkActive="active">
+                                <span class="iconWrapp">
+                                    <span class="iconIn"><img class="w-100" src="assets/images/dash-nav-setting.png" alt="" /></span>
+                                </span>
+                                <span class="textnav flex-fill">Account Settings</span>
+                            </a>
+                        </div>
+                    </div> -->
+                </div>
+            </ngx-slick-carousel>
+        </div>
+    </div>
+
+    <!-- <div class="sidebarItem_row">
+        <div class="dashboardnav_Slider navDashboard cstSlider">
+            <div class="slide-item">
+                <div class="navItem">
+                    <a class="nav-in d-lg-flex align-items-center" routerLink="/dashboard01-notifications" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        <span class="iconWrapp">
+                            <span class="iconIn">
+                                <span class="nbr_circle"><span class="nbr_in">4</span></span>
+                                <img class="w-100" src="assets/images/dash-nav-notification.png" alt="" /></span>
+                        </span>
+                        <span class="textnav flex-fill">Notifications</span>
+                    </a>
+                </div>
+            </div>
+            <div class="slide-item">
+                <div class="navItem">
+                    <a class="nav-in d-lg-flex align-items-center" routerLink="/dashboard02-my-policies" routerLinkActive="active">
+                        <span class="iconWrapp">
+                            <span class="iconIn"><img class="w-100" src="assets/images/dash-nav-policy.png" alt="" /></span>
+                        </span>
+                        <span class="textnav flex-fill">My Policies</span>
+                    </a>
+                </div>
+            </div>
+            <div class="slide-item">
+                <div class="navItem">
+                    <a class="nav-in d-lg-flex align-items-center" routerLink="/dashboard03-claim-center" routerLinkActive="active">
+                        <span class="iconWrapp">
+                            <span class="iconIn"><img class="w-100" src="assets/images/dash-nav-claim.png" alt="" /></span>
+                        </span>
+                        <span class="textnav flex-fill">Claim Center</span>
+                    </a>
+                </div>
+            </div>
+            <div class="slide-item">
+                <div class="navItem">
+                    <a class="nav-in d-lg-flex align-items-center" routerLink="/dashboard04-documents" routerLinkActive="active">
+                        <span class="iconWrapp">
+                            <span class="iconIn"><img class="w-100" src="assets/images/dash-nav-documents.png" alt="" /></span>
+                        </span>
+                        <span class="textnav flex-fill">Documents</span>
+                    </a>
+                </div>
+            </div>
+            <div class="slide-item">
+                <div class="navItem">
+                    <a class="nav-in d-lg-flex align-items-center" routerLink="/dashboard05-payment-settings" routerLinkActive="active">
+                        <span class="iconWrapp">
+                            <span class="iconIn"><img class="w-100" src="assets/images/dash-nav-payment.png" alt="" /></span>
+                        </span>
+                        <span class="textnav flex-fill">Payment Settings</span>
+                    </a>
+                </div>
+            </div>
+            <div class="slide-item">
+                <div class="navItem">
+                    <a class="nav-in d-lg-flex align-items-center" routerLink="/dashboard06-account-setting" routerLinkActive="active">
+                        <span class="iconWrapp">
+                            <span class="iconIn"><img class="w-100" src="assets/images/dash-nav-setting.png" alt="" /></span>
+                        </span>
+                        <span class="textnav flex-fill">Account Settings</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+</div>

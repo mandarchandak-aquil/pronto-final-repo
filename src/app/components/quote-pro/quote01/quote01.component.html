@@ -1,0 +1,953 @@
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+      <div class="pgWrapFull spcTpHeader vrLinesWrap">
+
+          <app-header></app-header>
+         
+          <pro-stepper></pro-stepper>
+
+     
+       
+          <div class="quotePG_wrap overflow-hidden position-relative">
+            <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate"> <img class="w-100" src="assets/images/floating-img-1.png" alt=""> </div>
+            <div class="floatImg floatShape-5 quote1_imgFloat_5 floating-Animate"> <img class="w-100" src="assets/images/floating-img-5.png" alt=""> </div>
+            <div class="containerPD-L">
+              <div class="row no-gutters" *ngIf="FormService.first_form && form_load">
+               
+                  
+            
+                <div class="col-md">
+                    <form  [formGroup]="FormService.first_form" >
+                  <div class="formScreen_Hgt spcMng_mp">
+                    <div class="queCol_Outer pTB_quote lg-BT-scroll" >
+                      <div class="section-page-header brdLine-BT">
+                        <div class="ttl-tpLine gray-color-2">Let’s get started.</div>
+                        <h1 class="headingStl-1">Tell us about yourself</h1>
+                      </div>
+                      <div class="section-page-questions">
+                        <div class="section-page-question">
+                          <div class="question-wrap row no-gutters justify-content-between">
+                            <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                              <path d="M2 8.36364L6.23077 12L13 2"></path>
+                              </svg> </span>
+                              <div>
+                                <h3 class="question-text">Contact Information of policy holder</h3>
+                                <p class="question-byline">We take your privacy seriously and your information is always secure with us.</p>
+                              </div>
+                            </div>
+                            
+                            <div class="col-lg-6 question-content">
+                              <div class="queNbrSpace">
+                                <div class="form-group mb_form-group">
+                                  <div  class="field_md"  id="firstNameId">
+                                    <input [type]="form_fields['firstName']['type']"  [ngClass]="{'ffl-floated-force' : FormService.first_form.get('firstName').value!=''}"  id="firstName" name="firstName" class="form-control cmnField "  formControlName="firstName" ProValidation [error_condition]="form_fields['firstName']">
+                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                    <label class="ffl-label" class="primary-label">{{form_fields['firstName']['label']}}</label>
+
+                                    <!-- <div class="invalid-fld-feedback ">{{form_fields['firstName']['requiredif']['errorMessageResourceName']}}</div> -->
+                                  </div>
+                                </div>
+                                <div class="form-group mb_form-group">
+                                  <div class="field_md" id="lastNameId">
+                                    <input [type]="form_fields['lastName']['type']" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('lastName').value!=''}" id="lastName" name="lastName" class="form-control cmnField" formControlName="lastName" ProValidation [error_condition]="form_fields['lastName']">
+                                    <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                    <label class="primary-label">{{form_fields['lastName']['label']}}</label>
+                                   
+                                  </div>
+                                </div>
+                                <div class="form-group mb_form-group">
+                                  <div class="field_md"  id="dobId"> 
+                                      <input type="text" id="dob" name="dob" class="form-control cmnField cstFld " [ngClass]="{'ffl-floated-force' : FormService.first_form.get('dob').value!=''}" formControlName="dob"   autocomplete="given-name"  id="dateOfBirth1" maxlength="10" DobValidation (keypress)="numberOnly($event)" ProValidation [error_condition]="form_fields['dob']">
+                                    <!-- <input [type]="text" id="dob" name="dob" class="form-control cmnField cstFld " formControlName="dob"   autocomplete="given-name"  id="dateOfBirth1" maxlength="10" (keypress)="numberOnly($event)" DobValidation ProValidation [required_condition]="form_fields['dob']['required']" [required_value]="FormService.first_form.get('dob').value" [required_validation]=""> -->
+                                    <label class="primary-label">Date of Birth</label>
+                                    
+                                     <!-- <input id="date-input" type="tel" placeholder="MM/DD/YYYY" class="form-control cmnField masked" > -->
+                                     <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <div class="section-page-question">
+                                                          <div class="question-wrap row no-gutters justify-content-between ">
+                                                            <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                                                              <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                              </svg> </span>
+                                                              <div>
+                                                                <h3 class="question-text">Where do you park your vehicle overnight?</h3>
+                                                                <p class="question-byline">We'll find you the best results based on your vehicle's location.</p>
+                                                              </div>
+                                                            </div>
+                                                            <div class="col-lg-6 question-content">
+                                                              <div class="queNbrSpace">
+                                                                <div class="row gutterField-8">
+                                                                  <div class="col-sm-8">
+                                                                    <!-- <div class="form-group mb_form-group">
+                                                                      <div class="field_md field_labelTP" id="addressId">
+                                                                        <input [type]="form_fields['address']['type']" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('address').value!=''}" class="form-control cmnField" formControlName="address"  ProValidation [error_condition]="form_fields['address']">
+                                                                        <label class="primary-label label-Tp">Address</label>
+                                                                       
+                                                                      </div>
+                                                                    </div> -->
+
+
+
+                                                                    <div class="form-group mb_form-group">
+                                                                      <div class="field_md field_labelTP"  id="addressId">
+                                                                        <input  [type]="form_fields['address']['type']" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('address').value!=''}" class="form-control cmnField" formControlName="address"  ProValidation [error_condition]="form_fields['address']" (keyup)="loadmap($event)"   #search autocorrect="off" autocapitalize="off" spellcheck="off"
+                                                                          >
+                                                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                        <label class="primary-label label-Tp">Address</label>
+                                                                        <div class="invalid-fld-feedback-invalid">Incomplete address</div>
+                                                                        <div class="dropdownBox_Wrap" *ngIf="displaySuggestions.length>0">
+                                                                          <div class="dropD-mng" >
+                                                                        <ul class="list-unstyled cstDropListing mb-0">
+                                                                        <li *ngFor="let item of displaySuggestions, let i=index" (click)="selectAddress(item)"><div class="addressRow"><strong>{{item['structured_formatting'].main_text}} </strong>{{item['structured_formatting'].secondary_text}}</div></li>
+                                                                       
+                                                                        </ul>
+                                                                        </div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                  <div class="col-sm-4">
+                                                                    <div class="form-group mb_form-group">
+                                                                      <div class="field_md" >
+                                                                        <input [type]="form_fields['unit']['type']"  [ngClass]="{'ffl-floated-force' : FormService.first_form.get('unit').value!=''}" formControlName="unit" class="form-control cmnField" >
+                                                                        <!-- Toggle "has-error has-error-ass for Error -->
+                                                                        <label class="primary-label">Unit</label>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                  <div class="col-sm-4">
+                                                                      <div class="form-group mb_form-group">
+                                                                          <div class="dropdown-select-wrap field_md" >
+                                                                            <div class="selectNG_dropdown" >
+                                                                              <ng-select class="custom_ngSelect" [items]="form_dropdown_data['cities']" 
+                                                                                 bindLabel="text" 
+                                                                                 bindValue="value"
+                                                                                 [multiple]="false"
+                                                                                 [searchable]="true"
+                                                                                 formControlName="city"
+                                                                                 >
+                                                                                 </ng-select>
+                                                                                 <label class="selectLabel">City</label>
+                                           <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                             <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                             </svg>
+                                                                               </div>
+                                                                          </div>
+                                                                        </div>
+                                                                   
+                                                                  </div>
+                                                                  <div class="col-sm-4">
+                                                                    <div class="form-group mb_form-group">
+                                                                      <div class="field_md" id="stateId">
+                                                                        <input [type]="form_fields['state']['type']"  [ngClass]="{'ffl-floated-force' : FormService.first_form.get('state').value!=''}" formControlName="state" class="form-control cmnField" ProValidation [error_condition]="form_fields['state']" disabled>
+                                                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                        <label class="primary-label">State</label>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                  <div class="col-sm-4">
+                                                                    <div class="form-group mb_form-group">
+                                                                      <div class="field_md" id="zipCodeId">
+                                                                        <input [type]="form_fields['zipCode']['type']"  [ngClass]="{'ffl-floated-force' : FormService.first_form.get('zipCode').value!=''}" formControlName="zipCode" class="form-control cmnField"  ProValidation [error_condition]="form_fields['zipCode']">
+                                                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                        <label class="primary-label">Zip Code</label>
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                  <div class="col-sm-4">
+                                                                      <div class="form-group mb_form-group">
+                                                                          <div class="dropdown-select-wrap field_md">
+                                                                            <div class="selectNG_dropdown">
+                                                                              <ng-select class="custom_ngSelect" [items]="form_dropdown_data['counties']" 
+                                                                                 bindLabel="text"
+                                                                                 bindValue="text"
+                                                                                 [multiple]="false"
+                                                                                 [searchable]="true"
+                                                                                 formControlName="county"
+                                                                                 >
+                                                                                 </ng-select>
+                                                                                 <label class="selectLabel">County</label>
+                                           <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                             <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                             </svg>
+                                                                               </div>
+                                                                          </div>
+                                                                        </div>
+                                                                   
+                                                                  </div>
+                                                                  <div class="col-sm-8">
+                                                                    <div class="form-group mb_form-group">
+                                                                      <div class="field_md" id="phoneId">
+                                                                        <input [type]="form_fields['phone']['type']" appPhoneMask [ngClass]="{'ffl-floated-force' : FormService.first_form.get('phone').value!=''}" formControlName="phone" class="form-control cmnField" ProValidation [error_condition]="form_fields['phone']">
+                                                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                        <label class="primary-label">Phone</label>
+                                                                        
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                  <div class="col-sm-12">
+                                                                    <div class="form-group mb_form-group">
+                                                                      <div class="field_md" id="emailId">
+                                                                        <input [type]="form_fields['email']['type']"  [ngClass]="{'ffl-floated-force' : FormService.first_form.get('email').value!=''}" formControlName="email" class="form-control cmnField" ProValidation [error_condition]="form_fields['email']">
+                                                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                                        <label class="primary-label">Email</label>
+                                                                        
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+
+
+<!-- driver form -->
+
+ <ng-templete formGroupName="driver">
+                                                            <div class="section-page-question">
+                                                              <div class="question-wrap row no-gutters justify-content-between ">
+                                                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                                                                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                                  </svg> </span>
+                                                                  <div>
+                                                                    <h3 class="question-text">What's your gender?</h3>
+                                                                    <p class="question-byline">Please select the gender listed on your driver's license.</p>
+                                                                  </div>
+                                                                </div>
+                                                                <div class="col-lg-6 question-content">
+                                                                  <div class="queNbrSpace">
+                                                                    <div class="row gutterField-8" >
+                                                                       
+                                                                      <div class="col-sm-6" *ngFor="let opt of form_fields['driver']['gender']['options']; let i=index">
+                                                                       
+                                                                   <div class="form-group mb_form-group">
+                                                                          <div class="cstBlockwrap">
+                                                                            <label for="{{opt.text}}gender" class="custom-control custom-block custom-radio mb-0">
+                                                                              <input type="radio" [id]="opt.text+'gender'"  formControlName="gender" [value]="opt.value" [checked]="opt.selected"   class="custom-control-input form-check-input" >
+                                                                              <span class="custom-control-label-wrap"><span class="custom-control-indicator"></span> <span class="indicator-label">{{opt.text}}</span> </span> </label>
+                                                                          </div>
+                                                                        </div>
+                                                                        
+                                                                      </div>
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="section-page-question">
+                                                              <div class="question-wrap row no-gutters justify-content-between ">
+                                                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                                                                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                                  </svg> </span>
+                                                                  <div>
+                                                                    <h3 class="question-text">What's your marital status?</h3>
+                                                                    <p class="question-byline">Please add your spouse as an additional driver. You may mark them as excluded if they don't drive.</p>
+                                                                  </div>
+                                                                </div>
+                                                                <div class="col-lg-6 question-content">
+                                                                  <div class="queNbrSpace">
+                                                                    <div class="row gutterField-8">
+                                                                        <div class="col-sm-6" *ngFor="let opt of form_fields['driver']['maritalStatus']['options']; let i=index">
+                                                                       
+                                                                          <div class="form-group mb_form-group">
+                                                                            <div class="cstBlockwrap">
+                                                                              <label for="{{opt.text}}married" class="custom-control custom-block custom-radio mb-0">
+                                                                                <input type="radio" [id]="opt.text+'married'"  formControlName="maritalStatus" [value]="opt.value" [checked]="opt.selected"   class="custom-control-input form-check-input" >
+                                                                                <span class="custom-control-label-wrap"><span class="custom-control-indicator"></span> <span class="indicator-label">{{opt.text}}</span> </span> </label>
+                                                                            </div>
+                                                                          </div>
+                                                                               </div>
+                                                                  
+                                                                    </div>
+                                                                  </div>
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                            <div class="section-page-question">
+                                                              <div class="question-wrap row no-gutters justify-content-between ">
+                                                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                                                                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                                  </svg> </span>
+                                                                  <div>
+                                                                    <h3 class="question-text">Driver's License Status</h3>
+                                                                  </div>
+                                                                </div>
+                                                                <div class="col-lg-6 question-content">
+                                                                  <div class="queNbrSpace"> 
+                                                                    
+                                                                  
+                                    
+                                    <div class="form-group mb_form-group">
+                                      <div class="dropdown-select-wrap field_md">
+                                        <div class="selectNG_dropdown">
+                                          <ng-select class="custom_ngSelect" [items]="form_dropdown_data['licenseTypes']" 
+                                             bindLabel="text"
+                                             bindValue="value"
+                                             [multiple]="false"
+                                             [searchable]="true"
+                                             formControlName="licType"
+                                             >
+                                             </ng-select>
+                                             <label class="selectLabel">License Type</label>
+       <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+         <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+         </svg>
+                                           </div>
+                                      </div>
+                                    </div>
+  
+                                        
+                                    
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+  
+  <div class="section-page-question">
+                              <div class="question-wrap row no-gutters justify-content-between ">
+                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                  </svg> </span>
+                                  <div>
+                                    <h3 class="question-text">State Licensed</h3>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 question-content">
+                                  <div class="queNbrSpace"> 
+                                    <div class="form-group mb_form-group">
+                                      <div class="selectNG_dropdown">
+                                        <ng-select class="custom_ngSelect" [items]="form_dropdown_data['stateList']" 
+                                           bindLabel="text"
+                                           bindValue="value"
+                                           [multiple]="false"
+                                           [searchable]="true"
+                                         
+                                           formControlName="stateLicensed"
+                                           >
+                                           </ng-select>
+                                           <label class="selectLabel">Select State</label>
+     <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+       <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+       </svg>
+                                         </div>
+                                    </div>
+  
+  
+  
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </ng-templete>
+                             
+  <!-- driver form  end -->
+                                           <!--quote form start-->
+
+    <ng-templete formGroupName="quote">
+  
+                            <div class="section-page-question">
+                              <div class="question-wrap row no-gutters justify-content-between ">
+                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                  </svg> </span>
+                                  <div>
+                                    <h3 class="question-text">{{form_fields['quote']['nonOwner']['label']}}</h3>
+                                    <p class="question-byline"> You may qualify for a non-owner policy ONLY if neither you nor anyone living with you has a vehicle registered in their name. <strong>POLICY RESTRICTIONS</strong></p>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 question-content">
+                                  <div class="queNbrSpace">
+                                    <div class="row gutterField-8">
+                                        <div class="col-sm-6" *ngFor="let opt of form_fields['quote']['nonOwner']['options']">
+                                                                       
+                                          <div class="form-group mb_form-group">
+                                            <div class="cstBlockwrap">
+                                              <label for="{{opt.text}}Policy" class="custom-control custom-block custom-radio mb-0">
+                                                <input type="radio" [id]="opt.text+'Policy'" formControlName="nonOwner" [value]="opt.value" [checked]="opt.selected"   class="custom-control-input form-check-input" >
+                                                <span class="custom-control-label-wrap"><span class="custom-control-indicator"></span> <span class="indicator-label">{{opt.text}}</span> </span> </label>
+                                            </div>
+                                          </div>
+                                               </div>
+                                     
+                                    </div>
+                                    
+                                    <div class="toggleCont_Box" *ngIf="FormService.first_form.get('quote').get('nonOwner').value">
+                                    <div class="policy_ins_Box">
+                                    <div class="smCheckWrap">
+                                    <label class="check-sm-wrap policyCheck mb-0">
+                                    <input type="checkbox"  formControlName="agreeNonOwner" class="inputCheck">
+                                    <span class="wrapRow d-flex align-items-center">
+                                    <span class="checkIndicate"></span>
+                                    <span class="labelText flex-fill gray-color-2 f-size-18 line-H-1_4">I agree and understand that this non-owners policy will NOT cover me if I drive a vehicle that I or a household member owns or use regularly. Inquire with agent about details and restrictions. Financial Responsibilty (Sr22)</span>
+                                    </span>
+                                    </label>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    
+                                  </div>
+                                </div>
+                              </div>
+                              
+                            </div>
+                            <div class="section-page-question">
+                              <div class="question-wrap row no-gutters justify-content-between ">
+                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                  </svg> </span>
+                                  <div>
+                                    <h3 class="question-text">{{form_fields['quote']['currentlyInsured']['label']}} 
+                                      
+                                    </h3>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 question-content" >
+                                  <div class="queNbrSpace">
+                                    <div class="row gutterField-8">
+                                      
+                                      <div class="col-sm-6" *ngFor="let opt of form_fields['quote']['currentlyInsured']['options']">
+                                                                       
+                                        <div class="form-group mb_form-group">
+                                          <div class="cstBlockwrap">
+                                            <label for="{{opt.text}}insure123" class="custom-control custom-block custom-radio mb-0">
+                                              <input type="radio" [id]="opt.text+'insure123'" formControlName="currentlyInsured" [value]="opt.value"  [checked]="opt.selected"   class="custom-control-input form-check-input" >
+                                              <span class="custom-control-label-wrap"><span class="custom-control-indicator"></span> <span class="indicator-label">{{opt.text}}</span> </span> </label>
+                                          </div>
+                                        </div>
+                                             </div>
+                                    </div>
+                                    <div class="toggleCont_Box" *ngIf="FormService.first_form.get('quote').get('currentlyInsured').value">
+                                    <div class="queInside_pt">
+                                      <!-- <div class="form-group mb_form-group">
+                                               <div class="dropdown-select-wrap field_md">
+                                 
+                                          <div class="selectNG_dropdown">
+                                                <ng-select class="custom_ngSelect" [items]="form_dropdown_data['carriers']" 
+                                                   bindLabel="text"
+                                                   bindValue="value"
+                                                   [multiple]="false"
+                                                   [searchable]="true"
+                                                 
+                                                   formControlName="priorCarrier"
+                                                   >
+                                                   </ng-select>
+                                                   <label class="selectLabel">{{form_fields['quote']['priorCarrier']['label']}}</label>
+             <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+               <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+               </svg>
+                                                 
+                                          </div>
+                                        </div>
+                                      </div> -->
+  
+  
+                                      <div class="form-group mb_form-group">
+                                        <div class="field_md" id="priorCarrierId">
+                                          <input id="expire-date-input" (input)="get_current_carrier($event)" formControlName="priorCarrier" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('quote').get('priorCarrier').value!=''}" type="text"  class="form-control cmnField expire_masked"  [error_condition]="form_fields['quote']['priorCarrier']">
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">{{form_fields['quote']['priorCarrier']['label']}}</label>
+                                          <!-- <div class="dropD-mng" >
+                                            <ul class="list-unstyled cstDropListing mb-0">
+                                            <li *ngFor="let item of form_dropdown_data['carriers'], let i=index" (click)="selectAddress(item)"><div class="addressRow"><strong>{{item['text']}} </strong></div></li>
+                                           
+                                            </ul>
+                                            </div> -->
+                                        </div>
+                                      </div>
+                                      
+                                      
+                                      <div class="form-group mb_form-group">
+                                        <div class="dropdown-select-wrap field_md">
+                                          
+                                            <div class="selectNG_dropdown">
+                                              <ng-select class="custom_ngSelect" [items]="form_dropdown_data['priorLimits']" 
+                                                 bindLabel="text"
+                                                 bindValue="value"
+                                                 [multiple]="false"
+                                                 [searchable]="true"
+                                               
+                                                 formControlName="priorLimits"
+                                                 >
+                                                 </ng-select>
+                                                 <label class="selectLabel">{{form_fields['quote']['priorLimits']['label']}}</label>
+           <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+             <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+             </svg>
+                                               </div>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="form-group mb_form-group">
+                                        <div class="field_md" id="priorPolicyNumberId">
+                                          <input formControlName="priorPolicyNumber" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('quote').get('priorPolicyNumber').value!=''}" [type]="form_fields['quote']['priorPolicyNumber']['type']" class="form-control cmnField" ProValidation [error_condition]="form_fields['quote']['priorPolicyNumber']">
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">{{form_fields['quote']['priorPolicyNumber']['label']}}</label>
+                                          
+                                        </div>
+                                      </div>
+                                      <div class="form-group mb_form-group">
+                                        <div class="field_md" id="priorExpId">
+                                          <input id="expire-date-input" formControlName="priorExp" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('quote').get('priorExp').value!=''}" [type]="form_fields['quote']['priorExp']['type']"  class="form-control cmnField expire_masked" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('dob').value!=''}"  maxlength="10" DobValidation (keypress)="numberOnly($event)" ProValidation [error_condition]="form_fields['quote']['priorExp']">
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">{{form_fields['quote']['priorExp']['label']}}</label>
+                                          <div class="invalid-fld-feedback">Please enter a valid expiration date</div>
+                                        </div>
+                                      </div>
+                                      <div class="form-group mb_form-group">
+                                      <div class="form-group mb_form-group">
+                                        <div class="field_md" id="yearInsuredId">
+                                          <input formControlName="yearsInsured" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('quote').get('yearsInsured').value!=''}" [type]="form_fields['quote']['yearsInsured']['type']" class="form-control cmnField" ProValidation [error_condition]="form_fields['quote']['yearsInsured']">
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">{{form_fields['quote']['yearsInsured']['label']}}</label>
+                                          <div class="invalid-fld-feedback">Please enter a valid year</div>
+                                        </div>
+                                      </div>
+                                        
+                                      </div>
+                                      <div class="form-group mb_form-group">
+                                      <div class="form-group mb_form-group">
+                                        <div class="field_md" id="monthInsuredId">
+                                          <input formControlName="monthsInsured" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('quote').get('monthsInsured').value!=''}" [type]="form_fields['quote']['monthsInsured']['type']" class="form-control cmnField" ProValidation [error_condition]="form_fields['quote']['monthsInsured']">
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">{{form_fields['quote']['monthsInsured']['label']}}</label>
+                                          <div class="invalid-fld-feedback">Please enter a valid months</div>
+                                        </div>
+                                      </div>
+                                      </div>
+                                    </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="section-page-question" *ngIf="FormService.first_form.get('quote').get('currentlyInsured').value">
+                              <div class="question-wrap row no-gutters justify-content-between ">
+                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                                  <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                  </svg> </span>
+                                  <div>
+                                    <h3 class="question-text">{{form_fields['quote']['priorClaims']['label']}}</h3>
+                                  </div>
+                                </div>
+                                <div class="col-lg-6 question-content">
+                                  <div class="queNbrSpace">
+                                    <div class="row gutterField-8">
+                                        <div class="col-sm-6" *ngFor="let opt of form_fields['quote']['priorClaims']['options']; let i=index">
+                                                                       
+                                            <div class="form-group mb_form-group">
+                                              <div class="cstBlockwrap">
+                                                <label for="{{opt.text}}claim" class="custom-control custom-block custom-radio mb-0">
+                                                  <input type="radio" [id]="opt.text+'claim'"  formControlName="priorClaims" [value]="opt.value" [checked]="opt.selected"   class="custom-control-input form-check-input" >
+                                                  <span class="custom-control-label-wrap"><span class="custom-control-indicator"></span> <span class="indicator-label">{{opt.text}}</span> </span> </label>
+                                              </div>
+                                            </div>
+                                                 </div>
+                                    </div>
+                                    <div class="toggleCont_Box" *ngIf="FormService.first_form.get('quote').get('priorClaims').value">
+                                      <div class="form-group mb_form-group">
+                                        <div class="field_md" id="lastcleimdateId">
+                                         <input formControlName="lastClaimDate"  [ngClass]="{'ffl-floated-force' : FormService.first_form.get('quote').get('lastClaimDate').value!=''}" [type]="form_fields['quote']['lastClaimDate']['type']"  class="form-control cmnField lastclaim-masked" maxlength="10" DobValidation (keypress)="numberOnly($event)" ProValidation [error_condition]="form_fields['quote']['lastClaimDate']">
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">{{form_fields['quote']['lastClaimDate']['label']}}</label>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <div class="invalid-fld-feedback">Please enter a valid date</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+  
+                          </ng-templete>
+                        
+  <!--quote form end-->             
+
+  <div class="section-page-question">
+      <div class="question-wrap row no-gutters justify-content-between ">
+        <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+          <path d="M2 8.36364L6.23077 12L13 2"></path>
+          </svg> </span>
+          <div>
+            <h3 class="question-text">{{form_fields['sr22']['label']}}</h3>
+            <p class="question-byline">If you have been ordered by the court to show proof of financial responsibility, answer this as "Yes".<br>
+            That way, we can be sure to send the appropriate documentation to   the Secretary of State proving that you have purchased insurance</p>
+          </div>
+        </div>
+        <div class="col-lg-6 question-content">
+          <div class="queNbrSpace">
+            <div class="row gutterField-8">
+                <div class="col-sm-6" *ngFor="let opt of form_fields['sr22']['options']; ">
+                                          
+                    <div class="form-group mb_form-group">
+                      <div class="cstBlockwrap">
+                        <label for="{{opt.text}}sr" class="custom-control custom-block custom-radio mb-0">
+                          <input type="radio" [id]="opt.text+'sr'"  formControlName="sr22" [value]="opt.value" [checked]="opt.selected"   class="custom-control-input form-check-input" >
+                          <span class="custom-control-label-wrap"><span class="custom-control-indicator"></span> <span class="indicator-label">{{opt.text}}</span> </span> </label>
+                      </div>
+                    </div>
+                         </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <ng-templete formGroupName="driver">
+    <div class="section-page-question">
+      <div class="question-wrap row no-gutters justify-content-between ">
+        <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+          <path d="M2 8.36364L6.23077 12L13 2"></path>
+          </svg> </span>
+          <div>
+            <h3 class="question-text">Any tickets or accidents within the past 5 years?</h3>
+          </div>
+        </div>
+        <div class="col-lg-6 question-content">
+          <div class="queNbrSpace">
+            <div class="row gutterField-8">
+                <div class="col-sm-6" *ngFor="let opt of violations_option; let i=index">
+                                                                       
+                    <div class="form-group mb_form-group">
+                      <div class="cstBlockwrap">
+                        <label for="{{opt.text}}violations" class="custom-control custom-block custom-radio mb-0">
+                          <input type="radio" [id]="opt.text+'violations'"  formControlName="anyViolations" [value]="opt.value" [checked]="opt.selected"   class="custom-control-input form-check-input" >
+                          <span class="custom-control-label-wrap"><span class="custom-control-indicator"></span> <span class="indicator-label">{{opt.text}}</span> </span> </label>
+                      </div>
+                    </div>
+                         </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-templete>
+<!--vehicle form start-->
+ <ng-templete formGroupName="vehicle">                         
+<div>
+<div class="section-page-header">
+<h1 class="headingStl-1">Tell us about your vehicles.</h1>
+</div>
+<div class="section-page-question">
+  <div class="question-wrap row no-gutters justify-content-between ">
+    <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+      <path d="M2 8.36364L6.23077 12L13 2"></path>
+      </svg> </span>
+      <div>
+        <h3 class="question-text">Enter the policy holder’s primary vehicle {{FormService.first_form.get('vehicle').get('year').invalid}}</h3>
+      </div>
+    </div>
+    <div class="col-lg-6 question-content">
+      <div class="queNbrSpace">
+        <div class="form-group mb_form-group" id="year_drop">
+          <div class="dropdown-select-wrap field_md"  [ngClass]="{'has-error' : FormService.first_form.get('vehicle').get('year').invalid && FormService.first_form.get('vehicle').get('year').touched}">
+              <div class="selectNG_dropdown">
+                  <ng-select class="custom_ngSelect"  [items]="form_dropdown_data['years']"
+                     bindLabel="text" required  (change)="getDropdown('year')"
+                     bindValue="text"
+                     [multiple]="false"
+                     [searchable]="true" 
+                     formControlName="year"
+                     >
+                     </ng-select>
+                     <label class="selectLabel">{{form_fields['vehicle']['year']['label']}}</label>
+<svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+<polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+</svg>
+                   </div>     
+          </div>
+          <div class="invalid-fld-feedback ">Year field is required</div>  
+        </div>
+        <div class="form-group mb_form-group"  >
+          <div class="dropdown-select-wrap field_md"  [ngClass]="{'has-error' : FormService.first_form.get('vehicle').get('make').invalid && FormService.first_form.get('vehicle').get('make').touched}">
+              <div class="selectNG_dropdown">
+                  <ng-select class="custom_ngSelect" [items]="form_dropdown_data['makes']"
+                     bindLabel="text"   (change)="getDropdown('make')" required
+                     bindValue="text"
+                     [multiple]="false"
+                     [searchable]="true"
+                     formControlName="make"
+                     >
+                     </ng-select>
+                     <label class="selectLabel">{{form_fields['vehicle']['make']['label']}}</label>
+<svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+<polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+</svg>
+                   </div>
+          </div>
+          <div class="invalid-fld-feedback ">Make field is required</div>  
+        </div>
+        <div class="form-group mb_form-group">
+          <div class="dropdown-select-wrap field_md" [ngClass]="{'has-error' : FormService.first_form.get('vehicle').get('modelDescription').invalid && FormService.first_form.get('vehicle').get('modelDescription').touched}">
+              <div class="selectNG_dropdown">
+                  <ng-select class="custom_ngSelect"  [items]="form_dropdown_data['modelDescriptions']"
+                     bindLabel="text"  (change)="getDropdown('modelDescription')" required
+                     bindValue="text"
+                     [multiple]="false"
+                     [searchable]="true"
+                     formControlName="modelDescription"
+                     >
+                     </ng-select>
+                     <label class="selectLabel">{{form_fields['vehicle']['modelDescription']['label']}}</label>
+<svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+<polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+</svg>
+                   </div>
+          </div>
+          <div class="invalid-fld-feedback ">model field is required</div>  
+        </div>
+        <div class="form-group mb_form-group">
+          <div class="dropdown-select-wrap field_md" [ngClass]="{'has-error' : FormService.first_form.get('vehicle').get('trimCode').invalid && FormService.first_form.get('vehicle').get('trimCode').touched}">
+              <div class="selectNG_dropdown">
+                  <ng-select class="custom_ngSelect" [items]="form_dropdown_data['trimCodes']"
+                     bindLabel="text"   bindValue="text" required 
+                     [multiple]="false" (change)="getDropdown('trimCode')"
+                     [searchable]="true"
+                     formControlName="trimCode"
+                     >
+                     </ng-select>
+                     <label class="selectLabel">{{form_fields['vehicle']['trimCode']['label']}}</label>
+<svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+<polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+</svg>
+                   </div>
+          </div>
+          <div class="invalid-fld-feedback ">trim field is required</div> 
+        </div>
+        <div class="form-group mb_form-group">
+          <div class="dropdown-select-wrap field_md" [ngClass]="{'has-error' : FormService.first_form.get('vehicle').get('styleCode').invalid && FormService.first_form.get('vehicle').get('styleCode').touched}">
+              <div class="selectNG_dropdown">
+                  <ng-select class="custom_ngSelect" [items]="form_dropdown_data['styleCodes']"
+                     bindLabel="text"   bindValue="text" required
+                     [multiple]="false" (change)="getDropdown('styleCode')"
+                     [searchable]="true"
+                     formControlName="styleCode"
+                     >
+                     </ng-select>
+                     <label class="selectLabel">{{form_fields['vehicle']['styleCode']['label']}}</label>
+<svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+<polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+</svg>
+                   </div>
+          </div>
+          <div class="invalid-fld-feedback ">styleCode field is required</div> 
+        </div>
+        <div class="form-group mb_form-group">
+          <div class="dropdown-select-wrap field_md" [ngClass]="{'has-error' : FormService.first_form.get('vehicle').get('engine').invalid &&  FormService.first_form.get('vehicle').get('engine').touched}">
+              <div class="selectNG_dropdown">
+                  <ng-select class="custom_ngSelect" [items]="form_dropdown_data['engines']"
+                     bindLabel="text"  bindValue="text" required
+                     [multiple]="false" (change)="getDropdown('engine')"
+                     [searchable]="true"
+                     formControlName="engine"
+                     >
+                     </ng-select>
+                     <label class="selectLabel">{{form_fields['vehicle']['engine']['label']}}</label>
+<svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+<polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+</svg>
+                   </div>
+          </div>
+          <div class="invalid-fld-feedback ">engine field is required</div> 
+        </div>
+        <div class="form-group mb_form-group">
+          <div class="dropdown-select-wrap field_md" >
+              <div class="selectNG_dropdown">
+                  <ng-select class="custom_ngSelect" [items]="form_dropdown_data['usecodes']"
+                     bindLabel="text"  bindValue="value" 
+                     [multiple]="false" (change)="getDropdown('usecode')"
+                     [searchable]="true"
+                     formControlName="usecode"
+                     >
+                     </ng-select>
+                     <label class="selectLabel">{{form_fields['vehicle']['usecode']['label']}}</label>
+<svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+<polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+</svg>
+                   </div>
+          </div>
+          <div class="invalid-fld-feedback ">usecode field is required</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section-page-question">
+  <div class="question-wrap row no-gutters justify-content-between ">
+    <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+      <path d="M2 8.36364L6.23077 12L13 2"></path>
+      </svg> </span>
+      <div>
+        <h3 class="question-text">{{form_fields['vehicle']['rideSharing']['label']}}</h3>
+      </div>
+    </div>
+    <div class="col-lg-6 question-content">
+      <div class="queNbrSpace">
+        <div class="row gutterField-8">
+            <div class="col-sm-6" *ngFor="let opt of form_fields['vehicle']['rideSharing']['options']; ">
+                                    
+                <div class="form-group mb_form-group">
+                  <div class="cstBlockwrap">
+                    <label for="{{opt.text}}ride" class="custom-control custom-block custom-radio mb-0">
+                      <input type="radio" [id]="opt.text+'ride'" name="rideSharing" formControlName="rideSharing" [value]="opt.value" [checked]="opt.selected"   class="custom-control-input form-check-input" >
+                      <span class="custom-control-label-wrap"><span class="custom-control-indicator"></span> <span class="indicator-label">{{opt.text}}</span> </span> </label>
+                  </div>
+                </div>
+                     </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section-page-question">
+  <div class="question-wrap row no-gutters justify-content-between ">
+    <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+      <path d="M2 8.36364L6.23077 12L13 2"></path>
+      </svg> </span>
+      <div>
+        <h3 class="question-text">Ownership Status of this car?</h3>
+      </div>
+    </div>
+    <div class="col-lg-6 question-content">
+      <div class="queNbrSpace">
+        <div class="form-group mb_form-group">
+          <div class="dropdown-select-wrap field_md">
+              <div class="selectNG_dropdown">
+                  <ng-select class="custom_ngSelect" [items]="form_dropdown_data['ownerships']"
+                     bindLabel="text"  
+                     bindValue="value"
+                     [multiple]="false"
+                     [searchable]="true"
+                     formControlName="ownership"
+                     >
+                     </ng-select>
+                     <label class="selectLabel">{{form_fields['vehicle']['ownership']['label']}}</label>
+<svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+<polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+</svg>
+                   </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="section-page-question">
+  <div class="question-wrap row no-gutters justify-content-between ">
+    <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+      <path d="M2 8.36364L6.23077 12L13 2"></path>
+      </svg> </span>
+      <div>
+        <h3 class="question-text">{{form_fields['vehicle']['lienHolder']['label']}}</h3>
+        <p class="question-byline">The organization, or person, with a financial interest in property up to the amount still owed or borrowed on the vehicle. This is typically a finance or lease
+company.</p>
+      </div>
+    </div>
+    <div class="col-lg-6 question-content">
+      <div class="queNbrSpace">
+        <div class="row gutterField-8">
+            <div class="col-sm-6" *ngFor="let opt of form_fields['vehicle']['lienHolder']['options']; ">
+                                    
+                <div class="form-group mb_form-group">
+                  <div class="cstBlockwrap">
+                    <label for="{{opt.text}}lienHolder" class="custom-control custom-block custom-radio mb-0">
+                      <input type="radio" [id]="opt.text+'lienHolder'" (change)="lienHoderChange($event)" name="lienHolder" formControlName="lienHolder" [value]="opt.value" [checked]="opt.selected"   class="custom-control-input form-check-input" >
+                      <span class="custom-control-label-wrap"><span class="custom-control-indicator"></span> <span class="indicator-label">{{opt.text}}</span> </span> </label>
+                  </div>
+                </div>
+                     </div>
+        </div>
+        <div class="toggleCont_Box" *ngIf="FormService.first_form.get('vehicle').get('lienHolder').value">
+        <div class="queInside_pt">
+          <div class="form-group mb_form-group">
+            <div class="field_md">
+                <input [type]="form_fields['vehicle']['lhname']['type']" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('vehicle').get('lhname').value!='' , 'has-error' : FormService.first_form.get('vehicle').get('lhname').invalid && FormService.first_form.get('vehicle').get('lhname').touched}"  formControlName="lhname" class="form-control cmnField" >
+                                            
+              <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+              <label class="primary-label">{{form_fields['vehicle']['lhname']['label']}}</label>
+              <div class="invalid-fld-feedback">Please enter a valid name</div>
+            </div>
+          </div>
+          <div class="form-group mb_form-group">
+            <div class="field_md">
+                <input [type]="form_fields['vehicle']['lhaddress1']['type']" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('vehicle').get('lhaddress1').value!='' , 'has-error' : FormService.first_form.get('vehicle').get('lhaddress1').invalid  && FormService.first_form.get('vehicle').get('lhaddress1').touched }"  formControlName="lhaddress1" class="form-control cmnField" >
+                                            
+                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                <label class="primary-label">{{form_fields['vehicle']['lhaddress1']['label']}}</label>
+              <div class="invalid-fld-feedback">Please enter a valid street</div>
+            </div>
+          </div>
+          <div class="form-group mb_form-group">
+            <div class="field_md">
+                <input [type]="form_fields['vehicle']['lhzipcode']['type']" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('vehicle').get('lhzipcode').value!='', 'has-error' : FormService.first_form.get('vehicle').get('lhzipcode').invalid  && FormService.first_form.get('vehicle').get('lhzipcode').touched}" formControlName="lhzipcode" class="form-control cmnField" >
+                                            
+                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                <label class="primary-label">{{form_fields['vehicle']['lhzipcode']['label']}}</label>
+              <div class="invalid-fld-feedback">Please enter a valid zip code</div>
+            </div>
+          </div>
+          <div class="form-group mb_form-group">
+            <div class="field_md">
+                <input type="text" formControlName="lhcity" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('vehicle').get('lhcity').value!='', 'has-error' : FormService.first_form.get('vehicle').get('lhcity').invalid  && FormService.first_form.get('vehicle').get('lhcity').touched}"  class="form-control cmnField" >
+                                            
+                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                <label class="primary-label">Lien Holder City</label>
+              <div class="invalid-fld-feedback">Please enter a valid city</div>
+            </div>
+          </div>
+          <div class="form-group mb_form-group">
+            <div class="field_md">
+                <input [type]="form_fields['vehicle']['lhstate']['type']" [ngClass]="{'ffl-floated-force' : FormService.first_form.get('vehicle').get('lhstate').value!='' , 'has-error' : FormService.first_form.get('vehicle').get('lhstate').invalid && FormService.first_form.get('vehicle').get('lhstate').touched}"  formControlName="lhstate" class="form-control cmnField" >
+                                            
+                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                <label class="primary-label">{{form_fields['vehicle']['lhstate']['label']}}</label>
+              <div class="invalid-fld-feedback">Please enter a valid state</div>
+            </div>
+          </div>
+         </div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</ng-templete>
+
+                       </div>
+                      <div class="navigation-buttons">
+                        <ul class="list-inline mb-0 text-right btnsList_form">
+                            <li class="list-inline-item"> <button routerLink="/"  class="btn btnstl-1 btnBrd">Back</button> </li>
+                            <li class="list-inline-item"> <button [disabled]="!FormService.first_form.valid" (click)="gotoAdditionalDriver()"  class="btn btnstl-1 btnBrd">Add Another Drivers</button> </li>
+                            <li class="list-inline-item"> <button [disabled]="!FormService.first_form.valid" (click)="gotoAdditionalvehicle()" class="btn btnstl-1 btnBrd">Add Another Vehicle</button> </li>
+                          <li class="list-inline-item"> <button  *ngIf="FormService.first_form.get('driver').get('anyViolations').value || FormService.first_form.get('driver').get('maritalStatus').value=='M'" (click)="gotoviolation()"  class="btn btnstl-1 btnBg-3 ">Save & Continue </button>
+                            <button   *ngIf="!FormService.first_form.get('driver').get('anyViolations').value && FormService.first_form.get('driver').get('maritalStatus').value!='M'" (click)="submit()"  class="btn btnstl-1 btnBg-3 ">Get Qoute</button>
+                           </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                </div>
+                  
+                
+              
+                  <pro-sidebar></pro-sidebar>
+                
+                    
+              
+              </div>
+            </div>
+          </div>
+       
+          <app-footer-quote></app-footer-quote>
+      </div>
+  </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->

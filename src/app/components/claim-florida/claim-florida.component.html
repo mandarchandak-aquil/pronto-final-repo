@@ -1,0 +1,1139 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+
+
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+        <div class="pgWrapFull spcTpHeader vrLinesWrap">
+            <app-header></app-header>
+         
+              <div class=" overflow-hidden position-relative">
+                <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate"> <img class="w-100"
+                    src="assets/images/floating-img-1.png" alt=""> </div>
+                <div class="floatImg floatShape-1 quoteunderwriting_imgFloat_1 floating-Animate"><img class="w-100"
+                    src="assets/images/floating-img-1.png" alt=""></div>
+                <div class="floatImg floatShape-4 quoteunderwriting_imgFloat_4 floating-Animate"><img class="w-100"
+                    src="assets/images/floating-img-4.png" alt=""></div>
+                <div class="floatImg floatShape-5 quoteunderwriting_imgFloat_5 floating-Animate"> <img class="w-100"
+                    src="assets/images/floating-img-5.png" alt=""> </div>
+                <div class="floatImg floatShape-2 quoteunderwriting_imgFloat_2_1 floating-Animate"><img class="w-100"
+                    src="assets/images/floating-img-2.png" alt=""></div>
+                <div class="container-fluid lg-container">
+                  <div class=" pTB_quote pb-0" data-aos="fade-up" data-aos-duration="700">
+                    <div class="section-page-header">
+                      <h1 class="headingStl-1">Reporting an Auto Claim</h1>
+                      <div class="ttl-btLine gray-color-2">Tell us what happened and we'll take care of it.</div>
+                    </div>
+                    <div class="row no-gutters">
+                      <div class="col-lg-10">
+                        <div class="section-page-questions">
+                          <form [formGroup]="florida" (ngSubmit)="onSubmit()">
+                          <div class="section-page-question" formGroupName="loss_information">
+                            <div class="question-wrap">
+                              <div class="question-header d-flex"> <span class="question-counter"> <span
+                                    class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14"
+                                    fill="none">
+                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                  </svg> </span>
+                                <div>
+                                  <h3 class="question-text">Loss Information</h3>
+                                </div>
+                              </div>
+                              <div class="question-content">
+                                <div class="row gutterField-15">
+                                  <div class="col-md-6">
+                                    <div class="form-group mb_group_lg mb-0">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Date of Loss*</label>
+                                        <div class="row gutter-8">
+                                          <div class="col-4">
+                                            <div class="form-group mb_group_lg">
+                                                <div class="selectNG_dropdown"> 
+                                                    <ng-select class="custom_ngSelect" [items]="selectMM" bindLabel="month" bindValue="month" name="month" formControlName="month" placeholder="Select" [ngClass]="{'ffl-floated-force' : florida.get('loss_information.month').value!=''}">
+                                                        <!-- <ng-template ng-label-tmp let-item="item"> {{item.month}} </ng-template> -->
+                                                    </ng-select>
+                                                    <label class="selectLabel">MM</label>
+                                                    <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                    <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                    </svg>
+                                                </div>
+                                            </div>  
+                                            <!-- <div class="form-group mb_group_lg">
+                                              <div class="dropdown-select-wrap field_md">
+                                                <div class="dropdown-select dropdown"> <span
+                                                    class="dropdown-select-header labelTP" data-toggle="dropdown"
+                                                    data-flip="false">
+                                                     has-success completed
+                                                    <label class="dropdown-label">MM</label>
+                                                    <input type="text" class="form-control" placeholder="Select">
+                                                    <svg class="" xmlns="http://www.w3.org/2000/svg" width="11.67"
+                                                      height="6.04" viewBox="0 0 11.67 6.04">
+                                                      <polygon
+                                                        points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                                        fill="#fff"></polygon>
+                                                    </svg></span>
+                                                  <div class="dropdown-menu">
+                                                    <ul class="list-unstyled dopDownMenu-List mb-0">
+                                                      <li><a class="item" href="#">01</a></li>
+                                                      <li><a class="item" href="#">02</a></li>
+                                                      <li><a class="item" href="#">03</a></li>
+                                                      <li><a class="item" href="#">04</a></li>
+                                                      <li><a class="item" href="#">05</a></li>
+                                                      <li><a class="item" href="#">06</a></li>
+                                                      <li><a class="item" href="#">07</a></li>
+                                                      <li><a class="item" href="#">08</a></li>
+                                                      <li><a class="item" href="#">09</a></li>
+                                                      <li><a class="item" href="#">10</a></li>
+                                                      <li><a class="item" href="#">11</a></li>
+                                                      <li><a class="item" href="#">12</a></li>
+                                                    </ul>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div> -->
+                                          </div>
+                                          <div class="col-4">
+                                            <div class="form-group mb_group_lg">
+                                                <div class="selectNG_dropdown"> 
+                                                    <ng-select class="custom_ngSelect" [items]="selectDD" bindLabel="date" bindValue="date" placeholder="Select" name="day" formControlName="day"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.day').value!=''}">
+                                                        <!-- <ng-template ng-label-tmp let-item="item"> {{item.date}} </ng-template> -->
+                                                    </ng-select>
+                                                    <label class="selectLabel">DD</label>
+                                                    <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                    <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                    </svg>
+                                                </div>
+                                            </div>   
+                                            <!-- <div class="form-group mb_group_lg">
+                                              <div class="dropdown-select-wrap field_md">
+                                                <div class="dropdown-select dropdown"> <span
+                                                    class="dropdown-select-header labelTP" data-toggle="dropdown"
+                                                    data-flip="false">
+                                                     has-success completed+
+                                                    <label class="dropdown-label">DD</label>
+                                                    <input type="text" class="form-control" placeholder="Select">
+                                                    <svg class="" xmlns="http://www.w3.org/2000/svg" width="11.67"
+                                                      height="6.04" viewBox="0 0 11.67 6.04">
+                                                      <polygon
+                                                        points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                                        fill="#fff"></polygon>
+                                                    </svg></span>
+                                                  <div class="dropdown-menu">
+                                                    <ul class="list-unstyled dopDownMenu-List mb-0">
+                                                      <li><a class="item" href="#">01</a></li>
+                                                      <li><a class="item" href="#">02</a></li>
+                                                      <li><a class="item" href="#">03</a></li>
+                                                      <li><a class="item" href="#">04</a></li>
+                                                      <li><a class="item" href="#">05</a></li>
+                                                      <li><a class="item" href="#">06</a></li>
+                                                      <li><a class="item" href="#">07</a></li>
+                                                      <li><a class="item" href="#">08</a></li>
+                                                      <li><a class="item" href="#">09</a></li>
+                                                      <li><a class="item" href="#">10</a></li>
+                                                      <li><a class="item" href="#">11</a></li>
+                                                      <li><a class="item" href="#">12</a></li>
+                                                      <li><a class="item" href="#">13</a></li>
+                                                      <li><a class="item" href="#">14</a></li>
+                                                      <li><a class="item" href="#">15</a></li>
+                                                      <li><a class="item" href="#">16</a></li>
+                                                      <li><a class="item" href="#">17</a></li>
+                                                      <li><a class="item" href="#">18</a></li>
+                                                      <li><a class="item" href="#">19</a></li>
+                                                      <li><a class="item" href="#">20</a></li>
+                                                      <li><a class="item" href="#">21</a></li>
+                                                      <li><a class="item" href="#">22</a></li>
+                                                      <li><a class="item" href="#">23</a></li>
+                                                      <li><a class="item" href="#">24</a></li>
+                                                      <li><a class="item" href="#">25</a></li>
+                                                      <li><a class="item" href="#">26</a></li>
+                                                      <li><a class="item" href="#">27</a></li>
+                                                      <li><a class="item" href="#">28</a></li>
+                                                      <li><a class="item" href="#">29</a></li>
+                                                      <li><a class="item" href="#">30</a></li>
+                                                      <li><a class="item" href="#">31</a></li>
+                                                    </ul>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div> -->
+                                          </div>
+                                          <div class="col-4">
+                                            <div class="form-group mb_group_lg">
+                                              <div class="field_md field_labelTP">
+                                                <input class="form-control cmnField" name="year" formControlName="year"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.year').value!=''}" maxlength="4" appOnlyNumerical>
+                                                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                <label class="primary-label label-Tp">Year</label>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group mb_group_lg mb-0">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Time of Loss*</label>
+                                        <div class="row gutter-8">
+                                          <div class="col-7">
+                                            <div class="form-group mb_group_lg">
+                                              <div class="field_md field_labelTP">
+                                                <input class="form-control cmnField" name="time" formControlName="time"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.time').value!=''}" placeholder="00:00" appTimeMask>
+                                                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                                <label class="primary-label label-Tp">Time of loss</label>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-5">
+                                            <div class="row gutter-8">
+                                              <div class="col">
+                                                <div class="form-group mb_group_lg">
+                                                  <div class="cstBlockwrap">
+                                                    <label for="time_AM"
+                                                      class="custom-control custom-block custom-radio mb-0">
+                                                      <input id="time_AM"  name="time_period" formControlName="time_period"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.time_period').value!=''}" value="AM" type="radio"
+                                                        class="custom-control-input form-check-input" checked="">
+                                                      <span class="custom-control-label-wrap check-hgt text-center"><span
+                                                          class="indicator-label pl-0">AM</span> </span> </label>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="col">
+                                                <div class="form-group mb_group_lg">
+                                                  <div class="cstBlockwrap">
+                                                    <label for="time_PM"
+                                                      class="custom-control custom-block custom-radio mb-0">
+                                                      <input id="time_PM" name="time_period" formControlName="time_period"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.time_period').value!=''}" value="PM" type="radio"
+                                                        class="custom-control-input form-check-input">
+                                                      <span class="custom-control-label-wrap check-hgt text-center"><span
+                                                          class="indicator-label pl-0">PM</span> </span> </label>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Location of Loss</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="location" formControlName="location"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.location').value!=''}" appOnlyAlphanumericalWithSeparators>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Location of Vehicle Loss</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">City of Loss</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="city" formControlName="city"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.city').value!=''}" appOnlyAlphabeticalWithSpace>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter City</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="form-group mb_group_lg">
+                                        <div class="field_bx">
+                                            <label class="label_field_cst">State of Loss</label>
+                                            <div class="selectNG_dropdown"> 
+                                                <ng-select class="custom_ngSelect" name="state" formControlName="state"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.state').value!=''}" [items]="selectState" bindLabel="state" bindValue="state" placeholder="Select State" appOnlyAlphabeticalWithSpace>
+                                                    <ng-template ng-label-tmp let-item="item"> {{item.state}} </ng-template>
+                                                </ng-select>
+                                                <label class="selectLabel">Select State</label>
+                                                <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <!-- <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">State of Loss</label>
+                                        <div class="dropdown-select-wrap field_md">
+                                          <div class="dropdown-select dropdown"> <span class="dropdown-select-header labelTP"
+                                              data-toggle="dropdown" data-flip="false">
+                                               has-success completed
+                                              <label class="dropdown-label">Select a State</label>
+                                              <input type="text" class="form-control" placeholder="Select">
+                                              <svg class="" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04"
+                                                viewBox="0 0 11.67 6.04">
+                                                <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                                  fill="#fff"></polygon>
+                                              </svg></span>
+                                            <div class="dropdown-menu">
+                                              <ul class="list-unstyled dopDownMenu-List mb-0">
+                                                <li><a class="item" href="#">Alabama</a></li>
+                                                <li><a class="item" href="#">Alaska</a></li>
+                                                <li><a class="item" href="#">Arizona</a></li>
+                                                <li><a class="item" href="#">Arkansas</a></li>
+                                                <li><a class="item" href="#">California</a></li>
+                                                <li><a class="item" href="#">Colorado</a></li>
+                                                <li><a class="item" href="#">Connecticut</a></li>
+                                                <li><a class="item" href="#">Delaware</a></li>
+                                                <li><a class="item" href="#">District of Columbia</a></li>
+                                                <li><a class="item" href="#">Florida</a></li>
+                                                <li><a class="item" href="#">Georgia</a></li>
+                                                <li><a class="item" href="#">Hawaii</a></li>
+                                                <li><a class="item" href="#">Idaho</a></li>
+                                                <li><a class="item" href="#">Illinois</a></li>
+                                                <li><a class="item" href="#">Indiana</a></li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div> -->
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Zip Code</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="zip_code" formControlName="zip_code"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.zip_code').value!=''}" maxlength="5" appOnlyNumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Zip Code</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-12">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Description of Loss*</label>
+                                        <div class="field_md field_labelTP">
+                                          <textarea name="description" formControlName="description"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.description').value!=''}" class="form-control cmnField f-W-N"
+                                            placeholder="Sorry to hear that! Please describe the accident. (Example: How did the accident happen? How many people were in the accident? How many vehicles were in the accident? and etc.,)" appOnlyAlphanumericalWithSeparators></textarea>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label label-Tp">Brief Description of Accident*</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Police Agency</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="police_agency" formControlName="police_agency"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.police_agency').value!=''}" appOnlyAlphabeticalWithSpace>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter Police Agency</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Police Report Number</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="police_complaint_number" formControlName="police_complaint_number"  [ngClass]="{'ffl-floated-force' : florida.get('loss_information.police_complaint_number').value!=''}" appOnlyAlphanumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter Police Number</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="section-page-question" formGroupName="reported_by">
+                            <div class="question-wrap">
+                              <div class="question-header d-flex"> <span class="question-counter"> <span
+                                    class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14"
+                                    fill="none">
+                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                  </svg> </span>
+                                <div>
+                                  <h3 class="question-text">Reported By</h3>
+                                </div>
+                              </div>
+                              <div class="question-content">
+                                <div class="row gutterField-15">
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Who is Reporting?*</label>
+                                        <div class="selectNG_dropdown"> 
+                                            <ng-select name="reported_by" formControlName="reported_by"  [ngClass]="{'ffl-floated-force' : florida.get('reported_by.reported_by').value!=''}" class="custom_ngSelect" [items]="reportedBy" bindLabel="report" bindValue="report" placeholder="Select">
+                                                <ng-template ng-label-tmp let-item="item"> {{item.report}} </ng-template>
+                                            </ng-select>
+                                            <label class="selectLabel">Reported By</label>
+                                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                            <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                            </svg>
+                                        </div>
+                                        <!-- <div class="dropdown-select-wrap field_md">
+                                          <div class="dropdown-select dropdown"> <span class="dropdown-select-header labelTP"
+                                              data-toggle="dropdown" data-flip="false">
+                                               has-success completed
+                                              <label class="dropdown-label">Reported By</label>
+                                              <input type="text" class="form-control" placeholder="Select">
+                                              <svg class="" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04"
+                                                viewBox="0 0 11.67 6.04">
+                                                <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                                  fill="#fff"></polygon>
+                                              </svg></span>
+                                            <div class="dropdown-menu">
+                                              <ul class="list-unstyled dopDownMenu-List mb-0">
+                                                <li><a class="item" href="#">Policyholder/ Listed driver</a></li>
+                                                <li><a class="item" href="#">I was involved in an incident with a Pronto
+                                                    insured</a></li>
+                                                <li><a class="item" href="#">I was a pedestrian</a></li>
+                                                <li><a class="item" href="#">I am an Insurance agent/Representative</a></li>
+                                                <li><a class="item" href="#">I am a medical provider</a></li>
+                                                <li><a class="item" href="#">I am from an attorney’s office</a></li>
+                                                <li><a class="item" href="#">Other</a></li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div> -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">First Name*</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="first_name" formControlName="first_name"  [ngClass]="{'ffl-floated-force' : florida.get('reported_by.first_name').value!=''}" appOnlyAlphabetical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Name</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Last Name*</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="last_name" formControlName="last_name"  [ngClass]="{'ffl-floated-force' : florida.get('reported_by.last_name').value!=''}" appOnlyAlphabetical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Last Name</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Address</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="address" formControlName="address"  [ngClass]="{'ffl-floated-force' : florida.get('reported_by.address').value!=''}" appOnlyAlphanumericalWithSeparators>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter your home address</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">City</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="city" formControlName="city"  [ngClass]="{'ffl-floated-force' : florida.get('reported_by.city').value!=''}" appOnlyAlphabeticalWithSpace>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">City</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">State</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="state" formControlName="state"  [ngClass]="{'ffl-floated-force' : florida.get('reported_by.state').value!=''}" appOnlyAlphabeticalWithSpace>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">State</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Zip Code</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="zip_code" formControlName="zip_code"  [ngClass]="{'ffl-floated-force' : florida.get('reported_by.zip_code').value!=''}"  maxlength="5"appOnlyNumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Zip Code</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Email Address</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="email" formControlName="email"  (focusout)="ValidateEmail(florida.get('reported_by.email').value)"  [ngClass]="emailerr ?'has-error ffl-floated-force' :'ffl-floated-force' " [ngClass]="{'ffl-floated-force' : florida.get('reported_by.email').value!='' }" >
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter email address</label>
+                                          <div class="invalid-fld-feedback-invalid">Please enter a valid email address</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Phone Number*</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="phone" formControlName="phone"  [ngClass]="{'ffl-floated-force' : florida.get('reported_by.phone').value!=''}" appPhoneMask id="phone-number" >
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter your phone number</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="section-page-question" formGroupName="insured_information">
+                            <div class="question-wrap">
+                              <div class="question-header d-flex"> <span class="question-counter"> <span
+                                    class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14"
+                                    fill="none">
+                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                  </svg> </span>
+                                <div>
+                                  <h3 class="question-text">Insured Information</h3>
+                                </div>
+                              </div>
+                              <div class="question-content">
+                                <div class="row gutterField-15">
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Policy Number*</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="policy_number" formControlName="policy_number"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.policy_number').value!=''}" appOnlyAlphanumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter Policy Number</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Relationship to Insured</label>
+                                        <div class="selectNG_dropdown"> 
+                                            <ng-select name="relation_to_insured" formControlName="relation_to_insured"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.relation_to_insured').value!=''}" class="custom_ngSelect" [items]="relationshiptoInsured" bindLabel="relationship" bindValue="relationship" placeholder="Select">
+                                                <ng-template ng-label-tmp let-item="item"> {{item.relationship}} </ng-template>
+                                            </ng-select>
+                                            <label class="selectLabel">Relationship to Insured</label>
+                                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                            <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                            </svg>
+                                        </div>
+                                        <!-- <div class="dropdown-select-wrap field_md">
+                                          <div class="dropdown-select dropdown"> <span class="dropdown-select-header labelTP"
+                                              data-toggle="dropdown" data-flip="false">
+                                               has-success completed
+                                              <label class="dropdown-label">Relationship to Insured</label>
+                                              <input type="text" class="form-control" placeholder="Select">
+                                              <svg class="" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04"
+                                                viewBox="0 0 11.67 6.04">
+                                                <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                                  fill="#fff"></polygon>
+                                              </svg></span>
+                                            <div class="dropdown-menu">
+                                              <ul class="list-unstyled dopDownMenu-List mb-0">
+                                                <li><a class="item" href="#">Insured</a></li>
+                                                <li><a class="item" href="#">Driver on Policy</a></li>
+                                                <li><a class="item" href="#">Family Member</a></li>
+                                                <li><a class="item" href="#">Friend</a></li>
+                                              </ul>
+                                            </div>
+                                          </div>
+                                        </div> -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="queNbrSpace">
+                                        <label class="label_field_cst">Date of Birth*</label>
+                                        <div class="form-group mb_group_lg">
+                                          <div class="input-group datePicker field_md fld-icon-Date field_labelTP">
+                                            <input name="dob" formControlName="dob"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.dob').value!=''}" class="form-control cmnField datepicker_fld" placeholder="MM/DD/YYYY"  ngbDatepicker #dob="ngbDatepicker" (click)="dob.toggle()"> 
+                                            <label class="primary-label label-Tp">Birthdate</label>
+                                          </div>
+                                        </div>
+                                    </div> 
+                                    <!-- <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Date of Birth</label>
+                                        <div class="field_md fld-icon-Date field_labelTP">
+                                          <input class="form-control cmnField datepicker_fld" required="" value=""
+                                            placeholder="MM/DD/YYYY">
+                                          Toggle "has-error" this class for Error
+                                          <label class="primary-label label-Tp">Birthdate</label>
+                                          <div class="fldIcon"><img src="assets/images/icon-calendar.png" alt=""></div>
+                                        </div>
+                                      </div>
+                                    </div> -->
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">First Name*</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="first_name" formControlName="first_name"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.first_name').value!=''}" appOnlyAlphabetical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Name</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Last Name</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="last_name" formControlName="last_name"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.last_name').value!=''}" appOnlyAlphabetical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Last Name</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Driver's License #</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="driver_license" formControlName="driver_license"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.driver_license').value!=''}" appOnlyAlphanumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Driver's License #</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Address*</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="address" formControlName="address"  (keyup)="loadmap($event)" [ngClass]="{'ffl-floated-force' : florida.get('insured_information.address').value!=''}" appOnlyAlphanumericalWithSeparators>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter your home address</label>
+                                          <div class="invalid-fld-feedback-invalid">Please enter a valid home address</div>
+                                          <div class="dropdownBox_Wrap" *ngIf="displaySuggestions.length>0">
+                                            <div class="dropD-mng" >
+                                          <ul class="list-unstyled cstDropListing mb-0">
+                                          <li *ngFor="let item of displaySuggestions, let i=index" (click)="selectAddress(item)"><div class="addressRow"><strong>{{item['structured_formatting'].main_text}} </strong>{{item['structured_formatting'].secondary_text}}</div></li>
+                                         
+                                          </ul>
+                                          </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">City</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="city" formControlName="city"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.city').value!=''}" appOnlyAlphabeticalWithSpace>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">City</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">State</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="state" formControlName="state"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.state').value!=''}" appOnlyAlphabeticalWithSpace>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">State</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Zip Code</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="zip_code" formControlName="zip_code"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.zip_code').value!=''}" maxlength="5" appOnlyNumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Zip Code</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Email Address</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="email" formControlName="email" (focusout)="ValidateEmail(florida.get('insured_information.email').value)"  [ngClass]="emailerr ?'has-error ffl-floated-force' :'ffl-floated-force' "  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.email').value!=''}">
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter email address</label>
+                                          <div class="invalid-fld-feedback-invalid">Please enter a valid email address</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Contact Number*</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="contact" formControlName="contact"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.contact').value!=''}" appPhoneMask id="phone-number"> 
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter your phone number</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-12">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="labelSpc-tp pd-sm-0">
+                                        <label class="switch-container_YN f-size-18 mb-0 w-100">
+                                          <input type="checkbox" name="was_party_injured" formControlName="was_party_injured"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.was_party_injured').value!=''}" checked="">
+                                          <span class="switch_YN_wrap d-flex"> <span
+                                              class="labelWrap flex-fill f-W-M line-H-1_3 align-self-center">Was the party
+                                              injured?</span> <span class="colWrap_toggle spc-L"> <span
+                                                class="switchWrap_YN d-flex align-items-center"> <span
+                                                  class="wrap_In d-flex align-items-center"> <span
+                                                    class="switchOption">No</span> <span class="switchHandle"></span> <span
+                                                    class="switchOption">Yes</span> </span> </span> </span> </span> </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-8 col-sm-12">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Please Describe Injuries (If Yes)</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="injuries" formControlName="injuries"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.injuries').value!=''}" appOnlyAlphanumericalWithSeparators>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Please Describe Injuries</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-12">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="labelSpc-tp pd-sm-0">
+                                        <label class="switch-container_YN f-size-18 mb-0 w-100">
+                                          <input type="checkbox" checked="" name="vehicle_still_drivable" formControlName="vehicle_still_drivable"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.vehicle_still_drivable').value!=''}">
+                                          <span class="switch_YN_wrap d-flex"> <span
+                                              class="labelWrap flex-fill f-W-M line-H-1_3 align-self-center">Is the Vehicle
+                                              Still Drivable?</span> <span class="colWrap_toggle spc-L"> <span
+                                                class="switchWrap_YN d-flex align-items-center"> <span
+                                                  class="wrap_In d-flex align-items-center"> <span
+                                                    class="switchOption">No</span> <span class="switchHandle"></span> <span
+                                                    class="switchOption">Yes</span> </span> </span> </span> </span> </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Vehicle Location</label>
+                                        <div class="field_md field_labelTP">
+                                          <textarea class="form-control cmnField hgt-sm f-W-N" name="vehicle_location" formControlName="vehicle_location"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.vehicle_location').value!=''}" appOnlyAlphanumericalWithSeparators> </textarea>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label label-Tp">Vehicle Location (If Vehicle Damaged)</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Vehicle Damage</label>
+                                        <div class="field_md field_labelTP">
+                                          <textarea class="form-control cmnField hgt-sm f-W-N" name="vehicle_damage" formControlName="vehicle_damage"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.vehicle_damage').value!=''}" appOnlyAlphanumericalWithSeparators></textarea>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label label-Tp">Vehicle Damage</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                   <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Year*</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="year" formControlName="year"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.year').value!=''}" maxlength="4" appOnlyNumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Year (Ex: 2011)</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                   <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Make*</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="make" formControlName="make"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.make').value!=''}" appOnlyAlphabeticalWithSpace>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Make (Ex: BMW)</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Model*</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="model" formControlName="model"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.model').value!=''}" appOnlyAlphanumericalWithSeparators>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Model (Ex: Toyota)</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">VIN Number</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="vin" formControlName="vin"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.vin').value!=''}" appOnlyAlphanumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter VIN Number</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Plate Number</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="plate_no" formControlName="plate_no"  [ngClass]="{'ffl-floated-force' : florida.get('insured_information.plate_no').value!=''}" appOnlyAlphanumericalWithSeparators>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter Plate Number</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="section-page-question" formGroupName="third_party_information">
+                            <div class="question-wrap">
+                              <div class="question-header d-flex"> <span class="question-counter"> <span
+                                    class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14"
+                                    fill="none">
+                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                  </svg> </span>
+                                <div>
+                                  <h3 class="question-text">Third Party Information</h3>
+                                </div>
+                              </div>
+                              <div class="question-content">
+                                <div class="row gutterField-15">
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">First Name</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="first_name" formControlName="first_name"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.first_name').value!=''}" appOnlyAlphabetical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Name</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Last Name</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField"  name="last_name" formControlName="last_name"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.last_name').value!=''}" appOnlyAlphabetical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Last Name</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="queNbrSpace">
+                                        <label class="label_field_cst">Date of Birth*</label>
+                                        <div class="form-group mb_group_lg">
+                                          <div class="input-group datePicker field_md fld-icon-Date field_labelTP">
+                                            <input name="dob" formControlName="dob"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.dob').value!=''}" class="form-control cmnField datepicker_fld" placeholder="MM/DD/YYYY"  ngbDatepicker #dob="ngbDatepicker" (click)="dob.toggle()">
+                                            <label class="primary-label label-Tp">Birthdate</label>
+                                          </div>
+                                        </div>
+                                    </div>   
+                                    <!-- <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Date Of Birth</label>
+                                        <div class="field_md fld-icon-Date field_labelTP">
+                                          <input class="form-control cmnField datepicker_fld" required="" value=""
+                                            placeholder="MM/DD/YYYY">
+                                          Toggle "has-error" this class for Error
+                                          <label class="primary-label label-Tp">Date Of Birth</label>
+                                          <div class="fldIcon"><img src="assets/images/icon-calendar.png" alt=""></div>
+                                        </div>
+                                      </div>
+                                    </div> -->
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Address</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="address" formControlName="address"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.address').value!=''}" appOnlyAlphanumericalWithSeparators> 
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter your home address</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">City</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="city" formControlName="city"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.city').value!=''}" appOnlyAlphabeticalWithSpace>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">City</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">State</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="state" formControlName="state"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.state').value!=''}" appOnlyAlphabeticalWithSpace>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">State</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Zip Code</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="zip_code" formControlName="zip_code"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.zip_code').value!=''}" maxlength="5" appOnlyNumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Zip Code</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Contact Number</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="contact" formControlName="contact"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.contact').value!=''}" appPhoneMask id="phone-number">
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter your phone number</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Driver's License #</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="driver_license" formControlName="driver_license"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.driver_license').value!=''}" appOnlyAlphanumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Driver's License #</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Insurance Company</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="insurance_company" formControlName="insurance_company"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.insurance_company').value!=''}" appOnlyAlphanumericalWithSeparators>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Insurance Company</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Policy Number</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="policy_number" formControlName="policy_number"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.policy_number').value!=''}" appOnlyAlphanumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Enter Policy number</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Claim Number</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="claim_number" formControlName="claim_number"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.claim_number').value!=''}" appOnlyAlphanumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Claim Number</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-12">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="labelSpc-tp pd-sm-0">
+                                        <label class="switch-container_YN f-size-18 mb-0 w-100">
+                                          <input type="checkbox" checked="" name="party_injured" formControlName="party_injured"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.party_injured').value!=''}">
+                                          <span class="switch_YN_wrap d-flex"> <span
+                                              class="labelWrap flex-fill f-W-M line-H-1_3 align-self-center">Was the party
+                                              injured?</span> <span class="colWrap_toggle spc-L"> <span
+                                                class="switchWrap_YN d-flex align-items-center"> <span
+                                                  class="wrap_In d-flex align-items-center"> <span
+                                                    class="switchOption">No</span> <span class="switchHandle"></span> <span
+                                                    class="switchOption">Yes</span> </span> </span> </span> </span> </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-8 col-sm-12">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Please Describe Injuries (If Yes)</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="injuries" formControlName="injuries"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.injuries').value!=''}" appOnlyAlphanumericalWithSeparators>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Please Describe Injuries </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-8 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Vehicle Damages</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="vehicle_damage" formControlName="vehicle_damage"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.vehicle_damage').value!=''}" appOnlyAlphanumericalWithSeparators>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Vehicle Damages</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Vin/License Plate</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="vin_or_plate" formControlName="vin_or_plate"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.vin_or_plate').value!=''}" appOnlyAlphanumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Vin/License Plate</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Year</label>
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" name="year" formControlName="year"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.year').value!=''}" maxlength="4" appOnlyNumerical>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Year</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Make</label>
+                                        <div class="field_md field_labelTP">
+                                          <input class="form-control cmnField" 
+                                            placeholder="Make - (Ex : Toyota)" name="make" formControlName="make"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.make').value!=''}" appOnlyAlphabeticalWithSpace>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label label-Tp">Vehicle Make</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 col-sm-6">
+                                    <div class="form-group mb_group_lg">
+                                      <div class="field_bx">
+                                        <label class="label_field_cst">Model</label>
+                                        <div class="field_md field_labelTP">
+                                          <input class="form-control cmnField" name="model" formControlName="model"  [ngClass]="{'ffl-floated-force' : florida.get('third_party_information.model').value!=''}"
+                                            placeholder="Model - (Ex : Camry)"  appOnlyAlphanumericalWithSeparators>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label label-Tp">Model</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+      
+                              </div>
+                            </div>
+                          </div>
+                          <div class="navigation-buttons">
+                            <div class="queInside-space pl-md-0">
+                              <ul class="list-inline mb-0 text-right btnsList_form">
+                                <li class="list-inline-item"> <button type="submit" [disabled]="!florida.valid"class="btn btnstl-1 btnBg-3">Submit Claim</button> </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>    
+            <app-footer-quote></app-footer-quote>
+       </div>
+    </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->
+
+<div class="modal fade modalCst show"  style="display: block;" id="modal-social_login_Error" *ngIf="showModalBox">
+  <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+    <div class="modal-content modalGetQuote">
+      <button type="button" class="close btnClose" data-dismiss="modal" (click)="closesocial()"><span>×</span></button>
+      <div class="modal-body pb-lg">
+      <div class="row no-gutters justify-content-center">
+      <div class="col-lg-12">
+      <div class="infoModalWrap">
+      <div class="txt-summary last-p line-H-1_3">
+      <p class="text-color-3 txt-Md text-center"><strong>Your Claim has been submitted. Our Agent will get back to you.</strong></p>
+            
+            </div>
+      
+      </div>
+      </div>
+       </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade show" *ngIf="showModalBox "></div>

@@ -1,0 +1,328 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+
+
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+      <div class="pgWrapFull spcTpHeader vrLinesWrap">
+        <app-header (languageChange)="onlanguageChange($event)"></app-header>
+  
+        <div class="overflow-hidden" *ngIf="productArr">
+            <div class="insideHeaderSec overflow-hidden">
+              <div class="row no-gutters">
+                <div class="col-md-6" *ngIf="productArr.banner_img">
+                  <div class="secimgWrap position-relative imgFit fullScreen-LessNav fullAuto-MD">
+                    <img  class="w-100 obj-fit placeholder-img-Bg" style="background-image:url(assets/images/{{productArr.banner_img}});" src="{{project_path}}{{image_path}}{{productArr.banner_img}}" alt="" />
+                  </div>
+                </div>
+                <div class="col-md-6 d-flex align-items-center position-relative headContCol">
+                  <div class="w-100">
+                    <div class="wrapContSec">
+                      <div class="topIns_head mngSpc-TP-Head">
+                        <h1 class="pgTitle-head headPG" data-aos="fade-up" data-aos-duration="900">
+
+                          {{productArr.insurance_type}}
+                        </h1>
+                   
+
+                        <div class="contInfo" data-aos="fade-up" data-aos-delay="400" data-aos-duration="900">
+                          <div class="editorCont last-p gray-color-1 tpHeadSummary" [innerHTML]="productArr.subheading">
+                     
+                          </div>
+                        </div>
+  
+                        <div class="text-center" *ngIf="productArr.subheading">
+                          <div class="wrapMX-width">
+                          <!--   <div class="tp-choose-wrap" data-aos="fade-up" data-aos-delay="700" data-aos-duration="900">
+                              <ul class="list-unstyled mb-0 choose_btnsList">
+                                <li class="list-inline-item"><a href="#" class="btn cmnBtn btnBg-2 text-uppercase"
+                                    data-toggle="modal" data-target="#modal-get_a_quote">{{productArr.button_text}}</a></li>
+                              </ul>
+                            </div>
+   -->
+                            <div class="call-Or-Chat" data-aos="fade-up" data-aos-delay="900" data-aos-duration="900">
+                              <div class="callText line-H-1_2" *ngIf="productArr.helpline_number">{{productArr.helpline_title}}  <a
+                                  class="f-W-B text-decoration-none link-color-black"
+                                  href="tel:{{productArr.helpline_number}}">{{productArr.helpline_number}}</a></div>
+          
+                              <div class="chatBtn mxWidth">
+                                <a href="#" class="btn btn-block cmnBtn btnOutline-2 btn text-uppercase">{{productArr.chat_with_us_text}}</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+  
+  
+  
+                      </div>
+                    </div>
+                    <div class="scrollBT-pos mngMob text-center" *ngIf="productArr.subheading">
+                      <div class="scrollDown" data-aos="fade-up" data-aos-delay="1200" data-aos-duration="900" data-aos-offset="-50">
+                        <div class="arrowIcon"></div>
+                        <div class="scrollTxt line">{{productArr.scroll_down_text}}</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="position-relative">
+              <div class="floatImg floatShape-2 claim_imgFloat_2 floating-Animate">
+                <img class="w-100" src="./assets/images/floating-img-2.png" alt="">
+              </div>
+              <div class="floatImg floatShape-2 boat_imgFloat_2 floating-Animate">
+                <img class="w-100" src="./assets/images/floating-img-2.png" alt="">
+              </div>
+  
+              <div class="section-xl pb-0 position-relative">
+                <div class="floatImg floatShape-5 boat_imgFloat_5 floating-Animate">
+                  <img class="w-100" src="./assets/images/floating-img-5.png" alt="">
+                </div>
+               
+                <div class="container-fluid lg-container">
+                  <div class="bxCont_Info">
+                    <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900">{{productArr.section2_title}}</h2>
+  
+                    <div class="textSummary editorCont last-p" data-aos="fade-up" data-aos-delay="300"
+                      data-aos-duration="900">
+                      <p [innerHTML]="productArr.section2_description"> </p>
+                      <div class="gray-color-1">
+                        <ul class="list-unstyled listCst listIcon">
+                          <li *ngFor="let points of section2_subpoints">{{points}}</li>
+                          <!-- <li>Jump Starts</li>
+                          <li>Tire Changes (with your inflated spare)</li>
+                          <li>Vehicle Fluid Delivery (cost of fluids extra)</li>
+                          <li>Lockout Assistance (cost of key cutting /replacement extra)</li>
+                          <li>Concierge Service (emergency phone call support & assistance)</li> -->
+                        </ul>
+                        <p>{{productArr.section2_subpoint1}}</p>
+                      </div>
+  
+                    </div>
+                  </div>
+                </div>
+  
+              </div>
+  
+              <div class="section-xl secFullwrap position-relative" >
+
+                <div class="row no-gutters align-items-center " *ngIf="productArr.section3_title">
+                  <div class="col-md-6">
+                    <div class="w-100 contCol-wrap containerPD-L">
+                      <div class="bxCont_Info pb-5 pb-md-0">
+                        <div class="headWrap" data-aos="fade-up" data-aos-duration="900">
+                          <h2 class="head font-sizeHead">{{productArr.section3_title}}</h2>
+                          <div class="subHead-text text-color-3">{{productArr.section3_subtitle}}</div>
+  
+                        </div>
+  
+                        <div class="textSummary gray-color-1 line-H-1_8 last-p" data-aos="fade-up" data-aos-delay="300"
+                          data-aos-duration="900" [innerHTML]="section3_description">
+                         
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="imgWrap">
+                      <img class="w-100" src="{{project_path}}{{image_path}}{{productArr.section3_img}}" alt="" />
+                    </div>
+                  </div>
+                </div>
+             
+                <!-- <div class="row no-gutters align-items-center">
+                  <div class="col-md-6">
+                    <div class="w-100 contCol-wrap containerPD-L">
+                      <div class="bxCont_Info pb-5 pb-md-0">
+                        <div class="headWrap" data-aos="fade-up" data-aos-duration="900">
+                          <h2 class="head font-sizeHead">Roadside Assistance: Custom Trip</h2>
+                          <div class="subHead-text text-color-3">Routing Service</div>
+  
+                        </div>
+  
+                        <div class="textSummary gray-color-1 line-H-1_8 last-p" data-aos="fade-up" data-aos-delay="300"
+                          data-aos-duration="900">
+                          <p>The Motor Club will supply Members with information, maps, trip itineraries, and/or assist
+                            with reservations for rail or air travel, hotels, automobile and rental services with a ten
+                            (10) business days advance notice if the member is traveling. Please note that the Motor Club
+                            will not act as a travel agent.</p>
+                          <p>For more information on roadside assistance or to answer any questions feel free to contact
+                            us at 1-888-DEVOLADA (338-6523), option #1 or use our Find an Agent map to find an agency near
+                            you.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="imgWrap">
+                      <img class="w-100" src="./assets/images/roadside-assistance-ins-sec2.jpg" alt="" />
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+  
+              <div class="section-xl pt-0"  *ngIf="productArr.section4_title">
+                <div class="container-fluid lg-container">
+                  <div class="bxCont_Info mb__60">
+                    <div class="headWrap" data-aos="fade-up" data-aos-duration="900">
+                      <h2 class="head font-sizeHead">{{productArr.section4_title}}</h2>
+                      <div class="subHead-text text-color-3">{{productArr.section4_subtitle}}</div>
+                    </div>
+  
+                    <div class="textSummary editorCont last-p gray-color-1 link-color-gray" data-aos="fade-up"
+                      data-aos-duration="900">
+                      <p>{{productArr.section4_subtitle1}}</p>
+                      <div class="pl--35">
+                        <ul class="list-unstyled listCst listIcon list-PL">
+                          <li *ngFor="let sec of section4_points;let i =index"><a class="link-color-black" target="_blank" href="{{section4_points_url[i]}}" >{{sec}}</a></li>
+                      <!--     <li><a target="_blank" href="http://www.daysinn.com/">Days Inn</a></li>
+                          <li><a target="_blank" href="http://www.hawthorn.com/">Hawthorne Suites</a></li>
+                          <li><a target="_blank" href="http://www.hojo.com/">Howard Johnson</a></li>
+                          <li><a target="_blank" href="http://www.knightsinn.com/">Knights Inn</a></li>
+                          <li><a target="_blank" href="http://www.microtelinn.com/">Microtel Inns &amp; Suites</a></li>
+                          <li><a target="_blank" href="http://www.travelodge.com/">Travelodge</a></li>
+                          <li><a target="_blank" href="http://www.ramada.com/">Ramada Worldwide</a></li>
+                          <li><a target="_blank" href="http://www.super8.com/">Super 8</a></li>
+                          <li><a target="_blank" href="http://www.wingatehotels.com/">Wingate by Wyndham</a></li>
+                          <li><a target="_blank" href="http://www.wyndhamhotelgroup.com/">Wyndham Hotel Group</a></li> -->
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bxCont_Info" *ngIf="productArr">
+                    <div class="headWrap" data-aos="fade-up" data-aos-duration="900">
+                      <div class="subHead-text text-color-3">{{productArr.car_rental_title}}</div>
+                    </div>
+                    <div class="textSummary editorCont last-p gray-color-1 link-color-gray" data-aos="fade-up"
+                      data-aos-duration="900">
+                      <div class="pl--35">
+                        <ul class="list-unstyled listCst listIcon">
+
+                          <li> {{car_rental_subtitle[0]}} <a target="_blank"
+                              href="http://www.avis.com/"></a> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+  
+  
+  
+  
+              <div *ngIf="productArr.ad_banner1" class="insuranceBanner mr_B text-color-white position-relative z_ind1"
+              style="background-image:url({{project_path}}{{ads[0].ad_banner1}})">
+              <div class="container-fluid lg-container">
+                <div class="row align-items-center mngInside">
+                    <div class="col">
+                                <div *ngIf="ads[0].align == 1" class="contWrap w-100 ">
+                                    <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_title"></h2>
+                                    <div class="txtCont f-W-M text-gray-80">
+                                        <ul class="list-unstyled mb-0">
+                                            <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_subtitle">
+                                              </li>
+                                          <!--   <li data-aos="fade-up" data-aos-delay="400" data-aos-duration="900">25%
+                                                Multi-car Discount</li> -->
+                                        </ul>
+                                    </div>
+                                    <div class="btnRow" data-aos="fade-up" data-aos-delay="700"
+                                        data-aos-duration="900" *ngIf="ads[0].ad_banner1_button_text"><a href="{{ads[0].ad_banner1_button_url}}"
+                                            class="btn cmnBtn btnBg-1 text-uppercase">{{ads[0].ad_banner1_button_text}}</a></div>
+                                </div>
+                                  <div *ngIf="ads[0].align == 2" class="contWrap w-100 text-right">
+                                    <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_title"></h2>
+                                    <div class="txtCont f-W-M text-gray-80">
+                                        <ul class="list-unstyled mb-0">
+                                            <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_subtitle">
+                                              </li>
+                                          <!--   <li data-aos="fade-up" data-aos-delay="400" data-aos-duration="900">25%
+                                                Multi-car Discount</li> -->
+                                        </ul>
+                                    </div>
+                                    <div class="btnRow" data-aos="fade-up" data-aos-delay="700"
+                                        data-aos-duration="900" *ngIf="ads[0].ad_banner1_button_text"><a href="{{ads[0].ad_banner1_button_url}}"
+                                            class="btn cmnBtn btnBg-1 text-uppercase">{{ads[0].ad_banner1_button_text}}</a></div>
+                                </div>
+                                   <div  *ngIf="ads[0].align == 3" class="contWrap w-100 text-center">
+                                    <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_title"></h2>
+                                    <div class="txtCont f-W-M text-gray-80">
+                                        <ul class="list-unstyled mb-0">
+                                            <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_subtitle">
+                                              </li>
+                                          <!--   <li data-aos="fade-up" data-aos-delay="400" data-aos-duration="900">25%
+                                                Multi-car Discount</li> -->
+                                        </ul>
+                                    </div>
+                                    <div class="btnRow" data-aos="fade-up" data-aos-delay="700"
+                                        data-aos-duration="900" *ngIf="ads[0].ad_banner1_button_text"><a href="{{ads[0].ad_banner1_button_url}}"
+                                            class="btn cmnBtn btnBg-1 text-uppercase">{{ads[0].ad_banner1_button_text}}</a></div>
+                                </div>
+                            </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+  
+  
+          <div class="overflow-hidden">
+            <div class="row gutter-8">
+               <div *ngIf="productArr" class="w-100">
+               <app-ads class="row gutter-8"></app-ads>   
+               </div> 
+<!--   <div class="col-md-6">
+                        <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-2.jpg)"
+                            data-aos="fade-up" data-aos-duration="900">
+                            <div class="mngInside d-flex align-items-center">
+                                <div class="w-100 z_ind1">
+                                    <div class="textCont text-color-white text-center">
+                                        <div class="smTxt text-uppercase" data-aos="fade-up"
+                                            data-aos-duration="900">LEARN ABOUT</div>
+                                        <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up"
+                                            data-aos-delay="300" data-aos-duration="900">INDEPENDENT AGENT</div>
+                                        <div class="btnRow" data-aos="fade-up" data-aos-delay="500"
+                                            data-aos-duration="900"><a routerLink="/"
+                                                class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-3.jpg)"
+                            data-aos="fade-up" data-aos-duration="900">
+                            <div class="mngInside d-flex align-items-center">
+                                <div class="w-100 z_ind1">
+                                    <div class="textCont text-color-white text-center">
+                                        <div class="smTxt text-uppercase" data-aos="fade-up"
+                                            data-aos-duration="900">OPEN YOUR</div>
+                                        <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up"
+                                            data-aos-delay="300" data-aos-duration="900">PRONTO FRANCHISE AGENCY
+                                        </div>
+                                        <div class="btnRow" data-aos="fade-up" data-aos-delay="500"
+                                            data-aos-duration="900"><a routerLink="/"
+                                                class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+            </div>
+          </div>
+  
+          <div *ngIf="productArr">
+            <app-counter-section page_url="roadside-assistance"></app-counter-section>            
+          </div>
+  
+        <footer class="footerWrap overflow-hidden">
+          <app-footer></app-footer>
+        </footer>
+      </div>
+    </div>
+    <!-- .perspScreen -->
+  </div>
+  <!-- .fullPG_Wrap -->
+  

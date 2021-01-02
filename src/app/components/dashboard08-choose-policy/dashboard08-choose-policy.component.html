@@ -1,0 +1,82 @@
+<app-pre-loader *ngIf="loading"></app-pre-loader>
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+    <div class="pgWrapFull spcTpHeader vrLinesWrap">
+
+      <app-header (languageChange)="onlanguageChange($event)"></app-header>
+      <div class="dashboard_pg_wrap minScreen-hgt bg-patternGrdnt">
+        <app-dashboard-responsive-top-header></app-dashboard-responsive-top-header>
+        <div class="dashScreen_wrap">
+          <div class="row no-gutters dashWrap_Row">
+            <div class="col-lg-auto brdRgt">
+              <div class="colWdth_side">
+                <app-dashboard-side-nav></app-dashboard-side-nav>
+              </div>
+            </div>
+            <div class="col-lg brdCol">
+              <div class="dashboard_middle">
+              
+                <div class="dashboard-mdl_Scroll cstScroller cst_mCst_scroll_Desk " data-aos="fade-up"
+                  data-aos-delay="300" data-aos-duration="900">
+
+                  <div class="dashB_mdl-pd pb-4" >
+                    <h1 class="dashlg-Head font-F-1 f-W-B"><span class="wrapIn">Policy Details</span></h1>
+                    <div class="cardDash_cmn dash_cardRow extrPD-lbl f-size-20 line-H-1_3">
+                      <div class="statusLabel f-W-M">Active</div>
+                      <div class="row no-gutters">
+                        <div class="col-md-auto text-center text-sm-left">
+                          <div class="h-100 d-flex align-items-center">
+                            <div class="w-100">
+                              <div class="iconWrap"><img class="w-100" src="assets/images/dash-policy-icon-2.png"
+                                  alt="" /></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md overflow-hidden">
+                          <div class="row h-100 rowGutter_spc insRowBrd">
+                            <div class="col-sm-auto d-flex align-items-center">
+                              <div class="colCont_Wrp w-100">
+                                <div class="contCol-1 text-center text-md-left">
+                                  <div class="lable-ttl">Policy Number:</div>
+                                  <div class="f-W-M text-color-3">{{policy.policyNumber}}</div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-sm d-flex align-items-center">
+                              <div class="colCont_Wrp w-100">
+                                <div class="contCol-3 text-center text-md-left">
+                                  <div class="lable-ttl f-W-B">Policy Effective:</div>
+                                  <div class="f-W-M"> {{policy.effectiveDate}} - {{policy.expirationDate}} </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                     
+
+
+                  </div>
+
+              
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-auto brdLft">
+              <div class="colWdth_side">
+                <app-dashboard-side-userinfo></app-dashboard-side-userinfo>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <footer class="footerWrap overflow-hidden">
+        <app-footer></app-footer>
+      </footer>
+    </div>
+  </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->

@@ -1,0 +1,323 @@
+<app-pre-loader  *ngIf="loading"></app-pre-loader>
+
+
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+        <div class="pgWrapFull spcTpHeader vrLinesWrap">
+        <app-header (languageChange)="onlanguageChange($event)"></app-header>
+            <div class="dashboard_pg_wrap minScreen-hgt bg-patternGrdnt">
+                <app-dashboard-responsive-top-header></app-dashboard-responsive-top-header>
+                <div class="dashScreen_wrap">
+                    <div class="row no-gutters dashWrap_Row">
+                        <div class="col-lg-auto brdRgt">
+                            <div class="colWdth_side">
+                                <app-dashboard-side-nav></app-dashboard-side-nav>
+                            </div>
+                        </div>
+                        <div class="col-lg brdCol">
+                            <div class="dashboard_middle">
+                                <div class="dashB_mdl-pd">
+                                    <div class="dash_tp-btnsRow d-none d-lg-block" data-aos="fade-up"
+                                        data-aos-duration="900">
+                                        <div class="row no-gutters">
+                                            <div class="col"><a  data-toggle="modal" data-target="#modal-Start-claim"
+                                                    class="btn cmnBtn btn-sz-md btnBg-1 text-uppercase">Report CLAIM</a>
+                                            </div>
+                                            <!-- <div class="col text-right">
+                                                <div class="d-inline-block">
+                                                    <div class="viewCard_wrap d-flex align-items-center">
+                                                        <div class="iconWrap"><img class="w-100"
+                                                                src="assets/images/icon-view-card.png" alt="" /></div>
+                                                        <div class="btnCol flex-fill"> <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-md btnBg-4 text-uppercase">VIEW
+                                                                YOUR ID CARDS</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                           
+                                <div class="dashboard-mdl_Scroll cstScroller cst_mCst_scroll_Desk" data-aos="fade-up"
+                                    data-aos-delay="300" data-aos-duration="900"  *ngIf="cardlist">
+                                    <div class="dashB_mdl-pd">
+                                        <h1 class="dashlg-Head font-F-1 f-W-B">Payment Settings</h1>
+                                        <div class="loadMoreRow text-center" *ngIf="cardlist.length<1" > <a  >No
+                                            Payment Settings To Show</a> </div>
+                                       
+                                        <div class="cardDash_cmn dash_cardRow paymentCard f-size-20 line-H-1_3" *ngFor="let card of cardlist">
+                                               
+                                            <div class="row no-gutters minHgt">
+                                                <!--<div class="col-md-auto text-center text-sm-left">
+                                                    <div class="h-100 d-flex align-items-center">
+                                                        <div class="w-100">
+                                                            <div class="iconWrap"><img class="w-100"
+                                                                    src="assets/images/dash-payment-card.png" alt="" /></div>
+                                                        </div>
+                                                    </div>
+                                                </div>-->
+                                                <div class="col-md overflow-hidden">
+                                                    <div class="row flex-md-nowrap h-100 respBrd-row gutter-8">
+                                                        <div class="col-sm d-flex align-items-center">
+                                                            <div class="colCont_Wrp w-100">
+                                                                <div class="contCol-2 text-center text-md-left">
+                                                                    <div class="lable-ttl"> Name On Card</div>
+                                                                    <div class="f-W-M txt-22">{{card.name}}</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm-auto d-flex align-items-center">
+                                                            <div class="colCont_Wrp w-100">
+                                                                <div class="contCol-1 text-center text-md-left">
+                                                                    <div class="lable-ttl">Card Number</div>
+                                                                    <div class="f-W-M txt-22">{{card.cardNo}}</div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-auto d-flex align-items-center">
+                                                            <div class="colCont_Wrp w-100">
+                                                            <div class="cardExp_col text-center text-md-left">
+                                                            <div class="lable-ttl">Exp Date</div>
+                                                            <div class="f-W-M txt-22">{{card.expiry}}</div>
+                                                            </div>
+                                                            
+                                                            </div>
+                                                            </div>
+                                  
+                                                        <div class="col-sm d-flex align-items-center">
+                                                            <div class="colCont_Wrp w-100">
+                                                                <div class="contCol-3 text-center">
+                                                                    <div class="lable-ttl">Default Card:</div>
+                                                                    <div class="switchOn_Off d-inline-block">
+                                                                        <div class="row no-gutters flex-nowrap">
+                                                                            <div class="col">
+                                                                                <div class="txt-lable f-W-M">ON</div>
+                                                                            </div>
+                                                                            <div class="col-auto">
+                                                                                <div class="switchCol">
+                                                                                    <label
+                                                                                        class="switch-toggle revert_stl mb-0">
+                                                                                        <input type="checkbox" (click)="defaultpay(card.payRefId)" *ngIf="card.defaultPayMode == true" checked="checked">
+                                                                                        <input type="checkbox" (click)="defaultpay(card.payRefId)" *ngIf="card.defaultPayMode == false" >
+                                                                                        <span
+                                                                                            class="slider round"></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <div class="txt-lable f-W-M">OFF</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <div
+                                                        class="btnCol h-100 d-flex align-items-center text-center text-md-right">
+                                                        <div class="w-100"> <a      
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1"  (click)="paymentremove(card.payRefId)">Remove</a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                       <!--  <div class="cardDash_cmn dash_cardRow paymentCard f-size-20 line-H-1_3">
+                                            <div class="row no-gutters minHgt">
+                                                <div class="col-md-auto text-center text-sm-left">
+                                                    <div class="h-100 d-flex align-items-center">
+                                                        <div class="w-100">
+                                                            <div class="iconWrap"><img class="w-100"
+                                                                    src="assets/images/dash-payment-card.png" alt="" /></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md overflow-hidden">
+                                                    <div class="row h-100 respBrd-row gutter-20vw">
+                                                        <div class="col-sm d-flex align-items-center">
+                                                            <div class="colCont_Wrp w-100">
+                                                                <div class="contCol-2 text-center text-md-left">
+                                                                    <div class="lable-ttl">Card Name</div>
+                                                                    <div class="f-W-M txt-22">Citi Bank</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm d-flex align-items-center">
+                                                            <div class="colCont_Wrp w-100">
+                                                                <div class="contCol-1 text-center text-md-left">
+                                                                    <div class="lable-ttl">Card Number</div>
+                                                                    <div class="f-W-M txt-22">3253 xxxx xxxx 8571</div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm d-flex align-items-center">
+                                                            <div class="colCont_Wrp w-100">
+                                                                <div class="contCol-3 text-center">
+                                                                    <div class="lable-ttl">Default Card:</div>
+                                                                    <div class="switchOn_Off d-inline-block">
+                                                                        <div class="row no-gutters">
+                                                                            <div class="col">
+                                                                                <div class="txt-lable f-W-M">ON</div>
+                                                                            </div>
+                                                                            <div class="col-auto">
+                                                                                <div class="switchCol">
+                                                                                    <label
+                                                                                        class="switch-toggle revert_stl mb-0">
+                                                                                        <input type="checkbox" checked>
+                                                                                        <span
+                                                                                            class="slider round"></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <div class="txt-lable f-W-M">OFF</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <div
+                                                        class="btnCol h-100 d-flex align-items-center text-center text-md-right">
+                                                        <div class="w-100"> <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1">Remove</a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                      <!--   <div class="cardDash_cmn dash_cardRow paymentCard f-size-20 line-H-1_3">
+                                            <div class="row no-gutters minHgt">
+                                                <div class="col-md-auto text-center text-sm-left">
+                                                    <div class="h-100 d-flex align-items-center">
+                                                        <div class="w-100">
+                                                            <div class="iconWrap"><img class="w-100"
+                                                                    src="assets/images/dash-payment-card.png" alt="" /></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md overflow-hidden">
+                                                    <div class="row h-100 respBrd-row gutter-20vw">
+                                                        <div class="col-sm d-flex align-items-center">
+                                                            <div class="colCont_Wrp w-100">
+                                                                <div class="contCol-2 text-center text-md-left">
+                                                                    <div class="lable-ttl">Card Name</div>
+                                                                    <div class="f-W-M txt-22">Citi Bank</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-sm d-flex align-items-center">
+                                                            <div class="colCont_Wrp w-100">
+                                                                <div class="contCol-1 text-center text-md-left">
+                                                                    <div class="lable-ttl">Card Number</div>
+                                                                    <div class="f-W-M txt-22">9872 xxxx xxxx 5632</div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm d-flex align-items-center">
+                                                            <div class="colCont_Wrp w-100">
+                                                                <div class="contCol-3 text-center">
+                                                                    <div class="lable-ttl">Default Card:</div>
+                                                                    <div class="switchOn_Off d-inline-block">
+                                                                        <div class="row no-gutters">
+                                                                            <div class="col">
+                                                                                <div class="txt-lable f-W-M">ON</div>
+                                                                            </div>
+                                                                            <div class="col-auto">
+                                                                                <div class="switchCol">
+                                                                                    <label
+                                                                                        class="switch-toggle revert_stl mb-0">
+                                                                                        <input type="checkbox">
+                                                                                        <span
+                                                                                            class="slider round"></span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <div class="txt-lable f-W-M">OFF</div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <div
+                                                        class="btnCol h-100 d-flex align-items-center text-center text-md-right">
+                                                        <div class="w-100"> <a routerLink="/"
+                                                                class="btn cmnBtn btn-sz-dashb btnBg-1">Remove</a>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+
+                                        <!--<div class="loadMoreRow text-center"> <a routerLink="/" class="btn btnLoadMore">Load more Policies</a> </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-auto brdLft">
+                            <div class="colWdth_side">
+                                <app-dashboard-side-userinfo></app-dashboard-side-userinfo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <footer class="footerWrap overflow-hidden">
+                <app-footer></app-footer>
+            </footer>
+        </div>
+    </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->
+
+<!-- Modal Start Claim -->
+<div class="modal fade modalCst" id="modal-Start-claim">
+    <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+      <div class="modal-content">
+        <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+        <div class="modal-body pb-lg">
+        <div class="row no-gutters justify-content-center">
+        <div class="col-lg-11">
+        <div class="claim_choose_wrap">
+        <div class="cont-Head f-W-B line-H-1_3 text-center">For Auto claims, Please select your state</div>
+        <ul class="list-unstyled mb-0 row gutter-8 btnsList">
+        <li class="col-sm-4"><a routerLink="/en/claims/claim-texas" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">Texas</a></li>
+        <li class="col-sm-4"><a routerLink="/en/claims/claim-california" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">California</a></li>
+        <li class="col-sm-4"><a routerLink="/en/claims/claim-florida" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">Florida</a></li>
+        </ul>
+        </div>
+        </div>
+         </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- End Modal Start Claim -->

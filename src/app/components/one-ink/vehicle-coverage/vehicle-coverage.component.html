@@ -1,0 +1,210 @@
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+        <div class="pgWrapFull spcTpHeader">
+            <app-header></app-header>
+            <oneink-stepper></oneink-stepper>
+            <div class="quotePG_wrap overflow-hidden position-relative">
+                <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate"> <img class="w-100"
+                        src="./assets/images/floating-img-1.png" alt=""> </div>
+                <div class="floatImg floatShape-5 quote1_imgFloat_5 floating-Animate"> <img class="w-100"
+                        src="./assets/images/floating-img-5.png" alt=""> </div>
+                <div class="containerPD-L">
+                    <div class="row no-gutters">
+                        <div class="col-md">
+                            
+                            <div class="formScreen_Hgt spcMng_mp">
+                                    <div class="queCol_Outer pTB_quote lg-BT-scroll" data-aos="fade-up"
+                                        data-aos-duration="700">
+                                        <div class="secPg_head_row">
+                                            <div class="row gutter-10vw align-items-end">
+                                                <div class="col-md">
+                                                    <div class="section-page-header brdLine-BT mb-0">
+                                                        <div class="ttl-tpLine gray-color-2" *ngIf="oneInkDriverForm.drivers_array$!=undefined">{{oneInkDriverForm.drivers_array$['controls']['driver']['controls'][0].get('firstName').value}} {{oneInkDriverForm.drivers_array$['controls']['driver']['controls'][0].get('lastName').value}}</div>
+                                                        <h1 class="headingStl-1">A few questions about the driver</h1>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-auto">
+                                                    <div class="cont-Rgt">
+                                                        <div class="quoteNbr f-size-18 f-W-M"><span
+                                                                class="text-color-3">Quote Number: </span>{{qouteId}}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pg-tltp-spc">
+                                                <form [formGroup]="form" (ngSubmit)="submit_coverage()">
+                                
+                                            <div class="section-page-questions">
+                                                <div class="section-page-question">
+                                                    <div class="question-wrap row no-gutters justify-content-between">
+                                                        <div class="col-lg-5 question-header d-flex"> <span
+                                                                class="question-counter"> <span class="countNbr"></span>
+                                                                <svg class="iconMark" width="15" height="14"
+                                                                    viewbox="0 0 15 14" fill="none">
+                                                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                                </svg> </span>
+                                                            <div>
+                                                                <h3 class="question-text">Vehicle Coverages</h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 question-content">
+                                                            <div class="queNbrSpace">
+
+                                                                <div class="form-group mb_form-group">
+                                                                    <div class="tltp-mng_R">
+                                                                    <div class="selectNG_dropdown"> 
+                                                                            <ng-select class="custom_ngSelect" [items]="pdList"
+                                                                            bindLabel="name"
+                                                                            placeholder="Select"
+                                                                            bindValue="id"
+                                                                            [searchable]="false" formControlName="propertyDamage">
+    
+                                                                            <ng-template ng-label-tmp let-item="item">
+                                                                                {{item.name}}
+                                                                            </ng-template>
+    
+                                                                        </ng-select>
+                                                                        <label class="selectLabel">Property Damage</label>
+                                                                        <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                                    <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                                    </svg>
+                                                                    </div>
+
+                                                                    <span class="tooltipIcon" data-tooltip="tooltip" data-html="true" title="May cover another party’s cost for damages to their property if you become legally responsible for an accident."><img class="iconTooltip_img" src="./assets/images/icon-info.svg" alt=""></span>
+
+                                                                    </div>
+                                                                </div>
+                                                               
+                                                                <div class="form-group mb_form-group">
+                                                                    <div class="tltp-mng_R">
+                                                                    <div class="selectNG_dropdown"> 
+                                                                            <ng-select class="custom_ngSelect" [items]="nsdtcList"
+                                                                            bindLabel="name"
+                                                                            placeholder="Select"
+                                                                            bindValue="id"
+                                                                            [searchable]="false" formControlName="NDSTravelClub">
+    
+                                                                            <ng-template ng-label-tmp let-item="item">
+                                                                                {{item.name}}
+                                                                            </ng-template>
+    
+                                                                        </ng-select>
+                                                                        <label class="selectLabel">NSD Travel Club</label>
+                                                                        <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                                    <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                                    </svg>
+                                                                    </div>
+                                                                    <span class="tooltipIcon" data-tooltip="tooltip" data-html="true" title="NSD Travel Club"><img class="iconTooltip_img" src="./assets/images/icon-info.svg" alt=""></span>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="form-group mb_form-group">
+                                                                    <div class="tltp-mng_R">
+                                                                    <div class="selectNG_dropdown"> 
+                                                                            <ng-select class="custom_ngSelect" [items]="wlexList"
+                                                                            bindLabel="name" (change)="getWorkLossValue($event)"
+                                                                            placeholder="Select"
+                                                                            bindValue="id"
+                                                                            [searchable]="false" formControlName="workLossExclusion">
+    
+                                                                            <ng-template ng-label-tmp let-item="item">
+                                                                                {{item.name}}
+                                                                            </ng-template>
+    
+                                                                        </ng-select>
+                                                                        <label class="selectLabel">Work Loss Exclusion</label>
+                                                                        <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                                    <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                                    </svg>
+                                                                    </div>
+                                                                    <span class="tooltipIcon" data-tooltip="tooltip" data-html="true" title="if declined, may cover income loss as an extension of PIP coverage. Ff NIO or NIRR is selected, this coverage is excluded for Named Insured Only or Named Insured and Resident Relatives."><img class="iconTooltip_img" src="./assets/images/icon-info.svg" alt=""></span>
+
+                                                                    </div>
+                                                                </div>
+                                                              
+                                                                <div class="form-group mb_form-group">
+                                                                    <div class="tltp-mng_R">
+                                                                    <div class="selectNG_dropdown"> 
+                                                                            <ng-select class="custom_ngSelect" [items]="pepList"
+                                                                            bindLabel="name"
+                                                                            placeholder="Select"
+                                                                            bindValue="id"
+                                                                            [searchable]="false" formControlName="personalInjuryProtection">
+    
+                                                                            <ng-template ng-label-tmp let-item="item">
+                                                                                {{item.name}}
+                                                                            </ng-template>
+    
+                                                                        </ng-select>
+                                                                        <label class="selectLabel">Personal
+                                                                            Injury Protection</label>
+                                                                        <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                                    <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                                    </svg>
+                                                                    </div>
+                                                                    <span class="tooltipIcon" data-tooltip="tooltip" data-html="true" title="May cover certain medical expenses after an accident and other expenses incurred due to your injuries such as income loss."><img class="iconTooltip_img" src="./assets/images/icon-info.svg" alt=""></span>
+
+                                                                    </div>
+                                                                </div>
+                                                               
+                                                                <div class="form-group mb_form-group">
+                                                                    <div class="tltp-mng_R">
+                                                                        <div class="field_md fld-icon-Date field_labelTP">
+                                                                            <input
+                                                                                class="form-control cmnField datepicker_fld"
+                                                                                placeholder="MM/DD/YYYY" [ngClass]="{'ffl-floated-force' : form.get('quoteEffectiveDate').value != ''}"  formControlName="quoteEffectiveDate" DobValidation type="text" maxlength="10" emptyvalueValidationcheck [currentControl]="form.get('quoteEffectiveDate')">
+                                                                            <!-- Toggle "has-error" this class for Error -->
+                                                                            <label class="primary-label label-Tp">Effective
+                                                                                Date</label>
+                                                                            <div class="fldIcon"><img
+                                                                                    src="./assets/images/icon-calendar.png" alt="">
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <span class="tooltipIcon" data-tooltip="tooltip"
+                                                                            data-html="true" title="Effective Date"><img
+                                                                                class="iconTooltip_img"
+                                                                                src="./assets/images/icon-info.svg" alt=""></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            </div>
+                                            <div class="navigation-buttons">
+                                                <ul class="list-inline mb-0 text-right btnsList_form">
+                                                    <li class="list-inline-item"> <button  type="submit" [disabled]="!form.valid"  class="btn btnstl-1 btnBg-3 ">
+                                                        Save & Continue</button> </li>
+                                                </ul>
+                                            </div>
+                                        </form>
+
+
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            
+                        </div>
+                    
+                        <!-- sidebar -->
+                        <oneink-sidebar></oneink-sidebar>
+                    </div>
+                </div>
+            </div>
+            <app-footer-quote></app-footer-quote>
+        </div>
+    </div>
+    <!-- .perspScreen -->
+</div>
+<!-- .fullPG_Wrap -->
+
+
+
+<error-dialog [error_msg]="oneInkService.error_msg" #error_component></error-dialog >

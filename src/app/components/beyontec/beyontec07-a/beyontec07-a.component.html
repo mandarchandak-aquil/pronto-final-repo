@@ -1,0 +1,385 @@
+<app-pre-loader *ngIf="loading"></app-pre-loader>
+
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+      <div class="pgWrapFull spcTpHeader vrLinesWrap">
+  
+        <app-header></app-header>
+        
+        <app-beyontec-breadcrum></app-beyontec-breadcrum>
+         
+          <div class="quotePG_wrap overflow-hidden position-relative">
+            <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate"> <img class="w-100"
+                src="assets/images/floating-img-1.png" alt=""> </div>
+            <div class="floatImg floatShape-5 quote1_imgFloat_5 floating-Animate"> <img class="w-100"
+                src="assets/images/floating-img-5.png" alt=""> </div>
+            <div class="containerPD-L">
+              <div class="row no-gutters">
+                <div class="col-md">
+                  <div class="formScreen_Hgt spcMng_mp">
+                    <div class="queCol_Outer pTB_quote lg-BT-scroll" data-aos="fade-up" data-aos-duration="700">
+                      <div class="section-page-header brdLine-BT">
+                        <h1 class="headingStl-1">Tell us about your vehicles.</h1>
+                      </div>
+                      <!-- <form *ngIf="BeyontecFormService.vehicles_array$" [formGroup]="BeyontecFormService.vehicles_array$" (ngSubmit)="submit()"> -->
+                        <form  [formGroup]="vehicle_add" >
+              
+                        <div class="pg-tltp-spc">
+                            <div class="section-page-questions">
+                            <div class="section-page-question">
+                                <div class="question-wrap row no-gutters justify-content-between">
+                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                        class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                        viewbox="0 0 15 14" fill="none">
+                                        <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                    </svg> </span>
+                                    <div>
+                                    <h3 class="question-text">Add vehicle information</h3>
+                                    <p class="question-byline">Quote for: {{driver_name | titlecase}}</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 question-content">
+                                    <div class="queNbrSpace">
+                                    <div class="form-group mb_form-group">
+                                        <div class="tltp-mng_R">
+                                        <div class="field_md field_labelTP">
+                                            <input class="form-control cmnField " id="vin_field" formControlName="vinNo"  placeholder="Enter VIN Number"  maxlength="17" appOnlyAlphanumerical readonly>
+                                            <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                            <label class="primary-label label-Tp">VIN Number</label>
+                                            <div class="invalid-fld-feedback">Please enter a valid VIN Number</div>
+                                        </div>
+                                        <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                            title="VIN - Vehicle Identification Number appears on dashboard or driver's side door jamb sticker"><img
+                                            class="iconTooltip_img" src="assets/images/icon-info.svg" alt=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb_form-group">
+                                        <div class="tltp-mng_R">
+                                        <div class="field_md">
+                                            <input formControlName="year" class="form-control cmnField" [ngClass]="{'ffl-floated-force' : vehicle_add.get('year').value != ''}" >
+                                            <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                            <label class="primary-label">Year</label>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb_form-group">
+                                        <div class="tltp-mng_R">
+                                        <div class="field_md">
+                                            <input formControlName="make" class="form-control cmnField" [ngClass]="{'ffl-floated-force' : vehicle_add.get('make').value != ''}" >
+                                            <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                            <label class="primary-label">Make</label>
+                                        </div>
+                                        <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                            title="Make - company that made the vehicle"><img class="iconTooltip_img"
+                                            src="assets/images/icon-info.svg" alt=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb_form-group">
+                                        <div class="tltp-mng_R">
+                                        <div class="field_md">
+                                            <input formControlName="model" class="form-control cmnField" [ngClass]="{'ffl-floated-force' : vehicle_add.get('model').value != ''}" >
+                                            <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                            <label class="primary-label">Model</label>
+                                        </div>
+                                        <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                            title="Model - Name of the car model"><img class="iconTooltip_img"
+                                            src="assets/images/icon-info.svg" alt=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb_form-group">
+                                        <div class="tltp-mng_R">
+                                        <div class="dropdown-select-wrap field_md disabled-control">
+                                          
+
+                                            <div class="selectNG_dropdown">
+                                                    <ng-select class="custom_ngSelect" [ngClass]="{'ng-select-blanck': vehicle_add.get('primary_use').value == ''}" [items]="primary_use_dropdown" 
+                                                       bindLabel="name" 
+                                                       bindValue="name"
+                                                       [multiple]="false"
+                                                       [searchable]="false"
+                                                       formControlName="primary_use"
+                                                       id="custom_ngSelect"
+                                                       placeholder = "Select"
+                                                       >
+                                                       </ng-select>
+
+                                                       <ng-template ng-label-tmp let-item="item">
+                                                        {{name}}
+                                                        </ng-template>
+
+                                                       <label class="selectLabel">Primary use of vehicle</label>
+                 <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                   <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                   </svg>
+                                                     </div>
+                                        </div>
+                                        <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                            title="Primary Use - Select from options to indicate what the vehicle will be primarily used for."><img
+                                            class="iconTooltip_img" src="assets/images/icon-info.svg" alt=""></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb_form-group">
+                                        <div class="tltp-mng_R">
+                                        <div class="dropdown-select-wrap field_md disabled-control">
+                                                <!-- <div>{{vehicle_add.get('type_of_coverage')}}</div> -->
+                                            <div class="selectNG_dropdown">
+                                                    <ng-select class="custom_ngSelect" [ngClass]="{'ng-select-blanck': vehicle_add.get('type_of_coverage').value == '' &&  vehicle_add.get('type_of_coverage').value != 0}" [items]="type_of_coverage_dropdown" 
+                                                       bindLabel="value" 
+                                                       bindValue="key"
+                                                       [multiple]="false"
+                                                       [searchable]="false"
+                                                       formControlName="type_of_coverage"
+                                                       placeholder = "Select"
+                                                       >
+                                                        <ng-template ng-label-tmp let-item="item">
+                                                            {{item.value}}
+                                                        </ng-template>
+
+                                                       </ng-select>
+                                                       <label class="selectLabel">Type of Coverage</label>
+                 <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                   <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                   </svg>
+                                                     </div>
+                                        </div>
+                                        <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                            title="$250 deductible is only available for 6 month policies. 1 month, 2 month and 3 month options will not be available"><img
+                                            class="iconTooltip_img" src="assets/images/icon-info.svg" alt=""></span>
+                                        </div>
+                                    </div>
+    
+                                    <!-- Additional Field On select dropdown of Type of Coverage -->
+                                    
+                                    <div *ngIf="vehicle_add.get('type_of_coverage').value != '' && vehicle_add.get('type_of_coverage').value != 'Liability Only'">
+                                        <div class="form-group mb_form-group mb-0">
+                                        <div class="f-W-B line-H-1_3 f-size-20 mb__10">Do you have 'Custom Equipment'?</div>
+                                        <div class="tltp-mng_R">
+                                            <div class="row gutterField-8">
+                                            <div class="col-6">
+                                                <div class="form-group mb_form-group">
+                                                <div class="cstBlockwrap">
+                                                    <label for="custom_equipment-Yes"
+                                                    class="custom-control custom-block custom-radio mb-0 disabled-control">
+                                                    <input id="custom_equipment-Yes" type="radio" name="equipment_amount_redio" value="Yes" formControlName="equipment_amount_redio"  
+                                                        class="custom-control-input form-check-input" >
+                                                    <span class="custom-control-label-wrap"><span
+                                                        class="custom-control-indicator"></span> <span
+                                                        class="indicator-label">Yes</span> </span> </label>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group mb_form-group">
+                                                <div class="cstBlockwrap">
+                                                    <label for="custom_equipment-No"
+                                                    class="custom-control custom-block custom-radio mb-0 disabled-control">
+                                                    <input id="custom_equipment-No"   type="radio" name="equipment_amount_redio"  value="No" formControlName="equipment_amount_redio" 
+                                                        class="custom-control-input form-check-input">
+                                                    <span class="custom-control-label-wrap"><span
+                                                        class="custom-control-indicator"></span> <span
+                                                        class="indicator-label">No</span> </span> </label>
+                                                </div>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                            title="Custom Equipment - Will cover custom equipment up to $1,500."><img
+                                                class="iconTooltip_img" src="assets/images/icon-info.svg" alt=""></span>
+                                        </div>
+                                        </div>
+    
+                                        <div class="form-group mb_form-group" *ngIf="vehicle_add.get('equipment_amount_redio').value == 'Yes'">
+                                        <div class="tltp-mng_R">
+                                            <div class="dropdown-select-wrap field_md disabled-control">
+                                                <!-- {{vehicle_add.get('equipment_amount').value}} -->
+                                            <div class="selectNG_dropdown">
+                                                    <ng-select class="custom_ngSelect"  [ngClass]="{'ng-select-blanck': vehicle_add.get('equipment_amount').value == ''}" [items]="equipment_amount_dropdown"
+                                                       bindLabel="name"
+                                                       bindValue="key"
+                                                       [multiple]="false"
+                                                       [searchable]="false"
+                                                       formControlName="equipment_amount"
+                                                       placeholder = "Select"
+                                                       >
+                                                       <ng-template ng-label-tmp let-item="item">
+                                                        {{item.name}}
+                                                        </ng-template>
+
+                                                       </ng-select>
+                                                       <label class="selectLabel">Equipment Amount</label>
+                 <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                   <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                   </svg>
+                                                     </div>
+                                            </div>
+                                            <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                            title="Equipment Amount - An invoice detailing cost of special equipment must be provided and inspection of equipment by agent must be completed."><img
+                                                class="iconTooltip_img" src="assets/images/icon-info.svg" alt=""></span>
+                                        </div>
+                                        </div>
+                                        <div class="form-group mb_form-group">
+                                        <div class="dropdown-select-wrap field_md disabled-control">
+                                           
+                                            <div class="selectNG_dropdown">
+                                                    <ng-select class="custom_ngSelect"  [ngClass]="{'ng-select-blanck': vehicle_add.get('rental_reimbus').value == '' &&  vehicle_add.get('rental_reimbus').value != 0}" [items]="rental_reimbus_dropdown" 
+                                                       bindLabel="value" 
+                                                       bindValue="key"
+                                                       [multiple]="false"
+                                                       [searchable]="false"
+                                                       formControlName="rental_reimbus"
+                                                       placeholder="select"
+                                                       >
+
+                                                       <ng-template ng-label-tmp let-item="item">
+                                                        {{item.value}}
+                                                        </ng-template>
+
+
+                                                       </ng-select>
+                                                       <label class="selectLabel">Rental Reimbursement</label>
+                 <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                   <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                   </svg>
+                                                     </div>
+                                        </div>
+                                        </div>
+                                        <div class="form-group mb_form-group">
+                                        <div class="dropdown-select-wrap field_md disabled-control">
+                                           
+
+                                            <div class="selectNG_dropdown">
+                                                    <ng-select class="custom_ngSelect" [ngClass]="{'ng-select-blanck': vehicle_add.get('towing_labour').value == '' &&  vehicle_add.get('towing_labour').value != 0}" [items]="towing_labour_dropdown" 
+                                                       bindLabel="value" 
+                                                       bindValue="key"
+                                                       [multiple]="false"
+                                                       [searchable]="false"
+                                                       formControlName="towing_labour"
+                                                       placeholder = "Select"
+                                                       >
+
+                                                       <ng-template ng-label-tmp let-item="item">
+                                                        {{item.value}}
+                                                        </ng-template>
+                                                       </ng-select>
+                                                       <label class="selectLabel">Towing & Labor</label>
+                 <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                   <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                   </svg>
+                                                     </div>
+                                        </div>
+                                        </div>
+    
+                                    </div>
+                                    <!-- End Additional Field-->
+    
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+    
+    
+    
+                            <div class="section-page-question">
+                                <div class="question-wrap row no-gutters justify-content-between">
+                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                        class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                        viewbox="0 0 15 14" fill="none">
+                                        <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                    </svg> </span>
+                                    <div>
+                                    <h3 class="question-text">Road side assistance</h3>
+                                    <p class="question-byline">Road side assistance is NOT INCLUDED in your policy. Would
+                                        you like to include Roadside Assistance in your next policy term?</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 question-content">
+                                    <div class="queNbrSpace">
+    
+                                    <div class="row gutterField-8">
+                                        <div class="col-sm-6">
+                                        <div class="form-group mb_form-group">
+                                            <div class="cstBlockwrap">
+                                            <label for="road_side_assistance-Yes"
+                                                class="custom-control custom-block custom-radio mb-0 disabled-control">
+                                                <input id="road_side_assistance-Yes" formControlName="road_side_assistance" value="Yes" name="road_side_assistance" type="radio" 
+                                                class="custom-control-input form-check-input">
+                                                <span class="custom-control-label-wrap"><span
+                                                    class="custom-control-indicator"></span> <span
+                                                    class="indicator-label">Yes</span> </span> </label>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                        <div class="form-group mb_form-group">
+                                            <div class="cstBlockwrap">
+                                            <label for="road_side_assistance-No"
+                                                class="custom-control custom-block custom-radio mb-0 disabled-control">
+                                                <input id="road_side_assistance-No" formControlName="road_side_assistance" value="No" name="road_side_assistance" type="radio" 
+                                                class="custom-control-input form-check-input" checked>
+                                                <span class="custom-control-label-wrap"><span
+                                                    class="custom-control-indicator"></span> <span
+                                                    class="indicator-label">No</span> </span> </label>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+    
+                                    </div>
+                                </div>
+                                </div>
+    
+                            </div>
+    
+                            <!-- <div class="section-page-question">
+                                <div class="question-wrap row no-gutters justify-content-between">
+                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                        class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                        viewbox="0 0 15 14" fill="none">
+                                        <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                    </svg> </span>
+                                    <div>
+                                    <h3 class="question-text">Vehicles not in the list</h3>
+                                    <p class="question-byline">You may be eligible for multi-car discounts!</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 question-content">
+                                    <div class="queNbrSpace">
+    
+                                    <div class="form-group mb_form-group">
+                                        <div class="cstBlockwrap">
+                                        <label class="custom-control custom-block custom-checkbox mb-0">
+                                            <input type="checkbox" class="custom-control-input form-check-input">
+                                            <span class="custom-control-label-wrap"><span
+                                                class="custom-control-indicator"></span> <span class="indicator-label">Add
+                                                another vehicle</span> </span> </label>
+                                        </div>
+                                    </div>
+    
+                                    </div>
+                                </div>
+                                </div>
+                            </div> -->
+    
+                            </div>
+                            <div class="navigation-buttons">
+                            <ul class="list-inline mb-0 text-right btnsList_form">
+                                <li class="list-inline-item"> <button (click)="cancelBack()" class="btn btnstl-1 btnBrd">Back</button> </li>
+                            </ul>
+                            </div>
+                        </div>
+                      </form>
+
+                    </div>
+                  </div>
+                </div>
+                <beyontec-sidebar></beyontec-sidebar>
+              </div>
+            </div>
+          </div>
+    
+        <app-footer-quote></app-footer-quote>
+  
+      </div>
+    </div> <!-- .perspScreen -->
+  </div> <!-- .fullPG_Wrap -->
+  

@@ -1,0 +1,362 @@
+<app-pre-loader *ngIf="loading"></app-pre-loader>
+
+
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+        <div class="pgWrapFull spcTpHeader vrLinesWrap">
+            <app-header></app-header>
+            <div class="dashboard_pg_wrap minScreen-hgt bg-patternGrdnt">
+                <app-dashboard-responsive-top-header></app-dashboard-responsive-top-header>
+                <div class="dashScreen_wrap">
+                    <div class="row no-gutters dashWrap_Row">
+                        <div class="col-lg-auto brdRgt">
+                            <div class="colWdth_side">
+                                <app-dashboard-side-nav></app-dashboard-side-nav>
+                            </div>
+                        </div>
+                        <div class="col-lg brdCol">
+                            <div class="dashboard_middle">
+                                <div class="dashB_mdl-pd">
+                                    <div class="dash_tp-btnsRow d-none d-lg-block" data-aos="fade-up"
+                                        data-aos-duration="900">
+                                        <div class="row no-gutters">
+                                            <div class="col"><a href="#" data-toggle="modal"
+                                                    data-target="#modal-Start-claim"
+                                                    class="btn cmnBtn btn-sz-md btnBg-1 text-uppercase">Report CLAIM</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                <div class="dashboard-mdl_Scroll cstScroller cst_mCst_scroll_Desk" id="dark-card"
+                                    data-aos="fade-up" data-aos-delay="300" data-aos-duration="900">
+
+                                    <h1 class="dashlg-Head font-F-1 f-W-B"><span class="wrapIn">Edit Coverage </span></h1>
+
+                                    <form [formGroup]="BeyontecFormService.coverage_array$">
+                                        
+                                        <div class="section-page-questions">
+                                          <div class="section-page-question">
+                                            <div class="question-wrap row no-gutters justify-content-between">
+                                              <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                                    class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                                    viewbox="0 0 15 14" fill="none">
+                                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                  </svg> </span>
+                                                <div>
+                                                  <h3 class="question-text">When would you like your policy to start?</h3>
+                                                  <p class="question-byline">Policy start date can start as soon as today, or as late as
+                                                    35 days from today.</p>
+                                                </div>
+                                              </div>
+                  
+                                              
+                  
+                                              <div class="col-lg-6 question-content">
+                                                <div class="queNbrSpace">
+                                                  <div class="form-group mb_form-group">
+                                                    <div class="tltp-mng_R">
+                                                      <div class="field_md fld-icon-Date field_labelTP datepickerParent">
+                                                        
+                                                        
+                                                        <input class="form-control cmnField datepicker_fld"
+                                                          placeholder="MM/DD/YYYY" formControlName="rqEffDt" DobValidation type="text" maxlength="10" (focusout)="focusOutRqEff(BeyontecFormService.coverage_array$.get('rqEffDt').value)" id="rqEffDt">
+                  
+                  
+                                                          <input type="text"
+                                                          class="form-control datepickerModel"
+                                                          #dp="bsDatepicker"
+                                                          bsDatepicker
+                                                          [bsConfig]="bsConfig"
+                                                          DobValidation 
+                                                          maxlength="10"
+                                                          [maxDate]="maxDate"
+                                                          [minDate]="minDate"
+                                                          [(ngModel)]="datepickerModel"
+                                                          (bsValueChange)="getdate($event)"
+                                                          [ngModelOptions]="{standalone: true}"
+                                                          [ngClass]="{'ffl-floated-force1' : BeyontecFormService.coverage_array$.get('rqEffDt').value}"
+                                                          
+                                                        >
+                                                        <!-- Toggle "has-error" this class for Error -->
+                                                        <label class="primary-label label-Tp">Policy Start Date</label>
+                                                        <div class="invalid-fld-feedback">Please enter a valid Date</div>
+                  
+                                                        <div class="fldIcon"><img src="assets/images/icon-calendar.png" alt="" (click)="dp.toggle()" [attr.aria-expanded]="dp.isOpen" /></div>
+                                                        
+                                                        <button class="f-size-18" id="openModalButtonPolicyStart" [hidden]="true" data-toggle="modal"
+                                                                  data-target="#modal-Error_Policy_start">Show Error Modal</button>
+                  
+                                                      </div>
+                                                      <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                                        title="Policy Start Date - Start date of the policy."><img class="iconTooltip_img"
+                                                          src="assets/images/icon-info.svg" alt=""></span>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                  
+                                          </div>
+                                          <div class="section-page-question">
+                                            <div class="question-wrap row no-gutters justify-content-between">
+                                              <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                                    class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                                    viewbox="0 0 15 14" fill="none">
+                                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                  </svg> </span>
+                                                <div>
+                                                  <h3 class="question-text">Optional Coverage</h3>
+                                                  <p class="question-byline">Interested in more coverage? Please select from any of the
+                                                    options below.</p>
+                                                </div>
+                                              </div>
+                  
+                                            </div>
+                  
+                                            <div class="section-page-questions-response">
+                                              <div class="section-page-question">
+                                                <div class="question-wrap row no-gutters justify-content-between">
+                                                  <div class="col-lg-5 question-header d-flex"> <span class="question-counter invisible">
+                                                      <span class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                                        viewbox="0 0 15 14" fill="none">
+                                                        <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                      </svg> </span>
+                                                    <div>
+                                                      <h3 class="question-text">Uninsured/Underinsured Motorist - Bodily injury</h3>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-lg-6 question-content">
+                                                    <div class="queNbrSpace">
+                                                      <div class="form-group mb_form-group">
+                                                        <div class="tltp-mng_R">
+                                                          
+                  
+                                                          <div class="selectNG_dropdown"> 
+                                                            <ng-select class="custom_ngSelect" [items]="umbiList"
+                                                              bindLabel="value"
+                                                              placeholder="Select"
+                                                              bindValue="key"
+                                                              [searchable]="false" 
+                                                              formControlName="umbi"
+                                                              >
+                  
+                                                              <ng-template ng-label-tmp let-item="item">
+                                                                  {{item.value}}
+                                                              </ng-template>
+                  
+                                                            </ng-select>
+                                                            <label class="selectLabel">Uninsured/Underinsured Motorist - Bodily injury</label>
+                                                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                              <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                            </svg>
+                                                        </div>
+                  
+                                                          <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                                            title="Uninsured/underinsured motorist BI - Covers Bodily Injury when the other driver does not have insurance or has too little insurance."><img
+                                                              class="iconTooltip_img" src="assets/images/icon-info.svg" alt=""></span>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="section-page-question">
+                                                <div class="question-wrap row no-gutters justify-content-between">
+                                                  <div class="col-lg-5 question-header d-flex"> <span class="question-counter invisible">
+                                                      <span class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                                        viewbox="0 0 15 14" fill="none">
+                                                        <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                      </svg> </span>
+                                                    <div>
+                                                      <h3 class="question-text">Uninsured/Underinsured Motorist - Property Damage</h3>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-lg-6 question-content">
+                                                    <div class="queNbrSpace">
+                                                      <div class="form-group mb_form-group">
+                                                        <div class="tltp-mng_R">
+                  
+                                                          <div class="selectNG_dropdown" > 
+                                                            <ng-select class="custom_ngSelect" [items]="umpdList"
+                                                              bindLabel="value"
+                                                              placeholder="Select"
+                                                              bindValue="key"
+                                                              [searchable]="false"
+                                                              formControlName="umpd"
+                                                              >
+                  
+                                                              <ng-template ng-label-tmp let-item="item">
+                                                                  {{item.value}}
+                                                              </ng-template>
+                  
+                                                            </ng-select>
+                                                            <label class="selectLabel">Uninsured/Underinsured Motorist - Property Damage</label>
+                                                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                              <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                            </svg>
+                                                          </div>
+                  
+                  
+                                                          <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                                            title="Uninsured/underinsured motorist PD - Covers Property Damage when the other driver does not have insurance or has too little insurance."><img
+                                                              class="iconTooltip_img" src="assets/images/icon-info.svg" alt=""></span>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="section-page-question">
+                                                <div class="question-wrap row no-gutters justify-content-between">
+                                                  <div class="col-lg-5 question-header d-flex"> <span class="question-counter invisible">
+                                                      <span class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                                        viewbox="0 0 15 14" fill="none">
+                                                        <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                                      </svg> </span>
+                                                    <div>
+                                                      <h3 class="question-text">Personal Injury Protection</h3>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-lg-6 question-content">
+                                                    <div class="queNbrSpace">
+                                                      <div class="form-group mb_form-group">
+                                                        <div class="tltp-mng_R">
+                  
+                  
+                                                          <div class="selectNG_dropdown" > 
+                                                            <ng-select class="custom_ngSelect" [items]="pipList"
+                                                              bindLabel="value"
+                                                              placeholder="Select"
+                                                              bindValue="key"
+                                                              [searchable]="false"
+                                                              formControlName="pip"
+                                                              >
+                  
+                                                              <ng-template ng-label-tmp let-item="item">
+                                                                  {{item.value}}
+                                                              </ng-template>
+                  
+                                                            </ng-select>
+                                                            <label class="selectLabel">Personal Injury Protection</label>
+                                                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                                              <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                                            </svg>
+                                                          </div>
+                  
+                                                          <span class="tooltipIcon" data-tooltip="tooltip" data-html="true"
+                                                            title="Personal Injury Protection - Provides coverage, regardless of fault, for necessary medical/funeral expenses and reasonable loss of income."><img
+                                                              class="iconTooltip_img" src="assets/images/icon-info.svg" alt=""></span>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                  
+                                          </div>
+                  
+                  
+                  
+                                        </div>
+                                        <div class="navigation-buttons">
+                                          <ul class="list-inline mb-0 text-right btnsList_form">
+                                            <li class="list-inline-item"> 
+                                              <!-- <a class="btn btnstl-1 btnBg-3">Save & Continue</a> -->
+                  
+                                              <button class="f-size-18" id="openModalButtonSomethingWrong" [hidden]="true" data-toggle="modal"
+                                                                  data-target="#modal-Error_something_wrong">Show Error Modal</button>
+                  
+                                              <button type="button" class="btn btnstl-1 btnBg-3" [disabled]="!BeyontecFormService.coverage_array$.valid || isClicked" (click)="onSubmit()">Save & Continue</button>
+                  
+                                            </li>
+                                          </ul>
+                                        </div>
+                                      </form>
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-auto brdLft">
+                            <div class="colWdth_side">
+                                <app-dashboard-side-userinfo></app-dashboard-side-userinfo>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Error_Policy_start -->
+            <div class="modal fade modalCst" id="modal-Error_Policy_start">
+                <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+                    <div class="modal-content modalGetQuote">
+                        <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+                        <div class="modal-body pb-lg">
+                            <div class="row no-gutters justify-content-center">
+                                <div class="col-lg-10">
+                                    <div class="infoModalWrap text-center">
+                                        <div class="txt-summary last-p line-H-1_3">
+                                            <p class="text-color-3 txt-Md"><strong>Please Check Policy Start
+                                                    Date</strong></p>
+                                            <p class="gray-color-2 f-size-18">Policy start date can start as soon as
+                                                today, or as late as
+                                                35 days from today.</p>
+                                        </div>
+                                        <div class="btnsWrapp mx-width">
+                                            <ul class="list-unstyled  btnListing mb-0">
+                                                <li>
+                                                    <a class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block"
+                                                        data-dismiss="modal">Continue</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Error_Policy_start End-->
+
+            <!-- Modal Error_something_wrong -->
+            <div class="modal fade modalCst" id="modal-Error_something_wrong">
+                <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+                    <div class="modal-content modalGetQuote">
+                        <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+                        <div class="modal-body pb-lg">
+                            <div class="row no-gutters justify-content-center">
+                                <div class="col-lg-10">
+                                    <div class="infoModalWrap text-center">
+                                        <div class="txt-summary last-p line-H-1_3">
+                                            <p class="text-color-3 txt-Md"><strong>Something went wrong</strong></p>
+                                            <p class="gray-color-2 f-size-18">We apologize but we can not provide you
+                                                insurance at this time. Please call 1-(888)388-6523 to get further
+                                                detail</p>
+                                        </div>
+                                        <div class="btnsWrapp mx-width">
+                                            <ul class="list-unstyled  btnListing mb-0">
+                                                <li>
+                                                    <a class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block"
+                                                        data-dismiss="modal" (click)="goToFaq()">Continue</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Error_something_wrong -->
+
+            <footer class="footerWrap overflow-hidden">
+                <app-footer></app-footer>
+            </footer>
+        </div>
+    </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->

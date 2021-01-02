@@ -1,0 +1,35 @@
+ fieldset:disabled .custom-control-indicator, fieldset:disabled .indicator-label{
+    color: #e9ecef;
+    opacity: 1;
+  }
+
+  /* ::ng-deep .ng-select .ng-has-value .ng-placeholder 
+  {
+        display:block;
+  }
+
+  ::ng-deep .ng-select.ng-select-disabled .ng-has-value .ng-placeholder, ::ng-deep .ng-select.ng-touched .ng-has-value .ng-placeholder
+  {
+        display:none;
+  } */
+
+  /* ::ng-deep .ng-select.ng-valid .ng-has-value .ng-placeholder
+  {
+        display:none;
+  } */
+
+
+  /* custom_ngSelect summary-info ng-select ng-select-single ng-select-clearable ng-select-disabled ng-untouched ng-pristine ng-valid */
+
+  /* custom_ngSelect summary-info ng-select ng-select-single ng-select-clearable ng-untouched ng-pristine ng-valid */
+  
+
+/* ::ng-deep .summary-info.ng-select-disabled{
+  color: #e9ecef;
+  opacity: 1;
+} */
+
+  /*input:read-only {
+    background-color: yellow;
+  } */
+  

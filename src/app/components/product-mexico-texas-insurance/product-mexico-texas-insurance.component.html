@@ -1,0 +1,520 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+
+
+<div class="fullPG_Wrap" id="topsec">
+    <div class="perspScreen">
+      <div class="pgWrapFull spcTpHeader vrLinesWrap">
+         <app-header (languageChange)="onlanguageChange($event)"></app-header>
+        <div  class="insideHeaderSec overflow-hidden">
+            <div class="row no-gutters" *ngIf="productArr">
+              <div class="col-md-6">
+                <div class="secimgWrap position-relative imgFit fullScreen-LessNav fullAuto-MD">
+                  <img class="w-100 obj-fit" src="{{project_path}}{{image_path}}{{productArr.banner_img}}" alt="{{productArr.banner_img_alt}}"   title="{{productArr.banner_img_title}}"/>
+                </div>
+              </div>
+              <div class="col-md-6 d-flex align-items-center position-relative headContCol">
+                <div class="w-100">
+                  <div class="wrapContSec">
+                    <div class="topIns_head">
+                      <h1 class="pgTitle-head headPG" data-aos="fade-up" data-aos-duration="900" [innerHTML]="productArr.insurance_type">
+                         
+                       </h1>
+                      <div class="contInfo" data-aos="fade-up" data-aos-delay="400" data-aos-duration="900" [innerHTML]="subheading">
+                      
+                      </div>
+  
+                      <div class="tp-choose-wrap" data-aos="fade-up" data-aos-delay="700" data-aos-duration="900">
+                        <div class="txtLine line-H-1_3 text-gray-70" [innerHTML]="productArr.select_state"></div>
+                        <div class="tpHead-mxWidth">
+                          <ul class="list-unstyled mb-0 choose_btnsList" *ngIf="states">
+                            <li class="list-inline-item">
+                              <a routerLink="{{state_url[0]}}"
+                                class="btn cmnBtn btnBg-2 text-uppercase">{{states[0]}}</a></li>
+                            <li class="list-inline-item"><a routerLink="{{state_url[1]}}"
+                                class="btn cmnBtn btnBg-2 text-uppercase">{{states[1]}}</a></li>
+                          </ul>
+                        </div>
+                      </div>
+  
+                      <div class="call-Or-Chat" data-aos="fade-up" data-aos-delay="900" data-aos-duration="900">
+                        <div class="callText line-H-1_2"> {{productArr.helpline_title}} <a
+                            class="f-W-B text-decoration-none link-color-black"
+                            href="tel:{{productArr.helpline_number}}">{{productArr.helpline_number}}</a></div>
+  
+                        <div class="chatBtn mxWidth">
+                          <a class="btn btn-block cmnBtn btnOutline-2 btn text-uppercase">{{productArr.chat_with_us_text}}</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scrollBT-pos mngMob text-center">
+                    <div class="scrollDown" data-aos="fade-up" data-aos-delay="1200" data-aos-duration="900">
+                      <div class="arrowIcon"></div>
+                      <div class="scrollTxt line">{{productArr.scroll_down_text}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="overflow-hidden"  *ngIf="productArr">
+            <div class="section-xl secFullwrap position-relative">
+              <div class="row no-gutters align-items-center">
+                <div class="col-md-6">
+                  <div class="w-100 contCol-wrap containerPD-L">
+                    <div class="bxCont_Info pb-5 pb-md-0">
+                      <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="productArr.seciont2_title">
+                      </h2>
+                      <div class="textSummary gray-color-1 line-H-1_8 last-p" data-aos="fade-up" data-aos-delay="300"
+                        data-aos-duration="900" [innerHTML]="productArr.seciont2_description">
+                        
+                      </div>
+                      <div class="btnRow" data-aos="fade-up" data-aos-delay="700" data-aos-duration="900">
+                        <a (click)="scroll('policy')" class="btn cmnBtn btnBg-1 text-uppercase">{{productArr.seciont2_button}}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="imgWrap">
+                    <img class="w-100" src="{{project_path}}{{image_path}}{{productArr.seciont2_img}}" alt="{{productArr.seciont2_img_alt}}" title="{{productArr.seciont2_img_title}}" />
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="section-xl ins_policy_Sec position-relative mngSecLink" >
+              <div class="secLink" id="policy"></div>
+              <div class="floatImg floatShape-5 auto_imgFloat_5 floating-Animate">
+                <img class="w-100" src="assets/images/floating-img-5.png" alt="">
+              </div>
+              <div class="floatImg floatShape-2 auto_imgFloat_2 floating-Animate">
+                <img class="w-100" src="assets/images/floating-img-2.png" alt="">
+              </div>
+              <div class="floatImg floatShape-3 auto_imgFloat_3 right-sd floating-Animate">
+                <img class="w-100" src="assets/images/floating-img-3.png" alt="">
+              </div>
+              <div class="container-fluid lg-container" >
+                <div class="headSec font-sizeHead font-F-2 line-H-1_3 text-center mb__60" data-aos="fade-up"
+                  data-aos-duration="900">{{productArr.know_your_policy_title}}</div>
+  
+                <div class="tabsWrapper">
+                  <ul class="nav mbNav cstTabsNav" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900" *ngIf="policy_titles">
+                    <li class="nav-item flex-fill">
+                      <a class="nav-link active" data-toggle="tab" href="#tab-policy-1">{{policy_titles[0]}}</a>
+                    </li>
+                    <li class="nav-item flex-fill">
+                      <a class="nav-link" data-toggle="tab" href="#tab-policy-2">{{policy_titles[1]}}</a>
+                    </li>
+                  </ul>
+  
+                  <div class="tab-content pd-LR">
+                    <div class="tab-pane active" id="tab-policy-1">
+  
+                      <div class="section-md pt-0 packageWrap">
+                        <h3 class="heading headSize30 text-color-3" data-aos="fade-up" data-aos-delay="300"
+                          data-aos-duration="900" [innerHTML]="productArr.basic_coverage_title"></h3>
+  
+                        <div class="row">
+                          <div class="col-md-6">
+  
+                            <div class="row no-gutters">
+                              <div class="col-md-10">
+                                <div class="card_pckg bx_mb" data-aos="fade-up" data-aos-delay="300"
+                                  data-aos-duration="900">
+                                  <div class="bxHead f-W-B line-H-1_3" [innerHTML]="productArr.basic_coverage_subtitle"></div>
+                                  <div class="contText" [innerHTML]="productArr.basic_coverage_subtitle1">
+                                 
+                                  </div>
+                                </div>
+                                <div class="card_pckg bx_mb" data-aos="fade-up" data-aos-delay="500"
+                                  data-aos-duration="900">
+                                  <div class="bxHead f-W-B line-H-1_3" [innerHTML]="productArr.basic_coverage_includes_title"></div>
+                                  <div class="contText">
+                                    <ul class="list-unstyled mb-0 listCst listIcon gray-color-1" *ngIf="basic_coverage_includes">
+                                      <li *ngFor="let basic of basic_coverage_includes" [innerHTML]="basic"></li>
+                                     
+                                    </ul>
+                                  </div>
+                                  <div class="btnRow">
+                                    <a (click)="scroll('topsec')" class="btn cmnBtn btnBg-1 text-uppercase" [innerHTML]="productArr.basic_coverage_includes_button"></a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+  
+                          </div>
+                          <div class="col-md-6">
+                            <div class="row no-gutters">
+                              <div class="col-md-10">
+                                <div class="card_pckg bx_mb" data-aos="fade-up" data-aos-delay="1000"
+                                  data-aos-duration="900">
+                                  <div class="bxHead f-W-B line-H-1_3"  [innerHTML]="productArr.basic_addtional_cov_title"></div>
+                                  <div class="contText text-gray-80">
+                                    <ul class="list-unstyled mb-0 listCst listIcon gray-color-1" *ngIf="basic_addtional_cov">
+                                      <li *ngFor="let bas of basic_addtional_cov" [innerHTML]="bas"></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+                      </div>
+                      <div class="section-md packageWrap">
+                        <h3 class="heading headSize30 text-color-3" data-aos="fade-up" data-aos-delay="300"
+                          data-aos-duration="900" [innerHTML]="productArr.full_coverage_title"></h3>
+  
+                        <div class="row">
+                          <div class="col-md-6">
+  
+                            <div class="row no-gutters">
+                              <div class="col-md-10">
+                                <div class="card_pckg bx_mb" data-aos="fade-up" data-aos-delay="300"
+                                  data-aos-duration="900">
+                                  <div class="bxHead f-W-B line-H-1_3" [innerHTML]="productArr.full_coverage_subtitle"></div>
+                                  <div class="contText" [innerHTML]="full_coverage_subtitle1">
+                                   
+                                  </div>
+                                </div>
+                                <div class="card_pckg bx_mb" data-aos="fade-up" data-aos-delay="500"
+                                  data-aos-duration="900">
+                                  <div class="bxHead f-W-B line-H-1_3"  [innerHTML]="productArr.full_coverage_includes_title"></div>
+                                  <div class="contText">
+                                    <ul class="list-unstyled mb-0 listCst listIcon gray-color-1" *ngIf="full_coverage_includes">
+                                      <li *ngFor="let full of full_coverage_includes" [innerHTML]="full"></li>
+                                      
+                                    </ul>
+                                  </div>
+                                  <div class="btnRow">
+                                    <a (click)="scroll('topsec')" class="btn cmnBtn btnBg-1 text-uppercase" [innerHTML]="productArr.full_coverage_includes_button"></a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+  
+                          </div>
+                          <div class="col-md-6">
+                            <div class="row no-gutters">
+                              <div class="col-md-10">
+                                <div class="card_pckg bx_mb" data-aos="fade-up" data-aos-delay="1000"
+                                  data-aos-duration="900">
+                                  <div class="bxHead f-W-B line-H-1_3" [innerHTML]="productArr.full_coverage_additiona_title"></div>
+                                  <div class="contText text-gray-80">
+                                    <ul class="list-unstyled mb-0 listCst listIcon gray-color-1" *ngIf="full_coverage_additional">
+                                      <li *ngFor="let adds of full_coverage_additional" [innerHTML]="adds"></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+                      </div>
+                      <div class="section-md packageWrap">
+                        <h3 class="heading headSize30 text-color-3" data-aos="fade-up" data-aos-delay="300"
+                          data-aos-duration="900" [innerHTML]="productArr.full_coverage_elite_title"></h3>
+  
+                        <div class="row">
+                          <div class="col-md-6">
+  
+                            <div class="row no-gutters">
+                              <div class="col-md-10">
+                                <div class="card_pckg bx_mb" data-aos="fade-up" data-aos-delay="300"
+                                  data-aos-duration="900">
+                                  <div class="bxHead f-W-B line-H-1_3" [innerHTML]="productArr.full_coverage_elite_title">Full Coverage Plus Vandalism</div>
+                                  <div class="contText" [innerHTML]="productArr.full_coverage_elite_subtitle1">
+                                   
+                                  </div>
+                                </div>
+                                <div class="card_pckg bx_mb" data-aos="fade-up" data-aos-delay="500"
+                                  data-aos-duration="900">
+                                  <div class="bxHead f-W-B line-H-1_3"[innerHTML]="productArr.full_coverage_elite_inc_title"></div>
+                                  <div class="contText">
+                                    <ul class="list-unstyled mb-0 listCst listIcon gray-color-1" *ngIf="full_coverage_elite_includes">
+                                      <li *ngFor="let elite offull_coverage_elite_includes" [innerHTML]="elite"></li>
+                                    </ul>
+                                  </div>
+                                  <div class="btnRow">
+                                    <a (click)="scroll('topsec')" class="btn cmnBtn btnBg-1 text-uppercase" [innerHTML]="productArr.full_coverage_elite_includes_button"></a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+  
+                          </div>
+                          <div class="col-md-6">
+                            <div class="row no-gutters">
+                              <div class="col-md-10">
+                                <div class="card_pckg bx_mb" data-aos="fade-up" data-aos-delay="1000"
+                                  data-aos-duration="900">
+                                  <div class="bxHead f-W-B line-H-1_3" [innerHTML]="productArr.full_coverage_elite_additional_title"> Additional Available Coverages</div>
+                                  <div class="contText text-gray-80">
+                                    <ul class="list-unstyled mb-0 listCst listIcon gray-color-1" *ngIf="full_coverage_elite_additionals">
+                                      <li *ngFor="let cat of full_coverage_elite_additionals" [innerHTML]="cat"></li>
+                                    </ul>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+  
+                      </div>
+                      <div class="section-md packageWrap pb-0">
+                        <h3 class="heading headSize30 text-color-3" data-aos="fade-up" data-aos-delay="300"
+                          data-aos-duration="900" [innerHTML]="productArr.alternative_title"></h3>
+  
+                        <div class="card_pckg bx_mb" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900">
+                          <div class="contText" [innerHTML]="productArr.alternative_subtitle">
+                            
+                          </div>
+                          <div class="btnRow">
+                            <a (click)="scroll('topsec')" class="btn cmnBtn btnBg-1 text-uppercase" [innerHTML]="productArr.alternative_button"></a>
+                          </div>
+                        </div>
+                      </div>
+  
+                    </div>
+                    <div class="tab-pane fade" id="tab-policy-2">
+                        <div class="cst_accord ng-accordian">
+                            <ngb-accordion [closeOthers]="true" [animation]="true" class="cst_accord">
+                              <ngb-panel class="accord_head" id="faq_accord_1" title="">
+                                <ng-template ngbPanelTitle>
+                                  <a class="accordn_title" [innerHTML]="productArr.faq_qns1" (click)="getScroll(1)"></a>
+                                </ng-template>
+                                <ng-template class="accord_body" ngbPanelContent>
+                                    <ol>
+                                        <li [innerHTML]="productArr.faq_ans1_1"></li>
+                                        <li [innerHTML]="productArr.faq_ans1_2">
+                                          <ul *ngIf="faq_ans1_2_subpoint" >
+                                            <li *ngFor="let sub1 of faq_ans1_2_subpoint" [innerHTML]="sub1"></li>
+                                          <!--   <li>(55) 5322-8282</li>
+                                            <li>International (001 + 52 + 55) 5322-8282</li> -->
+                                          </ul>
+                                        </li>
+                                        <li [innerHTML]="productArr.faq_ans1_3"></li>
+                                        <ul *ngIf="faq_ans1_3_subpoint">
+                                            <li  *ngFor="let sub2 of faq_ans1_3_subpoint" [innerHTML]="sub2"></li>
+                                          <!--   <li>Receipt of payment</li>
+                                            <li>Driver's license</li>
+                                            <li>Circulation card</li>
+                                            <li>Exact location of the accident</li> -->
+                                          </ul>
+                                        
+                                        <li [innerHTML]="productArr.faq_ans1_4"></li>
+                                        <li [innerHTML]="productArr.faq_ans1_5"></li>
+                                        <li [innerHTML]="productArr.faq_ans1_6">
+                                        </li>
+                                      </ol>
+                                </ng-template>
+                              </ngb-panel>
+                              <ngb-panel class="accord_head" id="faq_accord_2" title="">
+                                <ng-template ngbPanelTitle>
+                                  <a class="accordn_title"  [innerHTML]="productArr.faq_qns2" (click)="getScroll(2)"></a>
+                                </ng-template>
+                                <ng-template class="accord_body" ngbPanelContent>
+                                    <ol>
+                                        <li [innerHTML]="productArr.faq_ans2_1">
+                                          <ul *ngIf="faq_ans2_subpoints">
+                                            <li *ngFor="let fat of faq_ans2_subpoints" [innerHTML]="fat"></li>
+                                        <!--     <li>Mexico City (55) 5322-8282 / (55) 5662-2323 </li>
+                                            <li>International (001 + 52 + 55) 5322-8282</li> -->
+                                          </ul>
+                                        </li>
+                                        <li [innerHTML]="productArr.faq_ans2_3"></li>
+                                        <li [innerHTML]="productArr.faq_ans2_4">
+                                        </li>
+                                        <li [innerHTML]="productArr.faq_ans2_5"></li>
+                                   <!--      <li [innerHTML]="productArr.faq_ans2_6"></li> -->
+                                        <li [innerHTML]="productArr.faq_ans2_6">
+                                          <ul *ngIf="faq_ans2_6_subpoints">
+                                            <li *ngFor="let card of faq_ans2_6_subpoints" [innerHTML]="card"></li>
+                                           <!--  <li>bill</li>
+                                            <li>Circulation card</li>
+                                            <li>Holding of the last 5 years</li>
+                                            <li>Certified act before the Public Ministry and Federal Highway Police</li>
+                                            <li>Low plate count</li> -->
+                                          </ul>
+                                        </li>
+                                      </ol>
+                                </ng-template>
+                              </ngb-panel>
+                            </ngb-accordion>
+                        </div>
+
+                      <!-- <div id="accordion_faq">
+                        <div class="cst_accord">
+                          <div class="accord_head">
+                            <a class="accordn_title collapsed" data-toggle="collapse"
+                              data-target="#faq_accord_1">What to do in case of an accident?</a>
+                          </div>
+  
+                          <div id="faq_accord_1" class="collapse" data-parent="#accordion_faq">
+                            <div class="accord_body text-gray-70 editorCont last-p">
+                              <ol>
+                                <li>Do not make arrangements with third parties, or accept any responsibility.</li>
+                                <li>Immediately call one of the following numbers:
+                                  <ul>
+                                    <li>01800-911-2627</li>
+                                    <li>(55) 5322-8282</li>
+                                    <li>International (001 + 52 + 55) 5322-8282</li>
+                                  </ul>
+                                </li>
+                                <li>Have the following for a smoother process:<ul>
+                                    <li>Policy number</li>
+                                    <li>Receipt of payment</li>
+                                    <li>Driver's license</li>
+                                    <li>Circulation card</li>
+                                    <li>Exact location of the accident</li>
+                                  </ul>
+                                </li>
+                                <li>Request a report number and write it down including the date and name of the person
+                                  who helped you.</li>
+                                <li>The adjuster will help with determining responsibility.</li>
+                                <li>Sometimes blocking the traffic can cause other accidents, if you do not block traffic
+                                  remain in place of the accident until an adjuster responds to the scene of the accident.
+                                </li>
+                              </ol>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cst_accord">
+                          <div class="accord_head">
+                            <a class="accordn_title collapsed" data-toggle="collapse"
+                              data-target="#faq_accord_2">What to do in case of total theft?</a>
+                          </div>
+                          <div id="faq_accord_2" class="collapse" data-parent="#accordion_faq">
+                            <div class="accord_body text-gray-70 editorCont last-p">
+                              <ol>
+                                <li>Call one of the following telephone numbers immediately:
+                                  <ul>
+                                    <li>From any part of the Republic 01800-911-2627 </li>
+                                    <li>Mexico City (55) 5322-8282 / (55) 5662-2323 </li>
+                                    <li>International (001 + 52 + 55) 5322-8282</li>
+                                  </ul>
+                                </li>
+                                <li>Raise your complaint to the Public Prosecutor's Office corresponding to the location
+                                  where the robbery occurred and ask for a certified copy with original stamps.</li>
+                                <li>Raise your complaint to the Federal Preventive Police (formerly Federal Highway
+                                  Police) and request a certified copy. (This process is not necessary in Mexico City).
+                                </li>
+                                <li>Make an appointment with the adjuster to file the statement of the theft and explain
+                                  the steps to take.</li>
+                                <li>The adjuster will provide a written report and you'll need to wait 30 days for the
+                                  location of the vehicle.</li>
+                                <li>If it does not appear send the following documents:
+                                  <ul>
+                                    <li>Greeting card</li>
+                                    <li>bill</li>
+                                    <li>Circulation card</li>
+                                    <li>Holding of the last 5 years</li>
+                                    <li>Certified act before the Public Ministry and Federal Highway Police</li>
+                                    <li>Low plate count</li>
+                                  </ul>
+                                </li>
+                              </ol>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="insuranceBanner mr_B text-color-white position-relative z_ind1"
+              style="background-image:url({{project_path}}{{ads[0].ad_banner1}})">
+              <div class="container-fluid lg-container">
+                <div class="row align-items-center mngInside">
+                  <div class="col">
+                    <div  *ngIf="ads[0].align == 1" class="contWrap w-100">
+                      <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_title"></h2>
+                      <div class="txtCont f-W-M">
+                        <ul class="list-unstyled mb-0" [innerHTML]="ads[0].ad_banner1_subtitle">
+                      <!--     <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">SOUTH BOUND COVERAGE</li>
+                          <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">NORTH BOUNG COVERAGE</li> -->
+                        </ul>
+                      </div>
+                      <div class="btnRow" data-aos="fade-up" data-aos-delay="700" data-aos-duration="900"><a href="{{ads[0].ad_banner1_button_url}}"
+                          class="btn cmnBtn btnBg-1 text-uppercase" [innerHTML]="ads[0].ad_banner1_button_text"></a></div>
+                    </div>
+                     <div  *ngIf="ads[0].align == 2" class="contWrap w-100 text-right">
+                      <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_title"></h2>
+                      <div class="txtCont f-W-M">
+                        <ul class="list-unstyled mb-0" [innerHTML]="ads[0].ad_banner1_subtitle">
+                      <!--     <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">SOUTH BOUND COVERAGE</li>
+                          <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">NORTH BOUNG COVERAGE</li> -->
+                        </ul>
+                      </div>
+                      <div class="btnRow" data-aos="fade-up" data-aos-delay="700" data-aos-duration="900"><a href="{{ads[0].ad_banner1_button_url}}"
+                          class="btn cmnBtn btnBg-1 text-uppercase" [innerHTML]="ads[0].ad_banner1_button_text"></a></div>
+                    </div>
+                       <div  *ngIf="ads[0].align == 3" class="contWrap w-100 text-left">
+                      <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="ads[0].ad_banner1_title"></h2>
+                      <div class="txtCont f-W-M">
+                        <ul class="list-unstyled mb-0" [innerHTML]="ads[0].ad_banner1_subtitle">
+                      <!--     <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">SOUTH BOUND COVERAGE</li>
+                          <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">NORTH BOUNG COVERAGE</li> -->
+                        </ul>
+                      </div>
+                      <div class="btnRow" data-aos="fade-up" data-aos-delay="700" data-aos-duration="900"><a href="{{ads[0].ad_banner1_button_url}}"
+                          class="btn cmnBtn btnBg-1 text-uppercase" [innerHTML]="ads[0].ad_banner1_button_text"></a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="overflow-hidden" >
+            <div>
+                <app-ads class="row gutter-8"></app-ads>   
+               </div> 
+          <!--     <div class="col-md-6">
+                <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-2.jpg)"
+                  data-aos="fade-up" data-aos-duration="900">
+                  <div class="mngInside d-flex align-items-center">
+                    <div class="w-100 z_ind1">
+                      <div class="textCont text-color-white text-center">
+                        <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">LEARN ABOUT</div>
+                        <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300"
+                          data-aos-duration="900">INDEPENDENT AGENT</div>
+                        <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a
+                            routerLink="/independent-agent" class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-3.jpg)"
+                  data-aos="fade-up" data-aos-duration="900">
+                  <div class="mngInside d-flex align-items-center">
+                    <div class="w-100 z_ind1">
+                      <div class="textCont text-color-white text-center">
+                        <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">OPEN YOUR</div>
+                        <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300"
+                          data-aos-duration="900">PRONTO FRANCHISE AGENCY</div>
+                        <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a
+                            href="https://www.prontofranchise.com" target="_blank"
+                            class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+           <!--  </div> -->
+          </div>
+        <div *ngIf="productArr">
+            <app-counter-section ></app-counter-section>            
+          </div>
+  
+        <footer class="footerWrap overflow-hidden">
+          <app-footer></app-footer>
+        </footer>
+      </div>
+    </div> <!-- .perspScreen -->
+  </div> <!-- .fullPG_Wrap -->

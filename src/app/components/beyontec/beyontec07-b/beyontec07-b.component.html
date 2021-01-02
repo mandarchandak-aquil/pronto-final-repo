@@ -1,0 +1,202 @@
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+    <div class="pgWrapFull spcTpHeader vrLinesWrap">
+      <app-header></app-header>
+      <app-beyontec-breadcrum></app-beyontec-breadcrum>
+
+      <div class="quotePG_wrap overflow-hidden position-relative">
+        <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate"> <img class="w-100"
+            src="assets/images/floating-img-1.png" alt=""> </div>
+        <div class="floatImg floatShape-5 quote1_imgFloat_5 floating-Animate"> <img class="w-100"
+            src="assets/images/floating-img-5.png" alt=""> </div>
+        <div class="containerPD-L">
+          <div class="row no-gutters">
+            <div class="col-md">
+              <div class="formScreen_Hgt spcMng_mp">
+                <div class="queCol_Outer pTB_quote lg-BT-scroll" data-aos="fade-up" data-aos-duration="700">
+                  <div class="section-page-header brdLine-BT">
+                    <h1 class="headingStl-1">Validate Vehicle</h1>
+                  </div>
+
+                    <ul class="list-inline listQuote-Info">
+                        <li class="list-inline-item">
+                        <div class="quoteInfo_item">
+                            <div class="txt-head line-H-1_3 f-W-B">Quote For:</div>
+                            <div class="txtWrap f-size-18 line-H-1_3 gray-color-2">
+                                {{quoteFor | titlecase}}
+                            </div>
+                        </div>
+                        </li>
+                        <li class="list-inline-item">
+                        <div class="quoteInfo_item">
+                            <div class="txt-head line-H-1_3 f-W-B">Quote Number:</div>
+                            <div class="txtWrap f-size-18 line-H-1_3 gray-color-2">
+                                {{productQuoteId}}
+                            </div>
+                        </div>
+                        </li>
+                    </ul>
+
+                    <form [formGroup]="lienholder_add">
+
+                    <div class="vehicleList-tp">
+                        <div class="vehicle_Bx vehicle_info_bx bx_bg_1">
+                        <div class="wrap-in d-flex align-items-center">
+                            <div class="w-100">
+
+                            <div class="contWrap line-H-1_3" *ngIf="SelectedList">
+                                <div class="txtHead head-lg f-W-B">{{SelectedList.year}} {{SelectedList.make}} {{SelectedList.model}}</div>
+                                <!-- <div class="subText f-W-B f-size-20">2.2CL</div> -->
+                            </div>
+
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
+                        <div class="section-page-questions">
+                            <div class="section-page-question">
+                            <div class="question-wrap row no-gutters justify-content-between">
+                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                    class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14"
+                                    fill="none">
+                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                    </svg> </span>
+                                <div>
+                                    <h3 class="question-text">Is this vehicle financed or leased?</h3>
+                                </div>
+                                </div>
+                                <div class="col-lg-6 question-content">
+                                <div class="form-group mb_form-group">
+                                    <div class="selectNG_dropdown"> 
+                                            <ng-select class="custom_ngSelect" [items]="vehicleFinancedLeased" bindLabel="type" bindValue="type" placeholder="Select" formControlName="isFinanced"  >
+                                                <ng-template ng-label-tmp let-item="item"> {{item.type}} </ng-template>
+                                            </ng-select>
+                                            <label class="selectLabel">Select</label>
+                                            <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                            <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                        </svg>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            </div>
+                            <div class="section-page-question">
+                            <div class="question-wrap row no-gutters justify-content-between">
+                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                    class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14"
+                                    fill="none">
+                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                    </svg> </span>
+                                <div>
+                                    <h3 class="question-text">Lien Holder/Bank Name</h3>
+                                </div>
+                                </div>
+                                <div class="col-lg-6 question-content">
+                                <div class="queNbrSpace">
+                                    <div class="form-group mb_form-group">
+                                    <div class="field_md">
+                                        <input class="form-control cmnField" [ngClass]="{'ffl-floated-force' : lienholder_add.get('lienHolderName').value != ''}" formControlName="lienHolderName">
+
+                                        <!-- [ngClass]="{'has-error' : emailError, 'ffl-floated-force' : lienholder_add.get('email').value != ''}" -->
+                                        
+                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                        <label class="primary-label">Name</label>
+                                        <div class="invalid-fld-feedback">Please enter a valid Name</div>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+
+                            </div>
+
+                            <div class="section-page-question">
+                            <div class="question-wrap row no-gutters justify-content-between">
+                                <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                    class="countNbr"></span> <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14"
+                                    fill="none">
+                                    <path d="M2 8.36364L6.23077 12L13 2"></path>
+                                    </svg> </span>
+                                <div>
+                                    <h3 class="question-text">Lien Holder/Bank Address</h3>
+                                </div>
+                                </div>
+                                <div class="col-lg-6 question-content">
+                                <div class="queNbrSpace">
+                                    <div class="form-group mb_form-group">
+                                    <div class="field_md">
+                                        <input class="form-control cmnField" [ngClass]="{'ffl-floated-force' : lienholder_add.get('lienHolderAddress').value != ''}" formControlName="lienHolderAddress">
+                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                        <label class="primary-label">Address</label>
+                                        <div class="invalid-fld-feedback">Please enter Address</div>
+                                    </div>
+                                    </div>
+                                    <div class="form-group mb_form-group">
+                                    <div class="field_md">
+                                        <input class="form-control cmnField" [ngClass]="{'ffl-floated-force' : lienholder_add.get('lienHolderCity').value != ''}" formControlName="lienHolderCity">
+                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                        <label class="primary-label">City</label>
+                                        <div class="invalid-fld-feedback">Please enter City</div>
+                                    </div>
+                                    </div>
+
+                                    <div class="form-group mb_form-group" *ngIf="selectState.length > 0">
+                                    <div class="selectNG_dropdown"> 
+                                        <ng-select class="custom_ngSelect" [items]="selectState" bindLabel="value" bindValue="key" placeholder="Select" formControlName="lienHolderState">
+                                            <ng-template ng-label-tmp let-item="item"> {{item.value}} </ng-template>
+                                        </ng-select>
+                                        <label class="selectLabel">State</label>
+                                        <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04" viewBox="0 0 11.67 6.04">
+                                        <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04" fill="#fff"></polygon>
+                                        </svg>
+                                    </div>
+                                    </div>
+                                    <div class="form-group mb_form-group">
+                                    <div class="field_md">
+                                        <input class="form-control cmnField" [ngClass]="{'ffl-floated-force' : lienholder_add.get('lienHolderZip').value != ''}" type="tel" formControlName="lienHolderZip" maxlength="5" numbersOnly>
+
+
+                                        <!-- <input class="form-control cmnField" type="text" maxlength="5" numbersOnly > -->
+                                        <!-- [ngClass]="{'has-error' : emailError, 'ffl-floated-force' : lienholder_add.get('email').value != ''}" -->
+
+
+                                        <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                        <label class="primary-label">Zip Code</label>
+                                        <div class="invalid-fld-feedback">Please enter a valid zip code</div>
+                                        <!-- <div class="invalid-fld-feedback-invalid" >Please enter a valid zip cod</div> -->
+                                    </div>
+                                    </div>
+
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+
+                        </div>
+
+                        <div class="navigation-buttons">
+                            <ul class="list-inline mb-0 text-right btnsList_form">
+                                <li class="list-inline-item"> 
+                                    <!-- <a class="btn btnstl-1 btnBg-3">Save & Continue</a>  -->
+                                    <button type="button" class="btn btnstl-1 btnBg-3" [disabled]="!lienholder_add.valid || isClicked " (click)="onSubmit(lienholder_add.value)">Save & Continue</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </form>
+                </div>
+              </div>
+            </div>
+            <beyontec-sidebar></beyontec-sidebar>
+            
+          </div>
+        </div>
+      </div>
+      <app-footer-quote></app-footer-quote>
+    </div>
+  </div>
+  <!-- .perspScreen -->
+</div>
+<!-- .fullPG_Wrap -->

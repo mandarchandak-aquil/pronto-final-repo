@@ -1,0 +1,235 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+
+
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+      <div class="pgWrapFull spcTpHeader vrLinesWrap">
+  
+    <app-header (languageChange)="onlanguageChange($event)"></app-header>
+
+  
+        <div class="pg_wrap_findAgent overflow-hidden" *ngIf="pagearr">
+            <div class="row no-gutters">
+              <div class="col-lg-auto">
+
+                
+
+
+                <div class="findAgentCol_wrap" [ngClass]="hide ? 'hideLocation_side':''">
+                  <button class="btn btnToggle-sidebar" (click)="hidemodal()"><span class="iconWrp"><span class="mngIn"><i
+                          class="icon fa fa-caret-left"></i></span></span></button>
+                  <div class="sidebar_Find_agent">
+                    <div class="findTop_card">
+                      <h1 class="cardHead text-center">{{pagearr.title}}</h1>
+  
+                      <div>
+                        <div class="input-group flex-nowrap agentSearch_fld">
+                          <div class="input-wrapper">
+                          
+                               
+                            <input  class="form-control searchFld" placeholder="{{pagearr.search_placeholder}}" (keyup.enter)="getAgents()" [(ngModel)]="zipdata.Zip_code">
+                            <div class="form-control-icon"><svg class="icon w-100" height="20" viewBox="0 0 15 20"
+                                width="15" xmlns="http://www.w3.org/2000/svg">
+                                <title>Location pin icon</title>
+                                <path
+                                  d="M7.14,0c3.75,0,7.15,2.84,7.15,6.34S11.19,14,7.14,20C3.1,14,0,9.83,0,6.34S3.39,0,7.14,0Zm0,9.15A2.56,2.56,0,1,0,4.58,6.59h0A2.56,2.56,0,0,0,7.14,9.15Z"
+                                  fill="#c51f2b"></path>
+                              </svg></div>
+                          </div>
+                          <div class="input-group-append">
+                             
+                            
+                            <button  class="btn btnBg-2 f-W-B text-uppercase btn-form" type="submit"   (click)="getAgents()">{{pagearr.start_button}}</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                     <div class="address_resultRow" *ngIf="address">
+                                    <div class="resultTxt f-W-B text-center"  >
+                                        <span *ngIf="Agents">{{Agents.length}}</span><span *ngIf="!Agents">{{AgentsLen}}</span> Locations Near {{address}}
+                                    </div>
+                                </div>
+                                   <div class="address_resultRow" *ngIf="!address">
+                                   
+                                     
+                                    <div  class="resultTxt f-W-B text-center"  >
+                                        {{pagearr.address_line}}
+                                    </div>
+                                </div>
+                    <div class="address_Results">
+                      <div class="resultsWrapper">
+                        <div class="resultRow_location" *ngFor="let agent of Agents ">
+                          <div class="result_in d-flex">
+                            <div class="pinIcon"><img class="w-100" src="assets/images/icon-location-pin.svg" alt="" /></div>
+                            <div class="flex-fill clearfix locationCont">
+                              <div class="locationDistance" >{{agent.dist | number : '1.0-2' }} mi.</div>
+                              <div class="agent-ttl f-W-M text-color-3">{{agent.name}} </div>
+                              <ul class="list-unstyled mb-0 agent_adr_info f-W-M">
+                                  <li >{{agent.Address}} {{agent.City}}, {{agent.State}} {{agent.Zip_code}}</li>
+                                                        <li>Ph: <a href="tel:{{agent.phone}}">{{agent.phone}}</a></li>
+                              </ul>
+                              <div class="cta_row">
+                                <ul class="list-inline mb-0 cta-List">
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="tel:{{agent.phone}}"> {{pagearr.call_now}}</a></li>
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                    routerLink="/agentdetail/{{agent.slug}}" data-dismiss="modal" >{{pagearr.agency_website}}</a></li>
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn" 
+                                      href="https://maps.apple.com/maps?q={{agent.Latitude}},{{agent.Longitude}}">{{pagearr.direction}}</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                <!--         <div class="resultRow_location">
+                          <div class="result_in d-flex">
+                            <div class="pinIcon"><img class="w-100" src="assets/images/icon-location-pin.svg" alt="" /></div>
+                            <div class="flex-fill clearfix locationCont">
+                              <div class="locationDistance">16.6 mi.</div>
+                              <div class="agent-ttl f-W-M text-color-3">D4 Pronto Insurance 64 </div>
+                              <ul class="list-unstyled mb-0 agent_adr_info f-W-M">
+                                <li>1550 Fry Road Huston, TX 77084</li>
+                                <li>Ph: <a href="tel:281578-2244">(281) 578-2244</a></li>
+                              </ul>
+                              <div class="cta_row">
+                                <ul class="list-inline mb-0 cta-List">
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="tel:281578-2244">Call Now</a></li>
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="agents-landing-page.php">AGENCY WEBSITE</a></li>
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="https://www.google.com/maps">Directions</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="resultRow_location">
+                          <div class="result_in d-flex">
+                            <div class="pinIcon"><img class="w-100" src="assets/images/icon-location-pin.svg" alt="" /></div>
+                            <div class="flex-fill clearfix locationCont">
+                              <div class="locationDistance">16.6 mi.</div>
+                              <div class="agent-ttl f-W-M text-color-3">D4 Pronto Insurance 64 </div>
+                              <ul class="list-unstyled mb-0 agent_adr_info f-W-M">
+                                <li>1550 Fry Road Huston, TX 77084</li>
+                                <li>Ph: <a href="tel:281578-2244">(281) 578-2244</a></li>
+                              </ul>
+                              <div class="cta_row">
+                                <ul class="list-inline mb-0 cta-List">
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="tel:281578-2244">Call Now</a></li>
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="agents-landing-page.php">AGENCY WEBSITE</a></li>
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="https://www.google.com/maps">Directions</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div> -->
+                    <!--     <div class="resultRow_location">
+                          <div class="result_in d-flex">
+                            <div class="pinIcon"><img class="w-100" src="assets/images/icon-location-pin.svg" alt="" /></div>
+                            <div class="flex-fill clearfix locationCont">
+                              <div class="locationDistance">16.6 mi.</div>
+                              <div class="agent-ttl f-W-M text-color-3">D4 Pronto Insurance 64 </div>
+                              <ul class="list-unstyled mb-0 agent_adr_info f-W-M">
+                                <li>1550 Fry Road Huston, TX 77084</li>
+                                <li>Ph: <a href="tel:281578-2244">(281) 578-2244</a></li>
+                              </ul>
+                              <div class="cta_row">
+                                <ul class="list-inline mb-0 cta-List">
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="tel:281578-2244">Call Now</a></li>
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="agents-landing-page.php">AGENCY WEBSITE</a></li>
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="https://www.google.com/maps">Directions</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="resultRow_location">
+                          <div class="result_in d-flex">
+                            <div class="pinIcon"><img class="w-100" src="assets/images/icon-location-pin.svg" alt="" /></div>
+                            <div class="flex-fill clearfix locationCont">
+                              <div class="locationDistance">16.6 mi.</div>
+                              <div class="agent-ttl f-W-M text-color-3">D4 Pronto Insurance 64 </div>
+                              <ul class="list-unstyled mb-0 agent_adr_info f-W-M">
+                                <li>1550 Fry Road Huston, TX 77084</li>
+                                <li>Ph: <a href="tel:281578-2244">(281) 578-2244</a></li>
+                              </ul>
+                              <div class="cta_row">
+                                <ul class="list-inline mb-0 cta-List">
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="tel:281578-2244">Call Now</a></li>
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="agents-landing-page.php">AGENCY WEBSITE</a></li>
+                                  <li class="list-inline-item"><a class="btn btnBg-1 text-uppercase ctaBtn"
+                                      href="https://www.google.com/maps">Directions</a></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg hgt_screen_findAgent">
+                <div class="agentMap_wrap overflow-hidden">
+                  <!-- <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d443087.54862455826!2d-95.68147581710129!3d29.81747821724817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8640b8b4488d8501%3A0xca0d02def365053b!2sHouston%2C%20TX%2C%20USA!5e0!3m2!1sen!2sin!4v1595854342222!5m2!1sen!2sin"
+                    width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                    tabindex="0"></iframe> -->
+                  <!--    <agm-map [fitBounds]="true" class="agm-map-custom" [latitude]="lat" [zoom]="zoom" [longitude]="lng" >
+                                 
+                    </agm-map> -->
+                    <!-- [fitBounds]="true" -->
+                            <agm-map  [fitBounds]="fitbound" class="agm-map-custom" [latitude]="lat" [zoom]="zoom" [longitude]="lng" (mapReady)="recenterMap()">
+                                   <agm-marker  [iconUrl]="iconUrl"
+                                        *ngFor="let m of Agents;"
+                                        [latitude]="m.Latitude"
+                                        [longitude]="m.Longitude"
+                                        [agmFitBounds]="true"
+                                    >
+                                        <agm-info-window [disableAutoPan]="false" #infoWindow >
+                                            <div class="agentAddress_map_Bx">
+                                            <a routerLink="/agentdetail/{{m.slug}}" data-dismiss="modal"  class="wrap_headSec">
+                                            <span class="wrapImg d-flex align-items-center" style="background-image:url(images/agent-cover-photo.jpg)">
+                                            <div class="txtCopy w-100">
+                                            <span class="titleAgent">{{m.name}}</span>
+                                            </div>
+                                            </span>
+                                            </a>
+                                            <div class="bx_contWrap">
+                                            <div class="row gutter-15vw rowSeprate">
+                                            <div class="col-6">
+                                            <div class="infoSummary">{{m.Address}} , {{m.State}}  {{m.Zip_code}} </div>
+                                            </div>
+                                            <div class="col-6">
+                                            <div class="infoSummary">
+                                            <ul class="list-unstyled mb-0">
+                                            <li>Ph: <a href="tel:{{m.phone}}">{{m.phone}}</a></li>
+                                            <!-- <li>Fax: (281) 578-2244</li> -->
+                                            </ul>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+
+                                  </agm-info-window>
+
+                                    </agm-marker>
+                                </agm-map>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div> <!-- .perspScreen -->
+  </div> <!-- .fullPG_Wrap -->
+  

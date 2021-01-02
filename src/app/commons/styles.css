@@ -1,0 +1,88 @@
+
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-head {
+    background-color: #c51f2b;
+}
+::ng-deep .bs-datepicker .bs-calendar-container  .bs-datepicker-body table td.week span {
+    color: #c51f2b;
+}
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-body table td span.selected, 
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-body table td.selected span, 
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-body table td span[class*="select-"]:after, 
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-body table td[class*="select-"] span:after {
+    background-color: #c51f2b;
+}
+::ng-deep .bs-datepicker .bs-datepicker-container {padding:0;}
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-head button.next span, 
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-head button.previous span {
+    line-height: .85;
+}
+
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-body {min-height: 190px;min-width: 270px;}
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-body table.days span {width: 24px;height: 24px;line-height: 24px;}
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-body table.years td span {width: 40px;height: 40px;line-height: 40px;}
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-body table.years tr:not(:last-child) td span {margin-bottom: 2px;}
+::ng-deep .bs-datepicker .bs-calendar-container .bs-datepicker-body table.months td {height: 40px;}
+
+/* .datepickerParent .fldIcon {
+    position: absolute;
+    right: 1.042vw;
+    top: .573vw;
+    width: 1.979vw;
+    line-height: 0;
+    pointer-events: unset !important;
+    cursor: pointer;
+} */
+
+::ng-deep .datepickerModel{
+    visibility: hidden;
+    height: 0;
+    padding: 0.1px;
+}
+
+.disabled-control {
+    opacity: .6;
+    cursor: not-allowed;
+}
+/* .datepickerParent.datepop .fldIcon{
+    width: 3.5vw;
+} */
+
+
+/* @media (max-width:1920){
+    .datepickerParent.datepop .fldIcon{
+        width: 1.5vw;
+        transform: translate(-5px, 3px);
+    }
+}
+
+@media (max-width:991px){
+    .datepickerParent.datepop .fldIcon{
+        width: 3vw;
+        transform: translate(-5px, 3px);
+    }
+}
+
+@media (max-width:767px){
+    .datepickerParent.datepop .fldIcon{
+        width: 3vw;
+        transform: translate(-5px, 6px);
+    }
+}
+
+@media (max-width:575px){
+    .datepickerParent.datepop .fldIcon{
+        width: 5vw;
+    }
+}
+
+@media (max-width:481px){
+    .datepickerParent.datepop .fldIcon {
+        width: 6vw;
+        transform: translate(-5px, 8px);
+    }
+}
+@media (max-width:361px){
+    .datepickerParent.datepop .fldIcon {
+        width: 8vw;
+    }
+} */

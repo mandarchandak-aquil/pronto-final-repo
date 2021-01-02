@@ -1,0 +1,86 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+
+
+<div class="fullPG_Wrap">
+    <div class="perspScreen">
+        <div class="pgWrapFull spcTpHeader vrLinesWrap">
+
+            <app-header (languageChange)="onlanguageChange($event)"></app-header>
+
+            <div class="cmsHead_wrap" *ngIf="pageArr">
+                    <div class="container-fluid lg-container">
+                        <h1 class="cmsPg-ttl text-center">{{pageArr.page_title}}</h1>
+                    </div>
+                </div>
+                <div class="section-lg cmsPg_wrap gray-color-2" *ngIf="pageArr">
+                  <div class="container-fluid lg-container">
+
+
+                    <div class="pgEditorCont editorCont last-p">
+                      <h4 class="cmsSub_Head" [innerHTML]="pageArr.our_security_title"><!-- Our Security --></h4>
+                      <p [innerHTML]="pageArr.our_security_desc"> <!-- At Prontoinsurance.com and other related sites (the "Site"), the privacy and security of our visitors' data is very important. Our physical safeguards, procedural controls, and data access controls protect your data from unauthorized access. We continually monitor our systems to prevent unauthorized attempts of intrusion. --></p>
+
+                      <h4 class="cmsSub_Head" [innerHTML]="pageArr.internet_title"><!-- Internet Security --></h4>
+                      <p [innerHTML]="pageArr.internet_subtitle"><!-- Other things that can enhance your security, when online, include the following: --></p>
+                      <ul *ngIf="internet_desc">
+                        <li *ngFor="let desc of internet_desc" [innerHTML]="desc"><!-- Use an Internet firewall (hardware or software). --></li><!-- <li>Use current software and operating system versions; get updates and security<br>patches regularly.</li>
+                        <li>Use anti-virus software and download updates frequently.</li>
+                        <li>Use your own PC.</li>
+                        <li>Choose a difficult password; change your password regularly.</li>
+                        <li>Use a unique Username/Password, and not one you use on other websites.</li>
+                        <li>When finished, logoff the website and close your browser.</li>
+                        <li>For additional security, you can also clear your browser's cache and temporary Internet files.</li><li>Even if you take all these steps, you could still be deceived by a well-crafted email.</li>
+                        <li>Learn more about phishing scams and protecting your identity.</li> -->
+                      </ul>
+
+                    </div>
+
+                  </div>
+                </div>
+
+                 <div class="overflow-hidden" >
+                   <div *ngIf="pageArr" class="w-100">
+               <app-ads class="row gutter-8"></app-ads>   
+               </div> 
+<!--             <div class="row gutter-8">
+              <div class="col-md-6">
+                <div class="boxImgInfo mr_B bxFull" style="background-image:url(./assets/images/{{pageArr.ad_banner1}})"
+                  data-aos="fade-up" data-aos-duration="900">
+                  <div class="mngInside d-flex align-items-center">
+                    <div class="w-100 z_ind1">
+                      <div class="textCont text-color-white text-center">
+                        <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">{{pageArr.ad_banner_title1}}</div>
+                        <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300"
+                          data-aos-duration="900">{{pageArr.ad_banner_subtitle1}}</div>
+                        <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a href="{{pageArr.ad_banner_butoon_url1}}"
+                            class="btn cmnBtn btnBg-1 text-uppercase">{{pageArr.ad_banner_butoon_text1}}</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="boxImgInfo mr_B bxFull" style="background-image:url(./assets/images/{{pageArr.ad_banner2}})"
+                  data-aos="fade-up" data-aos-duration="900">
+                  <div class="mngInside d-flex align-items-center">
+                    <div class="w-100 z_ind1">
+                      <div class="textCont text-color-white text-center">
+                        <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">{{pageArr.ad_banner_title2}}</div>
+                        <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up" data-aos-delay="300"
+                          data-aos-duration="900">{{pageArr.ad_banner_subtitle2}}</div>
+                        <div class="btnRow" data-aos="fade-up" data-aos-delay="500" data-aos-duration="900"><a href="{{pageArr.ad_banner_butoon_url2}}"
+                            class="btn cmnBtn btnBg-1 text-uppercase">{{pageArr.ad_banner_butoon_text2}}</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+          </div>
+  
+            <footer class="footerWrap overflow-hidden">
+                <app-footer></app-footer>
+            </footer>
+        </div>
+    </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->

@@ -1,0 +1,129 @@
+<!-- Menu Sidebar -->
+<div class="slideMenu_drawer" id="drawerMenu" *ngIf="isShown">
+    <div class="drawerWrap">
+        <!--<button type="button" class="close text-uppercase text-center btnCls" data-dismiss="modal"> <span class="btntext">×</span> </button>-->
+        <div class="mngInside">
+            <div class="drawInside" >
+                <div class="sideMenu_wrp cstScroller" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
+                    <div class="menuPD_ins">
+                        <ul class="navbar-nav navMenu">
+
+                            <li class="nav-item" *ngFor="let sidemenu of sidebar;let i = index;">
+                                <a class="nav-link" (click)="getRedirect(sidemenu.menu_url)" routerLink="{{sidemenu.menu_url}}">
+<!--  -->
+                                {{sidemenu.menu_title}}
+                            </a>
+                                <div *ngIf="sidemenu.submenu_title">
+                                <ul class="list-unstyled mb-0 navSub_menu" *ngIf="sidemenu.submenu_title.length > 1" >
+                                    <div >
+                                    <li *ngFor="let smenu of sidemenu.submenu_title; let j = index"> 
+                                        <a class="link_Item" (click)="getRedirect(sidemenu.submenu_url[j])" routerLink="{{sidemenu.submenu_url[j]}}">
+                                            <span class="nav-iconRow d-flex align-items-center">
+                                                <span class="iconWrp"><img class="icon-img w-100"
+                                                        src="{{submenupath}}{{sidemenu.submenu_icon[j]}}" alt="" /></span>
+                                                <span class="flex-fill lnkTxt">{{smenu}}
+                               
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                       
+                                   
+                                </div>
+
+                               
+                                 
+                                </ul>
+                            </div>
+                            </li>
+                    <!--         <li class="nav-item">
+                                <a class="nav-link" routerLink="/">Property Insurance</a>
+                                <ul class="list-unstyled mb-0 navSub_menu">
+                                    <li>
+                                        <a class="link_Item" routerLink="/">
+                                            <span class="nav-iconRow d-flex align-items-center">
+                                                <span class="iconWrp"><img class="icon-img w-100"
+                                                        src="assets/images/menu-icon-homeowners.png" alt="" /></span>
+                                                <span class="flex-fill lnkTxt">Homeowners</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="link_Item" routerLink="/">
+                                            <span class="nav-iconRow d-flex align-items-center">
+                                                <span class="iconWrp"><img class="icon-img w-100"
+                                                        src="assets/images/menu-icon-renters.png" alt="" /></span>
+                                                <span class="flex-fill lnkTxt">Renters</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="link_Item" routerLink="/">
+                                            <span class="nav-iconRow d-flex align-items-center">
+                                                <span class="iconWrp"><img class="icon-img w-100"
+                                                        src="assets/images/menu-icon-mobile-home.png" alt="" /></span>
+                                                <span class="flex-fill lnkTxt">Mobile Home</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="link_Item" routerLink="/">
+                                            <span class="nav-iconRow d-flex align-items-center">
+                                                <span class="iconWrp"><img class="icon-img w-100"
+                                                        src="assets/images/menu-icon-condo.png" alt="" /></span>
+                                                <span class="flex-fill lnkTxt">Condo</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/">Health Insurance</a>
+                                <ul class="list-unstyled mb-0 navSub_menu">
+                                    <li>
+                                        <a class="link_Item" routerLink="/">
+                                            <span class="nav-iconRow d-flex align-items-center">
+                                                <span class="iconWrp"><img class="icon-img w-100"
+                                                        src="assets/images/menu-icon-medicare.png" alt="" /></span>
+                                                <span class="flex-fill lnkTxt">Medicare Advantage</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="link_Item" routerLink="/">
+                                            <span class="nav-iconRow d-flex align-items-center">
+                                                <span class="iconWrp"><img class="icon-img w-100"
+                                                        src="assets/images/menu-supplement.png" alt="" /></span>
+                                                <span class="flex-fill lnkTxt">Supplement Insurance</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li> -->
+                      <!--       <li class="nav-item">
+                                <a class="nav-link" routerLink="/">Mexico Insurance</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/">Commercial Insurance</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/">Find an Agent</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="/">Independent Agent</a>
+                            </li> -->
+                                 <li class="nav-item">
+                                          <a class="nav-link linkPharma-nav" (click)="pharmacy()">
+                                          <span class="img_wrap"><img src="assets/images/pharmacy-discount.png" alt="" class="mCS_img_loaded"></span>
+                                          </a>
+                                        </li> 
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-backdropMenu closemenuModal" id="closemenu" (click)="menuClose()"></div>
+<!-- End Menu Sidebar -->

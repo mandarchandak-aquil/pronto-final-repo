@@ -1,0 +1,631 @@
+<app-page-loader  *ngIf="loading"></app-page-loader>
+
+
+<div class="fullPG_Wrap">
+    <div class="perspScreen" *ngIf="page">
+        <div class="pgWrapFull spcTpHeader vrLinesWrap">
+
+            <app-header (languageChange)="onlanguageChange($event)"></app-header>
+
+            <div class="insideHeaderSec overflow-hidden" *ngIf="page">
+                <div class="row no-gutters" *ngIf="page.banner_img">
+                    <div class="col-md-6">
+                        <div class="secimgWrap position-relative imgFit fullScreen-LessNav fullAuto-MD"> <img
+                                class="w-100 obj-fit" src="{{projectpath}}{{page.banner_img}}" alt="" /> </div>
+                    </div>
+                    <div class="col-md-6 d-flex align-items-center position-relative headContCol" *ngIf="page">
+                        <div class="w-100">
+                            <div class="wrapContSec containerPD-R">
+                                <div class="topClaim_head">
+                                    <h1 class="pgTitle-head headPG" data-aos="fade-up" data-aos-duration="900"  [innerHTML]="page.title"><!-- Claim
+                                        Center --></h1>
+                                       <!--  <div [innerHTML]="subtitle"></div> -->
+                                    <div class="textcontInfo text-gray-70" data-aos="fade-up" data-aos-delay="400"
+                                        data-aos-duration="900" [innerHTML]="page.subtitle"> 
+                                    </div>
+                                    <div class="howHelpRow" data-aos="fade-up" data-aos-delay="800"
+                                        data-aos-duration="900" *ngIf="buttons">
+                                        <div class="heading f-size-23 f-W-B line-H-1_3" [innerHTML]="page.subtitle1"></div>
+                                        <ul class="list-inline mb-0 help-btnList">
+                                            <li class="list-inline-item"><a href="#" data-toggle="modal" data-target="#modal-Start-claim"
+                                                    class="btn cmnBtn btnBg-1 s-md text-uppercase" >{{buttons[0]}}</a>
+                                            </li>
+                                            <li class="list-inline-item"><a routerLink="/login"
+                                                    class="btn cmnBtn btnBg-1 s-md text-uppercase">{{buttons[1]}}</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-9">
+                                            <div class="preferCallRow" data-aos="fade-up" data-aos-delay="1200"
+                                                data-aos-duration="900">
+                                                <div class="heading f-size-23 f-W-B line-H-1_3" [innerHTML]="page.prefer_"><!-- Prefer to call or
+                                                    chat? We’re here to help: --></div>
+                                                <div class="chatInfoCont">
+                                                    <div class="iconWrap">
+                                                        <img src="assets/images/chat-btn.png" alt="">
+                                                    </div>
+                                                    <div class="textHead" [innerHTML]="page.chat_claim_agent"><!-- Chat with the Claims Agent --></div>
+                                                    <ul class="list-unstyled">
+                                                        <li [innerHTML]="page.call_adjuster"><!-- Call Adjuster --></li>
+                                                <li *ngFor="let st of state;let i = index;">
+                                                    <span class="f-W-M">{{st}} </span> 
+                                                    <a class="link-color-black" href="tel:{{state_number[i]}}">{{state_number[i]}}</a>
+                                                </li>
+                                                    <!--     <li><span class="f-W-M">California :</span> <a
+                                                                class="link-color-black"
+                                                                href="tel:1-800-272-3922">1-800-272-3922</a></li>
+                                                        <li><span class="f-W-M">Florida :</span> <a
+                                                                class="link-color-black"
+                                                                href="tel:1-844-776-4361">1-844-776-4361</a></li> -->
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scrollBT-pos mngMob text-center">
+                                <div class="scrollDown" data-aos="fade-up" data-aos-delay="1500"
+                                    data-aos-duration="900">
+                                    <div class="arrowIcon"></div>
+                                    <div class="scrollTxt line" [innerHTML]="page.scroll_down_text"><!-- Scroll down for more info --></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overflow-hidden">
+                <div class="section-xl ins_policy_Sec claimPolicy position-relative claim_mngFloat_2 claim_mngFloat_5">
+                    <div class="floatImg floatShape-2 claim_imgFloat_2 floating-Animate">
+                        <img class="w-100" src="assets/images/floating-img-2.png" alt="">
+                    </div>
+                    <div class="floatImg floatShape-5 claim_imgFloat_5 floating-Animate">
+                        <img class="w-100" src="assets/images/floating-img-5.png" alt="">
+                    </div>
+
+                    <div class="container-fluid lg-container">
+                        <div class="tabsWrapper brdBT" *ngIf="tabs">
+                            <ul class="nav mbNav cstTabsNav" data-aos="fade-up" data-aos-duration="900">
+                                <li class="nav-item flex-fill"> <a class="nav-link active" data-toggle="tab"
+                                        href="#tab-claims_overview">{{tabs[0]}}</a> </li>
+                                <li class="nav-item flex-fill"> <a class="nav-link" data-toggle="tab"
+                                        href="#tab-claims_terms">{{tabs[1]}}</a> </li>
+                                <li class="nav-item flex-fill"> <a class="nav-link" data-toggle="tab"
+                                        href="#tab-faq">{{tabs[2]}}</a> </li>
+                            </ul>
+                            <div class="tab-content pd-LR">
+                                <div class="tab-pane active" id="tab-claims_overview">
+                                    <div class="card_info_wrp mb_card">
+                                        <div class="head headSize_md font-F-2" data-aos="fade-up"
+                                            data-aos-duration="900">{{page.fast_title}}</div>
+                                        <div class="descWrap text-gray-70 last-p line-H-1_7" data-aos="fade-up"
+                                            data-aos-duration="900" [innerHTML]="page.fast_subtitle">
+                                            <!-- <p>Whether it's home or auto, Pronto is committed to handling claims in
+                                                an ethical, fair, and respectful manner. We understand that when an
+                                                accident happens, the people involved would like it resolved
+                                                quickly. Our team is constantly focused on being efficient and
+                                                proactive.</p> -->
+                                        </div>
+                                        <div class="btnRow" data-aos="fade-up" data-aos-duration="900"><a  href=""data-toggle="modal" data-target="#modal-Start-claim"
+                                                class="btn cmnBtn btnBg-1 s-md text-uppercase">
+                                                {{page.fast_button}}
+                                                <!-- START A CLAIM --></a>
+                                        </div>
+                                    </div>
+                                    <div class="card_info_wrp">
+                                        <div class="head headSize_md font-F-2" data-aos="fade-up"
+                                            data-aos-duration="900" [innerHTML]="page.key_member_title"><!-- Here are some key points to remember --></div>
+                                        <div class="descWrap text-gray-70 last-p line-H-1_7" data-aos="fade-up"
+                                            data-aos-duration="900" [innerHTML]="page.key_member_subtitle">
+                                            <!-- <p>in the event of an accident involving your home or auto.</p> -->
+                                        </div>
+                                        <div class="claimsSubCard">
+                                            <div class="row">
+                                                <div class="col-md-5 col-sm-6">
+                                                    <div class="card_txt_bx mxWidth" data-aos="fade-up"
+                                                        data-aos-delay="300" data-aos-duration="900">
+                                                        <h3 class="bxHead mb_less headSize30 text-color-3" [innerHTML]="page.car_accident_title"><!-- Car
+                                                            Accident --></h3>
+                                                        <div class="txtSummary text-gray-80" [innerHTML]="page.car_accident_subtitle"><!-- The best way to deal
+                                                            with an accident is to be prepared for one all the time. -->
+                                                        </div>
+                                                        <div class="btnRow"> <a (click)="scroll('packageAlternative')"
+                                                                class="btn cmnBtn btnBg-2 text-uppercase" [innerHTML]="page.car_accident_button"><!-- Read
+                                                                Details --></a> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-5 col-sm-6">
+                                                    
+                                                    <div class="card_txt_bx mxWidth" data-aos="fade-up"
+                                                        data-aos-delay="600" data-aos-duration="900">
+                                                        <h3 class="bxHead mb_less headSize30 text-color-3" [innerHTML]="page.property_accident_title"><!-- Property
+                                                            Accident --></h3>
+                                                        <div class="txtSummary text-gray-80" [innerHTML]="page.property_accident_subtitle"><!-- Home claims reports
+                                                            will be resolved by your chosen home carrier. --></div>
+                                                        <div class="btnRow"> <a (click)="scroll('packageAlternative2')"
+                                                                class="btn cmnBtn btnBg-2 text-uppercase" [innerHTML]="page.property_accident_button"> <!-- Read
+                                                                Details --></a> </div>
+                                                                
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-claims_terms">
+                                    <div class="card_info_wrp mb_card">
+                                        <div class="head headSize_md font-F-2" data-aos="fade-up"
+                                            data-aos-duration="900" [innerHTML]="page.commonly_use_title"><!-- Commonly Used Claim Terms --></div>
+                                        <div class="descWrap editorCont last-p line-H-1_7" data-aos="fade-up"
+                                            data-aos-duration="900" >
+                                            <p *ngFor="let coms of commonly_use_subtitle;let i =index">
+                                                <strong>{{coms}} -</strong> {{commonly_use_subtitle1[i]}} 
+                                            </p>
+
+                                           <!--  <p><strong>Adjuster -</strong> An adjuster is the person who
+                                                investigates and settles auto insurance claims.</p>
+                                            <p><strong>Claim -</strong> An auto insurance claim is a policyholder's
+                                                request to be reimbursed for a loss that's covered by car insurance.
+                                            </p>
+                                            <p><strong>Claimant -</strong> The third party in a claim.</p>
+                                            <p><strong>Comparative-Negligence</strong> Comparative negligence is
+                                                considered when two or more parties failed to perform at a
+                                                "reasonable standard." Each party has some degree of negligence in
+                                                causing an accident. Your dedicated rep can help you with the
+                                                comparative negligence laws in your state.</p>
+                                            <p><strong>Deductible -</strong> The portion of a claim or
+                                                responsibility to be paid by the insured before any payment is made.
+                                            </p>
+                                            <p><strong>Insured -</strong> The person, group, or property for which
+                                                an insurance property is issued.</p>
+                                            <p><strong>Supplement -</strong> Damages paid after an initial estimate
+                                                amount is paid. Hidden damages that are related to the initial loss.
+                                            </p>
+                                            <p><strong>Total Loss -</strong> Your vehicle will be considered a total
+                                                loss if:</p> -->
+                                            <ul class="list-unstyled mb-0 listCst listIcon" *ngIf="commonly_use_subtitle2">
+                                                <li *ngFor="let sb3 of commonly_use_subtitle2" [innerHTML]="sb3"></li>
+                                            <!--     <li>The repairs will be more expensive than the value of the vehicle
+                                                </li>
+                                                <li>The damage is so severe that state regulations require the
+                                                    vehicle to be declared a total loss</li> -->
+                                            </ul>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="tab-faq">
+
+                                    <div class="ng-accordian">
+                                        <ngb-accordion [closeOthers]="true" [animation]="true" class="cst_accord">
+
+                                            <ngb-panel class="accord_head" id="id{{i}}" title=""
+                                                *ngFor="let faq of faq_qsn;let i=index;">
+                                                <ng-template ngbPanelTitle class="accord_head">
+                                                    <a class="accordn_title collapsed" (click)="getScroll(i)">{{faq}}</a>
+                                                </ng-template>
+                                                <ng-template class="accord_body" ngbPanelContent>
+                                                    <p class="text-gray-70 m-0" [innerHTML]=faq_answer[i]>/p>
+                                                </ng-template>
+                                            </ngb-panel>
+
+                                        </ngb-accordion>
+                                    </div>
+
+                              
+
+                                <!--     <div id="accordion_faq">
+                                        <div class="cst_accord" data-aos="fade-up" data-aos-duration="900">
+                                            <div class="accord_head"> <a class="accordn_title collapsed"
+                                                    data-toggle="collapse" data-target="#faq_accord_1">How long
+                                                    should I wait to report a claim?</a> </div>
+                                            <div id="faq_accord_1" class="collapse" data-parent="#accordion_faq">
+                                                <div class="accord_body text-gray-70 editorCont last-p">
+                                                    <p>Report a claim immediately. Reporting a claim will initiate
+                                                        an investigation including coverage and liability
+                                                        determination. In addition, the events of the accident will
+                                                        be clear in both driver’s minds and could lead to an
+                                                        accurate investigation.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cst_accord" data-aos="fade-up" data-aos-duration="900">
+                                            <div class="accord_head"> <a class="accordn_title collapsed"
+                                                    data-toggle="collapse" data-target="#faq_accord_2">How long will
+                                                    it take to fix my vehicle/home?</a> </div>
+                                            <div id="faq_accord_2" class="collapse" data-parent="#accordion_faq">
+                                                <div class="accord_body text-gray-70 editorCont last-p">
+                                                    <p>Once liability and coverage have been determined, the repair
+                                                        process should begin immediately. After approval of an
+                                                        estimate, the restoration period will vary depending on the
+                                                        repair service selected.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cst_accord" data-aos="fade-up" data-aos-duration="900">
+                                            <div class="accord_head"> <a class="accordn_title collapsed"
+                                                    data-toggle="collapse" data-target="#faq_accord_3">Should I
+                                                    report an injury?</a> </div>
+                                            <div id="faq_accord_3" class="collapse" data-parent="#accordion_faq">
+                                                <div class="accord_body text-gray-70 editorCont last-p">
+                                                    <p>Always report any injuries sustained as a result of the
+                                                        accident to the handling adjuster.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cst_accord" data-aos="fade-up" data-aos-duration="900">
+                                            <div class="accord_head"> <a class="accordn_title collapsed"
+                                                    data-toggle="collapse" data-target="#faq_accord_4">If there is
+                                                    minor damage, should I still report the claim?</a> </div>
+                                            <div id="faq_accord_4" class="collapse" data-parent="#accordion_faq">
+                                                <div class="accord_body text-gray-70 editorCont last-p">
+                                                    <p>Yes.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cst_accord" data-aos="fade-up" data-aos-duration="900">
+                                            <div class="accord_head"> <a class="accordn_title collapsed"
+                                                    data-toggle="collapse" data-target="#faq_accord_5">What do I do
+                                                    if I receive legal paperwork or a lawsuit from another
+                                                    party?</a> </div>
+                                            <div id="faq_accord_5" class="collapse" data-parent="#accordion_faq">
+                                                <div class="accord_body text-gray-70 editorCont last-p">
+                                                    <p>Contact your claim adjuster immediately; Pronto then, will
+                                                        conduct an investigation regarding the allegations. Pronto
+                                                        will pay the claims that you are legally liable to honor,
+                                                        subject to the terms and conditions of your policy.</p>
+                                                    <p>For help with other insurance questions feel free to contact
+                                                        us at 1-888-338-6523, option #1 or use our <a
+                                                            class="f-W-M link-color-black" href="#">Find an Agent
+                                                            map</a> to find an agency near you.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cst_accord" data-aos="fade-up" data-aos-duration="900">
+                                            <div class="accord_head"> <a class="accordn_title collapsed"
+                                                    data-toggle="collapse" data-target="#faq_accord_6">What is
+                                                    pronto</a> </div>
+                                            <div id="faq_accord_6" class="collapse" data-parent="#accordion_faq">
+                                                <div class="accord_body text-gray-70 editorCont last-p">
+                                                    <p>An insurance company</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-lg pt-0 secFullwrap position-relative claimInfoSec">
+                    <div class="position-relative">
+                        <div class="floatImg floatShape-3 claim_imgFloat_3 floating-Animate">
+                            <img class="w-100" src="assets/images/floating-img-3.png" alt="">
+                        </div>
+
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-md-6">
+                                <div class="imgWrap imgFit fullScreen-LessNav fullAuto-MD"> <img class="w-100 obj-fit"
+                                        src="{{projectpath}}{{page.section3_img}}" alt="{{page.section3_img_alt}}" title="{{page.section3_img_title}}"> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="w-100 contCol-wrap containerPD-R">
+                                    <div class="bxCont_Info pt-5 pt-md-0">
+                                        <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="page.section3_title">
+                                           <!--  What to do if you get into a car accident. --></h2>
+                                        <div class="textSummary text-gray-70 line-H-1_8 last-p" data-aos="fade-up"
+                                            data-aos-delay="400" data-aos-duration="900" [innerHTML]="page.section3_subtitle"> 
+                                           <!--  <p>The best way to deal with an accident is to be prepared for one.
+                                                Remember
+                                                to keep a vehicle safety kit in your car. Always put your most
+                                                important info
+                                                in the glovebox such as, your drivers license, vehicle registration,
+                                                emergency
+                                                contacts, health insurance cards, etc. Make sure yourphone is
+                                                charged, it'll
+                                                come in handy at the accident scene and throughout the car repair
+                                                process.</p> -->
+                                        </div>
+                                        <div class="btnRow" data-aos="fade-up" data-aos-delay="800"
+                                            data-aos-duration="900"> <a 
+                                                class="btn cmnBtn btnBg-2 text-uppercase" (click)="scroll('packageAlternative')" [innerHTML]="page.section3_button"><!-- Read MORE --></a> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overflow-hidden clainNbr_pointsSec" id="packageAlternative">
+                        <div class="container-fluid lg-container">
+                            <div class="row gutterPoints">
+                                <div class="col-md-6" *ngFor="let sb4 of section4_titles;let i=index;">
+
+                                    <div class="nbrBX_mr_tb"  >
+                                        <div class="cardNbr_Box" data-aos="fade-up" data-aos-delay="300"
+                                            data-aos-duration="900">
+                                            <div class="nbr d-flex align-items-center">
+                                                <div class="ins text-center w-100">{{i+1}}</div>
+                                            </div>
+                                            <div class="bxHead f-W-B line-H-1_3 text-uppercase" [innerHTML]="sb4"><!-- PROTECT YOURSELF -->
+                                            </div>
+                                            <div class="desc text-gray-70 editorCont last-p" [innerHTML]="section4_subtitles[i]">
+                                             
+                                            </div>
+                                        </div>
+                                    </div>
+                                 
+                                     </div>
+
+                             <!--        <div class="nbrBX_mr_tb">
+                                        <div class="cardNbr_Box" data-aos="fade-up" data-aos-delay="300"
+                                            data-aos-duration="900">
+                                            <div class="nbr d-flex align-items-center">
+                                                <div class="ins text-center w-100">2</div>
+                                            </div>
+                                            <div class="bxHead f-W-B line-H-1_3 text-uppercase">ASSIST THE INJURED
+                                            </div>
+                                            <div class="desc text-gray-70 editorCont last-p">
+                                                <p>Make a reasonable attempt to protect yourself from harm and
+                                                    mitigate
+                                                    loses by moving to a safe area. Use hazard lights, flares,
+                                                    reflectors and
+                                                    flashlights.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nbrBX_mr_tb">
+                                        <div class="cardNbr_Box" data-aos="fade-up" data-aos-delay="300"
+                                            data-aos-duration="900">
+                                            <div class="nbr d-flex align-items-center">
+                                                <div class="ins text-center w-100">3</div>
+                                            </div>
+                                            <div class="bxHead f-W-B line-H-1_3 text-uppercase">REPORT THE ACCIDENT
+                                            </div>
+                                            <div class="desc text-gray-70 editorCont last-p">
+                                                <p>Call the police even if the damage is minor.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="nbrBX_mr_tb">
+                                        <div class="cardNbr_Box" data-aos="fade-up" data-aos-delay="300"
+                                            data-aos-duration="900">
+                                            <div class="nbr d-flex align-items-center">
+                                                <div class="ins text-center w-100">4</div>
+                                            </div>
+                                            <div class="bxHead f-W-B line-H-1_3 text-uppercase">GATHER INFORMATION
+                                            </div>
+                                            <div class="desc text-gray-70 editorCont last-p">
+                                                <p>Motorists are required to stop and provide their name, address,
+                                                    insurance info, and vehicle registration anytime damage is
+                                                    caused
+                                                    to real or personal property due to an incident involving the
+                                                    motor
+                                                    vehicle they are operating.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nbrBX_mr_tb">
+                                        <div class="cardNbr_Box" data-aos="fade-up" data-aos-delay="300"
+                                            data-aos-duration="900">
+                                            <div class="nbr d-flex align-items-center">
+                                                <div class="ins text-center w-100">5</div>
+                                            </div>
+                                            <div class="bxHead f-W-B line-H-1_3 text-uppercase">ASSIST THE OFFICER
+                                            </div>
+                                            <div class="desc text-gray-70 editorCont last-p">
+                                                <p>Remain at the scene, unless injured, until the officer arrives.
+                                                    Cooperate with the officer by briefly relaying the basic facts.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-lg pt-0 secFullwrap position-relative claimInfoSec">
+                    <div class="floatImg floatShape-1 claim_imgFloat_1 floating-Animate">
+                        <img class="w-100" src="assets/images/floating-img-1.png" alt="">
+                    </div>
+                    <div class="floatImg floatShape-4 claim_imgFloat_4 floating-Animate">
+                        <img class="w-100" src="assets/images/floating-img-4.png" alt="">
+                    </div>
+                    <div class="row no-gutters align-items-center">
+                        <div class="col-md-6 order-md-1">
+                            <div class="imgWrap imgFit fullScreen-LessNav fullAuto-MD"> <img class="w-100 obj-fit"
+                                    src="{{projectpath}}{{page.section5_img}}" alt="{{page.section5_img_alt}}" title="{{page.section5_img_title}}"> </div>
+                        </div>
+                        <div class="col-md-6 order-md-0">
+                            <div class="w-100 contCol-wrap containerPD-L">
+                                <div class="bxCont_Info pt-5 pt-md-0">
+                                    <h2 class="head font-sizeHead" data-aos="fade-up" data-aos-duration="900" [innerHTML]="page.section5_title"><!-- How to
+                                        report a property damage --></h2>
+                                    <div class="textSummary text-gray-70 line-H-1_8 last-p" data-aos="fade-up"
+                                        data-aos-delay="400" data-aos-duration="900" [innerHTML]="page.section5_subtitle">
+                                        <!-- <p>It's hard to imagine anything happening to your home or the valued
+                                            possessions inside of it. Our property claims process is made to
+                                            help settle your claim quickly and efficiently, here’s what to do if
+                                            that
+                                            unexpected and unfortunate day ever comes.</p> -->
+                                    </div>
+                                    <div class="btnRow" data-aos="fade-up" data-aos-delay="800" data-aos-duration="900">
+                                        <a (click)="scroll('packageAlternative2')"  class="btn cmnBtn btnBg-2 text-uppercase" [innerHTML]="page.section5_button"><!-- Read MORE --></a> </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="overflow-hidden clainNbr_pointsSec" id="packageAlternative2">
+                        <div class="container-fluid lg-container">
+                            <div class="row gutterPoints">
+                                <div class="col-md-6" *ngFor="let s6 of section6_titles;let i = index;">
+                                    <div class="nbrBX_mr_tb" >
+                                        <div class="cardNbr_Box" data-aos="fade-up" data-aos-delay="300"
+                                            data-aos-duration="900">
+                                            <div class="nbr d-flex align-items-center">
+                                                <div class="ins text-center w-100">{{i+1}}</div>
+                                            </div>
+                                            <div class="bxHead f-W-B line-H-1_3 text-uppercase" [innerHTML]="s6"><!-- PROTECT YOURSELF -->
+                                            </div>
+                                            <div class="desc text-gray-70 editorCont last-p" [innerHTML]="section6_subtitles[i]">
+                                               <!--  <p>The responsibility of the insured include: taking pictures of
+                                                    non-
+                                                    repaired damage, making temporary repairs to prevent further
+                                                    damage (after pictures are taken if at all possible), preparing
+                                                    an
+                                                    inventory of lost or damaged items. Never discard any items the
+                                                    claims adjuster will need to see them. Remember to look at every
+                                                    room in your house and at each side on the outside. List all the
+                                                    damage you find. Let your claims adjuster know if your house is
+                                                    damaged to unlivable conditions. Always make a complete room-
+                                                    by-room inventory of the damage.</p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                  <!--  <div class="nbrBX_mr_tb">
+                                        <div class="cardNbr_Box" data-aos="fade-up" data-aos-delay="300"
+                                            data-aos-duration="900">
+                                            <div class="nbr d-flex align-items-center">
+                                                <div class="ins text-center w-100">1</div>
+                                            </div>
+                                            <div class="bxHead f-W-B line-H-1_3 text-uppercase" >AFTER REPORTING A
+                                                CLAIM</div>
+                                            <div class="desc text-gray-70 editorCont last-p" >
+                                                <p>A claim representative will contact you and set-up an appraisal
+                                                    appointment to conduct an inspection of damages. If you can not
+                                                    live in your house, an advance payment may be available to help
+                                                    you with additional living expenses. That advance payment will
+                                                    be
+                                                    made available by our claim office. </p>
+                                                <p>Save receipts from additional living expenses and present them
+                                                    to your claim representative. Your claim representative will
+                                                    estimate
+                                                    damage to your house</p>
+                                            </div>
+                                        </div>
+                                    </div>  -->
+                                </div>
+                          <!--       <div class="col-md-6">
+                                    <div class="nbrBX_mr_tb">
+                                        <div class="cardNbr_Box" data-aos="fade-up" data-aos-delay="300"
+                                            data-aos-duration="900">
+                                            <div class="nbr d-flex align-items-center">
+                                                <div class="ins text-center w-100">3</div>
+                                            </div>
+                                            <div class="bxHead f-W-B line-H-1_3 text-uppercase">HOME MORTGAGE</div>
+                                            <div class="desc text-gray-70 editorCont last-p">
+                                                <p>If your home is damaged, contact your mortgage company about
+                                                    the damage as soon as possible after you've reported your claim.
+                                                    When we disburse for damages to your home, we are required to
+                                                    protect the interest of the mortgage company, up to the amount
+                                                    of the mortgage balance. In this case, your claim payment will
+                                                    include the name of the mortgage company.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="nbrBX_mr_tb">
+                                        <div class="cardNbr_Box" data-aos="fade-up" data-aos-delay="300"
+                                            data-aos-duration="900">
+                                            <div class="nbr d-flex align-items-center">
+                                                <div class="ins text-center w-100">4</div>
+                                            </div>
+                                            <div class="bxHead f-W-B line-H-1_3 text-uppercase">AFTER AN INJURY
+                                            </div>
+                                            <div class="desc text-gray-70 editorCont last-p">
+                                                <p>Check for injuries and render reasonable assistance to any
+                                                    injured person. If seriously injured, get a doctor or call an
+                                                    ambulance.<br>
+                                                    Promptly report it to your agent once documented injuries
+                                                    have<br>
+                                                    been tended to. Obtain names and addresses of any witnesses.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="overflow-hidden">
+                    <div *ngIf="page" class="w-100">
+               <app-ads class="row gutter-8"></app-ads>   
+               </div> 
+          <!--       <div class="row gutter-8">
+                    <div class="col-md-6">
+                        <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-2.jpg)"
+                            data-aos="fade-up" data-aos-duration="900">
+                            <div class="mngInside d-flex align-items-center">
+                                <div class="w-100 z_ind1">
+                                    <div class="textCont text-color-white text-center">
+                                        <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">
+                                            LEARN ABOUT</div>
+                                        <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up"
+                                            data-aos-delay="300" data-aos-duration="900">INDEPENDENT AGENT</div>
+                                        <div class="btnRow" data-aos="fade-up" data-aos-delay="500"
+                                            data-aos-duration="900"><a routerLink="/"
+                                                class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="boxImgInfo mr_B bxFull" style="background-image:url(assets/images/auto-ins-box-3.jpg)"
+                            data-aos="fade-up" data-aos-duration="900">
+                            <div class="mngInside d-flex align-items-center">
+                                <div class="w-100 z_ind1">
+                                    <div class="textCont text-color-white text-center">
+                                        <div class="smTxt text-uppercase" data-aos="fade-up" data-aos-duration="900">
+                                            OPEN YOUR</div>
+                                        <div class="bxTitle text-uppercase font-F-2" data-aos="fade-up"
+                                            data-aos-delay="300" data-aos-duration="900">PRONTO FRANCHISE AGENCY
+                                        </div>
+                                        <div class="btnRow" data-aos="fade-up" data-aos-delay="500"
+                                            data-aos-duration="900"><a routerLink="/"
+                                                class="btn cmnBtn btnBg-1 text-uppercase">Know More</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+               <div *ngIf="page">
+            <app-counter-section page_url="boat-insurance"></app-counter-section>            
+          </div>
+            <footer class="footerWrap overflow-hidden">
+                <app-footer></app-footer>
+            </footer>
+        </div>
+    </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->
+<!-- Modal Start Claim -->
+<div class="modal fade modalCst" id="modal-Start-claim">
+    <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+      <div class="modal-content">
+        <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+        <div class="modal-body pb-lg">
+        <div class="row no-gutters justify-content-center">
+        <div class="col-lg-11">
+        <div class="claim_choose_wrap">
+        <div class="cont-Head f-W-B line-H-1_3 text-center">For Auto claims, Please select your state</div>
+        <ul class="list-unstyled mb-0 row gutter-8 btnsList">
+        <li class="col-sm-4"><a routerLink="/en/claims/claim-texas" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">Texas</a></li>
+        <li class="col-sm-4"><a routerLink="/en/claims/claim-california" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">California</a></li>
+        <li class="col-sm-4"><a routerLink="/en/claims/claim-florida" data-dismiss="modal" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">Florida</a></li>
+        </ul>
+        </div>
+        </div>
+         </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- End Modal Start Claim -->

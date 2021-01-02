@@ -1,0 +1,27 @@
+<div class="secondNav_Wrapp fixSecondNav">
+    <div class="mngIns-tp">
+      <div class="container-fluid lg-container">
+        <div class="row no-gutters">
+          <div class="col-md">
+            <div class="d-none d-md-block">
+              <ul class="navbar justify-content-center list-unstyled mb-0 secondaryNav">
+                
+                <li class="nav-item" [ngClass]="{'active' : pageTraverse == '01' || pageTraverse == 'voilation-detail' || pageTraverse == '02-a' || pageTraverse == '02-b' || pageTraverse == '03-a' || pageTraverse == '03-b' || pageTraverse == '04' || pageTraverse == '05' || pageTraverse == '06' || pageTraverse == '07' || pageTraverse == '07-b' || pageTraverse == '07-c' || pageTraverse == '08' || pageTraverse == '09' || pageTraverse == '10' || pageTraverse == '11'  }"> <a class="nav-link"> <span class="navTtl">Start</span> <span class="dot"></span> </a> </li>
+
+                <li class="nav-item" [ngClass]="{'active' : pageTraverse == '05' || pageTraverse == '06' || pageTraverse == '07' || pageTraverse == '07-b' || pageTraverse == '07-c' || pageTraverse == '08' || pageTraverse == '09' || pageTraverse == '10' || pageTraverse == '11' }"> <a class="nav-link" > <span class="navTtl">Quote</span> <span class="dot"></span> </a> </li>
+
+                <li class="nav-item" [ngClass]="{'active' : pageTraverse == '10' || pageTraverse == '11' }"> <a class="nav-link" > <span class="navTtl">UNDERWRITING</span> <span class="dot"></span> </a> </li>
+
+                <li class="nav-item" [ngClass]="{'active' : pageTraverse == '11' }"> <a class="nav-link" > <span class="navTtl">PURCHASE</span> <span class="dot"></span> </a> </li>
+
+                <li class="nav-item" [ngClass]="{'active' : pageTraverse == '12'}"> <a class="nav-link" > <span class="navTtl">DOCUMENTS</span> <span class="dot"></span> </a> </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-auto d-lg-none text-right">
+            <button class="btn btnBg-1 summary-Btn" type="button" data-toggle="modal" data-target="#drawerModal"><span class="d-flex flex-row"><img class="icon" src="assets/images/summary-btn-icon.svg" alt="" />Summary</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,498 @@
+
+<div class="headerWrapMain fixHead" >
+    <div class="tpAlertWrap" *ngIf="alertshow"> 
+         <!-- [@visibilityChanged]="visiblityState" -->
+                                                                
+             <ngx-slick-carousel *ngIf="sliderCovidConfig"class="carousel slider_TP-notification tpSlider-notifictn-Effect" #slickModal="slick-carousel"  [config]="sliderCovidConfig">
+                 <div class="slideCovid slide-item" ngxSlickItem *ngFor="let slide of pencil_banner"> 
+                  <!--    <div class= "slider_TP-notification"> -->
+                      <!--    <div class="slide-item"> -->
+                         <div class="alertTP_wrap btnClose-spc" style="background-color:{{slide.color}};">
+                             <div class="row gutter-8 flex-nowrap align-items-center infoAlert_cont">
+                                 <div class="col">
+                                 <div class="cont_summary d-flex align-items-center text-left text-md-center">
+                                     <div class="w-100" [innerHTML]="slide.name">
+                                     </div>
+                                 </div>
+                                 </div>
+                                 <div class="col-auto text-center">
+                                 <div class="btnWrap">
+                                     <a href="{{slide.page_url}}"  class="btn tp_alert_btn text-uppercase" style="background-color:{{slide.button_colour}};">{{ slide.button_text }}</a>
+                                 </div>
+                                 </div>
+                             </div>
+                             <!-- Set Alert BG Image -->
+                             
+                             <div *ngIf="slide.is_background == 0" class="alertBg_img setImg-Desk d-none d-md-block" style="background-image:url({{slide.desktop_img}})"></div>
+                             <div *ngIf="slide.is_background == 0" class="alertBg_img setImg-Mob d-md-none" style="background-image:url({{slide.mob_img}})">
+                             </div>
+                             
+                             <!-- End Alert BG Image -->
+                         </div>
+                 
+                    <!--  </div> -->
+               <!--   </div>  -->
+                 </div>
+             </ngx-slick-carousel>
+        
+         <button type="button" class="btn btnClose" (click)="closeAlert()">
+           <img src="assets/images/icon-close-white.svg" alt="" />
+         </button>
+     </div>
+     <header class="headerMain" >
+         <nav class="navbar navbar-expand justify-content-between thmNavbar">
+             <div class="navCol-Left" >
+                 <ul class="navbar-nav align-items-center cstNavbar">
+                     <li class="nav-item"> 
+                         <a class="nav-link hambergMenu" (click)="toggle()" id="bt">
+                             <span class="burgerMenu_icon">
+                                 <span class="toggler-icon"></span>
+                             </span>
+                         </a> </li>
+                         <li class="nav-item dropdown dropHover hideResp"> <a class="nav-link dropdown-toggle" (click)="mobile()" data-toggle="dropdown"><span class="navIcon"><img class="iconNav" (click)="mobile()" src="assets/images/nav-icon-download-app.png" alt="" /></span></a>
+                             <div class="dropdown-menu dropdown-removeClick cstSub_dropdown alignCenter">
+                               <ul class="navSumList mb-0 list-unstyled text-center">
+                                 <li><a class="dropdown-item f-W-M" (click)="mobile()">Download Mobile App</a></li>
+                               </ul>
+                             </div>
+                           </li>
+                     <!--<li class="nav-item hideResp">
+                         <div class="searchTp_wrap">
+                             <input class="form-control fldSearch" type="text">
+                             <div class="brd_line"></div>
+                             <div class="iconsearch"><img class="iconsrch iconNav" src="assets/images/nav-icon-search.png" alt="" />
+                             </div>
+                         </div>
+                     </li>-->
+                 </ul>
+             </div>
+             <div class="logoWrap"> <a class="navbar-brand" routerLink="/">
+                <!--  <img class="w-100" src="assets/images/site-logo.png"
+                         alt="Pronto Insurance" /> -->
+ <img class="w-100 d-none d-md-block" src="assets/images/site-logo.png" alt="Pronto Insurance">
+     <img class="w-100 d-md-none" src="assets/images/site-logo-white.png" alt="Pronto Insurance">
+                     </a> </div>
+             <div class="navCol-Right d-none d-md-block">
+                 <ul class="navbar-nav align-items-center cstNavbar mngDropPos">
+                     <li class="nav-item dropdown dropHover order-md-4"> <a  (click)="login()" class="nav-link dropdown-toggle" data-toggle="dropdown"><span class="navIcon"><img class="iconNav" src="assets/images/nav-icon-user.png"
+                                     alt="" /></span>
+                             <!--<span class="navProf_pic"><img class="w-100" src="assets/images/prof-pic.png" alt="" /></span>-->
+                         </a>
+                         <div
+                             class="dropdown-menu dropdown-removeClick cstSub_dropdown dropAlignRgt dropalign2 dropdown-menu-right">
+                             <div class="loginBoxWrap dropDownLogin">
+                                 <div class="picRowWrap text-center" *ngIf="isLogin">
+                                     <div class="pro_picWrap_circle">
+                                         <div class="mngIn">
+                                             <div class="userProf-pic" >
+                                                <div *ngIf="!users['profile_image']"
+                                                        class="user_letter d-flex align-items-center justify-content-center">
+                                                        <div class="letter_wrp f-W-B text-color-3 ">
+                                                            {{users['firstName'][0] | titlecase}}
+                                                            {{users['lastName'][0] | titlecase}}</div>
+                                                    </div>
+                                             </div>
+                                             <!-- <label for="pic_img_1"
+                                                 class="btn editPic_btn d-flex justify-content-center align-items-center flex-column"><img
+                                                     class="icon" src="assets/images/pic-change-icon.png" alt="" />
+                                                 <input id="pic_img_1" class="fldBrowse d-none" type="file" />
+                                             </label> -->
+                                         </div>
+                                     </div>
+                                 </div>
+ 
+ 
+                                 <form [formGroup]="loginform" (ngSubmit)="onSubmit()" *ngIf="!isLogin">
+                                     <div class="loginForm_drop mxWidth">
+                                         <div class="form-group">
+                                             <div class="fldIconMng">
+                                                 <div class="iconWrap"><img class="w-100" src="assets/images/field-icon-email.png"
+                                                         alt="" /></div>
+                                                 <input type="text"   name="email" formControlName="email"  [ngClass]="{'ffl-floated-force' : loginform.get('email').value != ''}" class="form-control iconSpc fldRound" placeholder="Email id">
+                                             </div>
+                                         </div>
+                                         <div class="form-group">
+                                             <div class="fldIconMng">
+                                                 <div class="iconWrap"><img class="w-100" src="assets/images/field-icon-password.png"
+                                                         alt="" /></div>
+                                                 <input type="password" name="password" formControlName="password"  [ngClass]="{'ffl-floated-force' : loginform.get('password').value != ''}"class="form-control iconSpc fldRound" placeholder="Password">
+                                             </div>
+                                         </div>
+                                         <div class="btnRow text-center">
+                                             <button type="submit" [disabled]="!loginform.valid || isLoginClicked"
+                                             class="btn cmnBtn btnBg-1 btnLogin text-uppercase">Login</button>
+                                             <!-- <button type="submit"
+                                                 class="btn cmnBtn btnBg-1 btnLogin text-uppercase">Login</button> -->
+                                         </div>
+                                     </div>
+                                     </form>
+ 
+ 
+ 
+                                 <!-- <div class="loginForm_drop mxWidth">
+                                     <div class="form-group">
+                                         <div class="fldIconMng">
+                                             <div class="iconWrap"><img class="w-100" src="assets/images/field-icon-email.png"
+                                                     alt="" /></div>
+                                             <input type="text" class="form-control iconSpc fldRound" placeholder="Email id">
+                                         </div>
+                                     </div>
+                                     <div class="form-group">
+                                         <div class="fldIconMng">
+                                             <div class="iconWrap"><img class="w-100" src="assets/images/field-icon-password.png"
+                                                     alt="" /></div>
+                                             <input type="text" class="form-control iconSpc fldRound" placeholder="Password">
+                                         </div>
+                                     </div>
+                                     <div class="btnRow text-center">
+                                         <button type="submit"
+                                             class="btn cmnBtn btnBg-1 btnLogin text-uppercase">Login</button>
+                                     </div>
+                                 </div> -->
+                                 <div class="seprWrap seprOR" *ngIf="!isLogin">
+                                     <hr class="seprLine" />
+                                 </div>
+ 
+ 
+                                 <div class="loginwith_Social" *ngIf="!isLogin">
+                                     <div class="ttl text-uppercase text-center f-W-B line-H-1 text-gray-80">login with</div>
+                                     <ul class="list-inline text-center socialList-sm">
+                                         <li class="list-inline-item"> <a class="scl-item-rds iconFB"  (click)="signInWithGoogle('fb');"><img class="icon" src="assets/images/social-icon-fb.svg"
+                                                     alt="" /></a> </li>
+                                         <li class="list-inline-item"> <a class="scl-item-rds icontwitter" ><img class="icon" src="assets/images/social-icon-twitter.svg"
+                                                     alt="" /></a> </li>
+                                         <li class="list-inline-item"> <a class="scl-item-rds icongplus" (click)="signInWithGoogle('google');"><img class="icon" src="assets/images/social-icon-gplus.svg"
+                                                     alt="" /></a> </li>
+                                         <li class="list-inline-item"> <a class="scl-item-rds iconapple" ><img class="icon" src="assets/images/social-icon-apple.svg"
+                                                     alt="" /></a> </li>
+                                     </ul>
+                                 </div>
+                                 <div class="btnRow-BT text-center">
+                                     <div class="mxWidth" *ngIf="isLogin"> <a routerLink="/dashboard/my-policies" class="btn btn-block cmnBtn btnpolicy btnBg-2">Manage
+                                             My Policy</a> </div>
+                                 
+                                     <div class="mxWidth" *ngIf="!isLogin"> <a routerLink="/login" class="btn btn-block cmnBtn btnpolicy btnBg-2">Manage
+                                                 My Policy</a> </div>
+ 
+                                             <!-- <div class="mxWidth" *ngIf="@isLogin"> <a routerLink="/login" class="btn btn-block cmnBtn btnpolicy btnBg-2">Manage
+                                                 My Policy</a> </div> -->
+                                 </div>
+                             </div>
+                         </div>
+                     </li>
+                     <li class="nav-item dropdown dropHover order-md-1"> 
+                         <a class="nav-link dropdown-toggle"
+                             data-toggle="dropdown" *ngIf="Hlength" (click)="notification()">
+                             
+                             <span class="navIcon">
+                                 
+                                 <img class="iconNav" 
+                                     src="assets/images/nav-icon-alert.png" alt=""  > <span class="nbrCrcl"><span
+                                         class="nbr_in">{{Hlength}}</span></span> 
+                             </span>
+                         </a>
+                         <div class="dropdown-menu dropdown-removeClick cstSub_dropdown alignCenter">
+                             <ul class="navSumList mb-0 list-unstyled text-center">
+                                 <li><a class="dropdown-item f-W-M" (click)="notification()">Notifications</a></li>
+                             </ul>
+                         </div>
+                     </li>
+                     <li class="nav-item dropdown dropHover order-md-2"> <a (click)="claims()" class="nav-link"
+                             data-toggle="dropdown"><span class="navIcon"><img class="iconNav"
+                                     src="assets/images/nav-icon-report.png" alt="" /></span></a>
+                         <div class="dropdown-menu dropdown-removeClick cstSub_dropdown alignCenter">
+                             <ul class="navSumList mb-0 list-unstyled text-center">
+                                 <li><a (click)="claims()" routerLinkActive="router-link-active" class="dropdown-item f-W-M">Report Claim</a></li>
+                             </ul>
+                         </div>
+                     </li>
+                     <li class="nav-item dropdown dropHover order-md-3"> 
+                         
+                         <a class="nav-link" routerLink="/quick-pay-login"
+                             data-toggle="dropdown"><span class="navIcon"><img class="iconNav"
+                                     src="assets/images/nav-icon-quickpay.png" alt="" /></span></a>
+ 
+                         <div class="dropdown-menu dropdown-removeClick cstSub_dropdown alignCenter">
+                             <ul class="navSumList mb-0 list-unstyled text-center">
+                                 <li><a routerLink="/quick-pay-login" class="dropdown-item f-W-M">Quick Pay</a></li>
+                             </ul>
+                         </div>
+                     </li>
+                    
+                     <li class="nav-item dropdown dropHover hideResp order-md-5"> <a class="nav-link"
+                             data-toggle="dropdown">
+                             <span class="navIcon">
+                               
+ 
+                             <img class="iconNav" src="assets/images/nav-icon-call.png"
+                                     alt="" /></span></a>
+                         <div class="dropdown-menu dropdown-removeClick cstSub_dropdown alignCenter respRightAlign">
+                             <ul class="navSumList mb-0 list-unstyled text-center">
+                                 <li><a class="dropdown-item text-red f-W-M"><i class="icon fa fa-phone"></i>1-888-Devolada</a></li>
+                                 <li><a class="dropdown-item f-W-M" ><i class="icon fa fa-comment"></i>1-(979) 243-6677</a></li>
+                             </ul>
+                         </div>
+                     </li>
+                     <li class="nav-item dropdown dropHover order-md-6"> <a class="nav-link dropdown-toggle lang_Letter_wdt lang-text"
+                             data-toggle="dropdown">{{lgSelected || 'EN'}}</a>
+                         <div class="dropdown-menu dropdown-removeClick cstSub_dropdown dropAlignRgt dropdown-menu-right">
+                             <ul class="navSumList mb-0 list-unstyled text-center">
+                                 <li>
+                                     <div class="selectLang d-inline-block">
+                                         <div class="row no-gutters" *ngIf="dataArr != ''">
+                                             <div class="col">
+                                                 <div class="langLbl f-W-M">{{dataArr[0].shortCode | uppercase }}</div>
+                                             </div>
+                                             <div class="col-auto">
+                                                 <div class="switchCol">
+                                                     <label class="switch-toggle mb-0" for="check_language">
+                                                         <input type="checkbox" id="check_language"  [(ngModel)]="language" (change)="checkValue(language ? dataArr[1].id : dataArr[0].id); getValue(language ? dataArr[1].shortCode : dataArr[0].shortCode); ">
+                                                         <span class="slider round"></span> </label>
+                                                 </div>
+                                             </div>
+                                             <div class="col">
+                                                 <div class="langLbl f-W-M">{{dataArr[1].shortCode | uppercase }}</div>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </li>
+                             </ul>
+                         </div>
+                     </li>
+                 </ul>
+             </div>
+             <div class="navCol-Right respNavItem d-md-none">
+                 <ul class="navbar-nav align-items-center cstNavbar">
+                     <li class="nav-item dropdown dropHover"> <a class="nav-link" data-toggle="dropdown"><span
+                                 class="navIcon">
+                                   <img class="iconNav d-none d-md-block" src="assets/images/nav-icon-call.png" alt="">
+         <img class="iconNav d-md-none" src="assets/images/nav-icon-call-resp.svg" alt="">
+                                 <!-- <img class="iconNav" src="assets/images/nav-icon-call.png" alt="" /> --></span></a>
+                         <div class="dropdown-menu dropdown-removeClick cstSub_dropdown alignCenter respRightAlign">
+                             <ul class="navSumList mb-0 list-unstyled text-center">
+                                 <li><a class="dropdown-item text-red f-W-M"><i class="icon fa fa-phone"></i>1-888-Devolada</a></li>
+                                 <li><a class="dropdown-item f-W-M" ><i class="icon fa fa-comment"></i>1-(979) 243-6677</a></li>
+                             </ul>
+                         </div>
+                     </li>
+                 </ul>
+             </div>
+         </nav>
+     </header>
+ </div>
+ 
+ 
+ <!-- Responsive Bottom Nav -->
+ <nav class="navbar navbar-expand fixNavBt d-md-none">
+     <div class="chatBtnWrap_Resp">
+       <button class="btn btnChat">
+         <img src="assets/images/chat-btn-circle.png" alt="" class="d-md-none"  />
+       </button>
+     </div>
+   
+     <div class="mngMobNav respNavWrap d-flex justify-content-between">
+       <ul class="navbar-nav cstNavbar mngDropPos d-flex align-items-center nav-Lft">
+         <li class="nav-item"> <a class="nav-link" routerLink="/login"><span class="navIcon"><img class="iconNav"
+                 src="assets/images/nav-icon-user-Resp.png" alt="" /></span>
+             <span class="txtLine">Login</span>
+           </a>
+         </li>
+         <li class="nav-item" *ngIf="isLogin"> <a class="nav-link" href="#"><span class="navIcon"><img class="iconNav"
+                 src="assets/images/nav-icon-alert-Resp.png" alt="" /> <span class="nbrCrcl"><span class="nbr_in">4</span></span>
+             </span>
+             <span class="txtLine">Notifications</span>
+           </a>
+         </li>
+ 
+         <li class="nav-item" *ngIf="!isLogin">
+             <a class="nav-link" routerLink="/claims">
+             <span class="navIcon"><img class="iconNav" src="assets/images/nav-icon-report-Resp.png" alt="" /></span>
+             <span class="txtLine">Report Claim</span>
+             </a>
+         </li>
+         
+       </ul>
+       <ul class="navbar-nav cstNavbar mngDropPos d-flex align-items-center nav-Rgt">
+   
+         <li class="nav-item" >
+           <a class="nav-link" routerLink="/quick-pay-login">
+             <span class="navIcon"><img class="iconNav" src="assets/images/nav-icon-quickpay-Resp.png" alt="" /></span>
+             <span class="txtLine">Quick Pay</span>
+           </a>
+         </li>
+         
+         <li class="nav-item">
+           <a class="nav-link" href="#" data-toggle="modal" data-target="#modal-NavMoreItems">
+             <span class="navIcon"><img class="iconNav" src="assets/images/nav-icon-More.png" alt="" /></span>
+             <span class="txtLine">More</span>
+           </a>
+         </li>
+   
+   
+   
+       </ul>
+     </div>
+ </nav>
+ <div class="modal modalCst" id="modal-NavMoreItems">
+ <div class="modal-dialog alignBt modal-cst-sm">
+     <div class="modal-content">
+         <button type="button" id="closebtn" class="close btnClose invisible" data-dismiss="modal"><span>×</span></button>
+ 
+     <div class="modal-body moreMenuModal">
+         <nav class="navbar navbar-expand">
+         <div class="mngMobNav respNavWrap w-100">
+ 
+             <ul class="navbar-nav cstNavbar mngDropPos d-flex justify-content-between align-items-center w-100">
+ 
+             <li class="nav-item" *ngIf="isLogin">
+                 <a class="nav-link" (click)="claims()">
+                 <span class="navIcon"><img class="iconNav" src="assets/images/nav-icon-report-Resp.png" alt="" /></span>
+                 <span class="txtLine">Report Claim</span>
+                 </a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link" (click)="mobile()">
+                 <span class="navIcon"><img class="iconNav" src="assets/images/nav-icon-download-app-Resp.png" alt="" /></span>
+                 <span class="txtLine">Download Mobile App</span>
+                 </a>
+                 </li>
+             <!-- <li class="nav-item">
+ 
+                 <div class="searchTp_wrap">
+                 <input class="form-control fldSearch" type="text">
+                 <div class="brd_line"></div>
+                 <div class="iconsearch"><img class="iconsrch iconNav" src="assets/images/nav-icon-search-Resp.png" alt="">
+                 </div>
+                 <span class="txtLine">Search</span>
+                 </div>
+             </li> -->
+ 
+             <li class="nav-item">
+                 <div class="selectLang d-inline-block">
+                 <div class="row no-gutters" *ngIf="dataArr != ''">
+                     <div class="col">
+                     <div class="langLbl f-W-M">{{dataArr[0].shortCode | uppercase }}</div>
+                     </div>
+                     <div class="col-auto">
+                     <div class="switchCol">
+                         <label class="switch-toggle mb-0" for="check_language_Resp">
+                         <input type="checkbox" id="check_language_Resp"  [(ngModel)]="language" (change)="checkValue(language ? dataArr[1].id : dataArr[0].id); getValue(language ? dataArr[1].shortCode : dataArr[0].shortCode); ">
+ 
+                         <span class="slider round"></span> </label>
+                     </div>
+                     </div>
+                     <div class="col">
+                     <div class="langLbl f-W-M">{{dataArr[1].shortCode | uppercase }}</div>
+                     </div>
+                 </div>
+                 </div>
+             </li>
+ 
+ 
+             </ul>
+         </div>
+         </nav>
+     </div>
+ 
+     </div>
+ </div>
+ </div>
+ <!-- Modal Social login Policy No. -->
+ <div class="modal fade modalCst show"  style="display: block;" id="modal_policy_number" *ngIf="showModalBox">
+     <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+       <div class="modal-content modalGetQuote">
+         <button type="button" class="close btnClose" data-dismiss="modal" (click)="closemodal()"><span>×</span></button>
+         <div class="modal-body pb-lg">
+         <div class="row no-gutters justify-content-center">
+            <form [formGroup]="policyform" (ngSubmit)="validatedata()">
+         <div class="col-lg-12">
+         <div class="infoModalWrap ">
+         <div class="txt-summary last-p line-H-1_3">
+         <p class="text-color-3 txt-Md text-center"><strong>Enter your policy to get verify</strong></p>
+        
+         <div class="form-group mb_form-group">
+                                 <div class="field_md">
+                                   <input class="form-control cmnField" name="policyNo" formControlName="policyNo" [ngClass]="{'ffl-floated-force' : policyform.get('policyNo').value != ''}" >
+                                   <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                   <label class="primary-label">Enter policy number</label>
+                                   <div class="invalid-fld-feedback-invalid" >Please enter valid policy number</div>
+                                 </div>
+                               </div>
+                              
+                                     <div class="form-group mb_form-group">
+                                 <div class="field_md">
+                                   <input class="form-control cmnField" name="phone" formControlName="phone"   appPhoneMask [ngClass]="{'ffl-floated-force' : policyform.get('phone').value != ''}">
+                                  
+                                   <label class="primary-label">Phone</label>
+                                      <div class="invalid-fld-feedback-invalid" >Please enter valid phone number</div>
+                                 </div>
+                               </div>
+                               <div class="row gutterField-8">
+                               <div class="col-md-6">
+                               <div class="form-group mb_form-group">
+                                 <div class="field_md fld-icon-Date field_labelTP">
+                                   <input class="form-control cmnField datepicker_fld" name="dob" formControlName="dob" placeholder="MM/DD/YYYY" [ngClass]="{'ffl-floated-force' : policyform.get('dob').value != ''}" DobValidation>
+                                   <!-- Toggle "has-error" this class for Error -->
+                                   <label class="primary-label label-Tp">DOB</label>
+                                   <div class="fldIcon"><img src="images/icon-calendar.png" alt=""></div>
+                                    <div class="invalid-fld-feedback-invalid" >Please enter valid DOB </div>
+                                 </div>
+                               </div>
+                               </div>
+                               <div class="col-md-6">
+                               <div class="form-group mb_form-group">
+                                 <div class="field_md">
+                                   <input class="form-control cmnField" name="zip" formControlName="zip" [ngClass]="{'ffl-floated-force' : policyform.get('zip').value != ''}" maxlength="5">
+                                   <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                   <label class="primary-label">Zip code</label>
+                                   <div class="invalid-fld-feedback-invalid" >Please enter valid zip code </div>
+                                 </div>
+                               </div>
+                              
+                               </div>
+                               </div>
+                              
+                              
+                              
+               </div>
+         <div class="btnsWrapp mx-width">
+         <ul class="list-unstyled  btnListing mb-0">
+         <li><button  [disabled]="!policyform.valid" type="submit" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block">Submit</button></li>
+         </ul>
+         </div>
+         </div>
+         </div>
+          </form>
+          </div>
+         </div>
+        
+       </div>
+     </div>
+   </div>
+   <div class="modal fade modalCst show"  style="display: block;" id="modal-social_login_Error" *ngIf="socialdeactivate">
+     <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+       <div class="modal-content modalGetQuote">
+         <button type="button" class="close btnClose" data-dismiss="modal" (click)="closesocial()"><span>×</span></button>
+         <div class="modal-body pb-lg">
+         <div class="row no-gutters justify-content-center">
+         <div class="col-lg-12">
+         <div class="infoModalWrap">
+         <div class="txt-summary last-p line-H-1_3">
+         <p class="text-color-3 txt-Md text-center"><strong>Social Login Has Deactivated By The User Please Login And Activate .</strong></p>
+              
+               </div>
+        
+         </div>
+         </div>
+          </div>
+         </div>
+        
+       </div>
+     </div>
+   </div>
+   
+   <div class="modal-backdrop fade show" *ngIf="showModalBox || socialdeactivate"></div>
+   <app-pre-loader *ngIf="loading1"></app-pre-loader>
+ 
+ <!-- End Responsive Bottom Nav -->
+ 

@@ -1,0 +1,327 @@
+<app-pre-loader *ngIf="loading"></app-pre-loader>
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+    <div class="pgWrapFull spcTpHeader vrLinesWrap">
+
+      <app-header ></app-header>
+      <div class="dashboard_pg_wrap minScreen-hgt bg-patternGrdnt">
+        <app-dashboard-responsive-top-header></app-dashboard-responsive-top-header>
+        <div class="dashScreen_wrap">
+          <div class="row no-gutters dashWrap_Row">
+            <div class="col-lg-auto brdRgt">
+              <div class="colWdth_side">
+                <app-dashboard-side-nav></app-dashboard-side-nav>
+              </div>
+            </div>
+            <div class="col-lg brdCol">
+              <div class="dashboard_middle">
+                <!-- <div class="dashB_mdl-pd">
+                          <div class="dash_tp-btnsRow d-none d-lg-block" data-aos="fade-up" data-aos-duration="900">
+                            <div class="row no-gutters">
+                              <div class="col"><a routerLink="/claims/claim-texas" class="btn cmnBtn btn-sz-md btnBg-1 text-uppercase">Report CLAIM</a></div>
+                              <div class="col text-right">
+                                <div class="d-inline-block">
+                                  <div class="viewCard_wrap d-flex align-items-center">
+                                    <div class="iconWrap"><img class="w-100" src="assets/assets/assets/images//icon-view-card.png" alt="" /></div>
+                                    <div class="btnCol flex-fill"> <a routerLink="/" class="btn cmnBtn btn-sz-md btnBg-4 text-uppercase">VIEW YOUR ID CARDS</a> </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div> -->
+                     
+                        <div class=" cstScroller cst_mCst_scroll_Desk" data-aos="fade-up" data-aos-delay="300" data-aos-duration="900">
+                            <div class="dashB_mdl-pd">
+                              <h1 class="dashlg-Head font-F-1 f-W-B"><span class="wrapIn">Add Payment Source</span></h1>
+                              <div class="cardDash_cmn bg_trans">
+                                <div class="row no-gutters">
+                                  <div class="col-lg-11">
+                                  <div class="payment_source_select">
+                                    <div class="row gutterField-15">
+                                    <div class="col-sm-6">
+                                    <div class="form-group mb_form-group">
+                                      <label for="payment_source-credit-or-debit" class="check-sm-wrap checkCircle bx_check_card pay_sourceType_check mb-0 d-block">
+                                        <input id="payment_source-credit-or-debit" type="radio" class="inputCheck" name="requestType" value="CC" formControlName="requestType"  (click)="changetype(1)" checked="">
+                                        <span class="wrapRow d-flex align-items-center"> <span class="checkIndicate"></span> <span class="labelText flex-fill f-size-23 line-H-1_2 f-W-B">Credit/Debit Card</span> </span> </label>
+                                        </div>
+                                        </div>
+                                        
+                                       
+                                        <div class="col-sm-6">
+                                        <div class="form-group mb_form-group">
+                                      <label for="payment_source-Bank-account" class="check-sm-wrap checkCircle bx_check_card pay_sourceType_check mb-0 d-block">
+                                        <fieldset [disabled]="bankaccount == '1'"><input id="payment_source-Bank-account" (click)="changetype(0)" type="radio" class="inputCheck"  value="eft" name="requestType" [disabled]="bankaccount == '1'" [ngClass]="{'disabled-control' : bankaccount == '1'}" formControlName="requestType">
+                                        </fieldset>
+                                        <span class="wrapRow d-flex align-items-center"> <span class="checkIndicate"></span> <span class="labelText flex-fill f-size-23 line-H-1_2 f-W-B">Bank Account</span> </span> </label>
+                                        </div>
+                                        </div>
+                                        
+                                    </div>
+                                    </div>
+                                    <form [formGroup]="ccpayment" (ngSubmit)="onSubmit()">
+                                    <!-- Payment Source Credit/Debit Card -->
+                                    <div *ngIf="showcreditcard"  formGroupName="ccDetails">
+                                      <div class="form-group mb_form-group">
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" required="" name="nameOnCard" formControlName="nameOnCard" [ngClass]="{'ffl-floated-force' : ccpayment.get('ccDetails.nameOnCard').value != ''}" appOnlyAlphabeticalWithSpace>
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Card Holder Name*</label>
+                                          <div class="invalid-fld-feedback-invalid">Please enter a valid Card Holder Name</div>
+                                        </div>
+                                      </div>
+                                      <div class="row gutterField-8">
+                                        <div class="col-md-6">
+                                          <div class="form-group mb_form-group">
+                                            <div class="field_md">
+                                              <input class="form-control cmnField" required="" name="address" formControlName="address" [ngClass]="{'ffl-floated-force' : ccpayment.get('ccDetails.address').value != ''}">
+                                              <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                              <label class="primary-label">Billing Address*</label>
+                                              <div class="invalid-fld-feedback-invalid">Please enter a valid Billing Address</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group mb_form-group">
+                                            <div class="field_md">
+                                              <input class="form-control cmnField" required="" name="postalCode" formControlName="postalCode" maxLength="5" [ngClass]="{'ffl-floated-force' : ccpayment.get('ccDetails.postalCode').value != ''}" appOnlyNumerical>
+                                              <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                              <label class="primary-label">Zip Code</label>
+                                              <div class="invalid-fld-feedback-invalid">Please enter a valid Zip Code</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <label class="label_field_cst mb-less f-size-18">Card Number*</label>
+                                      <div class="row gutterField-8">
+                                        <div class="col-sm-3 col-6">
+                                          <div class="form-group mb_form-group">
+                                            <div>
+                                              <input class="form-control cmnField" required="" name="ccNo1"  (keyup)="keytab($event, 4, 1)" id="cno1"  maxLength="4" formControlName="ccNo1" [ngClass]="{'ffl-floated-force' : ccpayment.get('ccDetails.ccNo1').value != ''}" placeholder="xxxx">
+                                              <!-- Toggle "has-error" this class for Error --> 
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-3 col-6">
+                                          <div class="form-group mb_form-group">
+                                            <div>
+                                              <input class="form-control cmnField" required="" name="ccNo2" (keyup)="keytab($event, 4, 2)" id="cno2" maxLength="4" formControlName="ccNo2" [ngClass]="{'ffl-floated-force' : ccpayment.get('ccDetails.ccNo2').value != ''}" placeholder="xxxx">
+                                              <!-- Toggle "has-error" this class for Error --> 
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-3 col-6">
+                                          <div class="form-group mb_form-group">
+                                            <div>
+                                              <input class="form-control cmnField" required="" name="ccNo3" (keyup)="keytab($event, 4, 3)" id="cno3"  maxLength="4" formControlName="ccNo3" [ngClass]="{'ffl-floated-force' : ccpayment.get('ccDetails.ccNo3').value != ''}" placeholder="xxxx">
+                                              <!-- Toggle "has-error" this class for Error --> 
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-sm-3 col-6">
+                                          <div class="form-group mb_form-group">
+                                            <div>
+                                              <input class="form-control cmnField" required="" name="ccNo4" maxLength="4" (keyup)="keytab($event, 4,4)" id="cno4" formControlName="ccNo4" [ngClass]="{'ffl-floated-force' : ccpayment.get('ccDetails.ccNo4').value != ''}" placeholder="xxxx">
+                                              <!-- Toggle "has-error" this class for Error --> 
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="row gutterField-8">
+                                        <div class="col-md-8">
+                                          <label class="label_field_cst mb-less f-size-18">Expiration Date*</label>
+                                          <div class="row gutterField-8">
+                                            <div class="col-6">
+                                              <div class="form-group mb_form-group">
+                                             
+                                                <div class="selectNG_dropdown">
+                                                  <ng-select class="custom_ngSelect"
+                                                      [items]="month" bindLabel="value"
+                                                      placeholder="Select" bindValue="key"
+                                                      [searchable]="false"
+                                                      formControlName="month">
+          
+                                                      <ng-template ng-label-tmp let-item="item">
+                                                          {{item.value}}
+                                                      </ng-template>
+          
+                                                  </ng-select>
+                                                  <label class="selectLabel">Month</label>
+                                                  <svg class="arrowIcon"
+                                                      xmlns="http://www.w3.org/2000/svg" width="11.67"
+                                                      height="6.04" viewBox="0 0 11.67 6.04">
+                                                      <polygon
+                                                          points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                                          fill="#fff"></polygon>
+                                                  </svg>
+                                              </div>
+                                              </div>
+                                            </div>
+                                            <div class="col-6">
+                                              <div class="form-group mb_form-group">
+                                             
+                                                <div class="selectNG_dropdown">
+                                                  <ng-select class="custom_ngSelect"
+                                                      [items]="year" bindLabel="value"
+                                                      placeholder="Select" bindValue="key"
+                                                      [searchable]="false"
+                                                      formControlName="year">
+          
+                                                      <ng-template ng-label-tmp let-item="item">
+                                                          {{item.value}}
+                                                      </ng-template>
+          
+                                                  </ng-select>
+                                                  <label class="selectLabel">Year</label>
+                                                  <svg class="arrowIcon"
+                                                      xmlns="http://www.w3.org/2000/svg" width="11.67"
+                                                      height="6.04" viewBox="0 0 11.67 6.04">
+                                                      <polygon
+                                                          points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                                          fill="#fff"></polygon>
+                                                  </svg>
+                                              </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                          <label class="label_field_cst mb-less f-size-18">CVV*</label>
+                                          <div class="form-group mb_form-group">
+                                            <div class="field_md">
+                                              <input class="form-control cmnField" required="" name="cvv" formControlName="cvv"  maxLength="3" [ngClass]="{'ffl-floated-force' : ccpayment.get('ccDetails.cvv').value != ''}" appOnlyNumerical>
+                                              <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                              <label class="primary-label">CVV</label>
+                                              <div class="invalid-fld-feedback-invalid">Please enter a valid CVV</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="navigation-buttons">
+                                        <ul class="list-inline mb-0 text-center btnsList_form">
+                                          <li class="list-inline-item">
+                                            <button class="btn cmnBtn btnBg-2 sm-sz min-W text-uppercase" type="submit" [disabled]="!ccpayment.valid">Save Card</button>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <!-- End Payment Source Credit/Debit Card -->
+                                  </form>
+                                  <form [formGroup]="eftpayment" (ngSubmit)="onSubmit()">
+                                    <!-- Payment Source Bank Account -->
+                                    <div *ngIf="!showcreditcard" formGroupName="eft">
+                                      <div class="form-group mb_form-group">
+                                      <div class="bankAcc_instr f-size-18 text-center">Bank account can be used only for auto pay.</div>
+                                      </div>
+                                      <div class="row gutterField-8">
+                                        <div class="col-md-6">
+                                          <div class="form-group mb_form-group">
+                                        <div class="field_md">
+                                          <input class="form-control cmnField" required="" name="bankName" formControlName="bankName" [ngClass]="{'ffl-floated-force' : eftpayment.get('eft.bankName').value != ''}">
+                                          <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                          <label class="primary-label">Bank Name*</label>
+                                          <div class="invalid-fld-feedback">Please enter a valid Bank Name</div>
+                                        </div>
+                                      </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group mb_form-group">
+                                            <div class="field_md">
+                                              <input class="form-control cmnField" required="" name="accountNo" formControlName="accountNo" [ngClass]="{'ffl-floated-force' : eftpayment.get('eft.accountNo').value != ''}">
+                                              <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                              <label class="primary-label">Account Number*</label>
+                                              <div class="invalid-fld-feedback">Please enter a valid Account Number</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group mb_form-group">
+                                            <div class="field_md">
+                                              <input class="form-control cmnField" required="" name="routingNo" formControlName="routingNo" [ngClass]="{'ffl-floated-force' : eftpayment.get('eft.routingNo').value != ''}">
+                                              <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                              <label class="primary-label">Routing Number*</label>
+                                              <div class="invalid-fld-feedback">Please enter a valid Routing Number</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-group mb_form-group">
+                                            <div class="field_md">
+                                              <input class="form-control cmnField" required="" name="routingNo" formControlName="routingNo" [ngClass]="{'ffl-floated-force' : eftpayment.get('eft.routingNo').value != ''}">
+                                              <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                              <label class="primary-label">Bank Account Holder Name*</label>
+                                              <div class="invalid-fld-feedback">Please enter a valid Bank Account Holder Name</div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      
+                                      <div class="bank_accept_cont">
+                                      <div class="form-group mb_form-group">
+                                      <div class="d-inline-block tpAccept_row"><label class="paySource_label d-flex align-items-center mb-0 f-size-18 f-W-B" for="acceptance_of_ETF"> <span class="switch-toggle-lg">
+                                            <input type="checkbox" id="acceptance_of_ETF">
+                                            <span class="slider round"></span> </span> <span class="textWrap d-block flex-fill">Acceptance of ETF</span> </label>
+                                            </div>
+                                            
+                                            <label for="acceptance_of_ETF" class="mb-0 f-size-18 f-W-N line-H-1_2">I hereby confirm that Pronto Insurance has my authorization to withdraw from my bank account my monthly auto insurance payment </label>
+                                            </div>
+                                      </div>
+                                      
+                                      <div class="navigation-buttons">
+                                        <ul class="list-inline mb-0 text-center btnsList_form">
+                                          <li class="list-inline-item">
+                                            <button class="btn cmnBtn btnBg-2 sm-sz min-W text-uppercase" [disabled]="!eftpayment.valid">SAVE BANK DETAILS</button>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                    <!-- End Payment Source Bank Account -->
+                                  </form>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                       
+              </div>
+            </div>
+            <div class="col-lg-auto brdLft">
+              <div class="colWdth_side">
+                <app-dashboard-side-userinfo></app-dashboard-side-userinfo>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <footer class="footerWrap overflow-hidden">
+        <app-footer></app-footer>
+      </footer>
+    </div>
+  </div> <!-- .perspScreen -->
+</div> <!-- .fullPG_Wrap -->
+
+<div class="modal fade modalCst show"  style="display: block;" id="modal-social_login_Error" *ngIf="invalidcreditcard">
+  <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+    <div class="modal-content modalGetQuote">
+      <button type="button" class="close btnClose" data-dismiss="modal" (click)="closesocial()"><span>×</span></button>
+      <div class="modal-body pb-lg">
+      <div class="row no-gutters justify-content-center">
+      <div class="col-lg-12">
+      <div class="infoModalWrap">
+      <div class="txt-summary last-p line-H-1_3">
+      <p class="text-color-3 txt-Md text-center"><strong>The credit card number is invalid.</strong></p>
+            
+            </div>
+      
+      </div>
+      </div>
+       </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop fade show" *ngIf="invalidcreditcard"></div>

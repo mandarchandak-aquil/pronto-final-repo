@@ -1,0 +1,410 @@
+<div class="fullPG_Wrap">
+  <div class="perspScreen">
+    <div class="pgWrapFull spcTpHeader vrLinesWrap">
+      <app-header></app-header>
+
+      <app-beyontec-breadcrum></app-beyontec-breadcrum>
+      <div class="quotePG_wrap overflow-hidden position-relative">
+        <div class="floatImg floatShape-1 quote1_imgFloat_1 floating-Animate">
+          <img class="w-100" src="assets/images/floating-img-1.png" alt="" />
+        </div>
+        <div class="floatImg floatShape-5 quote1_imgFloat_5 floating-Animate">
+          <img class="w-100" src="assets/images/floating-img-5.png" alt="" />
+        </div>
+        <div class="containerPD-L">
+          <div class="row no-gutters">
+            <div class="col-md">
+              <div class="formScreen_Hgt spcMng_mp">
+                <div class="queCol_Outer pTB_quote lg-BT-scroll" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="section-page-header brdLine-BT">
+                    <h1 class="headingStl-1">Tell us about your Drivers.</h1>
+                  </div>
+                  <form *ngIf="BeyontecFormService.drivers_array$" [formGroup]="BeyontecFormService.drivers_array$">
+
+
+
+                    <!-- second time show -->
+                    <div class="section-page-questions">
+                      <div class="section-page-question">
+                        <div class="question-wrap row no-gutters justify-content-between">
+                          <div class="col-lg-5 question-header d-flex">
+                            <span class="question-counter">
+                              <span class="countNbr"></span>
+                              <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                                <path d="M2 8.36364L6.23077 12L13 2"></path>
+                              </svg>
+                            </span>
+                            <div>
+                              <h3 class="question-text">Included Drivers</h3>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 question-content">
+                            <div class="queNbrSpace">
+                              <div formArrayName="driver"
+                                *ngFor="let row of BeyontecFormService.drivers_array$.get('driver').controls ; let index=index"
+                                class="queNbrSpace">
+
+
+
+
+                                <div [formGroupName]="index" class="form-group mb_form-group">
+                                  <div class="cstBlockwrap" *ngIf="row.get('driver_include').value">
+
+                                    <label class="custom-control custom-block custom-checkbox mb-0 control_cta">
+                                      <input type="checkbox" (change)="add_driver(index,$event)"
+                                        formControlName="driver_include" class="custom-control-input form-check-input">
+                                      <span class="custom-control-label-wrap align-items-center"><span
+                                          class="custom-control-indicator"></span>
+                                        <span class="indicator-label d-flex align-items-center">
+                                          <span class="flex-fill">{{row.get('firstName').value | uppercase}}
+                                            {{row.get('middleName').value | uppercase}}
+                                            {{row.get('lastName').value | uppercase}}</span>
+                                          <span class="fld-Cta">
+                                            <button (click)="edit_driver(index)"
+                                              class="btn btnCta_add_edit">Edit</button>
+                                          </span>
+                                        </span>
+                                      </span> </label>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="section-page-question" *ngIf="exclude_count > 0">
+                        <div class="question-wrap row no-gutters justify-content-between">
+                          <div class="col-lg-5 question-header d-flex">
+                            <span class="question-counter">
+                              <span class="countNbr"></span>
+                              <svg class="iconMark" width="15" height="14" viewbox="0 0 15 14" fill="none">
+                                <path d="M2 8.36364L6.23077 12L13 2"></path>
+                              </svg>
+                            </span>
+                            <div>
+                              <h3 class="question-text">Excluded Drivers</h3>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 question-content">
+                            <div class="queNbrSpace">
+                              <div formArrayName="driver"
+                                *ngFor="let row of BeyontecFormService.drivers_array$.get('driver').controls ; let index=index"
+                                class="queNbrSpace">
+
+
+
+
+                                <div [formGroupName]="index" class="form-group mb_form-group">
+                                  <div class="cstBlockwrap" *ngIf="!row.get('driver_include').value">
+                                    <label class="custom-control custom-block custom-checkbox mb-0 control_cta">
+                                      <input type="checkbox" (change)="add_driver1(index,$event)"
+                                        formControlName="driver_include" class="custom-control-input form-check-input">
+                                      <span class="custom-control-label-wrap align-items-center"><span
+                                          class="custom-control-indicator"></span>
+                                        <span class="indicator-label d-flex align-items-center">
+                                          <span class="flex-fill">{{row.get('firstName').value | uppercase}}
+                                            {{row.get('middleName').value | uppercase}}
+                                            {{row.get('lastName').value | uppercase}}</span>
+                                          <span class="fld-Cta">
+                                            <button (click)="edit_driver(index)"
+                                              class="btn btnCta_add_edit">Edit</button>
+                                          </span>
+                                        </span>
+                                      </span> </label>
+
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="section-page-question">
+                        <div class="question-wrap row no-gutters justify-content-between">
+                          <div class="col-lg-5 question-header d-flex"> <span class="question-counter"> <span
+                                class="countNbr"></span> <svg class="iconMark" width="15" height="14"
+                                viewBox="0 0 15 14" fill="none">
+                                <path d="M2 8.36364L6.23077 12L13 2"></path>
+                              </svg> </span>
+                            <div>
+                              <h3 class="question-text">Driver not in the list</h3>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 question-content">
+                            <div class="queNbrSpace">
+                              <div class="form-group mb_form-group">
+                                <!-- <div class="cstBlockwrap">
+                                  <label class="custom-control custom-block custom-checkbox mb-0" data-toggle="modal"
+                                    data-target="#modal-Additional_driver">
+                                   
+                                    <span class="custom-control-label-wrap"> <span class="indicator-label">Include or
+                                        exclude additional drivers</span> </span> </label>
+                                </div> -->
+                                 <!-- <input type="checkbox" class="custom-control-input form-check-input"> -->
+
+                                <a href="#" class="btn btnstl-1 btnBg-3 btn-block text-left" data-toggle="modal" data-target="#modal-Additional_driver">Include or exclude additional drivers</a>
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="navigation-buttons">
+                      <ul class="list-inline mb-0 text-right btnsList_form">
+
+                        <button id="openModalmoreDriver" [hidden]="true" data-toggle="modal"
+                          data-target="#modal-Error_moreDriver">Open Modal</button>
+
+
+                        <li class="list-inline-item"> <button type="submit" (click)="submit()"
+                            class="btn btnstl-1 btnBg-3">Save & Continue</button> </li>
+                      </ul>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <beyontec-sidebar></beyontec-sidebar>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Error for more than 4 Vehicles -->
+      <div class="modal fade modalCst" id="modal-Error_moreDriver">
+        <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+          <div class="modal-content modalGetQuote">
+            <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+            <div class="modal-body pb-lg">
+              <div class="row no-gutters justify-content-center">
+                <div class="col-lg-12">
+                  <div class="infoModalWrap text-center">
+                    <div class="txt-summary last-p line-H-1_3">
+                      <p class="text-color-3 txt-Md"><strong>Add Driver</strong></p>
+                      <p class="gray-color-2 f-size-18">Pronto will not allow to add more than 5 included drivers,
+                        exclude driver and rerate.</p>
+                    </div>
+                    <div class="btnsWrapp mx-width">
+                      <ul class="list-unstyled  btnListing mb-0">
+                        <li><a href="#" class="btn cmnBtn btnBg-2 sm-sz text-uppercase btn-block"
+                            data-dismiss="modal">Ok</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- End Error -->
+
+
+      <!-- include exclue popup -->
+      <div class="modal fade modalCst" id="modal-Additional_driver" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+          <div class="modal-content">
+            <button type="button" class="close btnClose" id="close_included" 
+              data-dismiss="modal"><span>×</span></button>
+            <div class="modal-body pb-lg">
+              <div class="row no-gutters justify-content-center">
+                <div class="col-lg-11">
+                  <div class="section-page-questions">
+                    <div class="section-page-question">
+                      <div class="question-wrap pb-0">
+                        <div class="question-header">
+                          <div>
+                            <h3 class="question-text">Drivers</h3>
+                            <p class="question-byline">Do you want to include or exclude this driver?</p>
+                          </div>
+                        </div>
+                        <div class="question-content">
+                          <div class="row gutterField-8">
+                            <div class="col-6">
+                              <div class="form-group mb_form-group">
+                                <div class="cstBlockwrap">
+                                  <label for="driver_type-Include"
+                                    class="custom-control custom-block custom-radio mb-0">
+                                    <input id="driver_type-Include" [formControl]="driver_array_popup"
+                                      name="driver_array_popup" value="include" type="radio"
+                                      class="custom-control-input form-check-input">
+                                    <span class="custom-control-label-wrap"><span
+                                        class="custom-control-indicator"></span> <span
+                                        class="indicator-label">Include</span> </span> </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="form-group mb_form-group">
+                                <div class="cstBlockwrap">
+                                  <label for="driver_type-Exclude"
+                                    class="custom-control custom-block custom-radio mb-0">
+                                    <input id="driver_type-Exclude" [formControl]="driver_array_popup"
+                                      name="driver_array_popup" value="exclude" type="radio"
+                                      class="custom-control-input form-check-input">
+                                    <span class="custom-control-label-wrap"><span
+                                        class="custom-control-indicator"></span> <span
+                                        class="indicator-label">Exclude</span> </span> </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="navigation-buttons">
+
+                    <ul class="list-inline mb-0 text-right btnsList_form">
+
+                      <li *ngIf="driver_array_popup.value=='include'" class="list-inline-item"><button
+                          (click)="include_driver()" class="btn btnstl-1 btnBg-3">Save &amp; Continue</button></li>
+
+                      <li *ngIf="driver_array_popup.value=='exclude'" class="list-inline-item"><a href="#"
+                          class="btn btnstl-1 btnBg-3" data-dismiss="modal" data-toggle="modal"
+                          data-target="#modal-Additional_driver_Exclude">Save &amp; Continue</a></li>
+
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- include exclude close -->
+
+      <!--  exclude form popup open -->
+      <div class="modal fade modalCst" id="modal-Additional_driver_Exclude" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-cst-sm">
+          <div class="modal-content">
+            <button type="button" class="close btnClose" data-dismiss="modal"><span>×</span></button>
+            <div class="modal-body pb-lg">
+              <div class="row no-gutters justify-content-center">
+                <form [formGroup]="exclude_driver_form" (ngSubmit)="exclude_driver_submit()">
+
+                  <div class="col-lg-11">
+                    <div class="section-page-questions">
+                      <div class="section-page-question">
+
+                        <div class="question-wrap pb-0">
+                          <div class="question-header">
+                            <div>
+                              <h3 class="question-text">Add Excluded Driver Who Lives in My Household</h3>
+                              <p class="question-byline">Below is a person living in my house that should not be
+                                included in my Pronto policy</p>
+                            </div>
+                          </div>
+                          <div class="question-content">
+                            <div class="form-group mb_form-group">
+                              <div class="field_md">
+                                <input class="form-control cmnField" formControlName="firstName"
+                                  [ngClass]="{'ffl-floated-force' : exclude_driver_form.get('firstName').value != ''}" appOnlyAlphabetical>
+                                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                <label type="text" class="primary-label">First Name</label>
+                              </div>
+                            </div>
+                            <div class="form-group mb_form-group">
+                              <div class="field_md">
+                                <input type="text" class="form-control cmnField" formControlName="lastName"
+                                  [ngClass]="{'ffl-floated-force' : exclude_driver_form.get('lastName').value != ''}" appOnlyAlphabetical>
+                                <!-- Toggle "has-error has-error-icon" this 2 class for Error -->
+                                <label class="primary-label">Last Name</label>
+                              </div>
+                            </div>
+                            <div class="form-group mb_form-group">
+                              <div class="field_md fld-icon-Date field_labelTP datepickerParent datepop">
+                                <input class="form-control cmnField datepicker_fld" formControlName="dob"
+                                  placeholder="MM/DD/YYYY" 
+                                  DobValidation type="text" maxlength="10"
+                                  [ngClass]="{'ffl-floated-force' : exclude_driver_form.get('dob').value}">
+
+                                  <input type="text" class="form-control datepickerModel" #dp1="bsDatepicker" bsDatepicker
+                                  [bsConfig]="bsConfig" DobValidation maxlength="10" [maxDate]="maxDate"
+                                  [minDate]="minDate" [(ngModel)]="datepickerModel" (bsValueChange)="getdate($event, 'dob')"
+                                  [ngModelOptions]="{standalone: true}">
+
+                                <!-- Toggle "has-error" this class for Error -->
+                                <label class="primary-label label-Tp">Date of Birth</label>
+                                <div class="fldIcon"><img src="./assets/images/icon-calendar.png" alt="" (click)="dp1.toggle()" [attr.aria-expanded]="dp1.isOpen"></div>
+                              </div>
+                            </div>
+
+                            <div class="form-group mb_form-group">
+                              <div class="dropdown-select-wrap field_md">
+
+
+                                <div class="selectNG_dropdown">
+                                  <ng-select class="custom_ngSelect" [items]="maritalStatus" bindLabel="value"
+                                    bindValue="key" [multiple]="false" [searchable]="false"
+                                    formControlName="isMarried">
+                                  </ng-select>
+                                  <label class="selectLabel">Marital Status</label>
+                                  <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04"
+                                    viewBox="0 0 11.67 6.04">
+                                    <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                      fill="#fff"></polygon>
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="form-group mb_form-group">
+                              <div class="dropdown-select-wrap field_md">
+
+
+                                <div class="selectNG_dropdown">
+                                  <ng-select class="custom_ngSelect" [items]="relationship_dropdown" bindLabel="value"
+                                    bindValue="key" [multiple]="false" [searchable]="false"
+                                    formControlName="relationship">
+                                  </ng-select>
+                                  <label class="selectLabel">Relationship to Insured</label>
+                                  <svg class="arrowIcon" xmlns="http://www.w3.org/2000/svg" width="11.67" height="6.04"
+                                    viewBox="0 0 11.67 6.04">
+                                    <polygon points="5.89 6.04 0 0.74 0.67 0 5.88 4.69 11 0 11.67 0.74 5.89 6.04"
+                                      fill="#fff"></polygon>
+                                  </svg>
+                                </div>
+                              </div>
+                            </div>
+
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                    <div class="navigation-buttons">
+                      <ul class="list-inline mb-0 text-right btnsList_form">
+                        <li class="list-inline-item"><a href="#" id="cancel_popup" class="btn btnstl-1 btnBrd"
+                            data-dismiss="modal">Cancel</a></li>
+                        <li class="list-inline-item"> <button type="submit" [disabled]="!exclude_driver_form.valid"
+                            class="btn btnstl-1 btnBg-3">Save & Continue</button></li>
+                      </ul>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--  exclude form popup close -->
+
+      <app-footer-quote></app-footer-quote>
+    </div>
+  </div>
+  <!-- .perspScreen -->
+</div>
+<!-- .fullPG_Wrap -->
